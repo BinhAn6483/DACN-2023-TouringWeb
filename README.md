@@ -18,7 +18,7 @@ Các mốc chính:
  - Tạo tài liệu và thiết kế giao diện trang chủ: Xong.
  - Tạo tài liệu và thiết kế giao diện trang cho từng địa điểm: Xong.
  - Tạo tài liệu và thiết kế giao diện trang đăng nhập/đăng ký: Xong.
- - Tạo trang chủ: Xong.
+ - Tạo trang chủ: Xong. (1/4/2023 - 5/4/2023)
  - Tạo trang cho từng địa điểm:  
  - Tạo trang đăng nhập/đăng ký: 
  >Tạo ra các thành phần cơ bản của trang web.
