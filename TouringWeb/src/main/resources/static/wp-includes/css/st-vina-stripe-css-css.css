@@ -1,0 +1,74 @@
+.stripe-othird-width{
+    width: calc(94%/3);
+    float: left;
+    margin-right: 10px;
+}
+.stripe-othird-width:last-child{
+    margin-right: 0px;
+}
+.stripe-card-form .outcome {
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+    min-height: 20px;
+    text-align: left;
+}
+.stripe-card-form .success,
+.stripe-card-form .error {
+    display: none;
+    font-size: 15px;
+}
+.stripe-card-form .success.visible,
+.stripe-card-form .error.visible {
+    display: inline;
+}
+.stripe-card-form .error {
+    color: #E4584C;
+}
+.stripe-card-form .success {
+    color: #34D08C;
+}
+.stripe-card-form .success .token {
+    font-weight: 500;
+    font-size: 15px;
+}
+#st_stripe_card_cvc,
+#st_stripe_card_expiry,
+#st_stripe_card_number{
+    padding: 8px 12px 7px 12px;
+    border: 1px solid #ccc;
+}
+#st_stripe_card_cvc.is-focused,
+#st_stripe_card_expiry.is-focused,
+#st_stripe_card_number.is-focused{
+    border-color: #ed8323;
+}
+.stripe-card-form input.stripe-check-empty::placeholder{
+    color: #FFCCA5;
+}
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+    background-color: #f9f9f9;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #bdbdbd;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}

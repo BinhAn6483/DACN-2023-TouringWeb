@@ -34,6 +34,9 @@ public class Tour {
     @Column(name = "view_count")
     private int viewCount;
 
+    @Column(name = "price_sale")
+    private double priceSale;
+
     public Tour(String name, String startingPoint, int category, String time, int sale, double price, String imgMain) {
         this.name = name;
         this.startingPoint = startingPoint;
@@ -121,10 +124,10 @@ public class Tour {
     }
 
     public double getPriceSale() {
-        if(getSale() == 0) {
-            return getPrice();
+        if(sale == 0) {
+            return price;
         }else {
-            return getPrice() - ((getSale() * getPrice())/100);
+            return price - ((sale * price)/100);
         }
     }
 }
