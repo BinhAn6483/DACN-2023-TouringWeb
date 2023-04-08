@@ -15,15 +15,27 @@ public class TourService {
     @Autowired
     TourRepository tourRepository;
 
-    public Optional<Tour> getTourById(Long id) {
-        return tourRepository.findById(id);
+    public Tour getTourById(Long id) {
+        return tourRepository.getByIdA(id);
     }
 
     public List<Tour> getAllTourByStartingPoint(String startingPoint) {
         return tourRepository.getAllByStartingPoint(startingPoint);
     }
 
-    public List<Tour> getListTourFeatured(Pageable pageable){
-        return tourRepository.getListTourFeatured(pageable);
+    public List<Tour> getListTourFeatured(){
+        return tourRepository.getListTourFeatured();
+    }
+
+    public List<Tour> getListTourNew(){
+        return tourRepository.getListTourNew();
+    }
+
+    public List<Tour> getListTourDiscount(){
+        return tourRepository.getListTourDiscount();
+    }
+
+    public List<Tour> getAll() {
+        return tourRepository.findAll();
     }
 }
