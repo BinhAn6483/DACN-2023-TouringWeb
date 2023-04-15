@@ -23,3 +23,12 @@ Các mốc chính:
  - Tạo trang đăng nhập/đăng ký: 
  >Tạo ra các thành phần cơ bản của trang web.
  
+ **3. Tuần 3: Tạo ra trang dành cho quản trị viên, trang dành cho người dùng và tạo ra các trang cho từng khu du lịch. Tiến hành thực hiện tài liệu SRS.**
+ - Tạo tài liệu và thiết kế giao diện cho trang quản trị viên: Xong.
+ - Tạo tài liệu và thiết kế giao diện cho trang người dùng: Xong.
+ - Tạo trang quản trị viên: 
+ - Tạo trang người dùng:
+ - 5 Trang địa điểm:
+ - Tài liệu SRS:
+ >Hoàn thành các thành phần còn lại của trang web.
+ 
