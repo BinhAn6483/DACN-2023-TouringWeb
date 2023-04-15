@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -355,8 +355,8 @@
                 </a>
 
             </li>
-            <li class="d-none d-sm-block d-md-block st-header-link"><a href="#"> <i class=" mr5"></i>Become a
-                host</a></li>
+            <li class="d-none d-sm-block d-md-block st-header-link">Welcome <span sec:authentication="principal.username"> User</span></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
         </ul>
     </div>
 </header>
