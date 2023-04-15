@@ -20,7 +20,7 @@ Các mốc chính:
  - Tạo tài liệu và thiết kế giao diện trang đăng nhập/đăng ký: Xong.
  - Tạo trang chủ: Xong. (1/4/2023 - 5/4/2023)
  - Tạo trang cho từng địa điểm:  
- - Tạo trang đăng nhập/đăng ký: 
+ - Tạo trang đăng nhập/đăng ký: Xong. (1/4/2023 - 15/4/2023)
  >Tạo ra các thành phần cơ bản của trang web.
  
  **3. Tuần 3: Tạo ra trang dành cho quản trị viên, trang dành cho người dùng và tạo ra các trang cho từng khu du lịch. Tiến hành thực hiện tài liệu SRS.**
