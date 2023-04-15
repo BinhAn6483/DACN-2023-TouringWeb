@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +38,9 @@ public class TourService {
 
     public List<Tour> getAll() {
         return tourRepository.findAll();
+    }
+
+    public List<Tour> getToursBySearch(String location, Date start, Date end) {
+        return tourRepository.getToursBySearch(location,start,end);
     }
 }

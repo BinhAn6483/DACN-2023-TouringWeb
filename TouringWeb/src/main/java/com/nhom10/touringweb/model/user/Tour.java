@@ -37,7 +37,10 @@ public class Tour {
     @Column(name = "price_sale")
     private double priceSale;
 
-    public Tour(String name, String startingPoint, int category, String time, int sale, double price, String imgMain) {
+    @Column(name = "location")
+    private String location;
+
+    public Tour(String name, String startingPoint, int category, String time, int sale, double price, String imgMain, String location) {
         this.name = name;
         this.startingPoint = startingPoint;
         this.category = category;
@@ -45,6 +48,7 @@ public class Tour {
         this.sale = sale;
         this.price = price;
         this.imgMain = imgMain;
+        this.location = location;
     }
 
     public Tour() {
@@ -124,10 +128,35 @@ public class Tour {
     }
 
     public double getPriceSale() {
-        if(sale == 0) {
+        if (sale == 0) {
             return price;
-        }else {
-            return price - ((sale * price)/100);
+        } else {
+            return price - ((sale * price) / 100);
         }
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", startingPoint='" + startingPoint + '\'' +
+                ", category=" + category +
+                ", time='" + time + '\'' +
+                ", sale=" + sale +
+                ", price=" + price +
+                ", imgMain='" + imgMain + '\'' +
+                ", viewCount=" + viewCount +
+                ", priceSale=" + priceSale +
+                ", location='" + location + '\'' +
+                '}';
     }
 }
