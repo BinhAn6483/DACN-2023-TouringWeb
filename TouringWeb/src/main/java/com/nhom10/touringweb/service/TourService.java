@@ -17,7 +17,7 @@ public class TourService {
     TourRepository tourRepository;
 
     public Tour getTourById(Long id) {
-        return tourRepository.getByIdA(id);
+        return tourRepository.getById(id);
     }
 
     public List<Tour> getAllTourByStartingPoint(String startingPoint) {
@@ -42,5 +42,9 @@ public class TourService {
 
     public List<Tour> getToursBySearch(String location, Date start, Date end) {
         return tourRepository.getToursBySearch(location,start,end);
+    }
+
+    public List<Date> getAllDateStart(Long idTour) {
+        return tourRepository.getAllDateStart(idTour);
     }
 }

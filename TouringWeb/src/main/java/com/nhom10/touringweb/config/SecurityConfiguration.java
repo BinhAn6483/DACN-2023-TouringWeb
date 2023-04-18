@@ -56,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/forgotPassword/**",
 						"/forgotPasswordPage/**",
 						"/products/**",
+						"/paypal/**",
 						"/js/**",
 						"/css/**",
 						"/img/**"
