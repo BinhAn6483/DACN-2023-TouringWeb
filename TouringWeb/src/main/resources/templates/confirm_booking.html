@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận thông tin đặt tour</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI library -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #3b71fe;
+            text-align: center;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+
+        .card {
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-control[readonly] {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .btn {
+            border-radius: 3px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #3b71fe;
+            border-color: #3b71fe;
+        }
+
+        .btn-primary:hover {
+            background-color: #356cf8;
+            border-color: #356cf8;
+        }
+
+        .btn-outline-secondary {
+            background-color: #fff;
+            border-color: #ccc;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #f5f5f5;
+            border-color: #999;
+            color: #333;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Xác nhận thông tin đặt tour</h1>
+            <hr>
+        </div>
+    </div>
+    <form id="booking-form" method="post" th:action="@{/paypal/pay}" th:object="${booking}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Tên Tour:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" value="Hoa Lư - Tam Cốc - Múa Từ Trên Nước"
+                                   readonly th:value="${tour.getName()}">
+                            <input type="hidden" id="idTour" name="idTour" th:value="${param.idTour}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Địa điểm khởi hành:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" value="Hà Nội" readonly
+                                   th:value="${tour.getStartingPoint()}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Thời gian khởi hành:</label>
+                        <div class="col-md-8">
+                            <input type="datetime-local" class="form-control" value="2023-04-16T09:00" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <select id="dateStart" name="dateStart"
+                                required>
+                            <option th:each="date : ${dates}" th:value="${date}" th:text="${date}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Số lượng người lớn:</label>
+                        <div class="col-md-8">
+                            <input type="number" id="noAdults" name="noAdults" min="1" class="form-control" value="0"
+                                   th:value="${noAdults}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Số lượng trẻ em:</label>
+                        <div class="col-md-8">
+                            <input type="number" id="noChildren" name="noChildren" min="0" class="form-control" value="0"
+                                   th:value="${noChildren}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Tổng tiền:</label>
+                        <div class="col-md-8">
+                            <input type="hidden" class="form-control " id="price-sale" th:value="${tour.getPriceSale()}"
+                                   readonly>
+                            <input type="number" class="form-control" id="totalPrice"  name="totalPrice" value="0" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">Phương thức thanh toán:</label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="payment" name="payment" >
+                                <option value="paypal">Paypal</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="debit">Debit Card</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary mx-2">XÁC NHẬN ĐẶT TOUR</button>
+                        <button type="reset" class="btn btn-outline-secondary mx-2">HUỶ ĐẶT TOUR</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form method="post" id="form1">
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary mx-2">XÁC NHẬN ĐẶT TOUR</button>
+            <button type="reset" class="btn btn-outline-secondary mx-2">HUỶ ĐẶT TOUR</button>
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+    // $(function () {
+    //     $('#booking-form').submit(function (event) {
+    //         // Prevent the form from submitting normally
+    //         var idTour = parseInt($('#idTour').val());
+    //         var noAdults = parseInt($('#noAdults').val());
+    //         var noChildren = parseInt($('#noChildren').val());
+    //         var totalPrice = parseInt($('#total-price').val());
+    //         var payment = $('#payment').val();
+    //
+    //         // Lấy dữ liệu booking từ form
+    //         var bookingData = {
+    //             idTour: idTour,
+    //             noAdults: noAdults,
+    //             noChildren: noChildren,
+    //             // totalPrice: totalPrice,
+    //             payment: payment
+    //         };
+    //         // Send the data to the server using AJAX
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/paypal/pay',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify(bookingData),
+    //             success: function (data) {
+    //                 // window.location.href = "/tour/booking/confirm/"+data;
+    //             },
+    //             error: function () {
+    //                 alert('Error!');
+    //             }
+    //         });
+    //     });
+    // });
+    var adults = parseInt($('#noAdults').val()) || 0;
+    var children = parseInt($('#noChildren').val()) || 0;
+    var tourPrice = parseInt($('#price-sale').val()) || 0;
+    var totalPrice = tourPrice * adults + tourPrice * 0.15 * children;
+    $('#totalPrice').val(totalPrice);
+    $(document).ready(function () {
+        $('#noAdults, #noChildren').on('input', function () {
+            var adults = parseInt($('#noAdults').val()) || 0;
+            var children = parseInt($('#noChildren').val()) || 0;
+            var tourPrice = parseInt($('#price-sale').val()) || 0;
+            console.log("noAdults: " + adults + "\tnoChildren: " + children + "\ttourPrice: " + tourPrice);
+            var totalPrice = tourPrice * adults + tourPrice * 0.15 * children;
+            $('#totalPrice').val(totalPrice);
+        });
+    });
+    // $(function () {
+    //     $("#booking-form").submit(function (event) {
+    //         // Ngăn chặn form submit bình thường
+    //         event.preventDefault();
+    //         var idTour = parseInt($('#idTour').val());
+    //         var noAdults = parseInt($('#noAdults').val());
+    //         var noChildren = parseInt($('#noChildren').val());
+    //         var totalPrice = parseInt($('#total-price').val());
+    //         var payment = $('#payment').val();
+    //
+    //         // Lấy dữ liệu booking từ form
+    //         var bookingData = {
+    //             idTour: idTour,
+    //             noAdults: noAdults,
+    //             noChildren: noChildren,
+    //             // totalPrice: totalPrice,
+    //             payment: payment
+    //         };
+    //         console.log("bookingData: " + JSON.stringify(bookingData));
+    //
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/paypal/pay',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify(bookingData),
+    //             success: function (data) {
+    //                 // window.location.href = "/tour/booking/confirm/" + data;
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 // Xử lý lỗi nếu có
+    //             }
+    //         });
+    //
+    //     });
+    // });
+
+    // Kiểm tra paymentType để quyết định chuyển hướng và gửi AJAX
+    // var paymentType = $("#payment").val();
+    // console.log(paymentType)
+    // if (paymentType == "paypal") {
+    //     $.ajax({
+    //         url: "/paypal/pay",
+    //         type: "POST",
+    //         data: bookingData,
+    //         success: function (response) {
+    //             // Xử lý kết quả trả về từ server nếu cần
+    //         },
+    //         error: function (xhr, status, error) {
+    //             // Xử lý lỗi nếu có
+    //         }
+    //     });
+    // } else if (paymentType === "Credit Card") {
+    //     window.location.href = "/creditCard/pay";
+    //     // Gửi dữ liệu booking theo URL query string
+    // }
+</script>
+</body>
+</html>
