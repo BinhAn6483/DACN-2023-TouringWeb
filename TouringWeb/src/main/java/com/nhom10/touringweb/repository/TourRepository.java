@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface TourRepository extends JpaRepository<Tour,Long> {
     @Query("SELECT t FROM Tour t WHERE t.id=?1")
-    Tour getByIdA(Long id);
+    Tour getById(Long id);
 
     List<Tour> getAllByStartingPoint(String startingPoint);
 
@@ -26,6 +26,9 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
     @Query("SELECT t FROM Tour t WHERE t.sale >= 20")
     List<Tour> getListTourDiscount();
 
-    @Query("SELECT t FROM Tour t JOIN TourDetail td ON t.id = td.idTour WHERE t.location=?1 AND td.dateStart BETWEEN ?2 AND ?3 AND td.dateEnd BETWEEN ?2 AND ?3")
+    @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.location=?1 AND d.dateStart BETWEEN ?2 AND ?3 AND d.dateEnd BETWEEN ?2 AND ?3")
     List<Tour> getToursBySearch(String location, Date start,Date end);
+
+    @Query("SELECT d.dateStart FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.id=?1")
+    List<Date> getAllDateStart(Long idTour);
 }
