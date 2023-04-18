@@ -27,7 +27,7 @@ public class User {
     @Column(name = "gender")
     private String gender;
     @Column(name = "id_address")
-    private int idAddress;
+    private String address;
     @Column(name = "id_cart")
     private String idCart;
     @Column(name = "avatar")
@@ -42,8 +42,9 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
 
     private Collection<Role> roles;
-    public User() {
-    }
+public User(){
+
+}
     public User(String name,  String email, String password, Collection<Role> roles) {
         super();
         this.name = name;
@@ -108,15 +109,13 @@ public class User {
         this.gender = gender;
     }
 
-    public int getIdAddress() {
-        return idAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
-
 
     public String getIdCart() {
         return idCart;

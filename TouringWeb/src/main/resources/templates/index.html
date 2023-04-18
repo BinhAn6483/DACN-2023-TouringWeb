@@ -7268,9 +7268,11 @@
             </section>
         </div>
     </footer>
+
     <div class="modal fade login-regiter-popup style-9" id="st-login-form" tabindex="-1" role="dialog"
-        aria-labelledby="st-login-form" aria-hidden="true">
+         aria-labelledby="st-login-form" aria-hidden="true">
         <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document">
             <div class="modal-content st-border-radius relative">
                 <div class="loader-wrapper">
                     <div class="st-loader"></div>
@@ -7297,8 +7299,11 @@
                             <div class="form-group field-password">
                                 <input type="password" class="form-control" name="password" autocomplete="off"
                                     placeholder="Password">
-                                <span class="stt-icon stt-icon-eye ic-view"></span>
-                                <span class="stt-icon stt-icon-eye-blind ic-hide"></span>
+                                <div id="eye">
+                                <i class="far fa-eye-slash"></i>
+                                </div>
+<!--                                <span class="stt-icon stt-icon-eye ic-view"></span>-->
+<!--                                <span class="stt-icon stt-icon-eye-blind ic-hide"></span>-->
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="submit" class="form-submit" value="Log in">
@@ -7314,23 +7319,23 @@
                                 <a href="#" class="st-link open-loss-password" data-bs-dismiss="modal"
                                     data-bs-toggle="modal" data-bs-target="#st-forgot-form">Forgot Password?</a>
                             </div>
-                            <div class="advanced">
-                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                                <div class="social-login">
-                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                        onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                        data-channel="twitter">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4" />
-                                        </svg>
-                                        Continue with Twitter </a>
-                                </div>
-                            </div>
+<!--                            <div class="advanced">-->
+<!--                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>-->
+<!--                                <div class="social-login">-->
+<!--                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"-->
+<!--                                        onclick="return false" class="btn_login_tw_link st_login_social_link"-->
+<!--                                        data-channel="twitter">-->
+<!--                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"-->
+<!--                                            xmlns="http://www.w3.org/2000/svg">-->
+<!--                                            <path-->
+<!--                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"-->
+<!--                                                fill="#03A9F4" />-->
+<!--                                        </svg>-->
+<!--                                        Continue with Twitter </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="create-account-action">
-                                <a href="#" class="st-link open-signup">Create an account</a>
+                                <a href="#" class="st-link open-signup" data-target="register-component">Create an account</a>
                             </div>
                         </form>
                     </div>
@@ -7375,22 +7380,22 @@
                                 </div>
                             </div>
 
-                            <div class="message-wrapper mt20"></div>
-                            <div class="advanced">
-                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                                <div class="social-login">
-                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                        onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                        data-channel="twitter">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4" />
-                                        </svg>
-                                        Continue with Twitter </a>
-                                </div>
-                            </div>
+<!--                            <div class="message-wrapper mt20"></div>-->
+<!--                            <div class="advanced">-->
+<!--                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>-->
+<!--                                <div class="social-login">-->
+<!--                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"-->
+<!--                                        onclick="return false" class="btn_login_tw_link st_login_social_link"-->
+<!--                                        data-channel="twitter">-->
+<!--                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"-->
+<!--                                            xmlns="http://www.w3.org/2000/svg">-->
+<!--                                            <path-->
+<!--                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"-->
+<!--                                                fill="#03A9F4" />-->
+<!--                                        </svg>-->
+<!--                                        Continue with Twitter </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </form>
                     </div>
                 </div>
@@ -7826,9 +7831,12 @@
             "version": "3.11.5", "is_static": false, "experimentalFeatures": { "e_dom_optimization": true, "e_optimized_assets_loading": true, "e_optimized_css_loading": true, "e_font_icon_svg": true, "a11y_improvements": true, "additional_custom_breakpoints": true, "container": true, "landing-pages": true, "kit-elements-defaults": true }, "urls": { "assets": "https:\/\/modmixmap.travelerwp.com\/wp-content\/plugins\/elementor\/assets\/" }, "swiperClass": "swiper-container", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet", "viewport_tablet_extra", "viewport_laptop", "viewport_widescreen"], "viewport_tablet": 992, "viewport_tablet_extra": 1024, "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 71, "title": "Home%20Page%20-%20ModMixMap", "excerpt": "", "featuredImage": false }
         };
     </script>
+
     <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
         id='elementor-frontend-js'></script>
+
+
 </body>
 
 </html>

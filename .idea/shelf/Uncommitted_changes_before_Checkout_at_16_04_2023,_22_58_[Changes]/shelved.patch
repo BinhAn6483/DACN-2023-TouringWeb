@@ -1,0 +1,16 @@
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/DACN-2023-TouringWeb.iml\" filepath=\"$PROJECT_DIR$/.idea/DACN-2023-TouringWeb.iml\" />\n      <module fileurl=\"file://$PROJECT_DIR$/TouringWeb/touring-wed.iml\" filepath=\"$PROJECT_DIR$/TouringWeb/touring-wed.iml\" />\n    </modules>\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	
++++ b/.idea/modules.xml	
+@@ -2,7 +2,6 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/DACN-2023-TouringWeb.iml" filepath="$PROJECT_DIR$/.idea/DACN-2023-TouringWeb.iml" />
+       <module fileurl="file://$PROJECT_DIR$/TouringWeb/touring-wed.iml" filepath="$PROJECT_DIR$/TouringWeb/touring-wed.iml" />
+     </modules>
+   </component>
