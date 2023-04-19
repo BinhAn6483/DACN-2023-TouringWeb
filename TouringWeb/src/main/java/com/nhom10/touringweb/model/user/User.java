@@ -26,7 +26,7 @@ public class User {
     private String dateOfBirth;
     @Column(name = "gender")
     private String gender;
-    @Column(name = "id_address")
+    @Column(name = "address")
     private String address;
     @Column(name = "id_cart")
     private String idCart;
@@ -139,5 +139,22 @@ public User(){
     }
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", idCart='" + idCart + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

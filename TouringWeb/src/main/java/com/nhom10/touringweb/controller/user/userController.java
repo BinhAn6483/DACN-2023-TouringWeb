@@ -2,7 +2,6 @@ package com.nhom10.touringweb.controller.user;
 
 import com.nhom10.touringweb.model.user.User;
 import com.nhom10.touringweb.repository.UserRepository;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 @Controller
-public class UserController {
+public class userController {
 
     @Autowired
     UserRepository userRepository;
