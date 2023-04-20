@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin đặt tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <link rel='stylesheet' id='bootstrap-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/bootstrap/css/bootstrap.min.css'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='layout-main-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/inc/modules/layouts/cores/assets/css/main.css'
+          type='text/css' media='all'/>
+
+    <link rel='stylesheet' id='elementor-frontend-css'
+          href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/custom-frontend-lite.min.css'
+          type='text/css' media='all'/>
+
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -30,20 +43,19 @@
             margin: 30px 0;
         }
 
-        .card {
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-        }
-
         label {
             font-weight: bold;
         }
 
         .form-group {
             margin-top: 15px;
+            float: left;
+            width: 27%;
+        }
+        .form-group-sub {
+            margin-top: 15px;
+            float: left;
+            width: 35%;
         }
 
         .form-group:last-child {
@@ -67,126 +79,1077 @@
         }
 
         .btn-primary:hover {
-            background-color: #356cf8;
+            background-color: #003adc;
             border-color: #356cf8;
         }
 
         .btn-outline-secondary {
-            background-color: #fff;
-            border-color: #ccc;
-            color: #333;
+            background-color: red;
+            border-color: red;
+            color: white;
             margin-right: 10px;
         }
 
         .btn-outline-secondary:hover {
-            background-color: #f5f5f5;
+            background-color: #cb0000;
             border-color: #999;
-            color: #333;
+            color: white;
         }
 
         .text-center {
             text-align: center;
+        }
+
+        .mda-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .mda-table td,
+        .mda-table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+
+        .mda-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .mda-money {
+            font-weight: bold;
+        }
+
+        .chitiet_gia tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .mda-row {
+            padding-left: 150px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .be {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .mda-info h2 a {
+            font-size: 20px;
+            color: #222;
+            font-weight: 700;
+            display: block;
+            text-decoration: none;
+        }
+
+        .aaa {
+            background: #ff888845;
+        }
+        .box{
+            color: #0a58ca;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container my-5">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Xác nhận thông tin đặt tour</h1>
-            <hr>
+<header class="header d-flex align-items-center justify-content-between">
+    <div class="header__left">
+        <div class="menu-toggle">
+
+        </div>
+        <a href="https://modmixmap.travelerwp.com/" class="logo d-none d-sm-none d-lg-block">
+            <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
+        </a>
+        <a href="https://modmixmap.travelerwp.com/" class="logo d-block  d-lg-none">
+            <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
+        </a>
+    </div>
+    <div class="header__center">
+        <nav id="st-main-menu">
+            <a href="#" class="back-menu"><span class="stt-icon stt-icon-arrow-left"></span></a>
+            <ul id="main-menu" class="menu main-menu">
+                <li id="menu-item-75"
+                    class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-75">
+                    <a class="" href="https://modmixmap.travelerwp.com/">Home</a></li>
+                <li id="menu-item-161"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-161">
+                    <a class="" href="#">Hotel<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
+                    <ul class="menu-dropdown">
+                        <li id="menu-item-160"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-160 "><a
+                                class="" href="https://modmixmap.travelerwp.com/hotel-search-halfmap/">Search
+                            HalfMap</a></li>
+                        <li id="menu-item-159"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-159 "><a
+                                class="" href="https://modmixmap.travelerwp.com/hotel-search-popup-map/">Search
+                            Popup Map</a></li>
+                        <li id="menu-item-162"
+                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-162 "><a
+                                class=""
+                                href="https://modmixmap.travelerwp.com/st_hotel/studio-allston-hotel/">Detail Hotel
+                            1</a></li>
+                        <li id="menu-item-509"
+                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-509 "><a
+                                class=""
+                                href="https://modmixmap.travelerwp.com/st_hotel/edwardian-kenilworth/">Detail Hotel
+                            2</a></li>
+                        <li id="menu-item-166"
+                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-166 "><a
+                                class=""
+                                href="https://modmixmap.travelerwp.com/hotel_room/room-sheraton-hotel/">Detail Room
+                            1</a></li>
+                        <li id="menu-item-1354"
+                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-1354 ">
+                            <a class="" href="https://modmixmap.travelerwp.com/hotel_room/family-suite-8/">Detail
+                                Room 2</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1355"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1355">
+                    <a class="" href="#">Tour<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
+                    <ul class="menu-dropdown">
+                        <li id="menu-item-1530"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1530 "><a
+                                class="" href="https://modmixmap.travelerwp.com/tour-search-topbar/">Tour nổi bật</a>
+                        </li>
+                        <li id="menu-item-1531"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531 "><a
+                                class="" href="https://modmixmap.travelerwp.com/tour-search-sidebar/">Tour khách
+                            đoàn</a></li>
+                        <li id="menu-item-1533"
+                            class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1533 "><a
+                                class=""
+                                href="https://modmixmap.travelerwp.com/st_tour/segway-tour-of-washington-d-c-highlights/">Combo
+                            du lịch</a></li>
+                        <li id="menu-item-1532"
+                            class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1532 "><a
+                                class=""
+                                href="https://modmixmap.travelerwp.com/st_tour/new-york-museum-of-modern-art/">Tour
+                            hot</a></li>
+
+                    </ul>
+                </li>
+
+                <li id="menu-item-1356"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1356">
+                    <a class="" href="#">Blog</a>
+
+                </li>
+
+                <li id="menu-item-163"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-163">
+                    <a class="" href="#">Liên hệ<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
+                    <ul class="menu-dropdown">
+                        <li id="menu-item-842"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-842 "><a
+                                class="" href="https://modmixmap.travelerwp.com/about/">Thông tin liên hệ</a></li>
+                        <li id="menu-item-789"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-789 "><a
+                                class="" href="https://modmixmap.travelerwp.com/blog/">Tổng quan công ty</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="overlay"></div>
+    </div>
+    <div class="header__right">
+        <ul class="items d-flex align-items-center flex-wrap">
+
+            </li>
+            <li class="dropdown dropdown-minicart">
+                <div class="mini-cart dropdown-toggle" role="button" id="dropdown-mini-cart"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-mini-cart">
+                    <li class="heading">
+                        <div class="st-heading-section">Your Cart</div>
+                    </li>
+                    <li>
+                        <div class="col-lg-12 cart-text-empty text-warning">Your cart is empty</div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown dropdown-user-dashboard">
+                <a href="#" class="dropdown-toggle" data-bs-toggle="modal" data-bs-target="#st-login-form">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+
+            </li>
+            <li class="d-none d-sm-block d-md-block st-header-link">Welcome <span
+                    sec:authentication="principal.username"> User</span></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container " style="padding: 40px 70px;background: white;">
+
+    <div class="mda-info">
+        <div class="mda-info-img" style="width: 410px;float: left;margin-right: 20px;">
+            <img style="width: 400px;height: 274px;" th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}">
+        </div>
+        <div class="mda-info-caption" style="overflow: hidden;border: solid 1px rgba(0,0,0,.15); height: 275px;">
+            <h2 style="padding: 15px 20px;border-bottom: solid 1px rgba(0,0,0,0.15);font-size: 100%;font-weight: 700;">
+                <a href="#" th:text="${tour.getName()}">Du lịch Trải Nghiệm Du thuyền Hạ Long Verdure Lotus Cruises 5 sao từ Sài Gòn 2023</a>
+            </h2>
+            <div class="mda-info-list" style="padding: 15px 20px 10px;">
+                <div class="mda-row"><span class="be">Mã tour:</span> <span style="font-weight:bold" th:text="${tour.getId()}">16586</span></div>
+                <div class="mda-row"><span class="be">Thời gian:</span> <span style="font-weight:bold" th:text="${tour.getTime()}">2 ngày</span>
+                </div>
+                <input type="hidden" id="total-all-hidden" value="3199000">
+                <div class="mda-row"><span class="be">Giá:</span><span style="font-weight:bold"
+                                                                       id="total-all"  class="price-tour-format" th:text="${tour.getPriceSale()}">3,199,000</span>
+                </div>
+                <div class="mda-row"><span class="be">Ngày khởi hành:</span><span
+                        style="font-weight:bold" th:text="${dates}">23/04/2023</span>
+
+                </div>
+                <div class="mda-row"><span class="be">Nơi khởi hành:</span><span
+                        style="font-weight:bold" th:text="${tour.getStartingPoint()}">Hồ Chí Minh</span></div>
+                <div class="mda-row"><span class="be">Số chỗ còn nhận:</span> <span style="font-weight:bold">10</span>
+                </div>
+                <input type="hidden" name="con" id="con" value="10">
+            </div>
         </div>
     </div>
+    <hr>
+    <div id="MdaPrice">
+        <div class="mda-tilte-3" style="margin: 30px 0;text-align: center;">
+            <span class="mda-tilte-name" style="font-size: 30px;font-weight: bold"><i class="fa fa-tags"
+                                                                                      aria-hidden="true"></i> Bảng giá tour chi tiết</span>
+        </div>
+        <div class="mda-price-tour-r clearfix">
+            <div class="table-responsive mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_horizontal mCSB_inside"
+                     style="max-height: none;" tabindex="0">
+                    <div id="mCSB_1_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x"
+                         style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                        <table class="mda-table chitiet_gia">
+                            <tbody>
+                            <tr>
+                                <td class="aaa"><span>Loại giá\Độ tuổi</span></td>
+                                <td class="aaa">Người lớn(Trên 12 tuổi)</td>
+                                <td class="aaa">Trẻ em(5 - 12 tuổi)</td>
+                                <td class="aaa">Trẻ nhỏ(<5 tuổi)</td>
+                            </tr>
+                            <tr>
+                                <td><span>Giá</span></td>
+                                <td><span class="mda-money price-tour-format" th:text="${tour.getPriceSale()}">10,299,000</span> </td>
+                                <td><span class="mda-money price-tour-format" th:text="${tour.getPriceSale() *0.1}">7,400,000</span> </td>
+                                <td><span class="mda-money price-tour-format">0</span> </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="mCSB_1_scrollbar_horizontal"
+                         class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_horizontal"
+                         style="display: none;">
+                        <div class="mCSB_draggerContainer">
+                            <div id="mCSB_1_dragger_horizontal" class="mCSB_dragger"
+                                 style="position: absolute; min-width: 30px; width: 0px; left: 0px;">
+                                <div class="mCSB_dragger_bar"></div>
+                            </div>
+                            <div class="mCSB_draggerRail"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="mda-tilte-3" style="margin: 30px 0;text-align: center; display:grid;">
+        <span class="mda-tilte-name" style="font-size: 30px;font-weight: bold"><i class="fa fa-info-circle"
+                                                                                  aria-hidden="true"></i>Thông tin liên hệ</span>
+        <span style=" color:red; font-style: italic">** Thay đổi thông tin liên hệ trong profile nếu cần</span>
+    </div>
+
     <form id="booking-form" method="post" th:action="@{/paypal/pay}" th:object="${booking}">
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Tên Tour:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" value="Hoa Lư - Tam Cốc - Múa Từ Trên Nước"
-                                   readonly th:value="${tour.getName()}">
-                            <input type="hidden" id="idTour" name="idTour" th:value="${param.idTour}" >
+                <div class="card" style="display: block;border: none; border-top:1px solid rgba(0,0,0,0.125)">
+                    <div class="form-group-sub row">
+                        <label class="box col-form-label">Họ và tên:</label>
+                        <div class="col-md-9" style="width: 85%">
+                            <input type="text" id="name" name="name" class="form-control" readonly
+                                   value="0"
+                                   th:value="${user.getName()}" >
                         </div>
+                    </div> <div class="form-group-sub row">
+                    <label class=" box col-form-label">Số điện thoại:</label>
+                    <div class="col-md-9" style="width: 85%">
+                        <input type="text" id="phone" name="phone" class="form-control" readonly
+                               value="0"
+                               th:value="${user.getPhone()}">
                     </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Địa điểm khởi hành:</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" value="Hà Nội" readonly
-                                   th:value="${tour.getStartingPoint()}">
-                        </div>
+                </div> <div class="form-group-sub row">
+                    <label class="box col-form-label">Email:</label>
+                    <div class="col-md-9" style="width: 85%">
+                        <input type="text" id="email" name="email"  class="form-control"readonly
+                               value="0"
+                               th:value="${user.getEmail()}">
                     </div>
-
+                </div> <div class=" row">
+                    <label class="box col-form-label">Địa chỉ:</label>
+                    <div class="col-md-9" style="width: 93.5%; margin-bottom: 30px">
+                        <input type="text" id="address" name="address" class="form-control" readonly
+                               value="0"
+                               th:value="${user.getAddress()}" >
+                    </div>
+                </div>
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Thời gian khởi hành:</label>
-                        <div class="col-md-8">
-                            <input type="datetime-local" class="form-control" value="2023-04-16T09:00" required>
+                        <label class="col-form-label">Thời gian khởi hành:</label>
+                        <div class="col-md-9" style="width: 85%">
+                            <select id="dateStart" name="dateStart" class="form-control"
+                                    required>
+                                <option th:each="date : ${dates}" th:value="${date}" th:text="${date}"></option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-10">
-                        <select id="dateStart" name="dateStart"
-                                required>
-                            <option th:each="date : ${dates}" th:value="${date}" th:text="${date}"></option>
-                        </select>
+
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Số lượng người lớn:</label>
-                        <div class="col-md-8">
+                        <label class=" col-form-label">Số lượng người lớn:</label>
+                        <div class="col-md-9" style="width: 85%">
                             <input type="number" id="noAdults" name="noAdults" min="1" class="form-control" value="0"
-                                   th:value="${noAdults}" >
+                                   th:value="${noAdults}">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Số lượng trẻ em:</label>
-                        <div class="col-md-8">
-                            <input type="number" id="noChildren" name="noChildren" min="0" class="form-control" value="0"
+                        <label class=" col-form-label">Số lượng trẻ em:</label>
+                        <div class="col-md-9" style="width: 85%">
+                            <input type="number" id="noChildren" name="noChildren" min="0" class="form-control"
+                                   value="0"
                                    th:value="${noChildren}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Tổng tiền:</label>
-                        <div class="col-md-8">
-                            <input type="hidden" class="form-control " id="price-sale" th:value="${tour.getPriceSale()}"
-                                   readonly>
-                            <input type="number" class="form-control" id="totalPrice"  name="totalPrice" value="0" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label">Phương thức thanh toán:</label>
-                        <div class="col-md-8">
-                            <select class="form-control" id="payment" name="payment" >
+                        <label class=" col-form-label">Phương thức thanh toán:</label>
+                        <div class="col-md-9" style="width: 85%">
+                            <select class="form-control" id="payment" name="payment">
                                 <option value="paypal">Paypal</option>
                                 <option value="credit">Credit Card</option>
                                 <option value="debit">Debit Card</option>
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary mx-2">XÁC NHẬN ĐẶT TOUR</button>
-                        <button type="reset" class="btn btn-outline-secondary mx-2">HUỶ ĐẶT TOUR</button>
+                    <div class="form-group text-center" style="position: absolute; margin: 200px 0 0 430px">
+                        <button type="reset" class="btn btn-outline-secondary mx-2">HUỶ</button>
+                        <button type="submit" class="btn btn-primary mx-2">HOÀN THÀNH</button>
                     </div>
-
+                </div>
+                <div style="display: inline-flex;float: right; margin-top: 35px">
+                    <span style="margin: 8px 20px 0 0">Tổng trị giá: </span>
+                    <h3 style="font-weight: bold; color: #0a58ca" id="totalPrice">6.990.000 </h3>
                 </div>
             </div>
         </div>
     </form>
-
-    <form method="post" id="form1">
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary mx-2">XÁC NHẬN ĐẶT TOUR</button>
-            <button type="reset" class="btn btn-outline-secondary mx-2">HUỶ ĐẶT TOUR</button>
-        </div>
-    </form>
-
+    <hr style="margin: 0 0 70px 0">
 </div>
+<footer id="main-footer" class="clearfix  ">
+    <div data-elementor-type="wp-page" data-elementor-id="97" class="elementor elementor-97">
+        <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-44dccb7c elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="44dccb7c" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-5157d426"
+                     data-id="5157d426" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-7cfea74 elementor-widget elementor-widget-heading"
+                             data-id="7cfea74" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-heading-title elementor-size-default">Support</div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-631d9c3b elementor-widget elementor-widget-heading"
+                             data-id="631d9c3b" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Help
+                                    Center</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-6579787 elementor-widget elementor-widget-heading"
+                             data-id="6579787" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Our COVID-19
+                                    Response</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-57e9e7fc elementor-widget elementor-widget-heading"
+                             data-id="57e9e7fc" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Cancellation
+                                    options</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-6d727b9f elementor-widget elementor-widget-heading"
+                             data-id="6d727b9f" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Safety
+                                    information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-304f87ee"
+                     data-id="304f87ee" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-27e99fac elementor-widget elementor-widget-heading"
+                             data-id="27e99fac" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-heading-title elementor-size-default">Company</div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-627d5907 elementor-widget elementor-widget-heading"
+                             data-id="627d5907" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">About us</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-73b9a945 elementor-widget elementor-widget-heading"
+                             data-id="73b9a945" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Community
+                                    Blog</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-3d107696 elementor-widget elementor-widget-heading"
+                             data-id="3d107696" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Careers</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-6cea69e7 elementor-widget elementor-widget-heading"
+                             data-id="6cea69e7" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Privacy
+                                    policy</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-38d24ae0 elementor-widget elementor-widget-heading"
+                             data-id="38d24ae0" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Terms of
+                                    service</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-672134f7"
+                     data-id="672134f7" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-58e51a7b elementor-widget elementor-widget-heading"
+                             data-id="58e51a7b" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-heading-title elementor-size-default">Contact</div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-71543677 elementor-widget elementor-widget-heading"
+                             data-id="71543677" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a
+                                        href="#">Partnerships</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-13701af1 elementor-widget elementor-widget-heading"
+                             data-id="13701af1" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">FAQ</a></p>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-1d131b7a elementor-widget elementor-widget-heading"
+                             data-id="1d131b7a" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <p class="elementor-heading-title elementor-size-default"><a href="#">Get in
+                                    touch</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-52496356"
+                     data-id="52496356" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-4405b826 elementor-widget elementor-widget-heading"
+                             data-id="4405b826" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-heading-title elementor-size-default">Social</div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-70dd7b65 elementor-shape-circle elementor-grid-4 e-grid-align-left elementor-widget elementor-widget-social-icons"
+                             data-id="70dd7b65" data-element_type="widget" data-widget_type="social-icons.default">
+                            <div class="elementor-widget-container">
+                                <style>
+                                    /*! elementor - v3.11.5 - 14-03-2023 */
+                                    .elementor-widget-social-icons.elementor-grid-0 .elementor-widget-container,
+                                    .elementor-widget-social-icons.elementor-grid-mobile-0 .elementor-widget-container,
+                                    .elementor-widget-social-icons.elementor-grid-tablet-0 .elementor-widget-container {
+                                        line-height: 1;
+                                        font-size: 0
+                                    }
 
+                                    .elementor-widget-social-icons:not(.elementor-grid-0):not(.elementor-grid-tablet-0):not(.elementor-grid-mobile-0) .elementor-grid {
+                                        display: inline-grid
+                                    }
 
+                                    .elementor-widget-social-icons .elementor-grid {
+                                        /*grid-column-gap: var(--grid-column-gap, 5px);*/
+                                        /*grid-row-gap: var(--grid-row-gap, 5px);*/
+                                        /*grid-template-columns: var(--grid-template-columns);*/
+                                        justify-content: var(--justify-content, center);
+                                        justify-items: var(--justify-content, center)
+                                    }
+
+                                    /*.elementor-icon.elementor-social-icon {*/
+                                    /*    font-size: var(--icon-size, 25px);*/
+                                    /*    line-height: var(--icon-size, 25px);*/
+                                    /*    width: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)));*/
+                                    /*    height: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)))*/
+                                    /*}*/
+
+                                    .elementor-social-icon {
+                                        --e-social-icon-icon-color: #fff;
+                                        display: inline-flex;
+                                        background-color: #818a91;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-align: center;
+                                        cursor: pointer
+                                    }
+
+                                    .elementor-social-icon i {
+                                        color: var(--e-social-icon-icon-color)
+                                    }
+
+                                    .elementor-social-icon svg {
+                                        fill: var(--e-social-icon-icon-color)
+                                    }
+
+                                    .elementor-social-icon:last-child {
+                                        margin: 0
+                                    }
+
+                                    .elementor-social-icon:hover {
+                                        opacity: .9;
+                                        color: #fff
+                                    }
+
+                                    .elementor-social-icon-android {
+                                        background-color: #a4c639
+                                    }
+
+                                    .elementor-social-icon-apple {
+                                        background-color: #999
+                                    }
+
+                                    .elementor-social-icon-behance {
+                                        background-color: #1769ff
+                                    }
+
+                                    .elementor-social-icon-bitbucket {
+                                        background-color: #205081
+                                    }
+
+                                    .elementor-social-icon-codepen {
+                                        background-color: #000
+                                    }
+
+                                    .elementor-social-icon-delicious {
+                                        background-color: #39f
+                                    }
+
+                                    .elementor-social-icon-deviantart {
+                                        background-color: #05cc47
+                                    }
+
+                                    .elementor-social-icon-digg {
+                                        background-color: #005be2
+                                    }
+
+                                    .elementor-social-icon-dribbble {
+                                        background-color: #ea4c89
+                                    }
+
+                                    .elementor-social-icon-elementor {
+                                        background-color: #d30c5c
+                                    }
+
+                                    .elementor-social-icon-envelope {
+                                        background-color: #ea4335
+                                    }
+
+                                    .elementor-social-icon-facebook,
+                                    .elementor-social-icon-facebook-f {
+                                        background-color: #3b5998
+                                    }
+
+                                    .elementor-social-icon-flickr {
+                                        background-color: #0063dc
+                                    }
+
+                                    .elementor-social-icon-foursquare {
+                                        background-color: #2d5be3
+                                    }
+
+                                    .elementor-social-icon-free-code-camp,
+                                    .elementor-social-icon-freecodecamp {
+                                        background-color: #006400
+                                    }
+
+                                    .elementor-social-icon-github {
+                                        background-color: #333
+                                    }
+
+                                    .elementor-social-icon-gitlab {
+                                        background-color: #e24329
+                                    }
+
+                                    .elementor-social-icon-globe {
+                                        background-color: #818a91
+                                    }
+
+                                    .elementor-social-icon-google-plus,
+                                    .elementor-social-icon-google-plus-g {
+                                        background-color: #dd4b39
+                                    }
+
+                                    .elementor-social-icon-houzz {
+                                        background-color: #7ac142
+                                    }
+
+                                    .elementor-social-icon-instagram {
+                                        background-color: #262626
+                                    }
+
+                                    .elementor-social-icon-jsfiddle {
+                                        background-color: #487aa2
+                                    }
+
+                                    .elementor-social-icon-link {
+                                        background-color: #818a91
+                                    }
+
+                                    .elementor-social-icon-linkedin,
+                                    .elementor-social-icon-linkedin-in {
+                                        background-color: #0077b5
+                                    }
+
+                                    .elementor-social-icon-medium {
+                                        background-color: #00ab6b
+                                    }
+
+                                    .elementor-social-icon-meetup {
+                                        background-color: #ec1c40
+                                    }
+
+                                    .elementor-social-icon-mixcloud {
+                                        background-color: #273a4b
+                                    }
+
+                                    .elementor-social-icon-odnoklassniki {
+                                        background-color: #f4731c
+                                    }
+
+                                    .elementor-social-icon-pinterest {
+                                        background-color: #bd081c
+                                    }
+
+                                    .elementor-social-icon-product-hunt {
+                                        background-color: #da552f
+                                    }
+
+                                    .elementor-social-icon-reddit {
+                                        background-color: #ff4500
+                                    }
+
+                                    .elementor-social-icon-rss {
+                                        background-color: #f26522
+                                    }
+
+                                    .elementor-social-icon-shopping-cart {
+                                        background-color: #4caf50
+                                    }
+
+                                    .elementor-social-icon-skype {
+                                        background-color: #00aff0
+                                    }
+
+                                    .elementor-social-icon-slideshare {
+                                        background-color: #0077b5
+                                    }
+
+                                    .elementor-social-icon-snapchat {
+                                        background-color: #fffc00
+                                    }
+
+                                    .elementor-social-icon-soundcloud {
+                                        background-color: #f80
+                                    }
+
+                                    .elementor-social-icon-spotify {
+                                        background-color: #2ebd59
+                                    }
+
+                                    .elementor-social-icon-stack-overflow {
+                                        background-color: #fe7a15
+                                    }
+
+                                    .elementor-social-icon-steam {
+                                        background-color: #00adee
+                                    }
+
+                                    .elementor-social-icon-stumbleupon {
+                                        background-color: #eb4924
+                                    }
+
+                                    .elementor-social-icon-telegram {
+                                        background-color: #2ca5e0
+                                    }
+
+                                    .elementor-social-icon-thumb-tack {
+                                        background-color: #1aa1d8
+                                    }
+
+                                    .elementor-social-icon-tripadvisor {
+                                        background-color: #589442
+                                    }
+
+                                    .elementor-social-icon-tumblr {
+                                        background-color: #35465c
+                                    }
+
+                                    .elementor-social-icon-twitch {
+                                        background-color: #6441a5
+                                    }
+
+                                    .elementor-social-icon-twitter {
+                                        background-color: #1da1f2
+                                    }
+
+                                    .elementor-social-icon-viber {
+                                        background-color: #665cac
+                                    }
+
+                                    .elementor-social-icon-vimeo {
+                                        background-color: #1ab7ea
+                                    }
+
+                                    .elementor-social-icon-vk {
+                                        background-color: #45668e
+                                    }
+
+                                    .elementor-social-icon-weibo {
+                                        background-color: #dd2430
+                                    }
+
+                                    .elementor-social-icon-weixin {
+                                        background-color: #31a918
+                                    }
+
+                                    .elementor-social-icon-whatsapp {
+                                        background-color: #25d366
+                                    }
+
+                                    .elementor-social-icon-wordpress {
+                                        background-color: #21759b
+                                    }
+
+                                    .elementor-social-icon-xing {
+                                        background-color: #026466
+                                    }
+
+                                    .elementor-social-icon-yelp {
+                                        background-color: #af0606
+                                    }
+
+                                    .elementor-social-icon-youtube {
+                                        background-color: #cd201f
+                                    }
+
+                                    .elementor-social-icon-500px {
+                                        background-color: #0099e5
+                                    }
+
+                                    .elementor-shape-rounded .elementor-icon.elementor-social-icon {
+                                        border-radius: 10%
+                                    }
+
+                                    .elementor-shape-circle .elementor-icon.elementor-social-icon {
+                                        border-radius: 50%
+                                    }
+                                </style>
+                                <div class="elementor-social-icons-wrapper elementor-grid">
+                                        <span class="elementor-grid-item">
+                                            <a class="elementor-icon elementor-social-icon elementor-social-icon- elementor-repeater-item-0bef775"
+                                               href="#" target="_blank">
+                                                <span class="elementor-screen-only"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                     viewBox="0 0 40 40" fill="none">
+                                                    <rect width="40" height="40" rx="20" fill="#3D52A6"></rect>
+                                                    <path
+                                                            d="M21.0417 17.3959V15.3126C21.0417 14.7376 21.5084 14.2709 22.0834 14.2709H23.125V11.6667H21.0417C19.3157 11.6667 17.9167 13.0657 17.9167 14.7917V17.3959H15.8334V20.0001H17.9167V28.3334H21.0417V20.0001H23.125L24.1667 17.3959H21.0417Z"
+                                                            fill="white"></path>
+                                                </svg> </a>
+                                        </span>
+                                    <span class="elementor-grid-item">
+                                            <a class="elementor-icon elementor-social-icon elementor-social-icon- elementor-repeater-item-23bb5fd"
+                                               href="#" target="_blank">
+                                                <span class="elementor-screen-only"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                     viewBox="0 0 40 40" fill="none">
+                                                    <rect width="40" height="40" rx="20" fill="#58B1F7"></rect>
+                                                    <path
+                                                            d="M28.5878 14.6732C27.9489 14.9534 27.2682 15.1392 26.5585 15.2294C27.2886 14.7935 27.8459 14.1084 28.1079 13.2827C27.4271 13.6886 26.6755 13.9753 25.8745 14.1353C25.2281 13.447 24.3069 13.0208 23.3019 13.0208C21.352 13.0208 19.7823 14.6034 19.7823 16.5436C19.7823 16.8228 19.8059 17.0912 19.8639 17.3468C16.9358 17.204 14.3449 15.8006 12.6044 13.6628C12.3006 14.19 12.1223 14.7935 12.1223 15.4431C12.1223 16.6628 12.7505 17.744 13.6868 18.37C13.1209 18.3593 12.5658 18.195 12.0955 17.9362C12.0955 17.947 12.0955 17.9609 12.0955 17.9749C12.0955 19.6864 13.3163 21.108 14.9172 21.4355C14.6306 21.5139 14.3181 21.5514 13.9938 21.5514C13.7684 21.5514 13.5407 21.5386 13.3271 21.4913C13.7834 22.8861 15.0783 23.9115 16.618 23.9448C15.4197 24.8821 13.8983 25.4469 12.2512 25.4469C11.9624 25.4469 11.6853 25.434 11.4083 25.3986C12.9684 26.4046 14.8174 26.9791 16.8113 26.9791C23.2922 26.9791 26.8355 21.6105 26.8355 16.957C26.8355 16.8013 26.8301 16.651 26.8226 16.5017C27.5216 16.0057 28.1089 15.3862 28.5878 14.6732Z"
+                                                            fill="white"></path>
+                                                </svg> </a>
+                                        </span>
+                                    <span class="elementor-grid-item">
+                                            <a class="elementor-icon elementor-social-icon elementor-social-icon- elementor-repeater-item-349d523"
+                                               href="#" target="_blank">
+                                                <span class="elementor-screen-only"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                     viewBox="0 0 40 40" fill="none">
+                                                    <rect width="40" height="40" rx="20" fill="#D9498C"></rect>
+                                                    <path
+                                                            d="M23.125 11.6667H16.875C13.9989 11.6667 11.6666 13.999 11.6666 16.8751V23.1251C11.6666 26.0011 13.9989 28.3334 16.875 28.3334H23.125C26.001 28.3334 28.3333 26.0011 28.3333 23.1251V16.8751C28.3333 13.999 26.001 11.6667 23.125 11.6667ZM26.7708 23.1251C26.7708 25.1355 25.1354 26.7709 23.125 26.7709H16.875C14.8645 26.7709 13.2291 25.1355 13.2291 23.1251V16.8751C13.2291 14.8647 14.8645 13.2292 16.875 13.2292H23.125C25.1354 13.2292 26.7708 14.8647 26.7708 16.8751V23.1251Z"
+                                                            fill="white"></path>
+                                                    <path
+                                                            d="M20 15.8334C17.6989 15.8334 15.8333 17.699 15.8333 20.0001C15.8333 22.3011 17.6989 24.1667 20 24.1667C22.301 24.1667 24.1666 22.3011 24.1666 20.0001C24.1666 17.699 22.301 15.8334 20 15.8334ZM20 22.6042C18.5645 22.6042 17.3958 21.4355 17.3958 20.0001C17.3958 18.5636 18.5645 17.3959 20 17.3959C21.4354 17.3959 22.6041 18.5636 22.6041 20.0001C22.6041 21.4355 21.4354 22.6042 20 22.6042Z"
+                                                            fill="white"></path>
+                                                    <path
+                                                            d="M24.4792 16.0761C24.7858 16.0761 25.0344 15.8275 25.0344 15.5209C25.0344 15.2143 24.7858 14.9657 24.4792 14.9657C24.1725 14.9657 23.924 15.2143 23.924 15.5209C23.924 15.8275 24.1725 16.0761 24.4792 16.0761Z"
+                                                            fill="white"></path>
+                                                </svg> </a>
+                                        </span>
+                                    <span class="elementor-grid-item">
+                                            <a class="elementor-icon elementor-social-icon elementor-social-icon- elementor-repeater-item-d5fab65"
+                                               href="#" target="_blank">
+                                                <span class="elementor-screen-only"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                     viewBox="0 0 40 40" fill="none">
+                                                    <rect width="40" height="40" rx="20" fill="#F62D3A"></rect>
+                                                    <path
+                                                            d="M28.3875 14.9545C27.8902 14.0773 27.3506 13.9159 26.2517 13.8545C25.154 13.7807 22.3937 13.75 20.0023 13.75C17.6064 13.75 14.8449 13.7807 13.7484 13.8534C12.6518 13.9159 12.111 14.0761 11.6091 14.9545C11.0969 15.8307 10.8334 17.3398 10.8334 19.9966C10.8334 19.9989 10.8334 20 10.8334 20C10.8334 20.0023 10.8334 20.0034 10.8334 20.0034V20.0057C10.8334 22.6511 11.0969 24.1716 11.6091 25.0386C12.111 25.9159 12.6507 26.075 13.7472 26.1489C14.8449 26.2125 17.6064 26.25 20.0023 26.25C22.3937 26.25 25.154 26.2125 26.2529 26.15C27.3517 26.0761 27.8914 25.917 28.3887 25.0398C28.9055 24.1727 29.1667 22.6523 29.1667 20.0068C29.1667 20.0068 29.1667 20.0034 29.1667 20.0011V19.9977C29.1667 17.3398 28.9055 15.8307 28.3875 14.9545ZM17.7084 23.4091V16.5909L23.4375 20L17.7084 23.4091Z"
+                                                            fill="white"></path>
+                                                </svg> </a>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-4dfc4678 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="4dfc4678" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-77073138"
+                     data-id="77073138" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-4aafbc17 elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
+                             data-id="4aafbc17" data-element_type="widget" data-widget_type="divider.default">
+                            <div class="elementor-widget-container">
+                                <style>
+                                    /*! elementor - v3.11.5 - 14-03-2023 */
+                                    .elementor-widget-divider {
+                                        --divider-border-style: none;
+                                        --divider-border-width: 1px;
+                                        --divider-color: #2c2c2c;
+                                        --divider-icon-size: 20px;
+                                        --divider-element-spacing: 10px;
+                                        --divider-pattern-height: 24px;
+                                        --divider-pattern-size: 20px;
+                                        --divider-pattern-url: none;
+                                        --divider-pattern-repeat: repeat-x
+                                    }
+
+                                    .elementor-widget-divider .elementor-divider {
+                                        display: flex
+                                    }
+
+                                    .elementor-widget-divider .elementor-divider__text {
+                                        font-size: 15px;
+                                        line-height: 1;
+                                        max-width: 95%
+                                    }
+
+                                    .elementor-widget-divider .elementor-divider__element {
+                                        margin: 0 var(--divider-element-spacing);
+                                        flex-shrink: 0
+                                    }
+
+                                    .elementor-widget-divider .elementor-icon {
+                                        font-size: var(--divider-icon-size)
+                                    }
+
+                                    .elementor-widget-divider .elementor-divider-separator {
+                                        display: flex;
+                                        margin: 0;
+                                        direction: ltr
+                                    }
+
+                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator,
+                                    .elementor-widget-divider--view-line_text .elementor-divider-separator {
+                                        align-items: center
+                                    }
+
+                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator:after,
+                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator:before,
+                                    .elementor-widget-divider--view-line_text .elementor-divider-separator:after,
+                                    .elementor-widget-divider--view-line_text .elementor-divider-separator:before {
+                                        display: block;
+                                        content: "";
+                                        border-bottom: 0;
+                                        flex-grow: 1;
+                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
+                                    }
+
+                                    .elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator > .elementor-divider__svg:first-of-type {
+                                        flex-grow: 0;
+                                        flex-shrink: 100
+                                    }
+
+                                    .elementor-widget-divider--element-align-left .elementor-divider-separator:before {
+                                        content: none
+                                    }
+
+                                    .elementor-widget-divider--element-align-left .elementor-divider__element {
+                                        margin-left: 0
+                                    }
+
+                                    .elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator > .elementor-divider__svg:last-of-type {
+                                        flex-grow: 0;
+                                        flex-shrink: 100
+                                    }
+
+                                    .elementor-widget-divider--element-align-right .elementor-divider-separator:after {
+                                        content: none
+                                    }
+
+                                    .elementor-widget-divider--element-align-right .elementor-divider__element {
+                                        margin-right: 0
+                                    }
+
+                                    .elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator {
+                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
+                                    }
+
+                                    .elementor-widget-divider--separator-type-pattern {
+                                        --divider-border-style: none
+                                    }
+
+                                    .elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator,
+                                    .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after,
+                                    .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before,
+                                    .elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator {
+                                        width: 100%;
+                                        min-height: var(--divider-pattern-height);
+                                        -webkit-mask-size: var(--divider-pattern-size) 100%;
+                                        mask-size: var(--divider-pattern-size) 100%;
+                                        -webkit-mask-repeat: var(--divider-pattern-repeat);
+                                        mask-repeat: var(--divider-pattern-repeat);
+                                        background-color: var(--divider-color);
+                                        -webkit-mask-image: var(--divider-pattern-url);
+                                        mask-image: var(--divider-pattern-url)
+                                    }
+
+                                    .elementor-widget-divider--no-spacing {
+                                        --divider-pattern-size: auto
+                                    }
+
+                                    .elementor-widget-divider--bg-round {
+                                        --divider-pattern-repeat: round
+                                    }
+
+                                    .rtl .elementor-widget-divider .elementor-divider__text {
+                                        direction: rtl
+                                    }
+
+                                    .e-con-inner > .elementor-widget-divider,
+                                    .e-con > .elementor-widget-divider {
+                                        width: var(--container-widget-width, 100%);
+                                        --flex-grow: var(--container-widget-flex-grow)
+                                    }
+                                </style>
+                                <div class="elementor-divider">
+                                        <span class="elementor-divider-separator">
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <section
+                                class="elementor-section elementor-inner-section elementor-element elementor-element-214a7ecd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                                data-id="214a7ecd" data-element_type="section">
+                            <div class="elementor-container elementor-column-gap-default">
+                                <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-ddf3e00"
+                                     data-id="ddf3e00" data-element_type="column">
+                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                        <div class="elementor-element elementor-element-3a553d8f elementor-widget elementor-widget-heading"
+                                             data-id="3a553d8f" data-element_type="widget"
+                                             data-widget_type="heading.default">
+                                            <div class="elementor-widget-container">
+                                                <p class="elementor-heading-title elementor-size-default">©
+                                                    Copyright Traveler 2022 </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1df80d35"
+                                     data-id="1df80d35" data-element_type="column">
+                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                        <div class="elementor-element elementor-element-42f5c15a elementor-widget elementor-widget-image"
+                                             data-id="42f5c15a" data-element_type="widget"
+                                             data-widget_type="image.default">
+                                            <div class="elementor-widget-container">
+                                                <img width="278" height="30"
+                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Frame-3182.svg"
+                                                     class="attachment-large size-large wp-image-101" alt=""
+                                                     loading="lazy"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</footer>
+<script>
+    // Lấy ra tất cả các phần tử có class là 'price-tour-format'
+    var priceElements = document.querySelectorAll('.price-tour-format');
+
+    // Lặp qua tất cả các phần tử và thay đổi giá trị của chúng
+    priceElements.forEach(function(element) {
+        // Lấy giá trị của phần tử
+        var priceValue = parseFloat(element.textContent);
+
+        // Kiểm tra giá trị có hợp lệ hay không
+        if (!isNaN(priceValue)) {
+            // Định dạng giá tiền
+            var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+
+            console.log(formattedPrice)
+            // Gán giá trị đã được định dạng lại vào phần tử
+            element.textContent = formattedPrice;
+        }
+    });
+</script>
 <script>
     // $(function () {
     //     $('#booking-form').submit(function (event) {
@@ -290,6 +1253,8 @@
     //     window.location.href = "/creditCard/pay";
     //     // Gửi dữ liệu booking theo URL query string
     // }
+
 </script>
+
 </body>
 </html>

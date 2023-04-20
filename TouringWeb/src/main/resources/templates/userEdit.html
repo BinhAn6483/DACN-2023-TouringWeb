@@ -171,8 +171,8 @@
 
         <div class="form-group">
             <label for="dateOfBirth">Ngày sinh</label>
-            <input type="date" class="form-contol" id="dateOfBirth" name="dateOfBirth"
-                   th:value="${user.getDateOfBirth}"> dd/mm/yy
+            <input type="text" class="form-contol" id="dateOfBirth" name="dateOfBirth"
+                   th:value="${user.getDateOfBirth()}"> dd/mm/yy
         </div>
 
         <div class="form-group">
@@ -187,7 +187,7 @@
 
         <div class="form-group">
             <label for="address">Địa chỉ</label>
-            <input type="text" class="form-control" id="address" name="Địa chỉ" th:value="${user.address}"
+            <input type="text" class="form-control" id="address" name="Địa chỉ" th:value="${user.getAddress()}"
                    placeholder="Địa chỉ của bạn">
         </div>
 

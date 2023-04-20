@@ -2141,6 +2141,27 @@
     };
     /* ]]> */
 </script>
+
+<script>
+    // Lấy ra tất cả các phần tử có class là 'price-tour-format'
+    var priceElements = document.querySelectorAll('.price-tour-format');
+
+    // Lặp qua tất cả các phần tử và thay đổi giá trị của chúng
+    priceElements.forEach(function(element) {
+        // Lấy giá trị của phần tử
+        var priceValue = parseFloat(element.textContent);
+
+        // Kiểm tra giá trị có hợp lệ hay không
+        if (!isNaN(priceValue)) {
+            // Định dạng giá tiền
+            var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+
+            console.log(formattedPrice)
+            // Gán giá trị đã được định dạng lại vào phần tử
+            element.textContent = formattedPrice;
+        }
+    });
+</script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.7.4'
         id='contact-form-7-js'></script>
