@@ -23,17 +23,15 @@ Các mốc chính:
  - Tạo trang đăng nhập/đăng ký (Bảo Trân, Văn Hùng): Xong. (1/4/2023 - 15/4/2023)
  >Tạo ra các thành phần cơ bản của trang web.
  
- **3. Tuần 3: Tạo ra trang dành cho quản trị viên, trang dành cho người dùng và tiếp tục tạo ra các trang cho từng khu du lịch. Thêm vào các chức năng quan trọng.**
+ **3. Tuần 3: Tạo ra trang dành cho quản trị viên, trang dành cho người dùng. Thêm vào các chức năng quan trọng.**
  - Tạo tài liệu và thiết kế giao diện cho trang quản trị viên (Bình An): Xong.
  - Tạo tài liệu và thiết kế giao diện cho trang người dùng (Bình An): Xong.
- -
  - Tạo trang người dùng (Bảo Trân): Xong. (15/4/2023 - 18/4/2023)
  - Thay đổi mật khẩu (Đức Hùng): Xong. (13/4/2023 - 15/4/2023)
- - Thêm các trang tour (Vũ Trụ, Anh Duy): Xong
  >Hoàn thành các thành phần còn lại của trang web.
  
- **4. Tuần 4: Thêm các chức năng quan trọng cho trang web. Tạo tài liệu testcase.**
+ **4. Tuần 4: Thêm các chức năng quan trọng cho trang web. Khởi tạo tài liệu testcase.**
  - Thanh toán bằng Paypal (Đức Hùng): Xong. (17/4/2023 - 18/4/2023)
  - Tạo trang dành cho quản trị viên (Võ Triết): (20/4/2023)
- - Tạo tài liệu test case
- 
+ - Tạo tài liệu test case (Bình An): (20/4/2023)
+ >Work In Progress.
