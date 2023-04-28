@@ -28,11 +28,11 @@ Các mốc chính:
  - Tạo tài liệu và thiết kế giao diện cho trang quản trị viên (Bình An): Xong.
  - Tạo tài liệu và thiết kế giao diện cho trang người dùng (Bình An): Xong.
  - Tạo trang người dùng (Bảo Trân): Xong. (15/4/2023 - 18/4/2023)
- - Thay đổi mật khẩu (Đức Hùng): Xong. (13/4/2023 - 15/4/2023)
+ - Thay đổi mật khẩu (Văn Hùng): Xong. (13/4/2023 - 15/4/2023)
  >Hoàn thành các thành phần còn lại của trang web: **Xong**.
  
  **4. Tuần 4: Thêm các chức năng quan trọng cho trang web. Khởi tạo tài liệu testcase.**
- - Thanh toán bằng Paypal (Đức Hùng): Xong. (17/4/2023 - 18/4/2023)
+ - Thanh toán bằng Paypal (Văn Hùng): Xong. (17/4/2023 - 18/4/2023)
  - Tạo trang dành cho quản trị viên (Võ Triết): (20/4/2023-27/4/2023)
  - Tạo tài liệu test case (Bình An): (20/4/2023-TBE)
  >Giai đoạn gần cuối, hoàn thành các mục tiêu đã được đề ra trước khi tiến vào quá trình kiểm thử: WIP.
