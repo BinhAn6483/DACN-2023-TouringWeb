@@ -2,7 +2,8 @@
 A project for our subject.
 
 Web đặt tour du lịch (dịch vụ trọn gói).
-
+File Kiểm thử: https://docs.google.com/spreadsheets/d/15UO5wdShRfTnFyA_gyOvkATvyTdh9kd7
+File SRS:
 
 Các mốc chính:
 
