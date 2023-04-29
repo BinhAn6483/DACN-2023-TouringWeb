@@ -17,6 +17,8 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     List<Tour> getAllByStartingPoint(String startingPoint);
 
+    List<Tour> getAllByLocation(String location);
+
     @Query("SELECT t FROM Tour t WHERE t.viewCount > 100 ORDER BY t.viewCount DESC")
     List<Tour> getListTourFeatured();
 
@@ -29,6 +31,15 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
     @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.location=?1 AND d.dateStart BETWEEN ?2 AND ?3 AND d.dateEnd BETWEEN ?2 AND ?3")
     List<Tour> getToursBySearch(String location, Date start,Date end);
 
+    @Query("SELECT t FROM Tour t  WHERE t.location=?1 ")
+    List<Tour> getToursBySearch(String location);
+
+    @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE  d.dateStart BETWEEN ?1 AND ?2 AND d.dateEnd BETWEEN ?1 AND ?2")
+    List<Tour> getToursBySearch(Date start,Date end);
+
     @Query("SELECT d.dateStart FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.id=?1")
     List<Date> getAllDateStart(Long idTour);
+
+    @Query("SELECT DISTINCT  t.location FROM Tour t ORDER BY t.viewCount DESC ")
+    List<String> getTopDestinations();
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,12 +34,15 @@ public class TourController {
         List<Tour> featuredTours = (List<Tour>) getListTourFeatured();
         List<Tour> listTourNew = (List<Tour>) getListTourNew();
         List<Tour> listTourDiscount = (List<Tour>) getListTourDiscount();
+        Map<String, Integer> topList = tourService.getTopDestinations();
+        System.out.println(topList);
         ModelAndView mav = new ModelAndView("home");
         Map<String, Object> model = new HashMap<>();
         model.put("tours", list);
         model.put("featuredTours", featuredTours);
         model.put("listTourNew", listTourNew);
         model.put("listTourDiscount", listTourDiscount);
+        model.put("listTopDestinations", topList);
         mav.addAllObjects(model);
         return mav;
     }
@@ -47,14 +51,28 @@ public class TourController {
     public ModelAndView getTourSearch(@RequestParam("location_name") String locationName, @RequestParam("start") String start, @RequestParam("end") String end) {
         ModelAndView mav = new ModelAndView("tour_search_sidebar");
         Map<String, Object> model = new HashMap<>();
+        List<Tour> list = null;
+        Date dateStart = null;
+        Date dateEnd = null;
+        if (!(start.equals("") && end.equals(""))) {
 
-        Date dateStart = convertDate(start);
-        Date dateEnd = convertDate(end);
-        List<Tour> list = tourService.getToursBySearch(locationName, dateStart, dateEnd);
-        if (!list.isEmpty()) {
-            model.put("listTourSearch", list);
-            System.out.println(list.toString());
+            dateStart = convertDate(start);
+            dateEnd = convertDate(end);
         }
+
+        if (!locationName.isEmpty() && !start.isEmpty() && !end.isEmpty()) {
+            list = tourService.getToursBySearch(locationName, dateStart, dateEnd);
+        } else if (!locationName.isEmpty() && start.equals("")) {
+            System.out.println("kajfiae");
+            list = tourService.getToursBySearch(locationName);
+        } else if (!start.isEmpty() && !end.isEmpty()) {
+            list = tourService.getToursBySearch(dateStart, dateEnd);
+        }
+
+        if (list != null && !list.isEmpty()) {
+            model.put("listTourSearch", list);
+        }
+
         mav.addAllObjects(model);
         return mav;
     }
@@ -64,13 +82,12 @@ public class TourController {
         String[] s = start.split("/");
         System.out.println(s[0] + "\t" + s[1] + "\t" + s[2]);
         int day = Integer.parseInt(s[1]);
-        int month = Integer.parseInt(s[0])-1;
-        int year = Integer.parseInt(s[2])-1900;
+        int month = Integer.parseInt(s[0]) - 1;
+        int year = Integer.parseInt(s[2]) - 1900;
         date = new Date(year, month, day);
         System.out.println(date);
         return date;
     }
-
 
 
     @GetMapping("/home")
@@ -117,6 +134,26 @@ public class TourController {
         }
     }
 
+    @GetMapping("/location/{location}")
+    public ModelAndView getListTourByLocation(@PathVariable("location") String location) {
+        ModelAndView mav = new ModelAndView("activity_search_topbar");
+        Map<String, Object> model = new HashMap<>();
+        try {
+
+            List list = tourService.getAllTourByLocation(location);
+            if (!list.isEmpty()) {
+                model.put("listTourSearchLocation", list);
+                mav.addAllObjects(model);
+                return mav;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return mav;
+        }
+        return mav;
+    }
+
+
     @GetMapping("/featuredTour")
     public List<Tour> getListTourFeatured() {
         try {
@@ -156,4 +193,11 @@ public class TourController {
             return null;
         }
     }
+
+    @GetMapping("/getTopDestinations")
+    public Map<String, Integer> getTopDestinations() {
+        Map<String, Integer> topList = tourService.getTopDestinations();
+        return topList;
+    }
+
 }
