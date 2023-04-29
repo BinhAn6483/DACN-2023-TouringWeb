@@ -228,6 +228,9 @@
             padding: 20px;
         }
 
+        #nav-st_tours {
+            display: block;
+        }
     </style>
 </head>
 
@@ -349,14 +352,16 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown dropdown-user-dashboard">
-                <a href="#" class="dropdown-toggle" data-bs-toggle="modal" data-bs-target="#st-login-form">
-                    <i class="fas fa-user-circle"></i>
-                </a>
 
+            <li sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
             </li>
-            <li class="d-none d-sm-block d-md-block st-header-link">Welcome <span sec:authentication="principal.username"> User</span></li>
-            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            <li sec:authorize="isAuthenticated()" class="d-none d-sm-block d-md-block st-header-link">
+                Welcome <span sec:authentication="principal.username">User</span>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}">Logout</a>
+            </li>
         </ul>
     </div>
 </header>
@@ -392,180 +397,12 @@
                          data-widget_type="st_banner_form.default">
                         <div class="elementor-widget-container">
                             <div class="st-banner-search-form style_2">
-                                <ul class="multi-search nav nav-pills justify-content-center" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="pill" href="#"
-                                           data-bs-target="#nav-st_hotel" role="tab"
-                                           aria-controls="nav-st_hotel">Hotel</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link " data-bs-toggle="pill" href="#"
-                                           data-bs-target="#nav-st_tours" role="tab"
-                                           aria-controls="nav-st_tours">Tours</a>
-                                    </li>
+                               <br>
+                               <br>
 
-                                </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane fadeshow active" id="nav-st_hotel" role="tabpanel">
-                                        <div class="st-search-form-el st-border-radius">
-                                            <div class="st-search-el search-form-v2">
-                                                <div class="search-form  st-border-radius">
-                                                    <form
-                                                            action="https://modmixmap.travelerwp.com/hotel-search-halfmap/"
-                                                            class="form d-flex align-items-center" method="get">
-                                                        <div class="destination-search border-right">
-                                                            <div id="dropdown-destination-hotel" role="menu"
-                                                                 class="form-group d-flex align-items-center form-extra-field dropdown field-detination dropdown-toggle has-icon"
-                                                                 data-bs-toggle="dropdown"
-                                                                 data-bs-auto-close="outside" aria-expanded="true">
-                                                                <span class="stt-icon stt-icon-location1"></span>
-                                                                <div class="st-form-dropdown-icon">
-                                                                    <label>Đia điểm</label>
-                                                                    <div class="render">
-                                                                        <input type="text"
-                                                                               onkeyup="stKeyupsmartSearch(this)"
-                                                                               autocomplete="off"
-                                                                               id="location_name_hotel"
-                                                                               name="location_name" value=""
-                                                                               placeholder="Bạn muốn dừng chân ở đâu?"
-                                                                               data-post-type="st_hotel"
-                                                                               data-text-no="No locations..."/>
-                                                                    </div>
 
-                                                                    <input type="hidden" name="location_id"
-                                                                           value=""/>
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="dropdown-menu"
-                                                                 aria-labelledby="dropdown-destination-hotel">
-                                                                <div class="loader-wrapper">
-                                                                    <div class="st-loader"></div>
-                                                                </div>
-                                                                <ul class="st-scrollbar">
-                                                                    <li class="location-heading"><span>Hãy chọn địa điểm bạn muốn dừng chân</span></li>
-
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="55"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
-                                                                            class="lv2">California</span>
-                                                                    </li>
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="56"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Los Angeles</span>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group form-date-field form-date-search d-flex align-items-center"
-                                                             data-format="MM/DD/YYYY">
-                                                            <div
-                                                                    class="date-item-wrapper d-flex align-items-center checkin">
-                                                                <span class="stt-icon stt-icon-in"></span>
-                                                                <div class="item-inner">
-                                                                    <label>Ngày nhận phòng</label>
-                                                                    <div class="render check-in-render">Chọn
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <i class="fas fa-long-arrow-alt-right"
-                                                               style="font-size: 25px;"></i>
-                                                            <div
-                                                                    class="date-item-wrapper d-flex align-items-center checkout">
-                                                                <span class="stt-icon stt-icon-in"></span>
-                                                                <div class="item-inner">
-                                                                    <label>Ngày trả phòng</label>
-                                                                    <div class="render check-out-render">Chọn
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <input type="hidden" class="check-in-input" value=""
-                                                                   name="start">
-                                                            <input type="hidden" class="check-out-input" value=""
-                                                                   name="end">
-                                                            <input type="text" class="check-in-out"
-                                                                   value="04/04/2023 04:03 am-05/04/2023 04:03 am"
-                                                                   name="date">
-                                                        </div>
-                                                        <div class="field-guest form-group">
-                                                            <div class="form-extra-field dropdown dropdown-toggle  has-icon "
-                                                                 role="menu" data-bs-toggle="dropdown"
-                                                                 data-bs-auto-close="outside" aria-expanded="false">
-                                                                <span class="stt-icon stt-icon-user2"></span>
-                                                                <div class="st-form-dropdown-icon">
-                                                                    <label>Khách hàng </label>
-                                                                    <div class="render">
-                                                                            <span
-                                                                                    data-text="{&quot;room&quot;:&quot;room&quot;,&quot;rooms&quot;:&quot;rooms&quot;,&quot;guest&quot;:&quot;guest&quot;,&quot;guests&quot;:&quot;guests&quot;}">Chọn phòng</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="dropdown-menu st-modern-style">
-                                                                <li
-                                                                        class="item d-flex align-items-center justify-content-between">
-                                                                    <label>Số phòng</label>
-                                                                    <div class="select-wrapper">
-                                                                        <div
-                                                                                class="st-number-wrapper d-flex align-items-center justify-content-between">
-                                                                            <input type="text"
-                                                                                   name="room_num_search" value="1"
-                                                                                   class="form-control st-input-number"
-                                                                                   autocomplete="off" readonly
-                                                                                   data-min="1" data-max="9"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li
-                                                                        class="item d-flex align-items-center justify-content-between">
-                                                                    <label>Người lớn</label>
-                                                                    <div class="select-wrapper">
-                                                                        <div
-                                                                                class="st-number-wrapper d-flex align-items-center justify-content-between">
-                                                                            <input type="text" name="adult_number"
-                                                                                   value="1"
-                                                                                   class="form-control st-input-number"
-                                                                                   autocomplete="off" readonly
-                                                                                   data-min="1" data-max="9"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li
-                                                                        class="item d-flex align-items-center justify-content-between">
-                                                                    <label>Trẻ em</label>
-                                                                    <div class="select-wrapper">
-                                                                        <div
-                                                                                class="st-number-wrapper d-flex align-items-center justify-content-between">
-                                                                            <input type="text" name="child_number"
-                                                                                   value="0"
-                                                                                   class="form-control st-input-number"
-                                                                                   autocomplete="off" readonly
-                                                                                   data-min="0" data-max="9"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-
-                                                        <div class="button-search-wrapper">
-                                                            <button class="btn btn-primary btn-search">
-                                                                <i class="fas fa-search Top destinations" style="margin-right:10px "></i>
-                                                                Tìm
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-st_tours" role="tabpanel">
+                                    <div class="tab-pane show" id="nav-st_tours" role="tabpanel">
                                         <div class="st-search-form-el st-border-radius">
                                             <div class="st-search-el search-form-v2">
                                                 <div class="search-form  st-border-radius">
@@ -604,14 +441,31 @@
                                                                         data-country="US" data-value="55"
                                                                         class="item ">
                                                                         <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
-                                                                            class="lv2">California</span>
+                                                                            class="lv2">Ha Noi</span>
                                                                     </li>
                                                                     <li style="padding-left: 20px;"
                                                                         data-country="US" data-value="56"
                                                                         class="item ">
                                                                         <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Los Angeles</span>
+                                                                            class="lv2">Ho Chi Minh</span>
                                                                     </li>
+                                                                    <li style="padding-left: 20px;"
+                                                                        data-country="US" data-value="56"
+                                                                        class="item ">
+                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                            class="lv2">Da Nang</span>
+                                                                    </li>
+                                                                    <li style="padding-left: 20px;"
+                                                                        data-country="US" data-value="56"
+                                                                        class="item ">
+                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                            class="lv2">Du lich bien dao</span>
+                                                                    </li> <li style="padding-left: 20px;"
+                                                                              data-country="US" data-value="56"
+                                                                              class="item ">
+                                                                    <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                        class="lv2">Tay Bac</span>
+                                                                </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -630,7 +484,7 @@
                                                             <i class="fas fa-long-arrow-alt-right"></i>
                                                             <div
                                                                     class="date-item-wrapper d-flex align-items-center checkout">
-                                                                <i class="far fa-calendar-alt"></i>
+                                                                <span class="stt-icon stt-icon-in"></span>
                                                                 <div class="item-inner">
                                                                     <label>Ngày kết thúc</label>
                                                                     <div class="render check-out-render">Chọn
@@ -742,11 +596,11 @@
                          data-widget_type="st_destination.default">
                         <div class="elementor-widget-container">
                             <div class="row st-list-destination normal middle normal">
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item" th:each="top : ${listTopDestinations}">
                                     <div class="destination-item">
                                         <div class="image st-border-radius">
                                             <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/california/">
+                                               th:href="@{/location/{key}(key=${top.key})}">
                                                 <img decoding="async"
                                                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/California.jpg"
                                                      alt="California" class="img-responsive"/>
@@ -754,173 +608,13 @@
                                             <div class="content">
                                                 <h3 class="title">
                                                     <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/california/">
+                                                            th:href="@{/location/{key}(key=${top.key})}" th:text="${top.key}">
                                                         Hồ Chính Minh </a>
                                                 </h3>
                                                 <div
                                                         class="desc d-flex align-items-center justify-content-center flex-wrap multi" style="margin-top: 10px;">
-                                                    <a href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=California&#038;location_id=55" style="border-radius: 5px;padding: 3px 10px;background: #1c5cd7;"> 12 Tour</a>
+                                                    <a  th:href="@{/location/{key}(key=${top.key})}" style="border-radius: 5px;padding: 3px 10px;background: #1c5cd7;" th:text="${top.value} +Tour"> 12 Tour</a>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
-                                    <div class="destination-item">
-                                        <div class="image st-border-radius">
-                                            <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/new-york-city/">
-                                                <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/New-York-City.jpg"
-                                                     alt="New York City" class="img-responsive"/>
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/new-york-city/">
-                                                        Hà nội </a>
-                                                </h3>
-                                                <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=New%20York%20City&#038;location_id=61">18
-                                                        Activities</a><a
-                                                        href="https://modmixmap.travelerwp.com/car-search-topbar/?location_name=New%20York%20City&#038;location_id=61">23
-                                                    Cars</a><a
-                                                        href="https://modmixmap.travelerwp.com/hotel-search-halfmap/?location_name=New%20York%20City&#038;location_id=61">7
-                                                    Hotels</a><a
-                                                        href="https://modmixmap.travelerwp.com/rental-search-halfmap/?location_name=New%20York%20City&#038;location_id=61">15
-                                                    Rentals</a><a
-                                                        href="https://modmixmap.travelerwp.com/tour-search-sidebar/?location_name=New%20York%20City&#038;location_id=61">15
-                                                    Tours</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
-                                    <div class="destination-item">
-                                        <div class="image st-border-radius">
-                                            <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/new-jersey/">
-                                                <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/New-Jersey.jpg"
-                                                     alt="New Jersey" class="img-responsive"/>
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/new-jersey/">
-                                                        Vịnh Hạ Long </a>
-                                                </h3>
-                                                <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=New%20Jersey&#038;location_id=58">17
-                                                        Activities</a><a
-                                                        href="https://modmixmap.travelerwp.com/car-search-topbar/?location_name=New%20Jersey&#038;location_id=58">15
-                                                    Cars</a><a
-                                                        href="https://modmixmap.travelerwp.com/hotel-search-halfmap/?location_name=New%20Jersey&#038;location_id=58">7
-                                                    Hotels</a><a
-                                                        href="https://modmixmap.travelerwp.com/rental-search-halfmap/?location_name=New%20Jersey&#038;location_id=58">11
-                                                    Rentals</a><a
-                                                        href="https://modmixmap.travelerwp.com/tour-search-sidebar/?location_name=New%20Jersey&#038;location_id=58">18
-                                                    Tours</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
-                                    <div class="destination-item">
-                                        <div class="image st-border-radius">
-                                            <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/los-angeles/">
-                                                <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Los-Angeles.jpg"
-                                                     alt="Los Angeles" class="img-responsive"/>
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/los-angeles/">
-                                                        Tây Bắc </a>
-                                                </h3>
-                                                <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=Los%20Angeles&#038;location_id=56">19
-                                                        Activities</a><a
-                                                        href="https://modmixmap.travelerwp.com/car-search-topbar/?location_name=Los%20Angeles&#038;location_id=56">21
-                                                    Cars</a><a
-                                                        href="https://modmixmap.travelerwp.com/hotel-search-halfmap/?location_name=Los%20Angeles&#038;location_id=56">13
-                                                    Hotels</a><a
-                                                        href="https://modmixmap.travelerwp.com/rental-search-halfmap/?location_name=Los%20Angeles&#038;location_id=56">18
-                                                    Rentals</a><a
-                                                        href="https://modmixmap.travelerwp.com/tour-search-sidebar/?location_name=Los%20Angeles&#038;location_id=56">23
-                                                    Tours</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
-                                    <div class="destination-item">
-                                        <div class="image st-border-radius">
-                                            <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/san-francisco/">
-                                                <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/San-Francisco.jpg"
-                                                     alt="San Francisco" class="img-responsive"/>
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/san-francisco/">
-                                                       Đà Nẵng </a>
-                                                </h3>
-                                                <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=San%20Francisco&#038;location_id=62">13
-                                                        Activities</a><a
-                                                        href="https://modmixmap.travelerwp.com/car-search-topbar/?location_name=San%20Francisco&#038;location_id=62">17
-                                                    Cars</a><a
-                                                        href="https://modmixmap.travelerwp.com/hotel-search-halfmap/?location_name=San%20Francisco&#038;location_id=62">5
-                                                    Hotels</a><a
-                                                        href="https://modmixmap.travelerwp.com/rental-search-halfmap/?location_name=San%20Francisco&#038;location_id=62">15
-                                                    Rentals</a><a
-                                                        href="https://modmixmap.travelerwp.com/tour-search-sidebar/?location_name=San%20Francisco&#038;location_id=62">13
-                                                    Tours</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item">
-                                    <div class="destination-item">
-                                        <div class="image st-border-radius">
-                                            <a class="st-link"
-                                               href="https://modmixmap.travelerwp.com/st_location/united-states/nevada/">
-                                                <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Nevada_.jpg"
-                                                     alt="Nevada" class="img-responsive"/>
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/st_location/united-states/nevada/">
-                                                        Du lịch biển đảo </a>
-                                                </h3>
-                                                <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi">
-                                                    <a
-                                                            href="https://modmixmap.travelerwp.com/activity-search-topbar/?location_name=Nevada&#038;location_id=57">15
-                                                        Activities</a><a
-                                                        href="https://modmixmap.travelerwp.com/car-search-topbar/?location_name=Nevada&#038;location_id=57">18
-                                                    Cars</a><a
-                                                        href="https://modmixmap.travelerwp.com/hotel-search-halfmap/?location_name=Nevada&#038;location_id=57">11
-                                                    Hotels</a><a
-                                                        href="https://modmixmap.travelerwp.com/rental-search-halfmap/?location_name=Nevada&#038;location_id=57">20
-                                                    Rentals</a><a
-                                                        href="https://modmixmap.travelerwp.com/tour-search-sidebar/?location_name=Nevada&#038;location_id=57">20
-                                                    Tours</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1006,29 +700,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="#" class="login" data-bs-toggle="modal"
-                                                                   data-bs-target="#st-login-form">
-                                                                    <div class="service-add-wishlist"
-                                                                         title="Add to wishlist">
-                                                                        <i class="st-border-radius field-icon">
-                                                                            <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="23" height="22"
-                                                                                    viewBox="0 0 23 22" fill="none">
-                                                                                <path fill-rule="evenodd"
-                                                                                      clip-rule="evenodd"
-                                                                                      d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                                                      fill="#232323"
-                                                                                      fill-opacity="0.3"
-                                                                                      stroke="white"
-                                                                                      stroke-width="1.5"
-                                                                                      stroke-linecap="round"
-                                                                                      stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                        </i>
-                                                                        <div class="lds-dual-ring"></div>
-                                                                    </div>
-                                                                </a>
+
                                                                 <a
                                                                         href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
                                                                     <img decoding="async" itemprop="image"
@@ -1170,29 +842,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="#" class="login" data-bs-toggle="modal"
-                                                                   data-bs-target="#st-login-form">
-                                                                    <div class="service-add-wishlist"
-                                                                         title="Add to wishlist">
-                                                                        <i class="st-border-radius field-icon">
-                                                                            <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="23" height="22"
-                                                                                    viewBox="0 0 23 22" fill="none">
-                                                                                <path fill-rule="evenodd"
-                                                                                      clip-rule="evenodd"
-                                                                                      d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                                                      fill="#232323"
-                                                                                      fill-opacity="0.3"
-                                                                                      stroke="white"
-                                                                                      stroke-width="1.5"
-                                                                                      stroke-linecap="round"
-                                                                                      stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                        </i>
-                                                                        <div class="lds-dual-ring"></div>
-                                                                    </div>
-                                                                </a>
+
                                                                 <a
                                                                         href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
                                                                     <img decoding="async" itemprop="image"
@@ -2764,467 +2414,7 @@
         </section>
     </div>
 </footer>
-<div class="modal fade login-regiter-popup style-9" id="st-login-form" tabindex="-1" role="dialog"
-     aria-labelledby="st-login-form" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content st-border-radius relative">
-            <div class="loader-wrapper">
-                <div class="st-loader"></div>
-            </div>
-            <div class="modal-header d-sm-flex d-md-flex justify-content-between align-items-center">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span class="stt-icon stt-icon-close"></span>
-                </button>
-                <ul class="account-tabs">
-                    <li class="active st-sign-in" data-target="login-component">Sign in</li>
-                    <li class="st-sign-up" data-target="register-component">Sign up</li>
-                </ul>
-            </div>
-            <div class="modal-body relative">
-                <div class="login-form-wrapper login-component active">
-                    <div class="heading">Sign in to your account</div>
-                    <form action="#" class="form" method="post">
-                        <input type="hidden" name="st_theme_style" value="modern"/>
-                        <input type="hidden" name="action" value="st_login_popup">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="username" autocomplete="off"
-                                   placeholder="Email or Username">
-                        </div>
-                        <div class="form-group field-password">
-                            <input type="password" class="form-control" name="password" autocomplete="off"
-                                   placeholder="Password">
-                            <span class="stt-icon stt-icon-eye ic-view"></span>
-                            <span class="stt-icon stt-icon-eye-blind ic-hide"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="submit" class="form-submit" value="Log in">
-                        </div>
-                        <div class="message-wrapper mt20"></div>
-                        <div class="mt20 st-flex space-between st-icheck">
-                            <div class="st-icheck-item">
-                                <label for="remember-me" class="c-grey">
-                                    <input type="checkbox" name="remember" id="remember-me" value="1"> Remember me
-                                    <span class="checkmark fcheckbox"></span>
-                                </label>
-                            </div>
-                            <a href="#" class="st-link open-loss-password" data-bs-dismiss="modal"
-                               data-bs-toggle="modal" data-bs-target="#st-forgot-form">Forgot Password?</a>
-                        </div>
-                        <div class="advanced">
-                            <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                            <div class="social-login">
-                                <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                   onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                   data-channel="twitter">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4"/>
-                                    </svg>
-                                    Continue with Twitter </a>
-                            </div>
-                        </div>
-                        <div class="create-account-action">
-                            <a href="#" class="st-link open-signup">Create an account</a>
-                        </div>
-                    </form>
-                </div>
-                <div class="login-form-wrapper register-component">
-                    <div class="heading">Create an account</div>
-                    <form action="#" class="form" method="post">
-                        <input type="hidden" name="st_theme_style" value="modern"/>
-                        <input type="hidden" name="action" value="st_registration_popup">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="username" autocomplete="off"
-                                   placeholder="Username *">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="fullname" autocomplete="off"
-                                   placeholder="Full Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" autocomplete="off"
-                                   placeholder="Email *">
-                        </div>
-                        <div class="form-group field-password">
-                            <input type="password" class="form-control" name="password" autocomplete="off"
-                                   placeholder="Password">
-                            <span class="stt-icon stt-icon-eye ic-view"></span>
-                            <span class="stt-icon stt-icon-eye-blind ic-hide"></span>
-                        </div>
 
-
-                        <div class="form-group">
-                            <input type="submit" name="submit" class="form-submit" value="Register">
-                        </div>
-
-                        <div class="st-icheck">
-                            <div class="st-icheck-item">
-                                <label for="term">
-                                    <input id="term" type="checkbox" name="term" class="mr5"> I confirm that I have
-                                    read and accepted the <a class="st-link"
-                                                             href="https://modmixmap.travelerwp.com/privacy-policy/">privacy
-                                    policy</a>
-                                    <span class="checkmark fcheckbox"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="message-wrapper mt20"></div>
-                        <div class="advanced">
-                            <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                            <div class="social-login">
-                                <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                   onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                   data-channel="twitter">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4"/>
-                                    </svg>
-                                    Continue with Twitter </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade login-regiter-popup" id="st-register-form" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 520px;">
-        <div class="modal-content relative">
-            <div class="loader-wrapper">
-                <div class="st-loader"></div>
-            </div>
-            <div class="modal-header d-sm-flex d-md-flex justify-content-between align-items-center">
-                <div class="modal-title">Sign Up</div>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="input-icon st-border-radius field-icon fa">
-                        <svg width="24px" height="24px"
-                             viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                            <defs></defs>
-                            <g id="Ico_close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                               stroke-linecap="round" stroke-linejoin="round">
-                                <g stroke="#1A2B48" stroke-width="1.5">
-                                    <g id="close">
-                                        <path d="M0.75,23.249 L23.25,0.749"></path>
-                                        <path d="M23.25,23.249 L0.75,0.749"></path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </i></button>
-
-            </div>
-            <div class="modal-body">
-                <div class="map-loading" style="display:none">
-                </div>
-                <form action="#" class="form" method="post">
-                    <input type="hidden" name="st_theme_style" value="modern"/>
-                    <input type="hidden" name="action" value="st_registration_popup">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" autocomplete="off"
-                               placeholder="Username *">
-                        <i class="input-icon st-border-radius field-icon fa">
-                            <svg width="20px" viewBox="0 0 24 24"
-                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                   stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="translate(-912.000000, -207.000000)" stroke="#A0A9B2">
-                                        <g transform="translate(466.000000, 80.000000)">
-                                            <g transform="translate(30.000000, 109.000000)">
-                                                <g id="ico_username_form_signup"
-                                                   transform="translate(416.000000, 18.000000)">
-                                                    <g id="Light">
-                                                        <circle cx="12" cy="12" r="11.5"></circle>
-                                                        <path
-                                                                d="M8.338,6.592 C10.3777315,8.7056567 13.5128387,9.33602311 16.211,8.175">
-                                                        </path>
-                                                        <circle cx="12" cy="8.75" r="4.25"></circle>
-                                                        <path
-                                                                d="M18.317,18.5 C17.1617209,16.0575309 14.7019114,14.4999182 12,14.4999182 C9.29808863,14.4999182 6.83827906,16.0575309 5.683,18.5">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="fullname" autocomplete="off"
-                               placeholder="Full Name">
-                        <i class="input-icon st-border-radius field-icon fa">
-                            <svg width="20px" viewBox="0 0 23 25"
-                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                   stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="translate(-914.000000, -295.000000)" stroke="#A0A9B2">
-                                        <g transform="translate(466.000000, 80.000000)">
-                                            <g transform="translate(30.000000, 199.000000)">
-                                                <g transform="translate(418.000000, 17.000000)">
-                                                    <g id="ico_fullname_signup">
-                                                        <path
-                                                                d="M14.5,23.5 L14.5,20.5 L15.5,20.5 C17.1568542,20.5 18.5,19.1568542 18.5,17.5 L18.5,14.5 L21.313,14.5 C21.4719994,14.4989403 21.6210158,14.4223193 21.7143842,14.2936169 C21.8077526,14.1649146 21.8343404,13.9994766 21.786,13.848 C19.912,8.048 18.555,1.813 12.366,0.681 C9.63567371,0.151893606 6.80836955,0.784892205 4.56430871,2.42770265 C2.32024786,4.07051309 0.862578016,6.57441697 0.542,9.337 C0.21983037,12.7556062 1.72416582,16.0907612 4.5,18.112 L4.5,23.5">
-                                                        </path>
-                                                        <path
-                                                                d="M7.5,8 C7.49875423,6.44186837 8.69053402,5.14214837 10.2429354,5.00863533 C11.7953368,4.87512228 13.1915367,5.95226513 13.4563532,7.48772858 C13.7211696,9.02319203 12.7664402,10.5057921 11.259,10.9 C10.8242888,10.9952282 10.5108832,11.3751137 10.5,11.82 L10.5,13.5">
-                                                        </path>
-                                                        <path
-                                                                d="M10.5,15.5 C10.6380712,15.5 10.75,15.6119288 10.75,15.75 C10.75,15.8880712 10.6380712,16 10.5,16 C10.3619288,16 10.25,15.8880712 10.25,15.75 C10.25,15.6119288 10.3619288,15.5 10.5,15.5">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" autocomplete="off"
-                               placeholder="Email *">
-                        <i class="input-icon st-border-radius field-icon fa">
-                            <svg width="18px" viewBox="0 0 24 19"
-                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                   stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="translate(-912.000000, -220.000000)" stroke="#A0A9B2">
-                                        <g transform="translate(466.000000, 80.000000)">
-                                            <g transform="translate(30.000000, 119.000000)">
-                                                <g transform="translate(416.000000, 22.000000)">
-                                                    <g id="ico_email_login_form">
-                                                        <rect id="Rectangle-path" x="0.5" y="0.0101176471"
-                                                              width="23" height="16.9411765" rx="2"></rect>
-                                                        <polyline
-                                                                points="22.911 0.626352941 12 10.0689412 1.089 0.626352941">
-                                                        </polyline>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
-                    </div>
-                    <div class="form-group field-password ic-view">
-                        <input type="password" class="form-control" name="password" autocomplete="off"
-                               placeholder="Password *">
-                        <i class="input-icon st-border-radius field-icon fa">
-                            <svg width="16px" viewBox="0 0 18 24"
-                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                   stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="translate(-918.000000, -307.000000)" stroke="#A0A9B2">
-                                        <g transform="translate(466.000000, 80.000000)">
-                                            <g transform="translate(30.000000, 209.000000)">
-                                                <g transform="translate(422.000000, 18.000000)">
-                                                    <g id="ico_pass_login_form">
-                                                        <path
-                                                                d="M3.5,6 C3.5,2.96243388 5.96243388,0.5 9,0.5 C12.0375661,0.5 14.5,2.96243388 14.5,6 L14.5,9.5">
-                                                        </path>
-                                                        <path
-                                                                d="M17.5,11.5 C17.5,10.3954305 16.6045695,9.5 15.5,9.5 L2.5,9.5 C1.3954305,9.5 0.5,10.3954305 0.5,11.5 L0.5,21.5 C0.5,22.6045695 1.3954305,23.5 2.5,23.5 L15.5,23.5 C16.6045695,23.5 17.5,22.6045695 17.5,21.5 L17.5,11.5 Z">
-                                                        </path>
-                                                        <circle cx="9" cy="16.5" r="1.25"></circle>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
-                    </div>
-                    <div class="form-group">
-                        <p class="f14 c-grey">Select User Type</p>
-                        <label class="block" for="normal-user">
-                            <input checked id="normal-user" type="radio" class="mr5" name="register_as"
-                                   value="normal"> <span class="c-main" data-bs-toggle="tooltip" data-placement="right"
-                                                         title="Used for booking services">Normal User</span>
-                        </label>
-                        <label class="block" for="partner-user">
-                            <input id="partner-user" type="radio" class="mr5" name="register_as" value="partner">
-                            <span class="c-main" data-bs-toggle="tooltip" data-placement="right"
-                                  title="Used for upload and booking services">Partner User</span>
-                        </label>
-                    </div>
-                    <div class="form-group st-icheck-item">
-                        <label for="term">
-                            <input id="term1" type="checkbox" name="term" class="mr5"> I have read and accept the <a
-                                class="st-link" href="https://modmixmap.travelerwp.com/privacy-policy/">Terms and
-                            Privacy Policy</a> <span class="checkmark fcheckbox"></span>
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" class="form-submit" value="Sign Up">
-                    </div>
-                    <div class="message-wrapper mt20"></div>
-                    <div class="advanced">
-                        <p class="text-center f14 c-grey">or continue with</p>
-                        <div class="row">
-                            <div class="col-4">
-                            </div>
-                            <div class="col-4">
-                            </div>
-                            <div class="col-4">
-                                <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                   onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                   data-channel="twitter">
-                                    <i class="input-icon st-border-radius field-icon fa">
-                                        <svg width="100%"
-                                             viewBox="0 0 140 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                            <defs></defs>
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <g transform="translate(-656.000000, -560.000000)">
-                                                    <g transform="translate(466.000000, 80.000000)">
-                                                        <g id="social" transform="translate(0.000000, 417.000000)">
-                                                            <g id="tt" transform="translate(190.000000, 63.000000)">
-                                                                <rect id="Rectangle-2" fill="#03A9F4" x="0" y="0"
-                                                                      width="140" height="40" rx="3"></rect>
-                                                                <g id="Group-2"
-                                                                   transform="translate(31.000000, 9.000000)"
-                                                                   fill="#FFFFFF">
-                                                                    <text id="Twitter"
-                                                                          font-family="Poppins-Medium, Poppins"
-                                                                          font-size="14" font-weight="400">
-                                                                        <tspan x="30" y="16">Twitter</tspan>
-                                                                    </text>
-                                                                    <g id="twitter"
-                                                                       transform="translate(0.000000, 3.000000)"
-                                                                       fill-rule="nonzero">
-                                                                        <path
-                                                                                d="M19.6923077,1.89415385 C18.96,2.21538462 18.1796923,2.42830769 17.3661538,2.53169231 C18.2030769,2.032 18.8418462,1.24676923 19.1421538,0.300307692 C18.3618462,0.765538462 17.5003077,1.09415385 16.5821538,1.27753846 C15.8412308,0.488615385 14.7852308,0 13.6332308,0 C11.3981538,0 9.59876923,1.81415385 9.59876923,4.03815385 C9.59876923,4.35815385 9.62584615,4.66584615 9.69230769,4.95876923 C6.336,4.79507692 3.36615385,3.18646154 1.37107692,0.736 C1.02276923,1.34030769 0.818461538,2.032 0.818461538,2.77661538 C0.818461538,4.17476923 1.53846154,5.41415385 2.61169231,6.13169231 C1.96307692,6.11938462 1.32676923,5.93107692 0.787692308,5.63446154 C0.787692308,5.64676923 0.787692308,5.66276923 0.787692308,5.67876923 C0.787692308,7.64061538 2.18707692,9.27015385 4.02215385,9.64553846 C3.69353846,9.73538462 3.33538462,9.77846154 2.96369231,9.77846154 C2.70523077,9.77846154 2.44430769,9.76369231 2.19938462,9.70953846 C2.72246154,11.3083077 4.20676923,12.4836923 5.97169231,12.5218462 C4.59815385,13.5963077 2.85415385,14.2436923 0.966153846,14.2436923 C0.635076923,14.2436923 0.317538462,14.2289231 -5.68434189e-14,14.1883077 C1.78830769,15.3415385 3.90769231,16 6.19323077,16 C13.6221538,16 17.6836923,9.84615385 17.6836923,4.512 C17.6836923,4.33353846 17.6775385,4.16123077 17.6689231,3.99015385 C18.4701538,3.42153846 19.1433846,2.71138462 19.6923077,1.89415385 Z">
-                                                                        </path>
-                                                                    </g>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </i> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt20 c-grey f14 text-center">
-                        Already have an account? <a href="#" class="st-link open-login" data-bs-dismiss="modal"
-                                                    data-bs-toggle="modal" data-bs-target="#st-login-form">Log In</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="st-forgot-form" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 450px;">
-        <div class="modal-content">
-            <div class="loader-wrapper">
-                <div class="st-loader"></div>
-            </div>
-            <div class="modal-header d-sm-flex d-md-flex justify-content-between align-items-center">
-                <div class="modal-title">Reset Password</div>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="input-icon st-border-radius field-icon fa">
-                        <svg width="24px" height="24px"
-                             viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                            <defs></defs>
-                            <g id="Ico_close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                               stroke-linecap="round" stroke-linejoin="round">
-                                <g stroke="#1A2B48" stroke-width="1.5">
-                                    <g id="close">
-                                        <path d="M0.75,23.249 L23.25,0.749"></path>
-                                        <path d="M23.25,23.249 L0.75,0.749"></path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </i></button>
-
-            </div>
-            <div class="modal-body">
-                <form action="#" class="form" method="post">
-                    <input type="hidden" name="st_theme_style" value="modern"/>
-                    <input type="hidden" name="action" value="st_reset_password">
-                    <p class="c-grey f14">
-                        Enter the e-mail address associated with the account. <br/>
-                        We'll e-mail a link to reset your password. </p>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
-                        <i class="input-icon st-border-radius field-icon fa">
-                            <svg width="24px" height="24px"
-                                 viewBox="0 0 24 19" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                   stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="translate(-912.000000, -220.000000)" stroke="#A0A9B2">
-                                        <g transform="translate(466.000000, 80.000000)">
-                                            <g transform="translate(30.000000, 119.000000)">
-                                                <g transform="translate(416.000000, 22.000000)">
-                                                    <g id="ico_email_login_form">
-                                                        <rect id="Rectangle-path" x="0.5" y="0.0101176471"
-                                                              width="23" height="16.9411765" rx="2"></rect>
-                                                        <polyline
-                                                                points="22.911 0.626352941 12 10.0689412 1.089 0.626352941">
-                                                        </polyline>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </i>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" class="form-submit" value="Send Reset Link">
-                    </div>
-                    <div class="message-wrapper mt20"></div>
-                    <div class="text-center mt20">
-                        <a href="#" class="st-link font-medium open-login" data-bs-dismiss="modal"
-                           data-bs-toggle="modal" data-bs-target="#st-login-form">Back to Log In</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="gotop" title="Go to top">
     <i class="fas fa-caret-up"></i>
 </div>
@@ -3242,23 +2432,8 @@
     }
 })();</script>
 
-<link rel='stylesheet' id='elementor-post-97-css'
-      href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/post-97.css' type='text/css'
-      media='all'/>
-<link rel='stylesheet' id='e-animations-css'
-      href='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css'
-      type='text/css' media='all'/>
-<script type='text/javascript'
-        src='https://modmixmap.travelerwp.com/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=5.7.4'
-        id='swv-js'></script>
-<script type='text/javascript' id='contact-form-7-js-extra'>
-    /* <![CDATA[ */
-    var wpcf7 = {
-        "api": {"root": "https:\/\/modmixmap.travelerwp.com\/wp-json\/", "namespace": "contact-form-7\/v1"},
-        "cached": "1"
-    };
-    /* ]]> */
-</script>
+
+
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.7.4'
         id='contact-form-7-js'></script>
@@ -3332,11 +2507,7 @@
         id='form-search-js'></script>
 <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/js/elementor.js'
         id='elementor-js'></script>
-<script type='text/javascript' id='main-js-extra'>
-    /* <![CDATA[ */
-    var cpm_object = {"ajax_url": "https:\/\/modmixmap.travelerwp.com\/wp-admin\/admin-ajax.php"};
-    /* ]]> */
-</script>
+
 <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/js/main.js'
         id='main-js'></script>
 <script type='text/javascript'

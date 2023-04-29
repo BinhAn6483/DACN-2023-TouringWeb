@@ -7,8 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TourService {
@@ -24,6 +23,9 @@ public class TourService {
         return tourRepository.getAllByStartingPoint(startingPoint);
     }
 
+    public List<Tour> getAllTourByLocation(String location) {
+        return tourRepository.getAllByLocation(location);
+    }
     public List<Tour> getListTourFeatured(){
         return tourRepository.getListTourFeatured();
     }
@@ -43,8 +45,29 @@ public class TourService {
     public List<Tour> getToursBySearch(String location, Date start, Date end) {
         return tourRepository.getToursBySearch(location,start,end);
     }
+    public List<Tour> getToursBySearch( Date start, Date end) {
+        return tourRepository.getToursBySearch(start,end);
+    }
+    public List<Tour> getToursBySearch(String location) {
+        return tourRepository.getToursBySearch(location);
+    }
 
     public List<Date> getAllDateStart(Long idTour) {
         return tourRepository.getAllDateStart(idTour);
+    }
+
+    public Map<String, Integer> getTopDestinations(){
+        List<String> list = tourRepository.getTopDestinations();
+        System.out.println("List of top: " + list);
+        Map<String, Integer> result = new HashMap<>();
+        if(!list.isEmpty()){
+            for(int i =0; i<6 ; i++){
+                List<Tour> tourList = new ArrayList<>();
+                tourList = getAllTourByLocation(list.get(i));
+                result.put(list.get(i), tourList.size() );
+                System.out.println("Map list: " +list.get(i)+ "\t|" + tourList.size());
+            }
+        }
+        return result;
     }
 }
