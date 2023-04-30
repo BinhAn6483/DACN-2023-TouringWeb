@@ -1,16 +1,23 @@
 package com.nhom10.touringweb.controller.user;
 
 import com.nhom10.touringweb.model.user.Tour;
+import com.nhom10.touringweb.model.user.User;
+import com.nhom10.touringweb.model.user.WishList;
+import com.nhom10.touringweb.repository.UserRepository;
+import com.nhom10.touringweb.repository.WishListRepository;
 import com.nhom10.touringweb.service.LinkImgService;
 import com.nhom10.touringweb.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.sql.Date;
 
 import java.util.HashMap;
@@ -23,6 +30,12 @@ public class TourController {
 
     @Autowired
     TourService tourService;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    WishListRepository wishListRepository;
 
     @Autowired
     LinkImgService linkImgService;
@@ -199,5 +212,49 @@ public class TourController {
         Map<String, Integer> topList = tourService.getTopDestinations();
         return topList;
     }
+
+    @PostMapping("/addToWishlist/{idTour}")
+    public String addToWishlist(@PathVariable Long idTour, Principal principal) {
+        System.out.println("úm ba la si bùa");
+        try {
+            if (principal == null) {
+                return "redirect:/login"; // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            } else {
+                String userEmail = principal.getName();
+                User user = userRepository.findByEmail(userEmail);
+                int idUser = user.getId();
+                WishList wishList = wishListRepository.findByIdTourAndIdUser(idTour, idUser);
+                if (wishList == null) {
+                    wishListRepository.save(new WishList(idTour, idUser));
+                }
+                return "successfully";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+//    @GetMapping("/addToWishlist/{idTour}")
+//    public String addToWishlist2(@PathVariable Long idTour, Principal principal) {
+//        System.out.println("ủm ba la xi bùa");
+//        try {
+//            if (principal == null) {
+//                return "redirect:/login"; // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+//            } else {
+//                String userEmail = principal.getName();
+//                User user = userRepository.findByEmail(userEmail);
+//                int idUser = user.getId();
+//                WishList wishList = wishListRepository.findByIdTourAndIdUser(idTour, idUser);
+//                if (wishList == null) {
+//                    wishListRepository.save(new WishList(idTour, idUser));
+//                }
+//                return "successfully";
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "error";
+//        }
+//    }
+
 
 }

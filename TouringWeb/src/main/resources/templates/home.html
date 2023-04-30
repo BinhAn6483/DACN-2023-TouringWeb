@@ -11,6 +11,7 @@
 
     <title>Home Page - Traveler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     <link rel='stylesheet' id='classic-theme-styles-css'
@@ -231,6 +232,34 @@
         #nav-st_tours {
             display: block;
         }
+
+        .btn-add:hover {
+            cursor: pointer;
+        }
+        .fa-heart {
+            color: #0a58ca;
+            font-size: 30px;
+            opacity: 40%;
+        }
+        .fa-heart:hover{
+            font-size: 34px;
+            margin: -2px 0 0 -2px;
+            color: #e30101;
+            opacity: 100%;
+        }
+        /*.fa-heart:hover::before {*/
+        /*    content: attr(title);*/
+        /*    position: absolute;*/
+        /*    top: 5px;*/
+        /*    left: 50%;*/
+        /*    transform: translateX(-50%);*/
+        /*    padding: 5px;*/
+        /*    background-color: #333;*/
+        /*    color: #fff;*/
+        /*    border-radius: 5px;*/
+        /*    font-size: 12px;*/
+        /*    cursor: pointer;*/
+        /*}*/
     </style>
 </head>
 
@@ -685,6 +714,11 @@
                                                     <div class="services-item grid item-elementor">
                                                         <div class="item service-border st-border-radius">
                                                             <div class="featured-image">
+                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                    <button style="background: none; border: none" class="btn-add" >
+                                                                        <i class="fas fa-heart"  title="Thêm vào danh sách yêu thích"></i>
+                                                                    </button>
+                                                                </div>
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -969,6 +1003,7 @@
                                                     <div class="services-item grid item-elementor">
                                                         <div class="item service-border st-border-radius">
                                                             <div class="featured-image">
+
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -984,29 +1019,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="#" class="login" data-bs-toggle="modal"
-                                                                   data-bs-target="#st-login-form">
-                                                                    <div class="service-add-wishlist"
-                                                                         title="Add to wishlist">
-                                                                        <i class="st-border-radius field-icon">
-                                                                            <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="23" height="22"
-                                                                                    viewBox="0 0 23 22" fill="none">
-                                                                                <path fill-rule="evenodd"
-                                                                                      clip-rule="evenodd"
-                                                                                      d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                                                      fill="#232323"
-                                                                                      fill-opacity="0.3"
-                                                                                      stroke="white"
-                                                                                      stroke-width="1.5"
-                                                                                      stroke-linecap="round"
-                                                                                      stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                        </i>
-                                                                        <div class="lds-dual-ring"></div>
-                                                                    </div>
-                                                                </a>
+
                                                                 <a
                                                                         href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
                                                                     <img decoding="async" itemprop="image"
@@ -1148,29 +1161,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <a href="#" class="login" data-bs-toggle="modal"
-                                                                   data-bs-target="#st-login-form">
-                                                                    <div class="service-add-wishlist"
-                                                                         title="Add to wishlist">
-                                                                        <i class="st-border-radius field-icon">
-                                                                            <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="23" height="22"
-                                                                                    viewBox="0 0 23 22" fill="none">
-                                                                                <path fill-rule="evenodd"
-                                                                                      clip-rule="evenodd"
-                                                                                      d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                                                      fill="#232323"
-                                                                                      fill-opacity="0.3"
-                                                                                      stroke="white"
-                                                                                      stroke-width="1.5"
-                                                                                      stroke-linecap="round"
-                                                                                      stroke-linejoin="round"/>
-                                                                            </svg>
-                                                                        </i>
-                                                                        <div class="lds-dual-ring"></div>
-                                                                    </div>
-                                                                </a>
+
                                                                 <a
                                                                         href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
                                                                     <img decoding="async" itemprop="image"
@@ -2477,21 +2468,11 @@
 </script>
 
 <script>
-    // Lấy ra tất cả các phần tử có class là 'price-tour-format'
     var priceElements = document.querySelectorAll('.price-tour-format');
-
-    // Lặp qua tất cả các phần tử và thay đổi giá trị của chúng
     priceElements.forEach(function(element) {
-        // Lấy giá trị của phần tử
         var priceValue = parseFloat(element.textContent);
-
-        // Kiểm tra giá trị có hợp lệ hay không
         if (!isNaN(priceValue)) {
-            // Định dạng giá tiền
             var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
-
-            console.log(formattedPrice)
-            // Gán giá trị đã được định dạng lại vào phần tử
             element.textContent = formattedPrice;
         }
     });
@@ -2629,6 +2610,25 @@
         },
         "post": {"id": 71, "title": "Home%20Page%20-%20ModMixMap", "excerpt": "", "featuredImage": false}
     };
+</script>
+
+<script>
+
+    function addToWishlist(idTour) {
+        console.log("vào thì oke rồi đấy")
+        console.log(idTour)
+        $.ajax({
+            url: "/addToWishlist/" + idTour,
+            type: "POST",
+            success: function() {
+                $(this).find("i").css("color", "red");
+                alert("Đã thêm vào danh sách yêu thích!")
+            }.bind(this),
+            error: function() {
+                alert("Thêm vào danh sách yêu thích thất bại!");
+            }
+        });
+    }
 </script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
