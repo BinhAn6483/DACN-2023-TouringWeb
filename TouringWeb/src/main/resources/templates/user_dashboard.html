@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<html lang="en-US" prefix="og: https://ogp.me/ns#" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -23,14 +23,8 @@
             id='jquery-core-js'></script>
 
     </style>
-    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
-          sizes="32x32"/>
-    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-192x192.png"
-          sizes="192x192"/>
-    <link rel="apple-touch-icon"
-          href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-180x180.png"/>
-    <meta name="msapplication-TileImage"
-          content="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-270x270.png"/>
+
+
 
     <style>
 
@@ -55,7 +49,7 @@
     <nav id="sidebar" class="sidebar-wrapper">
         <div class="sidebar-content">
             <div class="sidebar-header">
-                <a href="https://modmixmap.travelerwp.com"><img
+                <a th:href="@{/home}"><img
                         src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png"
                         class="st-logo-site" alt="Logo"/></a>
                 <div class="sidebar-brand icon-ccv hidden-md">
@@ -66,21 +60,20 @@
                 </div>
             </div>
             <div class="sidebar-header">
-                <div class="user-pic">
+                <div class="user-pic" style="margin-right: 7px;">
                     <img alt='TravelerWP'
-                         src='https://secure.gravatar.com/avatar/f3ecbcef80bf5e3e0fcfd800330b7aac?s=50&#038;d=mm&#038;r=g'
-                         srcset='https://secure.gravatar.com/avatar/f3ecbcef80bf5e3e0fcfd800330b7aac?s=100&#038;d=mm&#038;r=g 2x'
+                         th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}"  src="static/images/avatar/23.jpg"
                          class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
                 </div>
-                <div class="user-info">
-                    <span class="user-name">Phan Van Hung</span>
-                    <span class="user-role">Since: Apr 2023</span>
+                <div class="user-info" style="width: 70%;">
+                    <span class="user-name" th:text="${@userController.nameByEmail()}">Phan Van Hung</span>
+                    <span class="user-role" sec:authentication="principal.username" ></span>
                 </div>
             </div>
             <div class="sidebar-menu">
                 <ul>
                     <li class="">
-                        <a href="#">
+                        <a th:href="@{/user/profile}">
                             <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
                                  alt="" class="st-icon-menu">
                             <span>Hồ sơ</span>
@@ -106,7 +99,7 @@
             <div class="sidebar-footer">
                 <ul>
                     <li>
-                        <a href="https://modmixmap.travelerwp.com/wp-login.php?action=logout&amp;_wpnonce=714b1ead50&amp;redirect_to=https%3A%2F%2Fmodmixmap.travelerwp.com%2F">
+                        <a th:href="@{/logout}">
                             <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
                                  alt="" class="st-icon-menu">
                             <span>Đăng xuất</span>
