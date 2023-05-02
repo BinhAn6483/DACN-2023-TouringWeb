@@ -109,12 +109,15 @@ public class TourController {
         List<Tour> featuredTours = (List<Tour>) getListTourFeatured();
         List<Tour> listTourNew = (List<Tour>) getListTourNew();
         List<Tour> listTourDiscount = (List<Tour>) getListTourDiscount();
+        Map<String, Integer> topList = tourService.getTopDestinations();
+        System.out.println(topList);
         ModelAndView mav = new ModelAndView("home");
         Map<String, Object> model = new HashMap<>();
         model.put("tours", list);
         model.put("featuredTours", featuredTours);
         model.put("listTourNew", listTourNew);
         model.put("listTourDiscount", listTourDiscount);
+        model.put("listTopDestinations", topList);
         mav.addAllObjects(model);
         return mav;
     }
@@ -167,10 +170,10 @@ public class TourController {
     }
 
 
-    @GetMapping("/featuredTour")
     public List<Tour> getListTourFeatured() {
         try {
             List<Tour> featuredTours = tourService.getListTourFeatured();
+
             if (featuredTours.isEmpty()) {
                 return null;
             }
@@ -206,6 +209,62 @@ public class TourController {
             return null;
         }
     }
+
+
+    @GetMapping("/featuredTour")
+    public ModelAndView getListTourFeaturedNew() {
+        ModelAndView mav = new ModelAndView("activity_search_topbar");
+        Map<String, Object> model = new HashMap<>();
+        try {
+            List<Tour> featuredTours = tourService.getListTourFeatured();
+            if (!featuredTours.isEmpty()) {
+                model.put("listTourSearchLocation", featuredTours);
+                mav.addAllObjects(model);
+                return mav;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+
+    }
+
+    @GetMapping("/tours-new")
+    public ModelAndView getListTourNew2() {
+        ModelAndView mav = new ModelAndView("activity_search_topbar");
+        Map<String, Object> model = new HashMap<>();
+        try {
+            List<Tour> featuredTours = tourService.getListTourNew();
+            if (!featuredTours.isEmpty()) {
+                model.put("listTourSearchLocation", featuredTours);
+                mav.addAllObjects(model);
+                return mav;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+
+    }
+
+    @GetMapping("/tours-discount")
+    public ModelAndView getListTourDiscount2() {
+        ModelAndView mav = new ModelAndView("activity_search_topbar");
+        Map<String, Object> model = new HashMap<>();
+        try {
+            List<Tour> featuredTours = tourService.getListTourDiscount();
+            if (!featuredTours.isEmpty()) {
+                model.put("listTourSearchLocation", featuredTours);
+                mav.addAllObjects(model);
+                return mav;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mav;
+
+    }
+
 
     @GetMapping("/getTopDestinations")
     public Map<String, Integer> getTopDestinations() {
@@ -256,5 +315,16 @@ public class TourController {
 //        }
 //    }
 
-
+//    @GetMapping("/user/name/")
+//    public String nameByEmail() {
+//        System.out.println("quần què");
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication != null && authentication.isAuthenticated()) {
+//            String username = authentication.getName();
+//            User user = userRepository.findByEmail(username);
+//            return user.getName();
+//        }else {
+//            return "";
+//        }
+//    }
 }

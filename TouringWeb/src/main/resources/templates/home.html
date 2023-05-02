@@ -221,9 +221,10 @@
 
 
         }
+
         .calendar {
-             display: inline-block;
-         }
+            display: inline-block;
+        }
 
         .table-condensed .td-date .date {
             padding: 20px;
@@ -236,30 +237,27 @@
         .btn-add:hover {
             cursor: pointer;
         }
+
         .fa-heart {
             color: #0a58ca;
             font-size: 30px;
             opacity: 40%;
         }
-        .fa-heart:hover{
+
+        .fa-heart:hover {
             font-size: 34px;
             margin: -2px 0 0 -2px;
             color: #e30101;
             opacity: 100%;
         }
-        /*.fa-heart:hover::before {*/
-        /*    content: attr(title);*/
-        /*    position: absolute;*/
-        /*    top: 5px;*/
-        /*    left: 50%;*/
-        /*    transform: translateX(-50%);*/
-        /*    padding: 5px;*/
-        /*    background-color: #333;*/
-        /*    color: #fff;*/
-        /*    border-radius: 5px;*/
-        /*    font-size: 12px;*/
-        /*    cursor: pointer;*/
-        /*}*/
+
+        .dropdown-menu {
+            display: none;
+        }
+
+        .show {
+            display: block !important;
+        }
     </style>
 </head>
 
@@ -271,10 +269,10 @@
         <div class="menu-toggle">
 
         </div>
-        <a href="https://modmixmap.travelerwp.com/" class="logo d-none d-sm-none d-lg-block">
+        <a th:href="@{/home}" class="logo d-none d-sm-none d-lg-block">
             <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
         </a>
-        <a href="https://modmixmap.travelerwp.com/" class="logo d-block  d-lg-none">
+        <a th:href="@{/home}" class="logo d-block  d-lg-none">
             <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
         </a>
     </div>
@@ -284,58 +282,29 @@
             <ul id="main-menu" class="menu main-menu">
                 <li id="menu-item-75"
                     class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-75">
-                    <a class="" href="https://modmixmap.travelerwp.com/">Home</a></li>
-                <li id="menu-item-161"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-161">
-                    <a class="" href="#">Hotel<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
-                    <ul class="menu-dropdown">
-                        <li id="menu-item-160"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-160 "><a
-                                class="" href="https://modmixmap.travelerwp.com/hotel-search-halfmap/">Search
-                            HalfMap</a></li>
-                        <li id="menu-item-159"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-159 "><a
-                                class="" href="https://modmixmap.travelerwp.com/hotel-search-popup-map/">Search
-                            Popup Map</a></li>
-                        <li id="menu-item-162"
-                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-162 "><a
-                                class=""
-                                href="https://modmixmap.travelerwp.com/st_hotel/studio-allston-hotel/">Detail Hotel
-                            1</a></li>
-                        <li id="menu-item-509"
-                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-509 "><a
-                                class=""
-                                href="https://modmixmap.travelerwp.com/st_hotel/edwardian-kenilworth/">Detail Hotel
-                            2</a></li>
-                        <li id="menu-item-166"
-                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-166 "><a
-                                class=""
-                                href="https://modmixmap.travelerwp.com/hotel_room/room-sheraton-hotel/">Detail Room
-                            1</a></li>
-                        <li id="menu-item-1354"
-                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-1354 ">
-                            <a class="" href="https://modmixmap.travelerwp.com/hotel_room/family-suite-8/">Detail
-                                Room 2</a></li>
-                    </ul>
-                </li>
+                    <a class="" th:href="@{/home}">Home</a></li>
                 <li id="menu-item-1355"
                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1355">
                     <a class="" href="#">Tour<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
                     <ul class="menu-dropdown">
                         <li id="menu-item-1530"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1530 "><a
-                                class="" href="https://modmixmap.travelerwp.com/tour-search-topbar/">Tour nổi bật</a></li>
+                                class="" th:href="@{/featuredTour}">Tour nổi bật</a>
+                        </li>
                         <li id="menu-item-1531"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531 "><a
-                                class="" href="https://modmixmap.travelerwp.com/tour-search-sidebar/">Tour khách đoàn</a></li>
+                                class="" th:href="@{/tours-discount}">Tour khách
+                            đoàn</a></li>
                         <li id="menu-item-1533"
                             class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1533 "><a
                                 class=""
-                                href="https://modmixmap.travelerwp.com/st_tour/segway-tour-of-washington-d-c-highlights/">Combo du lịch</a></li>
+                                th:href="@{/tours-discount}">Combo
+                            du lịch</a></li>
                         <li id="menu-item-1532"
                             class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1532 "><a
                                 class=""
-                                href="https://modmixmap.travelerwp.com/st_tour/new-york-museum-of-modern-art/">Tour hot</a></li>
+                                th:href="@{/tours-new}">Tour
+                            hot</a></li>
 
                     </ul>
                 </li>
@@ -352,10 +321,10 @@
                     <ul class="menu-dropdown">
                         <li id="menu-item-842"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-842 "><a
-                                class="" href="https://modmixmap.travelerwp.com/about/">Thông tin liên hệ</a></li>
+                                class="" href="#">Thông tin liên hệ</a></li>
                         <li id="menu-item-789"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-789 "><a
-                                class="" href="https://modmixmap.travelerwp.com/blog/">Tổng quan công ty</a></li>
+                                class="" href="#">Tổng quan công ty</a></li>
 
                     </ul>
                 </li>
@@ -363,43 +332,52 @@
         </nav>
         <div class="overlay"></div>
     </div>
-    <div class="header__right">
+    <div class="header__right" style="margin-right: 100px">
         <ul class="items d-flex align-items-center flex-wrap">
-
-            </li>
-            <li class="dropdown dropdown-minicart">
-                <div class="mini-cart dropdown-toggle" role="button" id="dropdown-mini-cart"
-                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
-                </div>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-mini-cart">
-                    <li class="heading">
-                        <div class="st-heading-section">Your Cart</div>
-                    </li>
-                    <li>
-                        <div class="col-lg-12 cart-text-empty text-warning">Your cart is empty</div>
-                    </li>
-                </ul>
-            </li>
-
             <li sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login}">Login</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="d-none d-sm-block d-md-block st-header-link">
-                Welcome <span sec:authentication="principal.username">User</span>
+                Hi, <span sec:authentication="principal.username" id="" onclick="toggleDropdown()"
+                          style="cursor: pointer" th:text="${@userController.nameByEmail()}"></span><i class='fas fa-angle-down' style="margin-left: 8px;"></i>
+                <ul class="dropdown-menu " id="box_open" aria-labelledby="dropdown-dashboard"
+                    style=" position: absolute; transform: translate(-65px, 20px); padding: 10px; width: 195px;"
+                    data-popper-placement="bottom-start">
+                    <li class="user-name" stylelementor elementor-71e="display: flex;align-items: center;font-size: 16px;">
+                        <div class="avatar" style="float:left;margin-right: 7px">
+                            <img alt="TravelerWP"
+                                 th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()})}"
+                                 srcset="https://secure.gravatar.com/avatar/f3ecbcef80bf5e3e0fcfd800330b7aac?s=80&amp;d=mm&amp;r=g 2x"
+                                 class="avatar avatar-40 photo" height="40" width="40" loading="lazy" decoding="async">
+                        </div>
+                        <span th:text="${@userController.nameByEmail()}"></span>
+                    </li>
+                    <li style="margin-top: 30px">
+                        <a th:href="@{/user/profile}" style="background: white;color: black; margin-left: -30px">Hồ sơ</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/user/wishlist}"
+                           style="background: white;color: black;cursor: pointer; margin-left: -30px">Lịch sử</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a th:href="@{/logout}"
+                           style="background: white;color: black; cursor: pointer; margin-left: -30px">Đăng xuất</a>
+                    </li>
+                </ul>
             </li>
-            <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/logout}">Logout</a>
-            </li>
+
         </ul>
     </div>
 </header>
-<div data-elementor-type="wp-page" data-elementor-id="71" class="elementor elementor-71">
+<div data-elementor-type="wp-page" data-elementor-id="71" class="elementor elementor-71" onclick="toggleDropdown2()">
     <section
             class="elementor-section elementor-top-section elementor-element elementor-element-6c6f2387 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
             data-id="6c6f2387" data-element_type="section"
             style="background-image: url('https://gotravel.vn/tour-du-lich-he-gia-re/assets/img/banner.png');height: 450px;"
-           >
+    >
         <div class="elementor-container elementor-column-gap-default">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-25295251"
                  data-id="25295251" data-element_type="column">
@@ -426,8 +404,8 @@
                          data-widget_type="st_banner_form.default">
                         <div class="elementor-widget-container">
                             <div class="st-banner-search-form style_2">
-                               <br>
-                               <br>
+                                <br>
+                                <br>
 
                                 <div class="tab-content">
 
@@ -436,8 +414,8 @@
                                             <div class="st-search-el search-form-v2">
                                                 <div class="search-form  st-border-radius">
                                                     <form th:action="@{/tours-search}" th:method="get"
-                                                            action="https://modmixmap.travelerwp.com/tour-search-sidebar/"
-                                                            class="form d-flex align-items-center" >
+                                                          action="https://modmixmap.travelerwp.com/tour-search-sidebar/"
+                                                          class="form d-flex align-items-center">
                                                         <div
                                                                 class="destination-search st-search-destination-tour border-right">
                                                             <div id="dropdown-destination-tour" role="menu"
@@ -464,37 +442,44 @@
                                                             <div class="dropdown-menu"
                                                                  aria-labelledby="dropdown-destination-tour">
                                                                 <ul class="st-scrollbar">
-                                                                    <li class="location-heading"><span>Hãy chọn địa điểm bạn muốn đi nhé</span></li>
+                                                                    <li class="location-heading"><span>Hãy chọn địa điểm bạn muốn đi nhé</span>
+                                                                    </li>
 
                                                                     <li style="padding-left: 20px;"
                                                                         data-country="US" data-value="55"
                                                                         class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                        <i class="fas fa-map-marker-alt"
+                                                                           style="margin-right: 10px;"></i><span
                                                                             class="lv2">Ha Noi</span>
                                                                     </li>
                                                                     <li style="padding-left: 20px;"
                                                                         data-country="US" data-value="56"
                                                                         class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                        <i class="fas fa-map-marker-alt"
+                                                                           style="margin-right: 10px;"></i><span
                                                                             class="lv2">Ho Chi Minh</span>
                                                                     </li>
                                                                     <li style="padding-left: 20px;"
                                                                         data-country="US" data-value="56"
                                                                         class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                        <i class="fas fa-map-marker-alt"
+                                                                           style="margin-right: 10px;"></i><span
                                                                             class="lv2">Da Nang</span>
                                                                     </li>
                                                                     <li style="padding-left: 20px;"
                                                                         data-country="US" data-value="56"
                                                                         class="item ">
-                                                                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
+                                                                        <i class="fas fa-map-marker-alt"
+                                                                           style="margin-right: 10px;"></i><span
                                                                             class="lv2">Du lich bien dao</span>
-                                                                    </li> <li style="padding-left: 20px;"
-                                                                              data-country="US" data-value="56"
-                                                                              class="item ">
-                                                                    <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i><span
-                                                                        class="lv2">Tay Bac</span>
-                                                                </li>
+                                                                    </li>
+                                                                    <li style="padding-left: 20px;"
+                                                                        data-country="US" data-value="56"
+                                                                        class="item ">
+                                                                        <i class="fas fa-map-marker-alt"
+                                                                           style="margin-right: 10px;"></i><span
+                                                                            class="lv2">Tay Bac</span>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -530,11 +515,12 @@
                                                         </div>
                                                         <div class="button-search-wrapper">
                                                             <button class="btn btn-primary btn-search" type="submit">
-                                                                <i class="fas fa-search Top destinations" style="margin-right:10px "></i>
+                                                                <i class="fas fa-search Top destinations"
+                                                                   style="margin-right:10px "></i>
                                                                 Tìm
                                                             </button>
                                                         </div>
-                                                    </form >
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -625,7 +611,8 @@
                          data-widget_type="st_destination.default">
                         <div class="elementor-widget-container">
                             <div class="row st-list-destination normal middle normal">
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item" th:each="top : ${listTopDestinations}">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 normal-item"
+                                     th:each="top : ${listTopDestinations}">
                                     <div class="destination-item">
                                         <div class="image st-border-radius">
                                             <a class="st-link"
@@ -637,12 +624,16 @@
                                             <div class="content">
                                                 <h3 class="title">
                                                     <a
-                                                            th:href="@{/location/{key}(key=${top.key})}" th:text="${top.key}">
+                                                            th:href="@{/location/{key}(key=${top.key})}"
+                                                            th:text="${top.key}">
                                                         Hồ Chính Minh </a>
                                                 </h3>
                                                 <div
-                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi" style="margin-top: 10px;">
-                                                    <a  th:href="@{/location/{key}(key=${top.key})}" style="border-radius: 5px;padding: 3px 10px;background: #1c5cd7;" th:text="${top.value} +Tour"> 12 Tour</a>
+                                                        class="desc d-flex align-items-center justify-content-center flex-wrap multi"
+                                                        style="margin-top: 10px;">
+                                                    <a th:href="@{/location/{key}(key=${top.key})}"
+                                                       style="border-radius: 5px;padding: 3px 10px;background: #1c5cd7;"
+                                                       th:text="${top.value} +Tour"> 12 Tour</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -663,10 +654,12 @@
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-21c5f188"
                  data-id="21c5f188" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-520f3e5d elementor-widget elementor-widget-heading" style="margin-bottom: 14px;"
+                    <div class="elementor-element elementor-element-520f3e5d elementor-widget elementor-widget-heading"
+                         style="margin-bottom: 14px;"
                          data-id="520f3e5d" data-element_type="widget" data-widget_type="heading.default">
-                        <div class="elementor-widget-container" >
-                            <h2 class="elementor-heading-title elementor-size-default" style="float:left; border-bottom: 5px solid #1c5cd7;">Đề xuất cho bạn</h2>
+                        <div class="elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default"
+                                style="float:left; border-bottom: 5px solid #1c5cd7;">Đề xuất cho bạn</h2>
                         </div>
                     </div>
                     <div class="elementor-element elementor-element-63941a80 elementor-widget elementor-widget-st_list_service"
@@ -715,8 +708,10 @@
                                                         <div class="item service-border st-border-radius">
                                                             <div class="featured-image">
                                                                 <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
-                                                                    <button style="background: none; border: none" class="btn-add" >
-                                                                        <i class="fas fa-heart"  title="Thêm vào danh sách yêu thích"></i>
+                                                                    <button style="background: none; border: none"
+                                                                            class="btn-add">
+                                                                        <i class="fas fa-heart"
+                                                                           title="Thêm vào danh sách yêu thích"></i>
                                                                     </button>
                                                                 </div>
                                                                 <div th:if="${tour.sale > 0}">
@@ -1295,10 +1290,12 @@
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-202abbf5"
                  data-id="202abbf5" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-1216d763 elementor-widget elementor-widget-heading" style="margin-bottom: 14px;"
+                    <div class="elementor-element elementor-element-1216d763 elementor-widget elementor-widget-heading"
+                         style="margin-bottom: 14px;"
                          data-id="1216d763" data-element_type="widget" data-widget_type="heading.default">
                         <div class="elementor-widget-container">
-                            <h2 class="elementor-heading-title elementor-size-default" style="float:left; border-bottom: 5px solid #1c5cd7;">Blog
+                            <h2 class="elementor-heading-title elementor-size-default"
+                                style="float:left; border-bottom: 5px solid #1c5cd7;">Blog
                             </h2>
                         </div>
                     </div>
@@ -1665,14 +1662,16 @@
                                          data-id="73f05e84" data-element_type="widget"
                                          data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h2 class="elementor-heading-title elementor-size-default">Nhận ưu đãi đặc biệt hơn từ Traveller</h2>
+                                            <h2 class="elementor-heading-title elementor-size-default">Nhận ưu đãi đặc
+                                                biệt hơn từ Traveller</h2>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-15dba4b5 elementor-widget elementor-widget-heading"
                                          data-id="15dba4b5" data-element_type="widget"
                                          data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <p class="elementor-heading-title elementor-size-default">Đăng ký để xem các ưu đãi bí mật giảm giá ngay khi bạn đăng ký!</p>
+                                            <p class="elementor-heading-title elementor-size-default">Đăng ký để xem các
+                                                ưu đãi bí mật giảm giá ngay khi bạn đăng ký!</p>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-108ddd25 elementor-widget elementor-widget-shortcode"
@@ -2424,7 +2423,6 @@
 })();</script>
 
 
-
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.7.4'
         id='contact-form-7-js'></script>
@@ -2469,7 +2467,7 @@
 
 <script>
     var priceElements = document.querySelectorAll('.price-tour-format');
-    priceElements.forEach(function(element) {
+    priceElements.forEach(function (element) {
         var priceValue = parseFloat(element.textContent);
         if (!isNaN(priceValue)) {
             var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
@@ -2613,6 +2611,18 @@
 </script>
 
 <script>
+    function toggleDropdown() {
+        var dropdownMenu = document.getElementById("box_open");
+        dropdownMenu.style.display = 'block';
+
+    }
+
+    function toggleDropdown2() {
+        var dropdownMenu = document.getElementById("box_open");
+        dropdownMenu.style.display = 'none';
+
+    }
+
 
     function addToWishlist(idTour) {
         console.log("vào thì oke rồi đấy")
@@ -2620,11 +2630,11 @@
         $.ajax({
             url: "/addToWishlist/" + idTour,
             type: "POST",
-            success: function() {
+            success: function () {
                 $(this).find("i").css("color", "red");
                 alert("Đã thêm vào danh sách yêu thích!")
             }.bind(this),
-            error: function() {
+            error: function () {
                 alert("Thêm vào danh sách yêu thích thất bại!");
             }
         });
