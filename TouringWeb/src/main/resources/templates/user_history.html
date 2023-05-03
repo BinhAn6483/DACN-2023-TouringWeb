@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, maximum-scale=2, minimum-scale=1">
+    <title>Lịch sử đặt tour</title>
+    <link rel='stylesheet' id='google-font-Poppins-css'
+          href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&#038;ver=6.1.1'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='fontawesome-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/css/font-awesome.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='bootstrap-css-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/bootstrap.min.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='st-partner-v2-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/partner.css' type='text/css'
+          media='all'/>
+
+    <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.1'
+            id='jquery-core-js'></script>
+
+    </style>
+    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
+          sizes="32x32"/>
+
+    <style>
+
+        body {
+            font-family: "DM Sans" !important;
+        }
+
+        .label-box {
+            width: 25%;
+            float: left;
+            margin-top: 7px
+        }
+
+        .span-box {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0b5ed7;
+            margin-right: 5px;
+        }
+        .btn-view-detail:hover {
+            background: #0252d3 !important;
+        }
+    </style>
+
+</head>
+<body class="page-template page-template-template-user page-template-template-user-php page page-id-1588 logged-in  menu_style1 topbar_position_default wishlist search_enable_preload elementor-default elementor-kit-7">
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <a th:href="@{/home}"><img
+                        src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png"
+                        class="st-logo-site" alt="Logo"/></a>
+                <div class="sidebar-brand icon-ccv hidden-md">
+                    <a href="#"></a>
+                    <div id="close-sidebar">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic" style="margin-right: 7px;">
+                    <img alt='TravelerWP'
+                         th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}"
+                         src="static/images/avatar/23.jpg"
+                         class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
+                </div>
+                <div class="user-info" style="width: 70%;">
+                    <span class="user-name" th:text="${@userController.nameByEmail()}">Phan Van Hung</span>
+                    <span class="user-role" sec:authentication="principal.username"></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="">
+                        <a th:href="@{/user/profile}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Hồ sơ</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_booking_his.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Lịch sử đặt tour</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/user/wishlist}" style="    padding-right: 0px;">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_wishlish.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Danh sách yêu thích</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <ul>
+                    <li>
+                        <a th:href="@{/logout}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home}">
+                            <span class="st-green-homepage">Về trang chủ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="page-content">
+        <div class="st_content">
+            <div class="st-create">
+                <h2>Lịch sử đặt tour</h2>
+            </div>
+            <div class="infor-st-setting st-wishlist-wrap">
+                <div class="st-loadding-wishlist">
+                    <div class="lds-dual-ring"></div>
+                </div>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a href="#tab_hotel" data-toggle="tab">Tất cả</a>
+                        </li>
+                        <li>
+                            <a href="#tab_tour" data-toggle="tab">Chưa khởi hành</a>
+                        </li>
+                        <li>
+                            <a href="#tab_activity" data-toggle="tab">Đã đi</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade  in active " id="tab_hotel">
+                            <div id="data_whislist" data-list-wishlist="264"
+                                 class="booking-list st-wishlist-hotel booking-list-wishlist style-list">
+                                <ul class="page-numbers">
+                                    <li class="st-item-list post-863" th:each="booking : ${listAll}">
+                                        <div class="item-service st-ccv-tour">
+                                            <div class="row item-service-wrapper has-matchHeight" style="background: #fffed26b">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 thumb-wrapper col-xs-12">
+                                                    <div class="thumb">
+                                                        <div class="service-tag bestseller">
+                                                        </div>
+                                                        <a href="#">
+                                                            <img width="450" height="417"
+                                                                 th:src="@{/images/tours/{nameImg}(nameImg=${@bookingController.getMainImgLinkByBooking(booking.id)})} "
+
+                                                                 src="/static/images/tours/100000003_1.jpg"
+                                                                 class="img-responsive wp-post-image" alt="TravelerWP"
+                                                                 decoding="async" loading="lazy"
+                                                            /> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 item-content col-xs-12">
+                                                    <div class="item-content-w" >
+                                                        <p class="service-location"
+                                                           style="padding: 0;margin-top: 15px;height: 20px;"><i
+                                                                class="input-icon st-border-radius field-icon fa"
+                                                                style="margin-top: 15px;float: left;width: 20px;margin-top: -27px;">
+                                                            <svg width="15px" height="15px" viewBox="0 0 24 24"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Ico_maps" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g transform="translate(4.000000, 0.000000)"
+                                                                       stroke="#666666">
+                                                                        <g id="pin-1"
+                                                                           transform="translate(-0.000000, 0.000000)">
+                                                                            <path d="M15.75,8.25 C15.75,12.471 12.817,14.899 10.619,17.25 C9.303,18.658 8.25,23.25 8.25,23.25 C8.25,23.25 7.2,18.661 5.887,17.257 C3.687,14.907 0.75,12.475 0.75,8.25 C0.75,4.10786438 4.10786438,0.75 8.25,0.75 C12.3921356,0.75 15.75,4.10786438 15.75,8.25 Z"></path>
+                                                                            <circle cx="8.25" cy="8.25" r="3"></circle>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        </p><p style="margin-top: -20px" th:text="${@bookingController.getTourById(booking.idTour).location}">helloooo</p>
+                                                        <h4 class="service-title"  th:text="${@bookingController.getTourById(booking.idTour).name}"><a href="#">Du lịch Hè - Tour Du lịch
+                                                            Tây Bắc Hà Nội - Mộc Châu - Sơn La - Điện Biên - Sapa từ Sài
+                                                            Gòn 2023</a></h4>
+
+                                                        <div style="margin-top: 15px;">
+                                                            <div style="margin-bottom: 4px">
+                                                                <label class="label-box">Ngày khởi hành</label>
+                                                                <span class="span-box" th:text="${booking.dateStart}">19/06/2023</span>
+                                                            </div>
+                                                            <div style="display: flex">
+                                                                <label class="label-box" style="font-family: system-ui">Số lượng </label>
+                                                                <span class="span-box" th:text="${booking.noAdults}">2 </span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> người lớn  | </span>
+                                                                <span class="span-box" th:text="${booking.noChildren}">0</span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> trẻ em</span>
+                                                            </div>
+                                                            <div>
+                                                                <label class="label-box">Trạng thái tour</label>
+                                                                <span class="span-box" style="font-family: system-ui;"  th:text="${booking.statusTour}">Đã đi</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-12 section-footer col-xs-12"
+                                                     style="height: 220px">
+                                                    <div class="service-duration hidden-lg hidden-md hidden-sm">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                    </div>
+                                                    <div class="service-price">
+<span class="price-text">
+<i class="input-icon st-border-radius field-icon fa"><svg width="16px" height="16px" viewBox="0 0 11 18" version="1.1"
+                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<defs></defs>
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<g id="Room_Only_Detail_1" transform="translate(-135.000000, -4858.000000)" fill="#ffab53" fill-rule="nonzero">
+<g id="nearby-hotel" transform="translate(130.000000, 4334.000000)">
+<g id="h1-g" transform="translate(5.000000, 136.000000)">
+<g id="hotel-grid">
+<g id="price" transform="translate(0.000000, 383.000000)">
+<g id="thunder" transform="translate(0.000000, 5.000000)">
+<path d="M10.0143234,6.99308716 C9.91102517,6.83252576 9.73362166,6.73708716 9.54386728,6.73708716 L5.61404272,6.73708716 L5.61404272,0.561648567 C5.61404272,0.296666111 5.42877956,0.0676134793 5.16941114,0.0125959355 C4.90555149,-0.0435444154 4.64730587,0.0923152337 4.5395164,0.333718743 L0.0482883306,10.4389819 C-0.0291853536,10.6118942 -0.0123432484,10.8139994 0.0909549973,10.9723152 C0.194253243,11.1317538 0.371656752,11.2283152 0.561411138,11.2283152 L4.4912357,11.2283152 L4.4912357,17.4037538 C4.4912357,17.6687363 4.67649886,17.8977889 4.93586728,17.9528065 C4.97516552,17.9606661 5.01446377,17.9651573 5.05263921,17.9651573 C5.27046377,17.9651573 5.47369184,17.8382801 5.56576201,17.6316837 L10.0569901,7.5264205 C10.133341,7.35238541 10.1187445,7.15252576 10.0143234,6.99308716 Z"></path>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg></i> <span class=" span-box price-tour-format" style="font-size: 20px; color: #0c63e4;margin-top: -6px" th:text="${booking.totalPrice}">900000000 </span>
+</span>
+                                                      </span>
+                                                    </div>
+                                                    <div class="service-duration hidden-xs">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).time}">8 hour</span>
+                                                    </div>
+                                                    <div class="service-type">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg width="17px" height="17px" viewBox="0 0 34 34"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Page-1" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g id="Tour_Detail_1"
+                                                                       transform="translate(-335.000000, -1005.000000)"
+                                                                       stroke="#000000">
+                                                                        <g id="tour-detail"
+                                                                           transform="translate(0.000000, 211.000000)">
+                                                                            <g id="feauture"
+                                                                               transform="translate(135.000000, 765.000000)">
+                                                                                <g transform="translate(201.000000, 25.000000)">
+                                                                                    <g id="ico_tour_type"
+                                                                                       transform="translate(0.000000, 5.000000)">
+                                                                                        <path d="M13.4810667,23.7283556 C13.7772954,25.6164963 13.043711,27.5192464 11.5566476,28.7198584 C10.0695841,29.9204704 8.05496197,30.2365427 6.27166976,29.549014 C4.48837756,28.8614852 3.20733983,27.2748074 2.91111111,25.3866667 L2.74613333,24.3299556 C2.65661545,23.7692095 2.79434998,23.1959129 3.12883306,22.7370331 C3.46331614,22.2781533 3.96694361,21.9715605 4.52817778,21.8851556 L10.8712889,20.8896 C11.432035,20.8000821 12.0053315,20.9378166 12.4642113,21.2722997 C12.9230912,21.6067828 13.2296839,22.1104103 13.3160889,22.6716444 L13.4810667,23.7283556 Z"></path>
+                                                                                        <path d="M5.11555556,0.1408 C1.71134814,0.982901045 -0.457506858,4.31950538 0.154844444,7.77244444 L1.41777778,15.8691556 C1.60071,17.0365699 2.69505968,17.8348913 3.86257778,17.6526222 L10.2042667,16.6570667 C10.7657612,16.571 11.2697435,16.2645497 11.6045222,15.8056305 C11.9393009,15.3467113 12.0772269,14.7732252 11.9877333,14.2122667 L11.9592889,14.0088889 C11.7659953,12.7663569 11.9436025,11.4944126 12.4698667,10.3523556 C12.9981751,9.20988894 13.1758566,7.93642212 12.9804444,6.69297778 L12.7827556,5.4272 C12.5097684,3.68767687 11.5342848,2.1366314 10.0846439,1.13712946 C8.63500309,0.137627517 6.8384634,-0.222588541 5.11555556,0.1408 Z"></path>
+                                                                                        <path d="M18.2583111,25.6995556 C17.8428835,28.5534868 19.7641913,31.223136 22.6023163,31.7355326 C25.4404413,32.2479292 28.1739846,30.4186694 28.7827556,27.5996444 L28.9719111,26.5457778 C29.1807578,25.3831626 28.4089448,24.2709374 27.2467556,24.0597333 L20.9292444,22.9219556 C20.3703881,22.8193233 19.7936791,22.9438755 19.3269888,23.2679956 C18.8602984,23.5921158 18.5421913,24.0890206 18.4432,24.6485333 L18.2583111,25.6995556 Z"></path>
+                                                                                        <path d="M27.1770667,2.31253333 C30.5568647,3.23734789 32.6432678,6.62146013 31.9514667,10.0565333 L30.4965333,18.1233778 C30.3971763,18.68204 30.079348,19.1781018 29.6133417,19.5018508 C29.1473353,19.8255998 28.5715511,19.9503581 28.0133333,19.8485333 L21.6958222,18.7107556 C21.1363095,18.6117642 20.6394047,18.2936571 20.3152845,17.8269668 C19.9911643,17.3602764 19.8666122,16.7835675 19.9692444,16.2247111 L20.0062222,16.0170667 C20.2290597,14.7795819 20.0806008,13.5038248 19.5795556,12.3505778 C19.0784767,11.1968384 18.9300215,9.92061854 19.1528889,8.68266667 L19.3804444,7.42257778 C19.6924113,5.68717624 20.7045511,4.15653375 22.1792495,3.18999024 C23.6539479,2.22344673 25.4613226,1.90612953 27.1770667,2.31253333 Z"></path>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).startingPoint}">Ho Chi Minh</span>
+                                                    </div>
+
+                                                    <div>
+                                                        <a th:href="@{/user/history/detail/{id}(id=${booking.id})}" style="background: #5191fa;color: white;"
+                                                           class="btn btn-primary btn-view-more btn-view-detail">Xem chi
+                                                            tiết</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade " id="tab_tour">
+                            <div id="data_whislist1" data-list-wishlist="264"
+                                 class="booking-list st-wishlist-hotel booking-list-wishlist style-list">
+                                <ul class="page-numbers">
+                                    <li class="st-item-list post-863" th:each="booking : ${listWait}">
+                                        <div class="item-service st-ccv-tour">
+                                            <div class="row item-service-wrapper has-matchHeight" style="background: #deffe06b">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 thumb-wrapper col-xs-12">
+                                                    <div class="thumb">
+                                                        <div class="service-tag bestseller">
+                                                        </div>
+                                                        <a href="#">
+                                                            <img width="450" height="417"
+                                                                 th:src="@{/images/tours/{nameImg}(nameImg=${@bookingController.getMainImgLinkByBooking(booking.id)})} "
+
+                                                                 src="/static/images/tours/100000003_1.jpg"
+                                                                 class="img-responsive wp-post-image" alt="TravelerWP"
+                                                                 decoding="async" loading="lazy"
+                                                            /> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 item-content col-xs-12">
+                                                    <div class="item-content-w" >
+                                                        <p class="service-location"
+                                                           style="padding: 0;margin-top: 15px;height: 20px;"><i
+                                                                class="input-icon st-border-radius field-icon fa"
+                                                                style="margin-top: 15px;float: left;width: 20px;margin-top: -27px;">
+                                                            <svg width="15px" height="15px" viewBox="0 0 24 24"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Ico_maps" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g transform="translate(4.000000, 0.000000)"
+                                                                       stroke="#666666">
+                                                                        <g id="pin-1"
+                                                                           transform="translate(-0.000000, 0.000000)">
+                                                                            <path d="M15.75,8.25 C15.75,12.471 12.817,14.899 10.619,17.25 C9.303,18.658 8.25,23.25 8.25,23.25 C8.25,23.25 7.2,18.661 5.887,17.257 C3.687,14.907 0.75,12.475 0.75,8.25 C0.75,4.10786438 4.10786438,0.75 8.25,0.75 C12.3921356,0.75 15.75,4.10786438 15.75,8.25 Z"></path>
+                                                                            <circle cx="8.25" cy="8.25" r="3"></circle>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        </p><p style="margin-top: -20px" th:text="${@bookingController.getTourById(booking.idTour).location}">helloooo</p>
+                                                        <h4 class="service-title"  th:text="${@bookingController.getTourById(booking.idTour).name}"><a href="#">Du lịch Hè - Tour Du lịch
+                                                            Tây Bắc Hà Nội - Mộc Châu - Sơn La - Điện Biên - Sapa từ Sài
+                                                            Gòn 2023</a></h4>
+
+                                                        <div style="margin-top: 15px;">
+                                                            <div style="margin-bottom: 4px">
+                                                                <label class="label-box">Ngày khởi hành</label>
+                                                                <span class="span-box" th:text="${booking.dateStart}">19/06/2023</span>
+                                                            </div>
+                                                            <div style="display: flex">
+                                                                <label class="label-box" style="font-family: system-ui">Số lượng </label>
+                                                                <span class="span-box" th:text="${booking.noAdults}">2 </span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> người lớn  | </span>
+                                                                <span class="span-box" th:text="${booking.noChildren}">0</span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> trẻ em</span>
+                                                            </div>
+                                                            <div>
+                                                                <label class="label-box">Trạng thái tour</label>
+                                                                <span class="span-box" style="font-family: system-ui;"  th:text="${booking.statusTour}">Đã đi</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-12 section-footer col-xs-12"
+                                                     style="height: 220px">
+                                                    <div class="service-duration hidden-lg hidden-md hidden-sm">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                    </div>
+                                                    <div class="service-price">
+<span class="price-text">
+<i class="input-icon st-border-radius field-icon fa"><svg width="16px" height="16px" viewBox="0 0 11 18" version="1.1"
+                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<defs></defs>
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<g id="Room_Only_Detail_1" transform="translate(-135.000000, -4858.000000)" fill="#ffab53" fill-rule="nonzero">
+<g id="nearby-hotel" transform="translate(130.000000, 4334.000000)">
+<g id="h1-g" transform="translate(5.000000, 136.000000)">
+<g id="hotel-grid">
+<g id="price" transform="translate(0.000000, 383.000000)">
+<g id="thunder" transform="translate(0.000000, 5.000000)">
+<path d="M10.0143234,6.99308716 C9.91102517,6.83252576 9.73362166,6.73708716 9.54386728,6.73708716 L5.61404272,6.73708716 L5.61404272,0.561648567 C5.61404272,0.296666111 5.42877956,0.0676134793 5.16941114,0.0125959355 C4.90555149,-0.0435444154 4.64730587,0.0923152337 4.5395164,0.333718743 L0.0482883306,10.4389819 C-0.0291853536,10.6118942 -0.0123432484,10.8139994 0.0909549973,10.9723152 C0.194253243,11.1317538 0.371656752,11.2283152 0.561411138,11.2283152 L4.4912357,11.2283152 L4.4912357,17.4037538 C4.4912357,17.6687363 4.67649886,17.8977889 4.93586728,17.9528065 C4.97516552,17.9606661 5.01446377,17.9651573 5.05263921,17.9651573 C5.27046377,17.9651573 5.47369184,17.8382801 5.56576201,17.6316837 L10.0569901,7.5264205 C10.133341,7.35238541 10.1187445,7.15252576 10.0143234,6.99308716 Z"></path>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg></i> <span class=" span-box price-tour-format" style="font-size: 20px; color: #0c63e4;margin-top: -6px" th:text="${booking.totalPrice}">900000000 </span>
+</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="service-duration hidden-xs">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).time}">8 hour</span>
+                                                    </div>
+                                                    <div class="service-type">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg width="17px" height="17px" viewBox="0 0 34 34"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Page-1" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g id="Tour_Detail_1"
+                                                                       transform="translate(-335.000000, -1005.000000)"
+                                                                       stroke="#000000">
+                                                                        <g id="tour-detail"
+                                                                           transform="translate(0.000000, 211.000000)">
+                                                                            <g id="feauture"
+                                                                               transform="translate(135.000000, 765.000000)">
+                                                                                <g transform="translate(201.000000, 25.000000)">
+                                                                                    <g id="ico_tour_type"
+                                                                                       transform="translate(0.000000, 5.000000)">
+                                                                                        <path d="M13.4810667,23.7283556 C13.7772954,25.6164963 13.043711,27.5192464 11.5566476,28.7198584 C10.0695841,29.9204704 8.05496197,30.2365427 6.27166976,29.549014 C4.48837756,28.8614852 3.20733983,27.2748074 2.91111111,25.3866667 L2.74613333,24.3299556 C2.65661545,23.7692095 2.79434998,23.1959129 3.12883306,22.7370331 C3.46331614,22.2781533 3.96694361,21.9715605 4.52817778,21.8851556 L10.8712889,20.8896 C11.432035,20.8000821 12.0053315,20.9378166 12.4642113,21.2722997 C12.9230912,21.6067828 13.2296839,22.1104103 13.3160889,22.6716444 L13.4810667,23.7283556 Z"></path>
+                                                                                        <path d="M5.11555556,0.1408 C1.71134814,0.982901045 -0.457506858,4.31950538 0.154844444,7.77244444 L1.41777778,15.8691556 C1.60071,17.0365699 2.69505968,17.8348913 3.86257778,17.6526222 L10.2042667,16.6570667 C10.7657612,16.571 11.2697435,16.2645497 11.6045222,15.8056305 C11.9393009,15.3467113 12.0772269,14.7732252 11.9877333,14.2122667 L11.9592889,14.0088889 C11.7659953,12.7663569 11.9436025,11.4944126 12.4698667,10.3523556 C12.9981751,9.20988894 13.1758566,7.93642212 12.9804444,6.69297778 L12.7827556,5.4272 C12.5097684,3.68767687 11.5342848,2.1366314 10.0846439,1.13712946 C8.63500309,0.137627517 6.8384634,-0.222588541 5.11555556,0.1408 Z"></path>
+                                                                                        <path d="M18.2583111,25.6995556 C17.8428835,28.5534868 19.7641913,31.223136 22.6023163,31.7355326 C25.4404413,32.2479292 28.1739846,30.4186694 28.7827556,27.5996444 L28.9719111,26.5457778 C29.1807578,25.3831626 28.4089448,24.2709374 27.2467556,24.0597333 L20.9292444,22.9219556 C20.3703881,22.8193233 19.7936791,22.9438755 19.3269888,23.2679956 C18.8602984,23.5921158 18.5421913,24.0890206 18.4432,24.6485333 L18.2583111,25.6995556 Z"></path>
+                                                                                        <path d="M27.1770667,2.31253333 C30.5568647,3.23734789 32.6432678,6.62146013 31.9514667,10.0565333 L30.4965333,18.1233778 C30.3971763,18.68204 30.079348,19.1781018 29.6133417,19.5018508 C29.1473353,19.8255998 28.5715511,19.9503581 28.0133333,19.8485333 L21.6958222,18.7107556 C21.1363095,18.6117642 20.6394047,18.2936571 20.3152845,17.8269668 C19.9911643,17.3602764 19.8666122,16.7835675 19.9692444,16.2247111 L20.0062222,16.0170667 C20.2290597,14.7795819 20.0806008,13.5038248 19.5795556,12.3505778 C19.0784767,11.1968384 18.9300215,9.92061854 19.1528889,8.68266667 L19.3804444,7.42257778 C19.6924113,5.68717624 20.7045511,4.15653375 22.1792495,3.18999024 C23.6539479,2.22344673 25.4613226,1.90612953 27.1770667,2.31253333 Z"></path>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).startingPoint}">Ho Chi Minh</span>
+                                                    </div>
+
+                                                    <div>
+                                                        <a th:href="@{/user/history/detail/{id}(id=${booking.id})}" style="background: #5191fa;color: white;"
+                                                           class="btn btn-primary btn-view-more btn-view-detail">Xem chi
+                                                            tiết</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade " id="tab_activity">
+                            <div id="data_whislist2" data-list-wishlist="264"
+                                 class="booking-list st-wishlist-hotel booking-list-wishlist style-list">
+                                <ul class="page-numbers">
+                                    <li class="st-item-list post-863" th:each="booking : ${listDone}">
+                                        <div class="item-service st-ccv-tour">
+                                            <div class="row item-service-wrapper has-matchHeight" style="background: #ffe4e46b">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 thumb-wrapper col-xs-12">
+                                                    <div class="thumb">
+                                                        <div class="service-tag bestseller">
+                                                        </div>
+                                                        <a href="#">
+                                                            <img width="450" height="417"
+                                                                 th:src="@{/images/tours/{nameImg}(nameImg=${@bookingController.getMainImgLinkByBooking(booking.id)})} "
+
+                                                                 src="/static/images/tours/100000003_1.jpg"
+                                                                 class="img-responsive wp-post-image" alt="TravelerWP"
+                                                                 decoding="async" loading="lazy"
+                                                            /> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 item-content col-xs-12">
+                                                    <div class="item-content-w" >
+                                                        <p class="service-location"
+                                                           style="padding: 0;margin-top: 15px;height: 20px;"><i
+                                                                class="input-icon st-border-radius field-icon fa"
+                                                                style="margin-top: 15px;float: left;width: 20px;margin-top: -27px;">
+                                                            <svg width="15px" height="15px" viewBox="0 0 24 24"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Ico_maps" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g transform="translate(4.000000, 0.000000)"
+                                                                       stroke="#666666">
+                                                                        <g id="pin-1"
+                                                                           transform="translate(-0.000000, 0.000000)">
+                                                                            <path d="M15.75,8.25 C15.75,12.471 12.817,14.899 10.619,17.25 C9.303,18.658 8.25,23.25 8.25,23.25 C8.25,23.25 7.2,18.661 5.887,17.257 C3.687,14.907 0.75,12.475 0.75,8.25 C0.75,4.10786438 4.10786438,0.75 8.25,0.75 C12.3921356,0.75 15.75,4.10786438 15.75,8.25 Z"></path>
+                                                                            <circle cx="8.25" cy="8.25" r="3"></circle>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        </p><p style="margin-top: -20px" th:text="${@bookingController.getTourById(booking.idTour).location}">helloooo</p>
+                                                        <h4 class="service-title"  th:text="${@bookingController.getTourById(booking.idTour).name}"><a href="#">Du lịch Hè - Tour Du lịch
+                                                            Tây Bắc Hà Nội - Mộc Châu - Sơn La - Điện Biên - Sapa từ Sài
+                                                            Gòn 2023</a></h4>
+
+                                                        <div style="margin-top: 15px;">
+                                                            <div style="margin-bottom: 4px">
+                                                                <label class="label-box">Ngày khởi hành</label>
+                                                                <span class="span-box" th:text="${booking.dateStart}">19/06/2023</span>
+                                                            </div>
+                                                            <div style="display: flex">
+                                                                <label class="label-box" style="font-family: system-ui">Số lượng </label>
+                                                                <span class="span-box" th:text="${booking.noAdults}">2 </span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> người lớn  | </span>
+                                                                <span class="span-box" th:text="${booking.noChildren}">0</span><span class="span-box" style="font-family: system-ui; margin-top: -2px"> trẻ em</span>
+                                                            </div>
+                                                            <div>
+                                                                <label class="label-box">Trạng thái tour</label>
+                                                                <span class="span-box" style="font-family: system-ui;" th:text="${booking.statusTour}">Đã đi</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-12 section-footer col-xs-12"
+                                                     style="height: 220px">
+                                                    <div class="service-duration hidden-lg hidden-md hidden-sm">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                    </div>
+                                                    <div class="service-price">
+<span class="price-text">
+<i class="input-icon st-border-radius field-icon fa"><svg width="16px" height="16px" viewBox="0 0 11 18" version="1.1"
+                                                          xmlns="http://www.w3.org/2000/svg"
+                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<defs></defs>
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<g id="Room_Only_Detail_1" transform="translate(-135.000000, -4858.000000)" fill="#ffab53" fill-rule="nonzero">
+<g id="nearby-hotel" transform="translate(130.000000, 4334.000000)">
+<g id="h1-g" transform="translate(5.000000, 136.000000)">
+<g id="hotel-grid">
+<g id="price" transform="translate(0.000000, 383.000000)">
+<g id="thunder" transform="translate(0.000000, 5.000000)">
+<path d="M10.0143234,6.99308716 C9.91102517,6.83252576 9.73362166,6.73708716 9.54386728,6.73708716 L5.61404272,6.73708716 L5.61404272,0.561648567 C5.61404272,0.296666111 5.42877956,0.0676134793 5.16941114,0.0125959355 C4.90555149,-0.0435444154 4.64730587,0.0923152337 4.5395164,0.333718743 L0.0482883306,10.4389819 C-0.0291853536,10.6118942 -0.0123432484,10.8139994 0.0909549973,10.9723152 C0.194253243,11.1317538 0.371656752,11.2283152 0.561411138,11.2283152 L4.4912357,11.2283152 L4.4912357,17.4037538 C4.4912357,17.6687363 4.67649886,17.8977889 4.93586728,17.9528065 C4.97516552,17.9606661 5.01446377,17.9651573 5.05263921,17.9651573 C5.27046377,17.9651573 5.47369184,17.8382801 5.56576201,17.6316837 L10.0569901,7.5264205 C10.133341,7.35238541 10.1187445,7.15252576 10.0143234,6.99308716 Z"></path>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg></i> <span class=" span-box price-tour-format" style="font-size: 20px; color: #0c63e4;margin-top: -6px" th:text="${booking.totalPrice}">900000000 </span>
+</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="service-duration hidden-xs">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg height="17px" width="17px" version="1.1"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                 y="0px" viewBox="0 0 24 24"
+                                                                 style="enable-background:new 0 0 24 24;"
+                                                                 xml:space="preserve">
+<g fill="#5E6D77">
+<path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
+        S17.376,2.25,12,2.25z"/>
+    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
+        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
+        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
+</g>
+</svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).time}">8 hour</span>
+                                                    </div>
+                                                    <div class="service-type">
+                                                        <i class="input-icon st-border-radius field-icon fa">
+                                                            <svg width="17px" height="17px" viewBox="0 0 34 34"
+                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                                                <defs></defs>
+                                                                <g id="Page-1" stroke="none" stroke-width="1"
+                                                                   fill="none" fill-rule="evenodd"
+                                                                   stroke-linecap="round" stroke-linejoin="round">
+                                                                    <g id="Tour_Detail_1"
+                                                                       transform="translate(-335.000000, -1005.000000)"
+                                                                       stroke="#000000">
+                                                                        <g id="tour-detail"
+                                                                           transform="translate(0.000000, 211.000000)">
+                                                                            <g id="feauture"
+                                                                               transform="translate(135.000000, 765.000000)">
+                                                                                <g transform="translate(201.000000, 25.000000)">
+                                                                                    <g id="ico_tour_type"
+                                                                                       transform="translate(0.000000, 5.000000)">
+                                                                                        <path d="M13.4810667,23.7283556 C13.7772954,25.6164963 13.043711,27.5192464 11.5566476,28.7198584 C10.0695841,29.9204704 8.05496197,30.2365427 6.27166976,29.549014 C4.48837756,28.8614852 3.20733983,27.2748074 2.91111111,25.3866667 L2.74613333,24.3299556 C2.65661545,23.7692095 2.79434998,23.1959129 3.12883306,22.7370331 C3.46331614,22.2781533 3.96694361,21.9715605 4.52817778,21.8851556 L10.8712889,20.8896 C11.432035,20.8000821 12.0053315,20.9378166 12.4642113,21.2722997 C12.9230912,21.6067828 13.2296839,22.1104103 13.3160889,22.6716444 L13.4810667,23.7283556 Z"></path>
+                                                                                        <path d="M5.11555556,0.1408 C1.71134814,0.982901045 -0.457506858,4.31950538 0.154844444,7.77244444 L1.41777778,15.8691556 C1.60071,17.0365699 2.69505968,17.8348913 3.86257778,17.6526222 L10.2042667,16.6570667 C10.7657612,16.571 11.2697435,16.2645497 11.6045222,15.8056305 C11.9393009,15.3467113 12.0772269,14.7732252 11.9877333,14.2122667 L11.9592889,14.0088889 C11.7659953,12.7663569 11.9436025,11.4944126 12.4698667,10.3523556 C12.9981751,9.20988894 13.1758566,7.93642212 12.9804444,6.69297778 L12.7827556,5.4272 C12.5097684,3.68767687 11.5342848,2.1366314 10.0846439,1.13712946 C8.63500309,0.137627517 6.8384634,-0.222588541 5.11555556,0.1408 Z"></path>
+                                                                                        <path d="M18.2583111,25.6995556 C17.8428835,28.5534868 19.7641913,31.223136 22.6023163,31.7355326 C25.4404413,32.2479292 28.1739846,30.4186694 28.7827556,27.5996444 L28.9719111,26.5457778 C29.1807578,25.3831626 28.4089448,24.2709374 27.2467556,24.0597333 L20.9292444,22.9219556 C20.3703881,22.8193233 19.7936791,22.9438755 19.3269888,23.2679956 C18.8602984,23.5921158 18.5421913,24.0890206 18.4432,24.6485333 L18.2583111,25.6995556 Z"></path>
+                                                                                        <path d="M27.1770667,2.31253333 C30.5568647,3.23734789 32.6432678,6.62146013 31.9514667,10.0565333 L30.4965333,18.1233778 C30.3971763,18.68204 30.079348,19.1781018 29.6133417,19.5018508 C29.1473353,19.8255998 28.5715511,19.9503581 28.0133333,19.8485333 L21.6958222,18.7107556 C21.1363095,18.6117642 20.6394047,18.2936571 20.3152845,17.8269668 C19.9911643,17.3602764 19.8666122,16.7835675 19.9692444,16.2247111 L20.0062222,16.0170667 C20.2290597,14.7795819 20.0806008,13.5038248 19.5795556,12.3505778 C19.0784767,11.1968384 18.9300215,9.92061854 19.1528889,8.68266667 L19.3804444,7.42257778 C19.6924113,5.68717624 20.7045511,4.15653375 22.1792495,3.18999024 C23.6539479,2.22344673 25.4613226,1.90612953 27.1770667,2.31253333 Z"></path>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </svg>
+                                                        </i>
+                                                        <span th:text="${@bookingController.getTourById(booking.idTour).startingPoint}">Ho Chi Minh</span>
+                                                    </div>
+
+                                                    <div>
+                                                        <a th:href="@{/user/history/detail/{id}(id=${booking.id})}" style="background: #5191fa;color: white;"
+                                                           class="btn btn-primary btn-view-more btn-view-detail">Xem chi
+                                                            tiết</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'
+                src='https://modmixmap.travelerwp.com/wp-content/themes/traveler/dist/traveler.js'
+                id='traveler-js'></script>
+
+        <script>
+
+            var priceElements = document.querySelectorAll('.price-tour-format');
+            priceElements.forEach(function (element) {
+                var priceValue = parseFloat(element.textContent);
+                if (!isNaN(priceValue)) {
+                    var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+                    element.textContent = formattedPrice;
+                }
+            });
+        </script>
+</body>
+</html> </main>
+<div class="sidenav-overlay"></div>
+
+</div>

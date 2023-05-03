@@ -83,14 +83,14 @@ public class PaypalController {
 
                 Booking booking1 = new Booking(idUser, booking.getIdTour(), booking.getNoAdults(), booking.getNoChildren(), booking.getTotalPrice(), booking.getDateStart(), booking.getPayment(), "Đã thanh toán", "Chờ khởi hành", createAt);
                 bookingRepository.save(booking1);
-                String url = "/user/purchase/" + Long.toString(booking1.getId());
+                String url = "/user/history/detail/" + Long.toString(booking1.getId());
                 redirectView.setUrl(url);
                 return redirectView;
             }
         } catch (PayPalRESTException e) {
             e.printStackTrace();
         }
-        String url = "/user/purchase/error";
+        String url = "/user/history/error";
         redirectView.setUrl(url);
         return redirectView;
     }
