@@ -30,8 +30,7 @@ public class User {
     private String address;
     @Column(name = "id_cart")
     private String idCart;
-    @Column(name = "avatar")
-    private String avatar;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -125,15 +124,6 @@ public User(){
         this.idCart = idCart;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-
     public Collection<Role> getRoles() {
         return roles;
     }
@@ -153,7 +143,6 @@ public User(){
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", idCart='" + idCart + '\'' +
-                ", avatar='" + avatar + '\'' +
                 ", roles=" + roles +
                 '}';
     }
