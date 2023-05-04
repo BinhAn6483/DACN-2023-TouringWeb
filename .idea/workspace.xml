@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0640331e-56c4-4fa8-9ab6-af6b376fb91a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/images/tours/booking.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/wp-includes/css/booking_style (1).css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/wp-includes/css/booking_style (2).css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TouringWeb/src/main/resources/templates/tour_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/templates/tour_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +25,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TouringWeb" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -32,6 +36,9 @@
       <option name="presentableId" value="Default" />
       <updated>1681644734576</updated>
       <workItem from="1681644736635" duration="972000" />
+      <workItem from="1683190348970" duration="52000" />
+      <workItem from="1683190416589" duration="100000" />
+      <workItem from="1683194698495" duration="18000" />
     </task>
     <servers />
   </component>
