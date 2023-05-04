@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -153,4 +154,22 @@ public class userController {
         return imgAvatar.getImg();
     }
 
+//    @PostMapping("/user/upload-avatar")
+//    public String uploadFile(@RequestParam("avatar") MultipartFile avatar) throws Exception {
+//        User user = null;
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication != null && authentication.isAuthenticated()) {
+//            String username = authentication.getName();
+//            user = userRepository.findByEmail(username);
+//        }
+//        String fileName = StringUtils.cleanPath(avatar.getOriginalFilename());
+//        user.setAvatar("/avatars/" + fileName);
+//        userRepository.save(user);
+//        Path uploadDir = Paths.get("avatars");
+//        try (InputStream inputStream = avatar.getInputStream()) {
+//            Files.copy(inputStream, uploadDir.resolve(fileName), StandardCopyOption.REPLACE_EXISTING);
+//        }
+//
+//        return "redirect:/user/profile";
+//    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<html lang="en-US" prefix="og: https://ogp.me/ns#" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -662,10 +662,10 @@
         </ul>
     </div>
 </header>
-<div id="st-content-wrapper" class="st-style-elementor search-result-page activity-layout5" data-layout="5"
+<div id="st-content-wrapper" class="st-style-elementor search-result-page activity-layout5" data-layout="5" onclick="toggleDropdown2()"
      data-format="top">
-    <div class="banner st_1682490006">
-        <div class="container">
+    <div class=" " style="background-image:url(https://havatravel.vn/upload/hinhanh/banner1-5435.jpg)!important; padding: 0 50px;height: 400px">
+        <div class="container" style="display: inline-block;margin: 358px 0 0 87px">
             <h1 class="tag_h1 d-none d-lg-none">Activity Search Topbar</h1>
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
@@ -756,7 +756,7 @@
 
         </div>
     </div>
-    <div class="top-filter">
+    <div class="top-filter" style="margin-top: 42px;">
         <div class="btn-clear-filter">
             Clear filter <span class="stt-icon stt-icon-close"></span>
         </div>
@@ -2532,6 +2532,24 @@
         dropdownMenu.style.display = 'none';
 
     }
+        // Lấy ra tất cả các phần tử có class là 'price-tour-format'
+        var priceElements = document.querySelectorAll('.price-tour-format');
+
+        // Lặp qua tất cả các phần tử và thay đổi giá trị của chúng
+        priceElements.forEach(function(element) {
+        // Lấy giá trị của phần tử
+        var priceValue = parseFloat(element.textContent);
+
+        // Kiểm tra giá trị có hợp lệ hay không
+        if (!isNaN(priceValue)) {
+        // Định dạng giá tiền
+        var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+
+        console.log(formattedPrice)
+        // Gán giá trị đã được định dạng lại vào phần tử
+        element.textContent = formattedPrice;
+        }
+        });
 </script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
