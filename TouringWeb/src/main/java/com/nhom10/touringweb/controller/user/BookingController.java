@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,14 +39,12 @@ public class BookingController {
     @Autowired
     LinkImgService linkImgService;
 
-    @GetMapping("/confirm_booking")
-    public String bookingPage(@RequestParam("idTour") Long idTour, @RequestParam("noAdults") int noAdults, @RequestParam("noChildren") int noChildren, Model model) {
+    @PostMapping("/confirm_booking")
+    public String bookingPage(@RequestParam("idTour") Long idTour, @RequestParam("dateStart") String dateStart, Model model) {
         Tour tour = tourService.getTourById(idTour);
         List<Date> listDateStart= tourService.getAllDateStart(idTour);
         model.addAttribute("tour", tour);
-        model.addAttribute("dates",listDateStart);
-        model.addAttribute("noAdults", noAdults);
-        model.addAttribute("noChildren", noChildren);
+        model.addAttribute("date",dateStart);
         Booking booking =new Booking();
         model.addAttribute("booking",booking);
 
@@ -111,4 +110,6 @@ public class BookingController {
         Tour tour = getTourById(booking.getIdTour());
         return linkImgService.getNameImgByIdTour(tour.getId());
     }
+
+
 }

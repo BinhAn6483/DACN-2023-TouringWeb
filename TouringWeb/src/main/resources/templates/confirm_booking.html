@@ -16,7 +16,8 @@
     <link rel='stylesheet' id='elementor-frontend-css'
           href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/custom-frontend-lite.min.css'
           type='text/css' media='all'/>
-
+    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
+          sizes="32x32"/>
 
     <!-- Bootstrap CSS -->
 
@@ -326,7 +327,7 @@
                             <tr>
                                 <td><span>Giá</span></td>
                                 <td><span class="mda-money price-tour-format" th:text="${tour.getPriceSale()}">10,299,000</span> </td>
-                                <td><span class="mda-money price-tour-format" th:text="${tour.getPriceSale() *0.15}">7,400,000</span> </td>
+                                <td><span class="mda-money price-tour-format" th:text="${tour.getPriceSale() *0.3}">7,400,000</span> </td>
                                 <td><span class="mda-money price-tour-format">0</span> </td>
                             </tr>
                             </tbody>
@@ -392,10 +393,7 @@
                     <div class="form-group row">
                         <label class="col-form-label">Thời gian khởi hành:</label>
                         <div class="col-md-9" style="width: 85%">
-                            <select id="dateStart" name="dateStart" class="form-control"
-                                    required>
-                                <option th:each="date : ${dates}" th:value="${date}" th:text="${date}"></option>
-                            </select>
+                                <input class="form-control" type="text" id="dateStart" name="dateStart"  th:value="${date}" readonly>
                         </div>
                     </div>
                     <div class="col-sm-10">
@@ -404,8 +402,8 @@
                     <div class="form-group row">
                         <label class=" col-form-label">Số lượng người lớn:</label>
                         <div class="col-md-9" style="width: 85%">
-                            <input type="number" id="noAdults" name="noAdults" min="1" class="form-control" value="0"
-                                   th:value="${noAdults}">
+                            <input type="number" id="noAdults" name="noAdults" min="1" class="form-control" value="1"
+                                 >
                         </div>
                     </div>
 
@@ -414,7 +412,7 @@
                         <div class="col-md-9" style="width: 85%">
                             <input type="number" id="noChildren" name="noChildren" min="0" class="form-control"
                                    value="0"
-                                   th:value="${noChildren}">
+                                  >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -1141,13 +1139,13 @@
     var adults = document.getElementById("noAdults").value;
     var children = document.getElementById("noChildren").value;
     var price = document.getElementById("price").value;
-    var totalPrice = adults * price + (children * price *0.15);
+    var totalPrice = adults * price + (children * price *0.3);
     document.getElementById("price-text").innerHTML = totalPrice.toLocaleString() + " đ";
     function calculateTotalPrice() {
         var adults = document.getElementById("noAdults").value;
         var children = document.getElementById("noChildren").value;
         var price = document.getElementById("price").value;
-        var totalPrice = adults * price + (children * price *0.15);
+        var totalPrice = adults * price + (children * price *0.3);
         document.getElementById("price-text").innerHTML = totalPrice.toLocaleString() + " đ";
     }
     document.getElementById("noAdults").onchange = calculateTotalPrice;
@@ -1189,7 +1187,7 @@
     var adults = parseInt($('#noAdults').val()) || 0;
     var children = parseInt($('#noChildren').val()) || 0;
     var tourPrice = parseInt($('#price').val()) || 0;
-    var totalPrice = tourPrice * adults + tourPrice * 0.15 * children;
+    var totalPrice = Math.round((tourPrice * adults + tourPrice * 0.3 * children) / 10000) * 10000;
     $('#totalPrice').val(totalPrice);
     $(document).ready(function () {
         $('#noAdults, #noChildren').on('input', function () {
@@ -1197,7 +1195,7 @@
             var children = parseInt($('#noChildren').val()) || 0;
             var tourPrice = parseInt($('#price').val()) || 0;
             console.log("noAdults: " + adults + "\tnoChildren: " + children + "\ttourPrice: " + tourPrice);
-            var totalPrice = tourPrice * adults + tourPrice * 0.15 * children;
+            var totalPrice = Math.round((tourPrice * adults + tourPrice * 0.3 * children) / 10000) * 10000;
             $('#totalPrice').val(totalPrice);
         });
     });

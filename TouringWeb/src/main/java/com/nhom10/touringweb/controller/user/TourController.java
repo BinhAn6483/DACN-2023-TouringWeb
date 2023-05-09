@@ -48,6 +48,7 @@ public class TourController {
         List<Tour> listTourNew = (List<Tour>) getListTourNew();
         List<Tour> listTourDiscount = (List<Tour>) getListTourDiscount();
         Map<String, Integer> topList = tourService.getTopDestinations();
+        List<String> locations = getAllLocation();
         System.out.println(topList);
         ModelAndView mav = new ModelAndView("home");
         Map<String, Object> model = new HashMap<>();
@@ -56,6 +57,8 @@ public class TourController {
         model.put("listTourNew", listTourNew);
         model.put("listTourDiscount", listTourDiscount);
         model.put("listTopDestinations", topList);
+        model.put("locations", locations);
+
         mav.addAllObjects(model);
         return mav;
     }
@@ -109,6 +112,7 @@ public class TourController {
         List<Tour> featuredTours = (List<Tour>) getListTourFeatured();
         List<Tour> listTourNew = (List<Tour>) getListTourNew();
         List<Tour> listTourDiscount = (List<Tour>) getListTourDiscount();
+        List<String> locations = getAllLocation();
         Map<String, Integer> topList = tourService.getTopDestinations();
         System.out.println(topList);
         ModelAndView mav = new ModelAndView("home");
@@ -119,6 +123,8 @@ public class TourController {
         model.put("listTourDiscount", listTourDiscount);
         model.put("listTopDestinations", topList);
         mav.addAllObjects(model);
+        model.put("locations", locations);
+
         return mav;
     }
 
@@ -329,5 +335,8 @@ public class TourController {
 //    }
 
 
+    public List<String> getAllLocation() {
+        return tourService.getAllLocation();
+    }
 
 }

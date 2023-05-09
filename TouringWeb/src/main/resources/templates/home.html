@@ -44,7 +44,12 @@
           href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/post-71.css' type='text/css'
           media='all'/>
 
+    <style>
 
+        body {
+            font-family: "DM Sans" !important;
+        }
+    </style>
     <script type='text/javascript' id='jquery-core-js-extra'>
         /* <![CDATA[ */
         var list_location = {"list": "\"\""};
@@ -445,41 +450,41 @@
                                                                     <li class="location-heading"><span>Hãy chọn địa điểm bạn muốn đi nhé</span>
                                                                     </li>
 
-                                                                    <li style="padding-left: 20px;"
+                                                                    <li style="padding-left: 20px;" th:each="location: ${locations}"
                                                                         data-country="US" data-value="55"
                                                                         class="item ">
                                                                         <i class="fas fa-map-marker-alt"
                                                                            style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Ha Noi</span>
+                                                                            class="lv2" th:text="${location}">Ha Noi</span>
                                                                     </li>
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="56"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt"
-                                                                           style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Ho Chi Minh</span>
-                                                                    </li>
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="56"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt"
-                                                                           style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Da Nang</span>
-                                                                    </li>
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="56"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt"
-                                                                           style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Du lich bien dao</span>
-                                                                    </li>
-                                                                    <li style="padding-left: 20px;"
-                                                                        data-country="US" data-value="56"
-                                                                        class="item ">
-                                                                        <i class="fas fa-map-marker-alt"
-                                                                           style="margin-right: 10px;"></i><span
-                                                                            class="lv2">Tay Bac</span>
-                                                                    </li>
+<!--                                                                    <li style="padding-left: 20px;"-->
+<!--                                                                        data-country="US" data-value="56"-->
+<!--                                                                        class="item ">-->
+<!--                                                                        <i class="fas fa-map-marker-alt"-->
+<!--                                                                           style="margin-right: 10px;"></i><span-->
+<!--                                                                            class="lv2">Ho Chi Minh</span>-->
+<!--                                                                    </li>-->
+<!--                                                                    <li style="padding-left: 20px;"-->
+<!--                                                                        data-country="US" data-value="56"-->
+<!--                                                                        class="item ">-->
+<!--                                                                        <i class="fas fa-map-marker-alt"-->
+<!--                                                                           style="margin-right: 10px;"></i><span-->
+<!--                                                                            class="lv2">Da Nang</span>-->
+<!--                                                                    </li>-->
+<!--                                                                    <li style="padding-left: 20px;"-->
+<!--                                                                        data-country="US" data-value="56"-->
+<!--                                                                        class="item ">-->
+<!--                                                                        <i class="fas fa-map-marker-alt"-->
+<!--                                                                           style="margin-right: 10px;"></i><span-->
+<!--                                                                            class="lv2">Du lich bien dao</span>-->
+<!--                                                                    </li>-->
+<!--                                                                    <li style="padding-left: 20px;"-->
+<!--                                                                        data-country="US" data-value="56"-->
+<!--                                                                        class="item ">-->
+<!--                                                                        <i class="fas fa-map-marker-alt"-->
+<!--                                                                           style="margin-right: 10px;"></i><span-->
+<!--                                                                            class="lv2">Tay Bac</span>-->
+<!--                                                                    </li>-->
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -706,7 +711,7 @@
                                                      th:each="tour : ${featuredTours}">
                                                     <div class="services-item grid item-elementor">
                                                         <div class="item service-border st-border-radius">
-                                                            <div class="featured-image">
+                                                            <div class="featured-image" style="height: 200px">
                                                                 <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
                                                                     <button style="background: none; border: none"
                                                                             class="btn-add">
@@ -731,7 +736,7 @@
 
 
                                                                 <a
-                                                                        href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                                        th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                                     <img decoding="async" itemprop="image"
                                                                          style="max-height: 212px;"
                                                                          th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
@@ -751,8 +756,8 @@
                                                                             </span>
 
                                                                 </div>
-                                                                <h3 class="title" itemprop="name">
-                                                                    <a href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/"
+                                                                <h3 class="title" itemprop="name" style="height: 95px">
+                                                                    <a  th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
                                                                        class="st-link c-main"
                                                                        th:text="${tour.getName()}"></a>
                                                                 </h3>
@@ -777,7 +782,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -785,7 +790,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
@@ -854,8 +859,15 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${listTourNew}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius">
-                                                            <div class="featured-image">
+                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                            <div class="featured-image" style="height: 200px">
+                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                    <button style="background: none; border: none"
+                                                                            class="btn-add">
+                                                                        <i class="fas fa-heart"
+                                                                           title="Thêm vào danh sách yêu thích"></i>
+                                                                    </button>
+                                                                </div>
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -873,7 +885,7 @@
 
 
                                                                 <a
-                                                                        href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                                        th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                                     <img decoding="async" itemprop="image"
                                                                          style="max-height: 212px;"
                                                                          th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
@@ -893,10 +905,10 @@
                                                                             </span>
 
                                                                 </div>
-                                                                <h3 class="title" itemprop="name">
-                                                                    <a href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/"
-                                                                       class="st-link c-main"
-                                                                       th:text="${tour.getName()}"></a>
+                                                                <h3 class="title" itemprop="name" style="height: 95px">
+                                                                    <a  th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
+                                                                        class="st-link c-main"
+                                                                        th:text="${tour.getName()}"></a>
                                                                 </h3>
                                                                 <div class="reviews">
                                                                     <i class="stt-icon-star1"></i>
@@ -919,7 +931,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -927,7 +939,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
@@ -996,9 +1008,15 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${listTourDiscount}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius">
-                                                            <div class="featured-image">
-
+                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                            <div class="featured-image" style="height: 200px">
+                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                    <button style="background: none; border: none"
+                                                                            class="btn-add">
+                                                                        <i class="fas fa-heart"
+                                                                           title="Thêm vào danh sách yêu thích"></i>
+                                                                    </button>
+                                                                </div>
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1016,7 +1034,7 @@
 
 
                                                                 <a
-                                                                        href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                                        th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                                     <img decoding="async" itemprop="image"
                                                                          style="max-height: 212px;"
                                                                          th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
@@ -1036,10 +1054,10 @@
                                                                             </span>
 
                                                                 </div>
-                                                                <h3 class="title" itemprop="name">
-                                                                    <a href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/"
-                                                                       class="st-link c-main"
-                                                                       th:text="${tour.getName()}"></a>
+                                                                <h3 class="title" itemprop="name" style="height: 95px">
+                                                                    <a  th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
+                                                                        class="st-link c-main"
+                                                                        th:text="${tour.getName()}"></a>
                                                                 </h3>
                                                                 <div class="reviews">
                                                                     <i class="stt-icon-star1"></i>
@@ -1062,7 +1080,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -1070,7 +1088,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
@@ -1139,8 +1157,15 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${tours}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius">
-                                                            <div class="featured-image">
+                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                            <div class="featured-image" style="height: 200px">
+                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                    <button style="background: none; border: none"
+                                                                            class="btn-add">
+                                                                        <i class="fas fa-heart"
+                                                                           title="Thêm vào danh sách yêu thích"></i>
+                                                                    </button>
+                                                                </div>
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1158,9 +1183,11 @@
 
 
                                                                 <a
-                                                                        href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                                        th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                                     <img decoding="async" itemprop="image"
                                                                          style="max-height: 212px;"
+                                                                         width="307"
+                                                                         height="212"
                                                                          th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
                                                                          alt="Two Hour Walking Tour of Manhattan"
                                                                          class="image-feature st-hover-grow"/>
@@ -1178,10 +1205,10 @@
                                                                             </span>
 
                                                                 </div>
-                                                                <h3 class="title" itemprop="name">
-                                                                    <a href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/"
-                                                                       class="st-link c-main"
-                                                                       th:text="${tour.getName()}"></a>
+                                                                <h3 class="title" itemprop="name" style="height: 95px">
+                                                                    <a  th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
+                                                                        class="st-link c-main"
+                                                                        th:text="${tour.getName()}"></a>
                                                                 </h3>
                                                                 <div class="reviews">
                                                                     <i class="stt-icon-star1"></i>
@@ -1204,7 +1231,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -1212,7 +1239,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
@@ -2235,134 +2262,6 @@
                     <div class="elementor-widget-wrap elementor-element-populated">
                         <div class="elementor-element elementor-element-4aafbc17 elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
                              data-id="4aafbc17" data-element_type="widget" data-widget_type="divider.default">
-                            <div class="elementor-widget-container">
-                                <style>
-                                    /*! elementor - v3.11.5 - 14-03-2023 */
-                                    .elementor-widget-divider {
-                                        --divider-border-style: none;
-                                        --divider-border-width: 1px;
-                                        --divider-color: #2c2c2c;
-                                        --divider-icon-size: 20px;
-                                        --divider-element-spacing: 10px;
-                                        --divider-pattern-height: 24px;
-                                        --divider-pattern-size: 20px;
-                                        --divider-pattern-url: none;
-                                        --divider-pattern-repeat: repeat-x
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider {
-                                        display: flex
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider__text {
-                                        font-size: 15px;
-                                        line-height: 1;
-                                        max-width: 95%
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider__element {
-                                        margin: 0 var(--divider-element-spacing);
-                                        flex-shrink: 0
-                                    }
-
-                                    .elementor-widget-divider .elementor-icon {
-                                        font-size: var(--divider-icon-size)
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider-separator {
-                                        display: flex;
-                                        margin: 0;
-                                        direction: ltr
-                                    }
-
-                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator,
-                                    .elementor-widget-divider--view-line_text .elementor-divider-separator {
-                                        align-items: center
-                                    }
-
-                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator:after,
-                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator:before,
-                                    .elementor-widget-divider--view-line_text .elementor-divider-separator:after,
-                                    .elementor-widget-divider--view-line_text .elementor-divider-separator:before {
-                                        display: block;
-                                        content: "";
-                                        border-bottom: 0;
-                                        flex-grow: 1;
-                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator > .elementor-divider__svg:first-of-type {
-                                        flex-grow: 0;
-                                        flex-shrink: 100
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider-separator:before {
-                                        content: none
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider__element {
-                                        margin-left: 0
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator > .elementor-divider__svg:last-of-type {
-                                        flex-grow: 0;
-                                        flex-shrink: 100
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider-separator:after {
-                                        content: none
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider__element {
-                                        margin-right: 0
-                                    }
-
-                                    .elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator {
-                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
-                                    }
-
-                                    .elementor-widget-divider--separator-type-pattern {
-                                        --divider-border-style: none
-                                    }
-
-                                    .elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator,
-                                    .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after,
-                                    .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before,
-                                    .elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator {
-                                        width: 100%;
-                                        min-height: var(--divider-pattern-height);
-                                        -webkit-mask-size: var(--divider-pattern-size) 100%;
-                                        mask-size: var(--divider-pattern-size) 100%;
-                                        -webkit-mask-repeat: var(--divider-pattern-repeat);
-                                        mask-repeat: var(--divider-pattern-repeat);
-                                        background-color: var(--divider-color);
-                                        -webkit-mask-image: var(--divider-pattern-url);
-                                        mask-image: var(--divider-pattern-url)
-                                    }
-
-                                    .elementor-widget-divider--no-spacing {
-                                        --divider-pattern-size: auto
-                                    }
-
-                                    .elementor-widget-divider--bg-round {
-                                        --divider-pattern-repeat: round
-                                    }
-
-                                    .rtl .elementor-widget-divider .elementor-divider__text {
-                                        direction: rtl
-                                    }
-
-                                    .e-con-inner > .elementor-widget-divider,
-                                    .e-con > .elementor-widget-divider {
-                                        width: var(--container-widget-width, 100%);
-                                        --flex-grow: var(--container-widget-flex-grow)
-                                    }
-                                </style>
-                                <div class="elementor-divider">
-                                        <span class="elementor-divider-separator">
-                                        </span>
-                                </div>
-                            </div>
                         </div>
                         <section
                                 class="elementor-section elementor-inner-section elementor-element elementor-element-214a7ecd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
