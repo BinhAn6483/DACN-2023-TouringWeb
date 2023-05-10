@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, maximum-scale=2, minimum-scale=1">
+
+    <title>Hồ sơ</title>
+    <link rel='stylesheet' id='google-font-Poppins-css'
+          href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&#038;ver=6.1.1'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='fontawesome-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/css/font-awesome.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='bootstrap-css-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/bootstrap.min.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='st-partner-v2-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/partner.css' type='text/css'
+          media='all'/>
+    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
+          sizes="32x32"/>
+
+    <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.1'
+            id='jquery-core-js'></script>
+
+    </style>
+
+
+    <style>
+
+        body {
+            font-family: "DM Sans" !important;
+
+        }
+
+        .container {
+            max-width: 600px;
+            flex-grow: 1;
+            font-size: 20px;
+
+        }
+
+        h1 {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            margin: 0 0 50px 0;
+        }
+
+        .form-group {
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        #save_1,
+        #save {
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 36px;
+            border-radius: 10px
+        }
+        #save_1:hover,
+        #save:hover {
+            background: #0a58ca;
+        }
+
+        .custom-file-upload {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            color: #444;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: cursive;
+            margin: 20px 0 10px 28%;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #e0e0e0;
+        }
+
+        #file-upload {
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body class="page-template page-template-template-user page-template-template-user-php page page-id-1588 logged-in  menu_style1 topbar_position_default wishlist search_enable_preload elementor-default elementor-kit-7">
+
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <a th:href="@{/home}"><img
+                        src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png"
+                        class="st-logo-site" alt="Logo"/></a>
+                <div class="sidebar-brand icon-ccv hidden-md">
+                    <a href="#"></a>
+                    <div id="close-sidebar">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic" style="margin-right: 7px;">
+                    <img alt='TravelerWP'
+                         th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}"  src="static/images/avatar/23.jpg"
+                         class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
+                </div>
+                <div class="user-info" style="width: 70%;">
+                    <span class="user-name" th:text="${@userController.nameByEmail()}">Phan Van Hung</span>
+                    <span class="user-role" sec:authentication="principal.username" ></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Hồ sơ</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/user/history}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_booking_his.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Lịch sử đặt tour</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/user/wishlist}" style="    padding-right: 0px;">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_wishlish.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Danh sách yêu thích</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <ul>
+                    <li>
+                        <a th:href="@{/logout}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home}">
+                            <span class="st-green-homepage">Về trang chủ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="page-content">
+        <div class="st_content">
+            <div class="st-create">
+                <h2>Hồ sơ</h2>
+            </div>
+            <div>
+                <input class="form-control" type="text" readonly th:if="${isProfileUpdatePage}" th:value="${successful}">
+            </div>
+            <div class="infor-st-setting st-wishlist-wrap" style="height: 735px">
+                <div style="width: 60%;float: left; border-right: 1px solid #ddd;  ">
+                    <form th:action="@{/user/profile/update}" method="post" th:object="${user}">
+
+
+                        <div class="container">
+                            <h1>Thông tin cá nhân</h1>
+                            <div class="form-group">
+                                <label for="name">Họ tên</label>
+                                <input type="hidden" id="id" name="id" th:value="${user.getId()}">
+                                <input type="text" class="form-control" id="name" name="name"
+                                       th:value="${user.getName()}"
+                                       placeholder="Vui lòng nhập họ tên đầy đủ" autofocus="autofocus">
+                            </div>
+
+                            <div class="form-group" style="float: left; width: 50%;">
+                                <label for="dateOfBirth">Ngày sinh</label> <span
+                                    style="    position: absolute; margin: -25px 0 0 83px;font-size: 14px;">dd/mm/yyyy</span>
+                                <input type="text" class="form-contol" id="dateOfBirth" name="dateOfBirth"
+                                th:value="${user.getDateOfBirth()}">
+                            </div>
+
+                            <div class="form-group" style="float: left; width: 50%;">
+                                <label>Giới tính</label>
+                                <select  id="gender" name="gender" th:value="${user.gender}"
+                                        style="width: 100%; font-size: 16px; padding: 6.5px 10px">
+                                    <option value="khac" th:selected="${user.getGender() == 'Khac'}">Khác</option>
+                                    <option value="Nam" th:selected="${user.getGender() == 'Nam'}">Nam</option>
+                                    <option value="Nu" th:selected="${user.getGender() == 'Nu'}">Nữ</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group" style="width: 100%;display: inline-table;">
+                                <label for="address">Địa chỉ</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                       th:value="${user.getAddress()}"
+                                       placeholder="Địa chỉ của bạn">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="xxx@gmail.com" readonly th:value="${user.getEmail()}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Số Điện thoại</label>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                       th:value="${user.getPhone()}"
+                                       placeholder="Nhập số điện thoại của bạn">
+                            </div>
+
+                            <div class="form-group">
+                                <span><a href="">Hủy</a></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <button type="submit" name="save" id="save" style=""
+                                                class="form-control btn btn-primary">CẬP NHẬT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <form th:action="@{/user/upload-avatar}" method="POST" enctype="multipart/form-data">
+                    <div class="picture col-half" style="float: left;width: 30%;text-align: center;margin-left: 80px; ">
+                        <div id="picture">
+                            <img id="preview" th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()})}" alt=""
+                                 style="width: 266px;border-radius: 50%; border: 1px solid; height: 266px;">
+                        </div>
+                        <label for="file-upload" class="custom-file-upload">
+                            Chọn ảnh mới
+                        </label>
+                        <input id="file-upload" type="file" accept="image/*" onchange="previewImage(event)" name="file">
+
+                        <p class="subbbb" style="color: rgb(158, 158, 158); font-size: 12px; margin: 0">Dụng lượng file tối đa
+                            1 MB</p>
+                        <p class="subbbb" style="color: rgb(158, 158, 158); font-size: 12px;"> Định dạng:.JPEG, .PNG,
+                            JPG
+                        </p>
+                    </div>
+                    <button type="submit" class=" btn btn-primary" id="save_1" style="margin-left: 18%;height: 45px">Lưu ảnh</button>
+                </form>
+<!--                <form method="POST" enctype="multipart/form-data" th:action="@{/user/upload-avatar}">-->
+<!--                    <input type="file" name="file"/>-->
+<!--                    <button type="submit">Upload</button>-->
+<!--                </form>-->
+            </div>
+
+        </div>
+        <script type='text/javascript'
+                src='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/js/partner.js'
+                id='st-partner-v2-js'></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var preview = document.getElementById("preview");
+                    preview.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+
+        </script>
+
+    </main>
+
+</body>
+</html>
+
+

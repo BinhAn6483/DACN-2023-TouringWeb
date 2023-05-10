@@ -13,6 +13,9 @@ public class Tour {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "title")
+    private String tile;
+
     @Column(name = "starting_point")
     private String startingPoint;
 
@@ -34,7 +37,13 @@ public class Tour {
     @Column(name = "view_count")
     private int viewCount;
 
-    public Tour(String name, String startingPoint, int category, String time, int sale, double price, String imgMain) {
+    @Column(name = "price_sale")
+    private double priceSale;
+
+    @Column(name = "location")
+    private String location;
+
+    public Tour(String name, String startingPoint, int category, String time, int sale, double price, String imgMain, String location) {
         this.name = name;
         this.startingPoint = startingPoint;
         this.category = category;
@@ -42,6 +51,18 @@ public class Tour {
         this.sale = sale;
         this.price = price;
         this.imgMain = imgMain;
+        this.location = location;
+    }
+    public Tour(String name,String title, String startingPoint, int category, String time, int sale, double price, String imgMain, String location) {
+        this.name = name;
+        this.tile = title;
+        this.startingPoint = startingPoint;
+        this.category = category;
+        this.time = time;
+        this.sale = sale;
+        this.price = price;
+        this.imgMain = imgMain;
+        this.location = location;
     }
 
     public Tour() {
@@ -62,6 +83,18 @@ public class Tour {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTile() {
+        return tile;
+    }
+
+    public void setTile(String tile) {
+        this.tile = tile;
+    }
+
+    public void setPriceSale(double priceSale) {
+        this.priceSale = priceSale;
     }
 
     public String getStartingPoint() {
@@ -121,10 +154,35 @@ public class Tour {
     }
 
     public double getPriceSale() {
-        if(getSale() == 0) {
-            return getPrice();
-        }else {
-            return getPrice() - ((getSale() * getPrice())/100);
+        if (sale == 0) {
+            return price;
+        } else {
+            return Math.round((price - ((sale * price) / 100)) / 10000.0) * 10000;
         }
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", startingPoint='" + startingPoint + '\'' +
+                ", category=" + category +
+                ", time='" + time + '\'' +
+                ", sale=" + sale +
+                ", price=" + price +
+                ", imgMain='" + imgMain + '\'' +
+                ", viewCount=" + viewCount +
+                ", priceSale=" + priceSale +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

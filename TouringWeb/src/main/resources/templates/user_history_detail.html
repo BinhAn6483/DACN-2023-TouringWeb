@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, maximum-scale=2, minimum-scale=1">
+    <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
+          sizes="32x32"/>
+    <link rel='stylesheet' id='google-font-Poppins-css'
+          href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&#038;ver=6.1.1'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='fontawesome-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/css/font-awesome.css' type='text/css'
+          media='all'/>
+
+
+    <link rel='stylesheet' id='st-partner-v2-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/partner.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='bootstrap-css-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/css/bootstrap.min.css' type='text/css'
+          media='all'/>
+
+    <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.1'
+            id='jquery-core-js'></script>
+
+    </style>
+
+
+    <style>
+
+
+        h1 {
+            color: #3b71fe;
+            text-align: center;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-top: 15px;
+            float: left;
+            width: 27%;
+        }
+        .form-group-sub {
+            margin-top: 15px;
+            float: left;
+            width: 36%;
+
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .btn-view-detail:hover {
+            background: #3a89ff !important;
+            color: white !important;
+        }
+        .btn {
+            border-radius: 3px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #3b71fe;
+            border-color: #3b71fe;
+        }
+
+        .btn-primary:hover {
+            background-color: #003adc;
+            border-color: #356cf8;
+        }
+
+        .btn-outline-secondary {
+            background-color: red;
+            border-color: red;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #cb0000;
+            border-color: #999;
+            color: white;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mda-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .mda-table td,
+        .mda-table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+
+        .mda-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .mda-money {
+            font-weight: bold;
+        }
+
+        .chitiet_gia tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .mda-row {
+            padding-left: 150px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .be {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .mda-info h2 a {
+            font-size: 20px;
+            color: #222;
+            font-weight: 700;
+            display: block;
+            text-decoration: none;
+        }
+
+        .aaa {
+            background: #ff888845;
+        }
+        .box{
+            color: #0a58ca;
+        }
+    </style>
+
+</head>
+<body class="page-template page-template-template-user page-template-template-user-php page page-id-1588 logged-in  menu_style1 topbar_position_default wishlist search_enable_preload elementor-default elementor-kit-7">
+
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <a th:href="@{/home}"><img
+                        src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png"
+                        class="st-logo-site" alt="Logo"/></a>
+                <div class="sidebar-brand icon-ccv hidden-md">
+                    <a href="#"></a>
+                    <div id="close-sidebar">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic" style="margin-right: 7px;">
+                    <img alt='TravelerWP'
+                         th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}"
+                         src="static/images/avatar/23.jpg"
+                         class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
+                </div>
+                <div class="user-info" style="width: 70%;">
+                    <span class="user-name" th:text="${@userController.nameByEmail()}">Phan Van Hung</span>
+                    <span class="user-role" sec:authentication="principal.username"></span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="">
+                        <a th:href="@{/user/profile}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Hồ sơ</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/user/history}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_booking_his.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Lịch sử đặt tour</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/user/wishlist}" style="    padding-right: 0px;">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_wishlish.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Danh sách yêu thích</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <ul>
+                    <li>
+                        <a th:href="@{/logout}">
+                            <img src="https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/images/dashboard/ico_seting.svg"
+                                 alt="" class="st-icon-menu">
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home}">
+                            <span class="st-green-homepage">Về trang chủ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="page-content">
+        <div class="st_content">
+            <div class="st-create">
+                <h2>Chi tiết Tour đã đặt</h2>
+                <a th:href="@{/user/history}">Lịch sử đặt tour</a> --> chi tiết
+            </div>
+            <div class="infor-st-setting st-wishlist-wrap" style="background: antiquewhite">
+                <div class="st-loadding-wishlist">
+                    <div class="lds-dual-ring"></div>
+                </div>
+                <div class="tabbable">
+
+                    <div class="container " style="padding: 40px 70px;background: #e1f6ff; width: 100%;">
+
+                        <div class="mda-info">
+                            <div class="mda-info-img" style="width: 410px;float: left;margin-right: 20px;">
+                                <img style="width: 400px;height: 274px;"
+                                     th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}">
+                            </div>
+                            <div class="mda-info-caption"
+                                 style="overflow: hidden;border: solid 1px rgba(0,0,0,.15); height: 275px; background: white">
+                                <h2 style="padding: 15px 20px;border-bottom: solid 1px rgba(0,0,0,0.15);font-size: 100%;font-weight: 700;">
+                                    <a href="#" th:text="${tour.getName()}">Du lịch Trải Nghiệm Du thuyền Hạ Long
+                                        Verdure Lotus Cruises 5 sao từ Sài Gòn 2023</a>
+                                </h2>
+                                <div class="mda-info-list" style="padding: 15px 20px 10px;">
+                                    <div class="mda-row"><span class="be">Mã tour:</span> <span style="font-weight:bold"
+                                                                                                th:text="${tour.getId()}">16586</span>
+                                    </div>
+
+                                    <div class="mda-row"><span class="be">Thời gian:</span> <span
+                                            style="font-weight:bold" th:text="${tour.getTime()}">2 ngày</span>
+                                    </div>
+                                    <input type="hidden" id="total-all-hidden" value="3199000">
+                                    <div class="mda-row"><span class="be">Giá:</span><span style="font-weight:bold"
+                                                                                           id="total-all"
+                                                                                           class="price-tour-format"
+                                                                                           th:text="${tour.getPriceSale()}">3,199,000</span>
+                                    </div>
+                                    <div class="mda-row"><span class="be">Ngày khởi hành:</span><span
+                                            style="font-weight:bold" th:text="${booking.getDateStart()}">23/04/2023</span>
+
+                                    </div>
+                                    <div class="mda-row"><span class="be">Nơi khởi hành:</span><span
+                                            style="font-weight:bold"
+                                            th:text="${tour.getStartingPoint()}">Hồ Chí Minh</span></div>
+
+                                    <input type="hidden" name="con" id="con" value="10">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="mda-tilte-3" style="margin: 30px 0;text-align: center; display:grid;">
+        <span class="mda-tilte-name" style="font-size: 30px;font-weight: bold"><i class="fa fa-info-circle"
+                                                                                  aria-hidden="true"></i>Thông tin liên hệ</span>
+                        </div>
+                        <hr>
+
+
+                            <div class="" style="margin: 0 0 0 60px;">
+                                <div class="col-md-12">
+                                    <div class="card"
+                                         style="display: block;">
+                                        <div class="form-group-sub row">
+                                            <input type="hidden" id="idTour" name="idTour" th:value="${tour.getId()}">
+                                            <label class="box col-form-label">Họ và tên:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="name" name="name" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${user.getName()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+                                        <div class="form-group-sub row">
+                                            <label class=" box col-form-label">Số điện thoại:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="phone" name="phone" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${user.getPhone()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+                                        <div class="form-group-sub row">
+                                            <label class="box col-form-label">Email:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="email" name="email" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${user.getEmail()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="width: 101%;">
+                                            <label class="box col-form-label">Địa chỉ:</label>
+                                            <div class="col-md-9" style="width: 93.5%; margin-bottom: 30px;padding-left: 0">
+                                                <input type="text" id="address" name="address" class="form-control"
+                                                       readonly
+                                                       value="0"
+                                                       th:value="${user.getAddress()}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group-sub row" style="width: 27.3%;">
+                                            <label class=" box col-form-label">Thời gian khởi hành:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="time" name="time" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${booking.getDateStart()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group-sub row" style="width: 27.3%">
+                                            <label class=" box col-form-label">Số lượng người lớn:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="noAdults" name="noAdults" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${booking.getNoAdults()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+                                        <div class="form-group-sub row" style="width: 27.3%">
+                                            <label class=" box col-form-label">Số lượng trẻ em:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="noChildren" name="noChildren" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${booking.getNoChildren()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+                                        <div class="form-group-sub row" style="width: 27.3%">
+                                            <label class=" box col-form-label">Phương thức thanh toán:</label>
+                                            <div class="col-md-9" style="width: 85%; margin-left: -15px">
+                                                <input type="text" id="payment" name="payment" class="form-control" readonly
+                                                       value="0"
+                                                       th:value="${booking.getPayment()}" style="background: #fff;height: 40px">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-center"
+                                             style="position: absolute; margin: 500px 0 0 300px">
+                                            <button type="reset" class="btn btn-outline-secondary mx-2">Quay lại</button>
+                                            <button type="submit" class="btn btn-primary mx-2">Trang chủ</button>
+                                        </div>
+                                    </div>
+                                    <div style="display: inline-flex;width: 100%;; margin-top: 35px">
+                                        <span style="width: 150px; margin:25px 10px 0px -15px;font-size: 16px;font-weight: bold;">Tổng trị giá: </span>
+                                        <span style="font-weight: bold; color: #0a58ca;margin-top: 20px; font-size: 20px" id="price-text" class="price-tour-format" th:text="${booking.getTotalPrice()}">6.990.000 </span>
+                                    </div>
+                                    <div style="display: inline-flex;width: 100%;margin-top: 8px">
+                                        <span style="width: 150px;margin:5px 10px 0 -15px ;font-size: 16px;font-weight: bold;">Trạng thái: </span>
+                                        <span style="font-weight: bold; color: #0a58ca; margin: 0;font-size: 20px" name="status" id="status" th:text="${booking.getStatusPayment()}">Đã thanh toán</span>
+                                    </div>
+                                    <div style="display: inline-flex;width: 100%;margin-top: 8px">
+                                        <span style="width: 150px;margin:5px 10px 0 -15px ;font-size: 16px;font-weight: bold;">Ngày đặt tour: </span>
+                                        <span style="font-weight: bold; color: #0a58ca; margin: 0;font-size: 20px" name="createAt" id="createAt" th:text="${booking.getCreateAt()}">Đã đi</span>
+                                    </div>
+
+                                    <div style="display: inline-flex;width: 100%;margin-top: 8px">
+                                        <span style="width: 150px;margin:5px 10px 60px -15px ;font-size: 16px;font-weight: bold;">Trạng thái tour: </span>
+                                        <span style="font-weight: bold; color: #0a58ca; margin: 0;font-size: 20px" name="status" id="statusTour" th:text="${booking.getStatusTour()}">Đã đi</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <hr style="margin: 0 0 70px 0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type='text/javascript'
+                src='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v2/js/partner.js'
+                id='st-partner-v2-js'></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+
+            var priceElements = document.querySelectorAll('.price-tour-format');
+            priceElements.forEach(function (element) {
+                var priceValue = parseFloat(element.textContent);
+                if (!isNaN(priceValue)) {
+                    var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+                    element.textContent = formattedPrice;
+                }
+            });
+        </script>
+    </main>
+
+</body>
+</html>
+
+

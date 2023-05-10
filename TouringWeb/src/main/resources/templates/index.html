@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="vi-VN">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -9,431 +9,28 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="traveler" content="3.0.7.1" />
 
-    <!-- Search Engine Optimization by Rank Math - https://s.rankmath.com/home -->
-    <title>Home Page - ModMixMap</title>
-    <meta name="description" content="Get the best prices on 2,000,000+ properties, worldwide" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-    <link rel="canonical" href="https://modmixmap.travelerwp.com/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Home Page - ModMixMap" />
-    <meta property="og:description" content="Get the best prices on 2,000,000+ properties, worldwide" />
-    <meta property="og:url" content="https://modmixmap.travelerwp.com/" />
-    <meta property="og:site_name" content="ModMixMap" />
-    <meta property="og:updated_time" content="2023-02-18T05:54:21+00:00" />
-    <meta property="article:published_time" content="2022-04-08T04:43:05+00:00" />
-    <meta property="article:modified_time" content="2023-02-18T05:54:21+00:00" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Home Page - ModMixMap" />
-    <meta name="twitter:description" content="Get the best prices on 2,000,000+ properties, worldwide" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="modmix" />
-    <meta name="twitter:label2" content="Time to read" />
-    <meta name="twitter:data2" content="5 minutes" />
+    <title>Home Page - Traveler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 0.07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <link rel='stylesheet' id='st-google-fonts-css'
-        href='//fonts.googleapis.com/css?family=DM+Sans:regular,italic,500,700,500italic,700italic&#038;subset=latin-ext,latin'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='wp-block-library-css' href='wp-includes/css/dist//style.min.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='classic-theme-styles-css' href='wp-includes/css/classic-themes.min.css' type='text/css'
-        media='all' />
-    <style id='global-styles-inline-css' type='text/css'>
-        body {
-            --wp--preset--color--black: #000000;
-            --wp--preset--color--cyan-bluish-gray: #abb8c3;
-            --wp--preset--color--white: #ffffff;
-            --wp--preset--color--pale-pink: #f78da7;
-            --wp--preset--color--vivid-red: #cf2e2e;
-            --wp--preset--color--luminous-vivid-orange: #ff6900;
-            --wp--preset--color--luminous-vivid-amber: #fcb900;
-            --wp--preset--color--light-green-cyan: #7bdcb5;
-            --wp--preset--color--vivid-green-cyan: #00d084;
-            --wp--preset--color--pale-cyan-blue: #8ed1fc;
-            --wp--preset--color--vivid-cyan-blue: #0693e3;
-            --wp--preset--color--vivid-purple: #9b51e0;
-            --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, rgba(6, 147, 227, 1) 0%, rgb(155, 81, 224) 100%);
-            --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg, rgb(122, 220, 180) 0%, rgb(0, 208, 130) 100%);
-            --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
-            --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg, rgba(255, 105, 0, 1) 0%, rgb(207, 46, 46) 100%);
-            --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg, rgb(238, 238, 238) 0%, rgb(169, 184, 195) 100%);
-            --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, rgb(74, 234, 220) 0%, rgb(151, 120, 209) 20%, rgb(207, 42, 186) 40%, rgb(238, 44, 130) 60%, rgb(251, 105, 98) 80%, rgb(254, 248, 76) 100%);
-            --wp--preset--gradient--blush-light-purple: linear-gradient(135deg, rgb(255, 206, 236) 0%, rgb(152, 150, 240) 100%);
-            --wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, rgb(254, 205, 165) 0%, rgb(254, 45, 45) 50%, rgb(107, 0, 62) 100%);
-            --wp--preset--gradient--luminous-dusk: linear-gradient(135deg, rgb(255, 203, 112) 0%, rgb(199, 81, 192) 50%, rgb(65, 88, 208) 100%);
-            --wp--preset--gradient--pale-ocean: linear-gradient(135deg, rgb(255, 245, 203) 0%, rgb(182, 227, 212) 50%, rgb(51, 167, 181) 100%);
-            --wp--preset--gradient--electric-grass: linear-gradient(135deg, rgb(202, 248, 128) 0%, rgb(113, 206, 126) 100%);
-            --wp--preset--gradient--midnight: linear-gradient(135deg, rgb(2, 3, 129) 0%, rgb(40, 116, 252) 100%);
-            --wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');
-            --wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');
-            --wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');
-            --wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');
-            --wp--preset--duotone--midnight: url('#wp-duotone-midnight');
-            --wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');
-            --wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');
-            --wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');
-            --wp--preset--font-size--small: 13px;
-            --wp--preset--font-size--medium: 20px;
-            --wp--preset--font-size--large: 36px;
-            --wp--preset--font-size--x-large: 42px;
-            --wp--preset--spacing--20: 0.44rem;
-            --wp--preset--spacing--30: 0.67rem;
-            --wp--preset--spacing--40: 1rem;
-            --wp--preset--spacing--50: 1.5rem;
-            --wp--preset--spacing--60: 2.25rem;
-            --wp--preset--spacing--70: 3.38rem;
-            --wp--preset--spacing--80: 5.06rem;
-        }
 
-        :where(.is-layout-flex) {
-            gap: 0.5em;
-        }
 
-        body .is-layout-flow>.alignleft {
-            float: left;
-            margin-inline-start: 0;
-            margin-inline-end: 2em;
-        }
 
-        body .is-layout-flow>.alignright {
-            float: right;
-            margin-inline-start: 2em;
-            margin-inline-end: 0;
-        }
 
-        body .is-layout-flow>.aligncenter {
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-
-        body .is-layout-constrained>.alignleft {
-            float: left;
-            margin-inline-start: 0;
-            margin-inline-end: 2em;
-        }
-
-        body .is-layout-constrained>.alignright {
-            float: right;
-            margin-inline-start: 2em;
-            margin-inline-end: 0;
-        }
-
-        body .is-layout-constrained>.aligncenter {
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-
-        body .is-layout-constrained> :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-            max-width: var(--wp--style--global--content-size);
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-
-        body .is-layout-constrained>.alignwide {
-            max-width: var(--wp--style--global--wide-size);
-        }
-
-        body .is-layout-flex {
-            display: flex;
-        }
-
-        body .is-layout-flex {
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        body .is-layout-flex>* {
-            margin: 0;
-        }
-
-        :where(.wp-block-columns.is-layout-flex) {
-            gap: 2em;
-        }
-
-        .has-black-color {
-            color: var(--wp--preset--color--black) !important;
-        }
-
-        .has-cyan-bluish-gray-color {
-            color: var(--wp--preset--color--cyan-bluish-gray) !important;
-        }
-
-        .has-white-color {
-            color: var(--wp--preset--color--white) !important;
-        }
-
-        .has-pale-pink-color {
-            color: var(--wp--preset--color--pale-pink) !important;
-        }
-
-        .has-vivid-red-color {
-            color: var(--wp--preset--color--vivid-red) !important;
-        }
-
-        .has-luminous-vivid-orange-color {
-            color: var(--wp--preset--color--luminous-vivid-orange) !important;
-        }
-
-        .has-luminous-vivid-amber-color {
-            color: var(--wp--preset--color--luminous-vivid-amber) !important;
-        }
-
-        .has-light-green-cyan-color {
-            color: var(--wp--preset--color--light-green-cyan) !important;
-        }
-
-        .has-vivid-green-cyan-color {
-            color: var(--wp--preset--color--vivid-green-cyan) !important;
-        }
-
-        .has-pale-cyan-blue-color {
-            color: var(--wp--preset--color--pale-cyan-blue) !important;
-        }
-
-        .has-vivid-cyan-blue-color {
-            color: var(--wp--preset--color--vivid-cyan-blue) !important;
-        }
-
-        .has-vivid-purple-color {
-            color: var(--wp--preset--color--vivid-purple) !important;
-        }
-
-        .has-black-background-color {
-            background-color: var(--wp--preset--color--black) !important;
-        }
-
-        .has-cyan-bluish-gray-background-color {
-            background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
-        }
-
-        .has-white-background-color {
-            background-color: var(--wp--preset--color--white) !important;
-        }
-
-        .has-pale-pink-background-color {
-            background-color: var(--wp--preset--color--pale-pink) !important;
-        }
-
-        .has-vivid-red-background-color {
-            background-color: var(--wp--preset--color--vivid-red) !important;
-        }
-
-        .has-luminous-vivid-orange-background-color {
-            background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
-        }
-
-        .has-luminous-vivid-amber-background-color {
-            background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
-        }
-
-        .has-light-green-cyan-background-color {
-            background-color: var(--wp--preset--color--light-green-cyan) !important;
-        }
-
-        .has-vivid-green-cyan-background-color {
-            background-color: var(--wp--preset--color--vivid-green-cyan) !important;
-        }
-
-        .has-pale-cyan-blue-background-color {
-            background-color: var(--wp--preset--color--pale-cyan-blue) !important;
-        }
-
-        .has-vivid-cyan-blue-background-color {
-            background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
-        }
-
-        .has-vivid-purple-background-color {
-            background-color: var(--wp--preset--color--vivid-purple) !important;
-        }
-
-        .has-black-border-color {
-            border-color: var(--wp--preset--color--black) !important;
-        }
-
-        .has-cyan-bluish-gray-border-color {
-            border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
-        }
-
-        .has-white-border-color {
-            border-color: var(--wp--preset--color--white) !important;
-        }
-
-        .has-pale-pink-border-color {
-            border-color: var(--wp--preset--color--pale-pink) !important;
-        }
-
-        .has-vivid-red-border-color {
-            border-color: var(--wp--preset--color--vivid-red) !important;
-        }
-
-        .has-luminous-vivid-orange-border-color {
-            border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
-        }
-
-        .has-luminous-vivid-amber-border-color {
-            border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
-        }
-
-        .has-light-green-cyan-border-color {
-            border-color: var(--wp--preset--color--light-green-cyan) !important;
-        }
-
-        .has-vivid-green-cyan-border-color {
-            border-color: var(--wp--preset--color--vivid-green-cyan) !important;
-        }
-
-        .has-pale-cyan-blue-border-color {
-            border-color: var(--wp--preset--color--pale-cyan-blue) !important;
-        }
-
-        .has-vivid-cyan-blue-border-color {
-            border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
-        }
-
-        .has-vivid-purple-border-color {
-            border-color: var(--wp--preset--color--vivid-purple) !important;
-        }
-
-        .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
-            background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
-        }
-
-        .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
-            background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
-        }
-
-        .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
-            background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;
-        }
-
-        .has-luminous-vivid-orange-to-vivid-red-gradient-background {
-            background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
-        }
-
-        .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
-            background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
-        }
-
-        .has-cool-to-warm-spectrum-gradient-background {
-            background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
-        }
-
-        .has-blush-light-purple-gradient-background {
-            background: var(--wp--preset--gradient--blush-light-purple) !important;
-        }
-
-        .has-blush-bordeaux-gradient-background {
-            background: var(--wp--preset--gradient--blush-bordeaux) !important;
-        }
-
-        .has-luminous-dusk-gradient-background {
-            background: var(--wp--preset--gradient--luminous-dusk) !important;
-        }
-
-        .has-pale-ocean-gradient-background {
-            background: var(--wp--preset--gradient--pale-ocean) !important;
-        }
-
-        .has-electric-grass-gradient-background {
-            background: var(--wp--preset--gradient--electric-grass) !important;
-        }
-
-        .has-midnight-gradient-background {
-            background: var(--wp--preset--gradient--midnight) !important;
-        }
-
-        .has-small-font-size {
-            font-size: var(--wp--preset--font-size--small) !important;
-        }
-
-        .has-medium-font-size {
-            font-size: var(--wp--preset--font-size--medium) !important;
-        }
-
-        .has-large-font-size {
-            font-size: var(--wp--preset--font-size--large) !important;
-        }
-
-        .has-x-large-font-size {
-            font-size: var(--wp--preset--font-size--x-large) !important;
-        }
-
-        .wp-block-navigation a:where(:not(.wp-element-button)) {
-            color: inherit;
-        }
-
-        :where(.wp-block-columns.is-layout-flex) {
-            gap: 2em;
-        }
-
-        .wp-block-pullquote {
-            font-size: 1.5em;
-            line-height: 1.6;
-        }
-    </style>
-    <link rel='stylesheet' id='shearch-form' href='wp-includes/css/_shearch-form.scssa=' />
-    <link rel='stylesheet' id='contact-form-7-css' href='wp-includes/css/contact-form-7-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='st-vina-stripe-css-css' href='wp-includes/css/st-vina-stripe-css-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='bootstrap-css' href='wp-includes/css/bootstrap-css.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='sweetalert2-css-css' href='wp-includes/css/sweetalert2-css-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='fontawesome-css' href='wp-includes/css/fontawesome-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='google-font-css-css'
-        href='https://fonts.googleapis.com/css?family=Poppins%3A400%2C500%2C600&#038;display=swap&#038;ver=6.1.1'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='daterangepicker-css' href='wp-includes/css/daterangepicker-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='rangeSlider-css' href='wp-includes/css/rangeSlider-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='rangeSlider-skinHTML5-css' href='wp-includes/css/rangeSlider-skinHTML5-css.css'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='awesome-line-awesome-css-css'
-        href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.1.0/css/line-awesome.min.css'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='main-css' href='wp-includes/css/main-css.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='layout-hotelv2-main-css' href='wp-includes/css/layout-hotelv2-main-css.css'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='layout-google-font-css'
-        href='https://fonts.googleapis.com/css2?family=DM+Sans%3Awght%40400%3B500%3B700&#038;display=swap&#038;ver=6.1.1'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='layout-main-css' href='wp-includes/css/layout-main-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='layout-font-icon-css' href='wp-includes/css/layout-font-icon-css.css' type='text/css'
-        media='all' />
+    <link rel='stylesheet' id='classic-theme-styles-css' href='https://modmixmap.travelerwp.com/wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css' href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-css' href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/css/main.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='layout-hotelv2-main-css' href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/inc/modules/layouts/elementorv2/assets/css/main.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='layout-main-css' href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/inc/modules/layouts/cores/assets/css/main.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='layout-font-icon-css' href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/inc/modules/layouts/cores/assets/css/traveler-icon.css' type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-frontend-css'
-        href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/custom-frontend-lite.min.css'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='swiper-css' href='wp-includes/css/swiper-css.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='elementor-post-7-css' href='wp-includes/css/elementor-post-7-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='elementor-global-css' href='wp-includes/css/elementor-global-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='elementor-post-71-css' href='wp-includes/css/elementor-post-71-css.css' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='elementor-widget-style-css' href='wp-includes/css/elementor-widget-style-css.css'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='google-fonts-1-css'
-        href='https://fonts.googleapis.com/css?family=DM+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.1.1'
-        type='text/css' media='all' />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+          href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/custom-frontend-lite.min.css'
+          type='text/css' media='all' />
+    <link rel='stylesheet' id='swiper-css' href='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='elementor-post-7-css' href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/post-7.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='elementor-post-71-css' href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/post-71.css' type='text/css' media='all' />
+
+
+
     <script type='text/javascript' id='jquery-core-js-extra'>
         /* <![CDATA[ */
         var list_location = { "list": "\"\"" };
@@ -453,149 +50,6 @@
     </script>
     <script type='text/javascript' src='https://modmixmap.travelerwp.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.1'
         id='jquery-core-js'></script>
-    <script type='text/javascript'
-        src='https://modmixmap.travelerwp.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2'
-        id='jquery-migrate-js'></script>
-    <script type='text/javascript'
-        src='https://maps.googleapis.com/maps/api/js?libraries=places&#038;key=AIzaSyBA0LaazuR3rra4R2pyXxzslhkv1pnO7KU'
-        id='map-js'></script>
-    <link rel="https://api.w.org/" href="https://modmixmap.travelerwp.com/wp-json/" />
-    <link rel="alternate" type="application/json" href="https://modmixmap.travelerwp.com/wp-json/wp/v2/pages/71" />
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://modmixmap.travelerwp.com/xmlrpc.php?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
-        href="https://modmixmap.travelerwp.com/wp-includes/wlwmanifest.xml" />
-    <link rel='shortlink' href='https://modmixmap.travelerwp.com/' />
-    <link rel="alternate" type="application/json+oembed"
-        href="https://modmixmap.travelerwp.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmodmixmap.travelerwp.com%2F" />
-    <link rel="alternate" type="text/xml+oembed"
-        href="https://modmixmap.travelerwp.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmodmixmap.travelerwp.com%2F&#038;format=xml" />
-    <meta name="generator"
-        content="Elementor 3.11.5; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, e_font_icon_svg, a11y_improvements, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
-
-    <!-- Custom_css.php-->
-    <style id="st_custom_css_php">
-        @media screen and (max-width: 782px) {
-            html {
-                margin-top: 0px !important;
-            }
-
-            .logged-in #header {
-                margin-top: 0;
-            }
-        }
-
-        :root {
-            --main-color: #3b71fe;
-            --link-color: #3b71fe;
-            --link-color-dark: #3b71fe;
-            --link-color-hover: rgba(59, 113, 254, 0.8);
-            --grey-color: #5E6D77;
-            --light-grey-color: #EAEEF3;
-            --orange-color: #FA5636;
-        }
-
-        .booking-item-rating .fa,
-        .booking-item.booking-item-small .booking-item-rating-stars,
-        .comment-form .add_rating,
-        .booking-item-payment .booking-item-rating-stars .fa-star,
-        .st-item-rating .fa,
-        li .fa-star,
-        li .fa-star-o,
-        li .fa-star-half-o {
-            color: #FA5636
-        }
-
-        .feature_class,
-        .featured-image .featured {
-            background: #ed0925 !important;
-        }
-
-        .search-result-page.st-rental .item-service .featured-image .featured:after {
-            border-bottom: 29px solid #ed0925;
-        }
-
-        .room-item .content .btn-show-price,
-        .room-item .content .show-detail,
-        .wp-block-search__button,
-        #gotop,
-        .form-submit .submit {
-            background: #3b71fe !important;
-        }
-
-        .feature_class::before {
-            border-color: #ed0925 #ed0925 transparent transparent;
-        }
-
-        .feature_class::after {
-            border-color: #ed0925 transparent #ed0925 #ed0925;
-        }
-
-        .featured_single .feature_class::before {
-            border-color: transparent #ed0925 transparent transparent;
-        }
-
-        .item-nearby .st_featured::before {
-            border-color: transparent transparent #ed0925 #ed0925;
-        }
-
-        .item-nearby .st_featured::after {
-            border-color: #ed0925 #ed0925 #ed0925 transparent;
-        }
-
-        .st_sale_class {
-            background-color: #3366cc;
-        }
-
-        .st_sale_class.st_sale_paper * {
-            color: #3366cc
-        }
-
-        .st_sale_class .st_star_label_sale_div::after,
-        .st_sale_label_1::before {
-            border-color: #3366cc transparent transparent #3366cc;
-        }
-
-        .btn.active.focus,
-        .btn.active:focus,
-        .btn.focus,
-        .btn:active.focus,
-        .btn:active:focus,
-        .btn:focus {
-            outline: none;
-        }
-
-        .st_sale_class .st_star_label_sale_div::after {
-            border-color: #3366cc;
-
-        }
-    </style>
-    <!-- End Custom_css.php-->
-    <!-- start css hook filter -->
-    <style type="text/css" id="st_custom_css">
-        .hehe {
-            font-size: 25px;
-            margin-right: 12px;
-        }
-    </style>
-    <!-- end css hook filter -->
-    <!-- css disable javascript -->
-
-    <style type="text/css" id="st_enable_javascript">
-        .search-tabs-bg>.tabbable>.tab-content>.tab-pane {
-            display: none;
-            opacity: 0;
-        }
-
-        .search-tabs-bg>.tabbable>.tab-content>.tab-pane.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .search-tabs-to-top {
-            margin-top: -120px;
-        }
-    </style>
-
 
     <link rel="icon" href="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-32x32.png"
         sizes="32x32" />
@@ -606,33 +60,19 @@
     <meta name="msapplication-TileImage"
         content="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/cropped-Group-3145-270x270.png" />
 
-    <!-- Begin Custom CSS        -->
     <style>
         body {
             font-family: "DM Sans" !important;
         }
+        .daterangepicker .calendar {
+            display: inline-block;
+        }
+        .date{
+            padding: 0 20px;
+        }
     </style>
 
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: st_params.facbook_app_id,
-                cookie: true,
-                xfbml: true,
-                version: 'v3.1'
-            });
 
-        };
-    </script>
 </head>
 
 <body
@@ -1021,7 +461,7 @@
                                                                     class="form-group d-flex align-items-center form-extra-field dropdown field-detination dropdown-toggle has-icon"
                                                                     data-bs-toggle="dropdown"
                                                                     data-bs-auto-close="outside" aria-expanded="true">
-                                                                    <i class="fas fa-map-marker-alt hehe"></i>
+                                                                    <span class="stt-icon stt-icon-location1"></span>
                                                                     <div class="st-form-dropdown-icon">
                                                                         <label>Location</label>
                                                                         <div class="render">
@@ -2605,7 +2045,7 @@
                                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
                                                         <div class="services-item grid item-elementor" itemscope
                                                             itemtype="https://schema.org/Hotel" data-id="257">
-                                                            <div class="item service-border st-border-radius">
+                                                            <div class="item service-border st-border-radius" th:each="tour : ${tours}">
                                                                 <div class="featured-image">
                                                                     <a href="#" class="login" data-bs-toggle="modal"
                                                                         data-bs-target="#st-login-form">
@@ -2633,7 +2073,7 @@
                                                                             class="image-feature st-hover-grow" />
                                                                         <img decoding="async" itemprop="image"
                                                                             src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Bar-on-property-2-1-450x300.png"
-                                                                            alt="Bar on property" class="d-none" />
+                                                                            alt="Bar on property" claitem service-border st-border-radiusss="d-none" />
                                                                     </a>
                                                                     <span class="d-none"
                                                                         itemprop="telephone">+6580009999</span>
@@ -2647,14 +2087,12 @@
 
                                                                         <h3 class="title" itemprop="name">
                                                                             <a href="https://modmixmap.travelerwp.com/st_hotel/redac-gateway-hotel/"
-                                                                                class="st-link c-main">Redac Gateway
-                                                                                Hotel</a>
+                                                                                class="st-link c-main" th:text="${tour.getName()}"></a>
                                                                         </h3>
                                                                         <div class="sub-title d-flex align-items-center"
                                                                             itemprop="address" itemscope
                                                                             itemtype="https://schema.org/PostalAddress">
-                                                                            <span itemprop="streetAddress">Los
-                                                                                Angeles</span>
+                                                                            <span itemprop="streetAddress"th:text="${tour.getStartingPoint()}"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="section-footer">
@@ -2673,7 +2111,7 @@
                                                                         </div>
                                                                         <div class="price-wrapper d-flex align-items-center"
                                                                             itemprop="priceRange">
-                                                                            From: <span class="price">€136.00</span>
+                                                                            From: <span class="price"th:text="${tour.getPriceSale()}"></span>
                                                                             <span class="unit">/ night</span>
                                                                         </div>
                                                                     </div>
@@ -3277,18 +2715,15 @@
                                         </div>
                                         <div class="tab-pane stt-tab-list-ofservice " id="nav-list-of_servicest_tours"
                                             role="tabpanel" aria-labelledby="nav-list-of_servicest_tours">
-                                            <div class="modern-search-result service-list-wrapper  service-tour">
-                                                <div class="row">
+                                            <div class="modern-search-result service-list-wrapper  service-tour" >
+                                                <div class="row" >
                                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                                                        <div class="services-item grid item-elementor" itemscope
-                                                            itemtype="https://schema.org/Trip">
+                                                        <div class="services-item grid item-elementor" th:each="tour : ${tours}" >
                                                             <div class="item service-border st-border-radius">
                                                                 <div class="featured-image">
                                                                     <div class="st-tag-feature-sale">
-
-                                                                        <span
-                                                                            class="st_sale_class box_sale sale_small"><span>-
-                                                                            </span>10% </span>
+                                                                        <span class="st_sale_class box_sale sale_small"></span>-
+                                                                            <span th:text="${tour.getSale()}">% </span>
                                                                     </div>
                                                                     <a href="#" class="login" data-bs-toggle="modal"
                                                                         data-bs-target="#st-login-form">
@@ -3330,15 +2765,15 @@
                                                                         itemprop="itinerary" itemscope
                                                                         itemtype="https://schema.org/ItemList">
 
-                                                                        <span itemprop="streetAddress"> 
-                                                                            <i class="fas fa-map-marker-alt"></i> 
-                                                                            Los Anglese</span>
-                                                                            
+                                                                        <span itemprop="streetAddress">
+                                                                            <i class="fas fa-map-marker-alt"></i>
+                                                                            <span th:text="${tour.getStartingPoint()}"></span>
+                                                                            </span>
+
                                                                     </div>
                                                                     <h3 class="title" itemprop="name">
                                                                         <a href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/"
-                                                                            class="st-link c-main">Two Hour Walking Tour
-                                                                            of Manhattan</a>
+                                                                            class="st-link c-main" th:text="${tour.getName()}"></a>
                                                                     </h3>
                                                                     <div class="reviews">
                                                                         <i class="stt-icon-star1"></i>
@@ -3355,10 +2790,10 @@
                                                                             <span class="price-tour">
                                                                                 <span
                                                                                     class="price d-flex justify-content-around flex-column"><span
-                                                                                        class="text-small lh1em item onsale ">€200.00</span><span
+                                                                                        class="text-small lh1em item onsale " th:text="${tour.getPrice()}">€</span><span
                                                                                         class="sale-top">From <span
-                                                                                            class="text-lg lh1em item ">
-                                                                                            €180.00</span></span></span>
+                                                                                            class="text-lg lh1em item " th:text="${tour.getPriceSale()}">
+                                                                                            €</span></span></span>
                                                                             </span>
                                                                             <span class="unit"><i
                                                                                     class="input-icon st-border-radius field-icon fa"><svg
@@ -3380,7 +2815,9 @@
         c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
         c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z" />
                                                                                         </g>
-                                                                                    </svg></i>10 hours</span>
+                                                                                    </svg></i>
+                                                                            <span th:text="${tour.getTime()}"></span>
+                                                                            </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -7305,19 +6742,19 @@
                                         }
 
                                         .elementor-widget-social-icons .elementor-grid {
-                                            grid-column-gap: var(--grid-column-gap, 5px);
-                                            grid-row-gap: var(--grid-row-gap, 5px);
-                                            grid-template-columns: var(--grid-template-columns);
+                                            /*grid-column-gap: var(--grid-column-gap, 5px);*/
+                                            /*grid-row-gap: var(--grid-row-gap, 5px);*/
+                                            /*grid-template-columns: var(--grid-template-columns);*/
                                             justify-content: var(--justify-content, center);
                                             justify-items: var(--justify-content, center)
                                         }
 
-                                        .elementor-icon.elementor-social-icon {
-                                            font-size: var(--icon-size, 25px);
-                                            line-height: var(--icon-size, 25px);
-                                            width: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)));
-                                            height: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)))
-                                        }
+                                        /*.elementor-icon.elementor-social-icon {*/
+                                        /*    font-size: var(--icon-size, 25px);*/
+                                        /*    line-height: var(--icon-size, 25px);*/
+                                        /*    width: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)));*/
+                                        /*    height: calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)))*/
+                                        /*}*/
 
                                         .elementor-social-icon {
                                             --e-social-icon-icon-color: #fff;
@@ -7831,9 +7268,11 @@
             </section>
         </div>
     </footer>
+
     <div class="modal fade login-regiter-popup style-9" id="st-login-form" tabindex="-1" role="dialog"
-        aria-labelledby="st-login-form" aria-hidden="true">
+         aria-labelledby="st-login-form" aria-hidden="true">
         <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document">
             <div class="modal-content st-border-radius relative">
                 <div class="loader-wrapper">
                     <div class="st-loader"></div>
@@ -7860,8 +7299,11 @@
                             <div class="form-group field-password">
                                 <input type="password" class="form-control" name="password" autocomplete="off"
                                     placeholder="Password">
-                                <span class="stt-icon stt-icon-eye ic-view"></span>
-                                <span class="stt-icon stt-icon-eye-blind ic-hide"></span>
+                                <div id="eye">
+                                <i class="far fa-eye-slash"></i>
+                                </div>
+<!--                                <span class="stt-icon stt-icon-eye ic-view"></span>-->
+<!--                                <span class="stt-icon stt-icon-eye-blind ic-hide"></span>-->
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="submit" class="form-submit" value="Log in">
@@ -7877,23 +7319,23 @@
                                 <a href="#" class="st-link open-loss-password" data-bs-dismiss="modal"
                                     data-bs-toggle="modal" data-bs-target="#st-forgot-form">Forgot Password?</a>
                             </div>
-                            <div class="advanced">
-                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                                <div class="social-login">
-                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                        onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                        data-channel="twitter">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4" />
-                                        </svg>
-                                        Continue with Twitter </a>
-                                </div>
-                            </div>
+<!--                            <div class="advanced">-->
+<!--                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>-->
+<!--                                <div class="social-login">-->
+<!--                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"-->
+<!--                                        onclick="return false" class="btn_login_tw_link st_login_social_link"-->
+<!--                                        data-channel="twitter">-->
+<!--                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"-->
+<!--                                            xmlns="http://www.w3.org/2000/svg">-->
+<!--                                            <path-->
+<!--                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"-->
+<!--                                                fill="#03A9F4" />-->
+<!--                                        </svg>-->
+<!--                                        Continue with Twitter </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="create-account-action">
-                                <a href="#" class="st-link open-signup">Create an account</a>
+                                <a href="#" class="st-link open-signup" data-target="register-component">Create an account</a>
                             </div>
                         </form>
                     </div>
@@ -7921,19 +7363,7 @@
                                 <span class="stt-icon stt-icon-eye-blind ic-hide"></span>
                             </div>
 
-                            <div class="form-group user-type">
-                                <label class="block" for="normal-user">
-                                    <input checked id="normal-user" type="radio" class="mr5" name="register_as"
-                                        value="normal"> <span data-toggle="tooltip" data-placement="right"
-                                        title="Used for booking services">Normal User</span>
-                                </label>
-                                <label class="block" for="partner-user">
-                                    <input id="partner-user" type="radio" class="mr5" name="register_as"
-                                        value="partner">
-                                    <span data-toggle="tooltip" data-placement="right"
-                                        title="Used for upload and booking services">Partner User</span>
-                                </label>
-                            </div>
+
 
                             <div class="form-group">
                                 <input type="submit" name="submit" class="form-submit" value="Register">
@@ -7950,22 +7380,22 @@
                                 </div>
                             </div>
 
-                            <div class="message-wrapper mt20"></div>
-                            <div class="advanced">
-                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>
-                                <div class="social-login">
-                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"
-                                        onclick="return false" class="btn_login_tw_link st_login_social_link"
-                                        data-channel="twitter">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"
-                                                fill="#03A9F4" />
-                                        </svg>
-                                        Continue with Twitter </a>
-                                </div>
-                            </div>
+<!--                            <div class="message-wrapper mt20"></div>-->
+<!--                            <div class="advanced">-->
+<!--                                <p class="text-center f14 c-grey"><span>or sign in with</span></p>-->
+<!--                                <div class="social-login">-->
+<!--                                    <a href="https://modmixmap.travelerwp.com/social-login/twitter"-->
+<!--                                        onclick="return false" class="btn_login_tw_link st_login_social_link"-->
+<!--                                        data-channel="twitter">-->
+<!--                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"-->
+<!--                                            xmlns="http://www.w3.org/2000/svg">-->
+<!--                                            <path-->
+<!--                                                d="M18.5878 4.67345C17.9489 4.95369 17.2682 5.13944 16.5584 5.22963C17.2886 4.7937 17.8458 4.10867 18.1078 3.28298C17.4271 3.68885 16.6755 3.97553 15.8745 4.13552C15.2281 3.44726 14.3068 3.021 13.3018 3.021C11.352 3.021 9.78219 4.60366 9.78219 6.54386C9.78219 6.82303 9.80581 7.09146 9.86379 7.34701C6.93576 7.2042 4.34488 5.80085 2.60439 3.66308C2.30052 4.19027 2.12229 4.7937 2.12229 5.4433C2.12229 6.66305 2.75041 7.74428 3.68669 8.37026C3.12084 8.35952 2.56573 8.19524 2.09544 7.93648C2.09544 7.94721 2.09544 7.96117 2.09544 7.97513C2.09544 9.68664 3.31626 11.1082 4.91717 11.4357C4.63049 11.5141 4.31804 11.5517 3.99378 11.5517C3.7683 11.5517 3.54067 11.5388 3.327 11.4916C3.78333 12.8863 5.07823 13.9117 6.61794 13.945C5.41967 14.8824 3.89822 15.4471 2.25113 15.4471C1.9623 15.4471 1.68528 15.4342 1.40826 15.3988C2.96838 16.4049 4.81732 16.9793 6.81121 16.9793C13.2922 16.9793 16.8354 11.6107 16.8354 6.95725C16.8354 6.80156 16.8301 6.65124 16.8226 6.50199C17.5215 6.00593 18.1089 5.3864 18.5878 4.67345Z"-->
+<!--                                                fill="#03A9F4" />-->
+<!--                                        </svg>-->
+<!--                                        Continue with Twitter </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </form>
                     </div>
                 </div>
@@ -8146,7 +7576,7 @@
                         </div>
                         <div class="form-group st-icheck-item">
                             <label for="term">
-                                <input id="term" type="checkbox" name="term" class="mr5"> I have read and accept the <a
+                                <input id="term1" type="checkbox" name="term" class="mr5"> I have read and accept the <a
                                     class="st-link" href="https://modmixmap.travelerwp.com/privacy-policy/">Terms and
                                     Privacy Policy</a> <span class="checkmark fcheckbox"></span>
                             </label>
@@ -8401,9 +7831,12 @@
             "version": "3.11.5", "is_static": false, "experimentalFeatures": { "e_dom_optimization": true, "e_optimized_assets_loading": true, "e_optimized_css_loading": true, "e_font_icon_svg": true, "a11y_improvements": true, "additional_custom_breakpoints": true, "container": true, "landing-pages": true, "kit-elements-defaults": true }, "urls": { "assets": "https:\/\/modmixmap.travelerwp.com\/wp-content\/plugins\/elementor\/assets\/" }, "swiperClass": "swiper-container", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet", "viewport_tablet_extra", "viewport_laptop", "viewport_widescreen"], "viewport_tablet": 992, "viewport_tablet_extra": 1024, "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 71, "title": "Home%20Page%20-%20ModMixMap", "excerpt": "", "featuredImage": false }
         };
     </script>
+
     <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
         id='elementor-frontend-js'></script>
+
+
 </body>
 
 </html>

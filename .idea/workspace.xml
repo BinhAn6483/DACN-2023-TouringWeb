@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0640331e-56c4-4fa8-9ab6-af6b376fb91a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/images/tours/booking.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/wp-includes/css/booking_style (1).css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/static/wp-includes/css/booking_style (2).css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TouringWeb/src/main/resources/templates/tour_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/TouringWeb/src/main/resources/templates/tour_detail.html" afterDir="false" />
-    </list>
+    <list default="true" id="0640331e-56c4-4fa8-9ab6-af6b376fb91a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +33,7 @@
       <workItem from="1683190348970" duration="52000" />
       <workItem from="1683190416589" duration="100000" />
       <workItem from="1683194698495" duration="18000" />
+      <workItem from="1683713085669" duration="26000" />
     </task>
     <servers />
   </component>

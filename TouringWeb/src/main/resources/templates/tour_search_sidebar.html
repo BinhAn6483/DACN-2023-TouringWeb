@@ -537,7 +537,16 @@
 
         .search-tabs-to-top {
             margin-top: -120px;
-        }        </style>
+        }
+        .dropdown-menu {
+            display: none;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+    </style>
 
     <style>
     </style>
@@ -594,10 +603,10 @@
         <div class="menu-toggle">
 
         </div>
-        <a href="https://modmixmap.travelerwp.com/" class="logo d-none d-sm-none d-lg-block">
+        <a th:href="@{/home}" class="logo d-none d-sm-none d-lg-block">
             <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
         </a>
-        <a href="https://modmixmap.travelerwp.com/" class="logo d-block  d-lg-none">
+        <a th:href="@{/home}" class="logo d-block  d-lg-none">
             <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/hotel-1.png" alt="TravelerWP">
         </a>
     </div>
@@ -606,75 +615,50 @@
             <a href="#" class="back-menu"><span class="stt-icon stt-icon-arrow-left"></span></a>
             <ul id="main-menu" class="menu main-menu">
                 <li id="menu-item-75"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-75"><a
-                        class="" href="https://modmixmap.travelerwp.com/">Home</a></li>
-                <li id="menu-item-161"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-161">
-                    <a class="" href="#">Hotel<i class='fa fa-angle-down'></i></a>
-                    <ul class="menu-dropdown">
-                        <li id="menu-item-160"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-160 "><a class=""
-                                                                                                               href="https://modmixmap.travelerwp.com/hotel-search-halfmap/">Search
-                            HalfMap</a></li>
-                        <li id="menu-item-159"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-159 "><a class=""
-                                                                                                               href="https://modmixmap.travelerwp.com/hotel-search-popup-map/">Search
-                            Popup Map</a></li>
-                        <li id="menu-item-162"
-                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-162 "><a
-                                class="" href="https://modmixmap.travelerwp.com/st_hotel/studio-allston-hotel/">Detail
-                            Hotel 1</a></li>
-                        <li id="menu-item-509"
-                            class="menu-item menu-item-type-post_type menu-item-object-st_hotel menu-item-509 "><a
-                                class="" href="https://modmixmap.travelerwp.com/st_hotel/edwardian-kenilworth/">Detail
-                            Hotel 2</a></li>
-                        <li id="menu-item-166"
-                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-166 "><a
-                                class="" href="https://modmixmap.travelerwp.com/hotel_room/room-sheraton-hotel/">Detail
-                            Room 1</a></li>
-                        <li id="menu-item-1354"
-                            class="menu-item menu-item-type-post_type menu-item-object-hotel_room menu-item-1354 "><a
-                                class="" href="https://modmixmap.travelerwp.com/hotel_room/family-suite-8/">Detail Room
-                            2</a></li>
-                    </ul>
-                </li>
+                    class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-75">
+                    <a class="" th:href="@{/home}">Home</a></li>
                 <li id="menu-item-1355"
-                    class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1355">
-                    <a class="" href="#">Tour<i class='fa fa-angle-down'></i></a>
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1355">
+                    <a class="" href="#">Tour<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
                     <ul class="menu-dropdown">
                         <li id="menu-item-1530"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1530 "><a
-                                class="" href="https://modmixmap.travelerwp.com/tour-search-topbar/">Tour nổi bật</a></li>
+                                class="" th:href="@{/featuredTour}">Tour nổi bật</a>
+                        </li>
                         <li id="menu-item-1531"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531 "><a
-                                class="" href="https://modmixmap.travelerwp.com/tour-search-sidebar/">Tour khách đoàn</a></li>
+                                class="" th:href="@{/tours-discount}">Tour khách
+                            đoàn</a></li>
                         <li id="menu-item-1533"
                             class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1533 "><a
                                 class=""
-                                href="https://modmixmap.travelerwp.com/st_tour/segway-tour-of-washington-d-c-highlights/">Combo du lịch</a></li>
+                                th:href="@{/tours-discount}">Combo
+                            du lịch</a></li>
                         <li id="menu-item-1532"
                             class="menu-item menu-item-type-post_type menu-item-object-st_tours menu-item-1532 "><a
                                 class=""
-                                href="https://modmixmap.travelerwp.com/st_tour/new-york-museum-of-modern-art/">Tour hot</a></li>
+                                th:href="@{/tours-new}">Tour
+                            hot</a></li>
 
                     </ul>
                 </li>
 
-
-                <li id="menu-item-1358"
-                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1358">
+                <li id="menu-item-1356"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1356">
                     <a class="" href="#">Blog</a>
+
                 </li>
+
                 <li id="menu-item-163"
                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-163">
-                    <a class="" href="#">Liên hệ<i class='fa fa-angle-down'></i></a>
+                    <a class="" href="#">Liên hệ<i class='fas fa-angle-down' style="margin-left: 8px;"></i></a>
                     <ul class="menu-dropdown">
                         <li id="menu-item-842"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-842 "><a
-                                class="" href="https://modmixmap.travelerwp.com/about/">Thông tin liên hệ</a></li>
+                                class="" href="#">Thông tin liên hệ</a></li>
                         <li id="menu-item-789"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-789 "><a
-                                class="" href="https://modmixmap.travelerwp.com/blog/">Tổng quan công ty</a></li>
+                                class="" href="#">Tổng quan công ty</a></li>
 
                     </ul>
                 </li>
@@ -682,37 +666,50 @@
         </nav>
         <div class="overlay"></div>
     </div>
-    <div class="header__right">
+    <div class="header__right" style="margin-right: 100px">
         <ul class="items d-flex align-items-center flex-wrap">
-
-            <li class="dropdown dropdown-minicart">
-                <div class="mini-cart dropdown-toggle" role="button" id="dropdown-mini-cart" data-bs-toggle="dropdown"
-                     aria-expanded="false">
-                    <span class="stt-icon stt-icon-bag02"></span></div>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-mini-cart">
-                    <li class="heading">
-                        <div class="st-heading-section">Your Cart</div>
+            <li sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="d-none d-sm-block d-md-block st-header-link">
+                Hi, <span sec:authentication="principal.username" id="" onclick="toggleDropdown()"
+                          style="cursor: pointer" th:text="${@userController.nameByEmail()}"></span><i class='fas fa-angle-down' style="margin-left: 8px;"></i>
+                <ul class="dropdown-menu " id="box_open" aria-labelledby="dropdown-dashboard"
+                    style=" position: absolute; transform: translate(-65px, 20px); padding: 10px; width: 195px;"
+                    data-popper-placement="bottom-start">
+                    <li class="user-name" stylelementor elementor-71e="display: flex;align-items: center;font-size: 16px;">
+                        <div class="avatar" style="float:left;margin-right: 7px">
+                            <img alt="TravelerWP"
+                                 th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()})}"
+                                 srcset="https://secure.gravatar.com/avatar/f3ecbcef80bf5e3e0fcfd800330b7aac?s=80&amp;d=mm&amp;r=g 2x"
+                                 class="avatar avatar-40 photo" height="40" width="40" loading="lazy" decoding="async">
+                        </div>
+                        <span th:text="${@userController.nameByEmail()}"></span>
+                    </li>
+                    <li style="margin-top: 30px">
+                        <a th:href="@{/user/profile}" style="background: white;color: black; margin-left: -30px">Hồ sơ</a>
                     </li>
                     <li>
-                        <div class="col-lg-12 cart-text-empty text-warning">Your cart is empty</div>
+                        <a th:href="@{/user/wishlist}"
+                           style="background: white;color: black;cursor: pointer; margin-left: -30px">Lịch sử</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a th:href="@{/logout}"
+                           style="background: white;color: black; cursor: pointer; margin-left: -30px">Đăng xuất</a>
                     </li>
                 </ul>
             </li>
-            <li class="dropdown dropdown-user-dashboard">
-                <a href="#" class="dropdown-toggle" data-bs-toggle="modal"
-                   data-bs-target="#st-login-form">
-                    <span class="stt-icon stt-icon-user1"></span>
-                </a>
-            </li>
-            <li class="d-none d-sm-block d-md-block st-header-link"><a href="#"> <i class=" mr5"></i>Become a host</a>
-            </li>
+
         </ul>
     </div>
 </header>
-<div id="st-content-wrapper" class="st-style-elementor search-result-page tour-layout6" data-layout="6"
+<div id="st-content-wrapper" class="st-style-elementor search-result-page tour-layout6" data-layout="6" onclick="toggleDropdown2()"
      data-format="popup">
-    <div class="banner st_1680982065">
-        <div class="container">
+    <div class=" " style="background-image:url(https://havatravel.vn/upload/hinhanh/banner1-5435.jpg)!important; padding: 0 50px;height: 400px; margin-bottom: 100px">
+        <div class="container" style="display: inline-block;margin: 358px 0 0 87px">
             <h1 class="tag_h1 d-none d-lg-none">Tour Search Sidebar</h1>
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
@@ -1076,18 +1073,24 @@
                             </ul>
 
                         </div>
-                        <h2 class="search-string modern-result-string" style="padding: 2px 10px;color: white;background: #1c5cd7;border-radius: 5px"
-                            id="modern-result-string">24 tours found</h2>
+                        <h2 th:if="${listTourSearch != null }" class="search-string modern-result-string" style="padding: 2px 10px;color: white;background: #1c5cd7;border-radius: 5px"
+                            id="modern-result-string"><span th:text="${listTourSearch.size()}" style="margin-right: 5px;color: white;"></span> kết quả</h2>
+                        <h2 th:if="${listTourSearch == null }" class="search-string modern-result-string" style="padding: 2px 10px;color: white;background: #1c5cd7;border-radius: 5px"
+                            id="modern-result">0 kết quả</h2>
                     </div>
                     <div id="modern-search-result" class="modern-search-result" data-layout="6">
                         <div class="map-content-loading">
                             <div class="st-loader"></div>
                         </div>
                         <div class="service-list-wrapper service-tour row">
-                            <div class="col-12 col-md-6 col-lg-4 item-service"  th:each="tour : ${listTourSearch}">
+                            <div th:if="${listTourSearch == null || #lists.isEmpty(listTourSearch)}" style="text-align: center;font-size: 30px;font-weight: bold;font-family: sans-serif;color: #df00008c;">
+                                Không tìm thấy kết quả!
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-4 item-service"  th:each="tour : ${listTourSearch}" th:if="${listTourSearch != null }">
                                 <div class="services-item grid item-elementor">
-                                    <div class="item service-border st-border-radius">
-                                        <div class="featured-image">
+                                    <div class="item service-border st-border-radius" style="height: 490px">
+                                        <div class="featured-image" style="height: 200px">
                                             <div th:if="${tour.sale > 0}">
                                                 <div class="st-tag-feature-sale "
                                                      style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1103,7 +1106,7 @@
                                                 </div>
                                             </div>
 
-                                            <a href="#" class="login" data-bs-toggle="modal"
+                                            <a th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}" class="login" data-bs-toggle="modal"
                                                data-bs-target="#st-login-form">
                                                 <div class="service-add-wishlist"
                                                      title="Add to wishlist">
@@ -1127,7 +1130,7 @@
                                                 </div>
                                             </a>
                                             <a
-                                                    href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                    th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                 <img decoding="async" itemprop="image"
                                                      style="max-height: 203px;"
                                                      th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
@@ -1173,7 +1176,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -1181,7 +1184,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
@@ -1222,7 +1225,8 @@
 
                         </div>
                     </div>
-                    <div class="pagination moderm-pagination" id="moderm-pagination">
+
+                    <div class="pagination moderm-pagination" id="moderm-pagination" th:if="${listTourSearch != null}">
                         <ul class='page-numbers'>
                             <li><a href="#" aria-current="page" class="page-numbers current">1</a></li>
                             <li><a class="page-numbers"
@@ -2141,6 +2145,27 @@
     };
     /* ]]> */
 </script>
+
+<script>
+    // Lấy ra tất cả các phần tử có class là 'price-tour-format'
+    var priceElements = document.querySelectorAll('.price-tour-format');
+
+    // Lặp qua tất cả các phần tử và thay đổi giá trị của chúng
+    priceElements.forEach(function(element) {
+        // Lấy giá trị của phần tử
+        var priceValue = parseFloat(element.textContent);
+
+        // Kiểm tra giá trị có hợp lệ hay không
+        if (!isNaN(priceValue)) {
+            // Định dạng giá tiền
+            var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+
+            console.log(formattedPrice)
+            // Gán giá trị đã được định dạng lại vào phần tử
+            element.textContent = formattedPrice;
+        }
+    });
+</script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.7.4'
         id='contact-form-7-js'></script>
@@ -2325,6 +2350,20 @@
             "featuredImage": "https:\/\/modmixmap.travelerwp.com\/wp-content\/uploads\/2022\/04\/banner-search-form-min-1024x1024.png"
         }
     };
+</script>
+
+<script>
+    function toggleDropdown() {
+        var dropdownMenu = document.getElementById("box_open");
+        dropdownMenu.style.display = 'block';
+
+    }
+
+    function toggleDropdown2() {
+        var dropdownMenu = document.getElementById("box_open");
+        dropdownMenu.style.display = 'none';
+
+    }
 </script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
