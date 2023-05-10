@@ -70,4 +70,9 @@ public class TourService {
         }
         return result;
     }
+
+    public List<String> getAllLocation() {
+        return tourRepository.getAllLocation();
+
+    }
 }

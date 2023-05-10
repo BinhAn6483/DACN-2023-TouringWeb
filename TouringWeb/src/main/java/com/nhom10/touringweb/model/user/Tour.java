@@ -13,6 +13,9 @@ public class Tour {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "title")
+    private String tile;
+
     @Column(name = "starting_point")
     private String startingPoint;
 
@@ -50,6 +53,17 @@ public class Tour {
         this.imgMain = imgMain;
         this.location = location;
     }
+    public Tour(String name,String title, String startingPoint, int category, String time, int sale, double price, String imgMain, String location) {
+        this.name = name;
+        this.tile = title;
+        this.startingPoint = startingPoint;
+        this.category = category;
+        this.time = time;
+        this.sale = sale;
+        this.price = price;
+        this.imgMain = imgMain;
+        this.location = location;
+    }
 
     public Tour() {
 
@@ -69,6 +83,18 @@ public class Tour {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTile() {
+        return tile;
+    }
+
+    public void setTile(String tile) {
+        this.tile = tile;
+    }
+
+    public void setPriceSale(double priceSale) {
+        this.priceSale = priceSale;
     }
 
     public String getStartingPoint() {
@@ -131,7 +157,7 @@ public class Tour {
         if (sale == 0) {
             return price;
         } else {
-            return price - ((sale * price) / 100);
+            return Math.round((price - ((sale * price) / 100)) / 10000.0) * 10000;
         }
     }
 

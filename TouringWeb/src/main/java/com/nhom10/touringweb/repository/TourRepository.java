@@ -42,4 +42,7 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     @Query("SELECT DISTINCT  t.location FROM Tour t ORDER BY t.viewCount DESC ")
     List<String> getTopDestinations();
+
+    @Query("SELECT DISTINCT  t.location FROM Tour t ")
+    List<String> getAllLocation();
 }

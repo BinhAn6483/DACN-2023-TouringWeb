@@ -1070,12 +1070,12 @@
                         <div class="map-content-loading">
                             <div class="st-loader"></div>
                         </div>
-                        <div class="service-list-wrapper service-tour row">
+                        <div class="service-list-wrapper service-tour row" >
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                  th:each="tour : ${listTourSearchLocation}">
                                 <div class="services-item grid item-elementor">
-                                    <div class="item service-border st-border-radius">
-                                        <div class="featured-image">
+                                    <div class="item service-border st-border-radius" style="height: 490px">
+                                        <div class="featured-image" style="height: 200px">
                                             <div th:if="${tour.sale > 0}">
                                                 <div class="st-tag-feature-sale "
                                                      style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1091,7 +1091,7 @@
                                                 </div>
                                             </div>
 
-                                            <a href="#" class="login" data-bs-toggle="modal"
+                                            <a th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}" class="login" data-bs-toggle="modal"
                                                data-bs-target="#st-login-form">
                                                 <div class="service-add-wishlist"
                                                      title="Add to wishlist">
@@ -1115,7 +1115,7 @@
                                                 </div>
                                             </a>
                                             <a
-                                                    href="https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/">
+                                                    th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                 <img decoding="async" itemprop="image"
                                                      style="height: 200px;"
                                                      th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
@@ -1161,7 +1161,7 @@
                                                                                                       th:text="${tour.getPrice()}">€
                                                                                     </span>
                                                                                     <span
-                                                                                            class="sale-top">From <span
+                                                                                            class="sale-top">Từ <span
                                                                                             class="text-lg lh1em item price-tour-format"
                                                                                             th:text="${tour.getPriceSale()}">
                                                                                             €</span></span>
@@ -1169,7 +1169,7 @@
 
                                                                                      <div th:if="${tour.sale == 0}">
                                                                                         <span
-                                                                                                class="sale-top">From <span
+                                                                                                class="sale-top">Từ <span
                                                                                                 class="text-lg lh1em item price-tour-format"
                                                                                                 th:text="${tour.getPriceSale()}">
                                                                                                 €</span></span>
