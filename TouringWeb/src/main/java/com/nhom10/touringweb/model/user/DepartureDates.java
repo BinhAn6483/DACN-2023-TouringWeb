@@ -72,4 +72,15 @@ public class DepartureDates {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "DepartureDates{" +
+                "id=" + id +
+                ", idTour=" + idTour +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

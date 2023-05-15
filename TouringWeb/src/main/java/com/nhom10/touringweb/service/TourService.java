@@ -1,5 +1,6 @@
 package com.nhom10.touringweb.service;
 
+import com.nhom10.touringweb.model.user.DepartureDates;
 import com.nhom10.touringweb.model.user.Tour;
 import com.nhom10.touringweb.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,9 @@ public class TourService {
         return tourRepository.getAllDateStart(idTour);
     }
 
+    public List<DepartureDates> getAllDateStartByIdTour(Long idTour) {
+        return tourRepository.getAllDateStartByIdTour(idTour);
+    }
     public Map<String, Integer> getTopDestinations(){
         List<String> list = tourRepository.getTopDestinations();
         System.out.println("List of top: " + list);

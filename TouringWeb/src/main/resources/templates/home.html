@@ -9,11 +9,13 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="traveler" content="3.0.7.1"/>
 
-    <title>Home Page - Traveler</title>
+    <title>Trang chủ | Traveler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+    <link rel='stylesheet' id='st-google-fonts-css'
+          href='//fonts.googleapis.com/css?family=DM+Sans:regular,italic,500,700,500italic,700italic&#038;subset=latin-ext,latin'
+          type='text/css' media='all'/>
     <link rel='stylesheet' id='classic-theme-styles-css'
           href='https://modmixmap.travelerwp.com/wp-includes/css/classic-themes.min.css' type='text/css' media='all'/>
     <link rel='stylesheet' id='bootstrap-css'
@@ -44,12 +46,7 @@
           href='https://modmixmap.travelerwp.com/wp-content/uploads/elementor/css/post-71.css' type='text/css'
           media='all'/>
 
-    <style>
 
-        body {
-            font-family: "DM Sans" !important;
-        }
-    </style>
     <script type='text/javascript' id='jquery-core-js-extra'>
         /* <![CDATA[ */
         var list_location = {"list": "\"\""};
@@ -222,7 +219,7 @@
 
     <style>
         body {
-            font-family: "DM Sans" !important;
+            font-family: Muli,sans-serif !important;;
 
 
         }
@@ -246,7 +243,7 @@
         .fa-heart {
             color: #0a58ca;
             font-size: 30px;
-            opacity: 40%;
+            opacity: 70%;
         }
 
         .fa-heart:hover {
@@ -264,12 +261,13 @@
             display: block !important;
         }
     </style>
+
 </head>
 
 <body
-        class="home page-template page-template-elementor_header_footer page page-id-71  st-header-9 body-header-elementor-9 stt-menu-transparent st-mod-style menu_style1 topbar_position_default search_enable_preload elementor-default elementor-template-full-width elementor-kit-7 elementor-page elementor-page-71">
+        class="home page-template page-template-elementor_header_footer page page-id-71  st-header-9 body-header-elementor-9 stt-menu-transparent st-mod-style menu_style1 topbar_position_default search_enable_preload elementor-default elementor-template-full-width elementor-kit-7 elementor-page elementor-page-71" style="font-family: 'DM Sans' !important;">
 
-<header class="header d-flex align-items-center justify-content-between">
+<header class="header d-flex align-items-center justify-content-between" style="font-family: Muli,sans-serif !important;">
     <div class="header__left">
         <div class="menu-toggle">
 
@@ -377,7 +375,7 @@
         </ul>
     </div>
 </header>
-<div data-elementor-type="wp-page" data-elementor-id="71" class="elementor elementor-71" onclick="toggleDropdown2()">
+<div data-elementor-type="wp-page" data-elementor-id="71" class="elementor elementor-71" onclick="toggleDropdown2()" style="font-family: Muli,sans-serif !important;">
     <section
             class="elementor-section elementor-top-section elementor-element elementor-element-6c6f2387 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
             data-id="6c6f2387" data-element_type="section"
@@ -429,7 +427,7 @@
                                                                  data-bs-auto-close="outside" aria-expanded="true">
                                                                 <span class="stt-icon stt-icon-location1"></span>
                                                                 <div class="st-form-dropdown-icon">
-                                                                    <label>Địa điểm</label>
+                                                                    <label style="font-weight: bold">Địa điểm</label>
                                                                     <div class="render">
                                                                         <input type="text" autocomplete="off"
                                                                                onkeyup="stKeyupsmartSearch(this)"
@@ -457,34 +455,7 @@
                                                                            style="margin-right: 10px;"></i><span
                                                                             class="lv2" th:text="${location}">Ha Noi</span>
                                                                     </li>
-<!--                                                                    <li style="padding-left: 20px;"-->
-<!--                                                                        data-country="US" data-value="56"-->
-<!--                                                                        class="item ">-->
-<!--                                                                        <i class="fas fa-map-marker-alt"-->
-<!--                                                                           style="margin-right: 10px;"></i><span-->
-<!--                                                                            class="lv2">Ho Chi Minh</span>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li style="padding-left: 20px;"-->
-<!--                                                                        data-country="US" data-value="56"-->
-<!--                                                                        class="item ">-->
-<!--                                                                        <i class="fas fa-map-marker-alt"-->
-<!--                                                                           style="margin-right: 10px;"></i><span-->
-<!--                                                                            class="lv2">Da Nang</span>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li style="padding-left: 20px;"-->
-<!--                                                                        data-country="US" data-value="56"-->
-<!--                                                                        class="item ">-->
-<!--                                                                        <i class="fas fa-map-marker-alt"-->
-<!--                                                                           style="margin-right: 10px;"></i><span-->
-<!--                                                                            class="lv2">Du lich bien dao</span>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li style="padding-left: 20px;"-->
-<!--                                                                        data-country="US" data-value="56"-->
-<!--                                                                        class="item ">-->
-<!--                                                                        <i class="fas fa-map-marker-alt"-->
-<!--                                                                           style="margin-right: 10px;"></i><span-->
-<!--                                                                            class="lv2">Tay Bac</span>-->
-<!--                                                                    </li>-->
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -495,7 +466,7 @@
                                                                     class="date-item-wrapper d-flex align-items-center checkin">
                                                                 <span class="stt-icon stt-icon-in"></span>
                                                                 <div class="item-inner">
-                                                                    <label>Ngày khởi hành</label>
+                                                                    <label style="font-weight: bold">Ngày khởi hành</label>
                                                                     <div class="render check-in-render">Chọn
                                                                     </div>
                                                                 </div>
@@ -505,7 +476,7 @@
                                                                     class="date-item-wrapper d-flex align-items-center checkout">
                                                                 <span class="stt-icon stt-icon-in"></span>
                                                                 <div class="item-inner">
-                                                                    <label>Ngày kết thúc</label>
+                                                                    <label style="font-weight: bold"    >Ngày kết thúc</label>
                                                                     <div class="render check-out-render">Chọn
                                                                     </div>
                                                                 </div>
@@ -519,7 +490,7 @@
                                                                    name="date">
                                                         </div>
                                                         <div class="button-search-wrapper">
-                                                            <button class="btn btn-primary btn-search" type="submit">
+                                                            <button class="btn btn-primary btn-search" type="submit" style="font-weight: bold">
                                                                 <i class="fas fa-search Top destinations"
                                                                    style="margin-right:10px "></i>
                                                                 Tìm
@@ -623,7 +594,7 @@
                                             <a class="st-link"
                                                th:href="@{/location/{key}(key=${top.key})}">
                                                 <img decoding="async"
-                                                     src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/California.jpg"
+                                                     th:src="@{/images/banner/{imgtop}(imgtop=${@tourController.getImgTopList(top.key)})}"
                                                      alt="California" class="img-responsive"/>
                                             </a>
                                             <div class="content">
@@ -638,7 +609,7 @@
                                                         style="margin-top: 10px;">
                                                     <a th:href="@{/location/{key}(key=${top.key})}"
                                                        style="border-radius: 5px;padding: 3px 10px;background: #1c5cd7;"
-                                                       th:text="${top.value} +Tour"> 12 Tour</a>
+                                                       th:text="${top.value} +' Tour'"> 12 Tour</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -679,23 +650,23 @@
                                         <li><a class="text-center  active" id="nav-list-of_serviceHotel-tab"
                                                data-bs-toggle="tab" data-bs-target="#nav-list-of_servicest_hotel"
                                                role="tab" aria-controls="nav-list-of_servicest_hotel"
-                                               aria-selected="true">TOUR NỔI BẬT</a>
+                                               aria-selected="true" style="font-weight: bold">TOUR NỔI BẬT</a>
                                         </li>
                                         <li><a class="text-center  " id="nav-list-of_serviceTour-tab"
                                                data-bs-toggle="tab" data-bs-target="#nav-list-of_servicest_tours"
                                                role="tab" aria-controls="nav-list-of_servicest_tours"
-                                               aria-selected="true">TOUR MỚI NHẤT</a>
+                                               aria-selected="true" style="font-weight: bold">TOUR MỚI NHẤT</a>
                                         </li>
                                         <li><a class="text-center  " id="nav-list-of_serviceActivity-tab"
                                                data-bs-toggle="tab"
                                                data-bs-target="#nav-list-of_servicest_activity" role="tab"
                                                aria-controls="nav-list-of_servicest_activity"
-                                               aria-selected="true">TOUR GIẢM GIÁ XỐC</a>
+                                               aria-selected="true" style="font-weight: bold">TOUR GIẢM GIÁ XỐC</a>
                                         </li>
                                         <li><a class="text-center  " id="nav-list-of_serviceRental-tab"
                                                data-bs-toggle="tab" data-bs-target="#nav-list-of_servicest_rental"
                                                role="tab" aria-controls="nav-list-of_servicest_rental"
-                                               aria-selected="true">COMBO DU LỊCH</a>
+                                               aria-selected="true" style="font-weight: bold">COMBO DU LỊCH</a>
                                         </li>
 
                                     </ul>
@@ -712,13 +683,19 @@
                                                     <div class="services-item grid item-elementor">
                                                         <div class="item service-border st-border-radius">
                                                             <div class="featured-image" style="height: 200px">
-                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
-                                                                    <button style="background: none; border: none"
-                                                                            class="btn-add">
-                                                                        <i class="fas fa-heart"
-                                                                           title="Thêm vào danh sách yêu thích"></i>
-                                                                    </button>
-                                                                </div>
+                                                                <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                                                                    <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                        <button style="background: none; border: none"
+                                                                                class="btn-add" type="submit">
+                                                                            <i class="fas fa-heart"
+                                                                               title="Thêm vào danh sách yêu thích"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div style="position: absolute;background-color: rgba(0,0,0,.5);padding: 5px 10px;font-family: Muli,sans-serif !important;z-index: 1;margin-top: 175px;color: white;">
+                                                                        <span style=" font-weight: bold" th:text="'Từ '+${tour.getStartingPoint()}"> Từ Hồ Chí Minh</span>
+                                                                    </div>
+                                                                </form>
+
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -751,7 +728,7 @@
                                                                      itemtype="https://schema.org/ItemList">
 
                                                                         <span itemprop="streetAddress">
-                                                                            <i class="fas fa-map-marker-alt"></i>
+                                                                           <span class="stt-icon stt-icon-location1"></span>
                                                                             <span th:text="${tour.getLocation()}"></span>
                                                                             </span>
 
@@ -859,15 +836,21 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${listTourNew}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                        <div class="item service-border st-border-radius">
                                                             <div class="featured-image" style="height: 200px">
-                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
-                                                                    <button style="background: none; border: none"
-                                                                            class="btn-add">
-                                                                        <i class="fas fa-heart"
-                                                                           title="Thêm vào danh sách yêu thích"></i>
-                                                                    </button>
-                                                                </div>
+                                                                <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                                                                    <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                        <button style="background: none; border: none"
+                                                                                class="btn-add" type="submit">
+                                                                            <i class="fas fa-heart"
+                                                                               title="Thêm vào danh sách yêu thích"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div style="position: absolute;background-color: rgba(0,0,0,.5);padding: 5px 10px;font-family: Muli,sans-serif !important;z-index: 1;margin-top: 175px;color: white;">
+                                                                        <span style=" font-weight: bold" th:text="'Từ '+${tour.getStartingPoint()}"> Từ Hồ Chí Minh</span>
+                                                                    </div>
+                                                                </form>
+
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -900,7 +883,7 @@
                                                                      itemtype="https://schema.org/ItemList">
 
                                                                         <span itemprop="streetAddress">
-                                                                            <i class="fas fa-map-marker-alt"></i>
+                                                                            <span class="stt-icon stt-icon-location1"></span>
                                                                             <span th:text="${tour.getLocation()}"></span>
                                                                             </span>
 
@@ -1008,15 +991,21 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${listTourDiscount}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                        <div class="item service-border st-border-radius">
                                                             <div class="featured-image" style="height: 200px">
-                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
-                                                                    <button style="background: none; border: none"
-                                                                            class="btn-add">
-                                                                        <i class="fas fa-heart"
-                                                                           title="Thêm vào danh sách yêu thích"></i>
-                                                                    </button>
-                                                                </div>
+                                                                <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                                                                    <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                        <button style="background: none; border: none"
+                                                                                class="btn-add" type="submit">
+                                                                            <i class="fas fa-heart"
+                                                                               title="Thêm vào danh sách yêu thích"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div style="position: absolute;background-color: rgba(0,0,0,.5);padding: 5px 10px;font-family: Muli,sans-serif !important;z-index: 1;margin-top: 175px;color: white;">
+                                                                        <span style=" font-weight: bold" th:text="'Từ '+${tour.getStartingPoint()}"> Từ Hồ Chí Minh</span>
+                                                                    </div>
+                                                                </form>
+
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1049,7 +1038,7 @@
                                                                      itemtype="https://schema.org/ItemList">
 
                                                                         <span itemprop="streetAddress">
-                                                                            <i class="fas fa-map-marker-alt"></i>
+                                                                            <span class="stt-icon stt-icon-location1"></span>
                                                                             <span th:text="${tour.getLocation()}"></span>
                                                                             </span>
 
@@ -1157,15 +1146,21 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
                                                      th:each="tour : ${tours}">
                                                     <div class="services-item grid item-elementor">
-                                                        <div class="item service-border st-border-radius" style="height: 490px">
+                                                        <div class="item service-border st-border-radius">
                                                             <div class="featured-image" style="height: 200px">
-                                                                <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
-                                                                    <button style="background: none; border: none"
-                                                                            class="btn-add">
-                                                                        <i class="fas fa-heart"
-                                                                           title="Thêm vào danh sách yêu thích"></i>
-                                                                    </button>
-                                                                </div>
+                                                                <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                                                                    <div style="z-index: 1000;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                                        <button style="background: none; border: none"
+                                                                                class="btn-add" type="submit">
+                                                                            <i class="fas fa-heart"
+                                                                               title="Thêm vào danh sách yêu thích"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div style="position: absolute;background-color: rgba(0,0,0,.5);padding: 5px 10px;font-family: Muli,sans-serif !important;z-index: 1;margin-top: 175px;color: white;">
+                                                                        <span style=" font-weight: bold" th:text="'Từ '+${tour.getStartingPoint()}"> Từ Hồ Chí Minh</span>
+                                                                    </div>
+                                                                </form>
+
                                                                 <div th:if="${tour.sale > 0}">
                                                                     <div class="st-tag-feature-sale "
                                                                          style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
@@ -1186,8 +1181,6 @@
                                                                         th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                                                     <img decoding="async" itemprop="image"
                                                                          style="max-height: 212px;"
-                                                                         width="307"
-                                                                         height="212"
                                                                          th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
                                                                          alt="Two Hour Walking Tour of Manhattan"
                                                                          class="image-feature st-hover-grow"/>
@@ -1200,7 +1193,7 @@
                                                                      itemtype="https://schema.org/ItemList">
 
                                                                         <span itemprop="streetAddress">
-                                                                            <i class="fas fa-map-marker-alt"></i>
+                                                                            <span class="stt-icon stt-icon-location1"></span>
                                                                             <span th:text="${tour.getLocation()}"></span>
                                                                             </span>
 
@@ -1322,7 +1315,7 @@
                          data-id="1216d763" data-element_type="widget" data-widget_type="heading.default">
                         <div class="elementor-widget-container">
                             <h2 class="elementor-heading-title elementor-size-default"
-                                style="float:left; border-bottom: 5px solid #1c5cd7;">Blog
+                                style="float:left; border-bottom: 5px solid #1c5cd7;">Bài viết
                             </h2>
                         </div>
                     </div>
@@ -2507,6 +2500,27 @@
         },
         "post": {"id": 71, "title": "Home%20Page%20-%20ModMixMap", "excerpt": "", "featuredImage": false}
     };
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    $(function() {
+        $("form.add-to-wish-list").submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var idTour = form.data("tour-id");
+            console.log("idTour: "+idTour );
+            $.ajax({
+                type: "GET",
+                url: "/user/addToWishlist/" + idTour,
+                success: function(response) {
+                    alert(response);
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+        });
+    });
 </script>
 
 <script>

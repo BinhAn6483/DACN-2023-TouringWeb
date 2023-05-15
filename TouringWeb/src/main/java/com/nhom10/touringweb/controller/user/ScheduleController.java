@@ -1,9 +1,7 @@
 package com.nhom10.touringweb.controller.user;
 
-import com.nhom10.touringweb.model.user.LinkImg;
-import com.nhom10.touringweb.model.user.Schedule;
-import com.nhom10.touringweb.model.user.ScheduleDetail;
-import com.nhom10.touringweb.model.user.Tour;
+import com.nhom10.touringweb.model.user.*;
+import com.nhom10.touringweb.repository.CommentRepository;
 import com.nhom10.touringweb.repository.ScheduleDetailRepository;
 import com.nhom10.touringweb.repository.ScheduleRepository;
 import com.nhom10.touringweb.service.LinkImgService;
@@ -34,15 +32,21 @@ public class ScheduleController {
     @Autowired
     LinkImgService linkImgService;
 
+    @Autowired
+    CommentRepository commentRepository;
+
     @GetMapping("/tour/detail/{idTour}" )
     public ModelAndView getTourDetail(@PathVariable("idTour") Long idTour){
         ModelAndView mav = new ModelAndView("detaill");
         List<Date> listDateStart= tourService.getAllDateStart(idTour);
         Map<String, Object> model = new HashMap<>();
         Tour tour = tourService.getTourById(idTour);
-        System.out.println("tourrrrrrrrrrrrrrrrrrrrrrrr: " +tour.toString());
         List<Schedule> scheduleList = getAllScheduleByIdTour(idTour);
         List<String> imgs= getAllLinkImgOfTour(idTour);
+        List<DepartureDates> departureDates = getAllDateStartByIdTour(idTour);
+        List<Comment> commentList = commentRepository.getAllByIdTour(idTour);
+        model.put("commentList",commentList);
+        model.put("departureDates",departureDates);
         model.put("imgs",imgs);
         model.put("dates",listDateStart);
         model.put("tour", tour);
@@ -81,4 +85,10 @@ public class ScheduleController {
     public List<String> getAllLinkImgOfTour(Long idTour) {
         return linkImgService.getAllLinkImg(idTour);
     }
+
+    public List<DepartureDates> getAllDateStartByIdTour(Long idTour) {
+        return tourService.getAllDateStartByIdTour(idTour);
+    }
+
+
 }

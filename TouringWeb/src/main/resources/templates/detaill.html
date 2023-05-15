@@ -260,8 +260,42 @@
     <style>
 
         body {
-            font-family: "DM Sans" !important;
+            font-family: Muli, sans-serif !important;
         }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .table > tbody > tr > td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        .mda-list-price .btn-book {
+            background: #ed0080;
+            background: linear-gradient(180deg, #ed0080 0, #be3b98 100%);
+            color: #fff !important;
+            display: inline-block;
+            padding: 6px 30px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .mda-list-price .btn-book:hover {
+            background: linear-gradient(180deg, #960152 0, #ff14bb 100%);
+        }
+
+        .whnw {
+            text-align: left;
+        }
+
     </style>
 
 </head>
@@ -504,7 +538,8 @@
 
                     <h2 class="st-heading-section">
                         Giới thiệu về chuyến du lịch này</h2>
-                    <p th:text="${tour.tile}" style="color: black">Vịnh Hạ Long đượcs công nhận là 1 trong 7 kỳ quan thiên nhiên nổi tiếng của thế giới. Cảnh đẹp
+                    <p th:text="${tour.tile}" style="color: black">Vịnh Hạ Long đượcs công nhận là 1 trong 7 kỳ quan
+                        thiên nhiên nổi tiếng của thế giới. Cảnh đẹp
                         vịnh Hạ Long không chỉ là sự hài hòa giữa đất trời và biển cả mà còn ở những hang động chứa đựng
                         trong lòng hàng nghìn hàng vạn các tác phẩm độc đáo bằng nhũ đá của mẹ thiên nhiên. Đến với Tour
                         Hạ Long - Sửng Sốt - Titop 2N1Đ, Du khách không chỉ thưởng ngoạn vẻ đẹp hoang sơ, tuyệt đẹp mà
@@ -570,21 +605,21 @@
 
 
                     </div>
-<!--                    <h2 class="st-heading-section">Điểm nổi bật</h2>-->
-<!--                    <ul>-->
-<!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Khám phá Vịnh-->
-<!--                            Hạ Long - Kỳ quan thiên nhiên thế giới-->
-<!--                        </li>-->
-<!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Trải nghiệm-->
-<!--                            chèo Kayak hoặc đi thuyền nan tham quan Hang Luồn-->
-<!--                        </li>-->
-<!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Thử sức với-->
-<!--                            các trò chơi giải trí tại Công viên Hạ Long-->
-<!--                        </li>-->
-<!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Thưởng thức-->
-<!--                            những món ăn hấp dẫn mang hương vị biển cả-->
-<!--                        </li>-->
-<!--                    </ul>-->
+                    <!--                    <h2 class="st-heading-section">Điểm nổi bật</h2>-->
+                    <!--                    <ul>-->
+                    <!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Khám phá Vịnh-->
+                    <!--                            Hạ Long - Kỳ quan thiên nhiên thế giới-->
+                    <!--                        </li>-->
+                    <!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Trải nghiệm-->
+                    <!--                            chèo Kayak hoặc đi thuyền nan tham quan Hang Luồn-->
+                    <!--                        </li>-->
+                    <!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Thử sức với-->
+                    <!--                            các trò chơi giải trí tại Công viên Hạ Long-->
+                    <!--                        </li>-->
+                    <!--                        <li class="list-unstyled d-flex align-items-center"><i class="stt-icon-check"></i>Thưởng thức-->
+                    <!--                            những món ăn hấp dẫn mang hương vị biển cả-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </div>
                 <!--End Tour highlight-->
                 <div class="st-hr large"></div>
@@ -595,33 +630,41 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="include">
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-check" ></i>Hướng
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-check"></i>Hướng
                                     dẫn song ngữ chuyên ngành
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-check" ></i>Xe du
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-check"></i>Xe du
                                     lịch máy lạnh
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-check" ></i>Phí
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-check"></i>Phí
                                     vào cửa
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-check" ></i>Cơm
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-check"></i>Cơm
                                     hộp ,nước lọc, táo ,chuối
                                 </li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul class="exclude">
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-close" ></i>Dịch
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-close"></i>Dịch
                                     vụ bổ sung
 
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-close"></i>Vé vào
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-close"></i>Vé vào
                                     cổng tất cả các khu công viên
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-close"></i>Vé khứ
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-close"></i>Vé khứ
                                     hồi
                                 </li>
-                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i class="stt-icon-close"></i>chi
+                                <li class="list-unstyled d-flex align-items-center" style="color: black"><i
+                                        class="stt-icon-close"></i>chi
                                     phí cá nhân khác
                                 </li>
                             </ul>
@@ -637,7 +680,8 @@
                     <div class="accordion faq st-program style1" id="accordion_contrary-to-popular-belief">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading_contrary-to-popular-belief">
-                                <button class="accordion-button " style="background: #ed0080;padding:10px;border-radius: 10px; color: white"
+                                <button class="accordion-button "
+                                        style="background: #ed0080;padding:10px;border-radius: 10px; color: white"
                                         type="button"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#contrary-to-popular-belief"
@@ -652,7 +696,7 @@
                                  data-bs-parent="#accordion_contrary-to-popular-belief"
                             >
                                 <div class="accordion-body" style="color: black">
-                                    <p><b>1: Trẻ em </b > dưới 12 tuổi tính 30% giá tour của người lớn</p>
+                                    <p><b>1: Trẻ em </b> dưới 12 tuổi tính 30% giá tour của người lớn</p>
                                     <p><b>2: Quý khách </b> hàng đặt tour sẽ không được quyền hoàn tour, hủy đặt tour.
                                     </p>
                                     <p>3: Sẽ có hướng dẫn viên phục vụ đoàn khi đi tham quan</p>
@@ -664,7 +708,8 @@
                     <div class="accordion faq st-program style1" id="accordion_lorem-ipsum-is-not-simply-random-text">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading_lorem-ipsum-is-not-simply-random-text">
-                                <button class="accordion-button  " style="background: #ed0080;padding:10px;border-radius: 10px; color: white"
+                                <button class="accordion-button  "
+                                        style="background: #ed0080;padding:10px;border-radius: 10px; color: white"
                                         type="button"
                                         data-bs-toggle="collapse"
                                         data-bs-target="#lorem-ipsum-is-not-simply-random-text"
@@ -696,6 +741,78 @@
                 </div>
 
                 <!--Table Discount group -->
+                <div class="boxTour" id="flag5">
+                    <h2 class="st-heading-section" style="margin-top: 40px">
+                        Ngày Khởi hành khác</h2>
+                    <div class="content">
+                        <div id="mda-table-price">
+                            <div class="mda-list-price mda-tap ative table-responsive mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_horizontal mCSB_inside"
+                                     style="max-height: none;" tabindex="0">
+                                    <div id="mCSB_1_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x"
+                                         style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                                        <table class="table">
+                                            <thead class="responsive">
+                                            <tr class="responsive">
+                                                <th class="responsive" style="width: 13%;">STT</th>
+                                                <th width="85" style="width: 20%;white-space: nowrap;"
+                                                    class="responsive">Ngày khởi hành
+                                                </th>
+                                                <th width="100px" style="width: 17%;" class="responsive">Giá từ</th>
+                                                <th width="90px" style="width: 17%;" class="responsive">Số Chỗ</th>
+                                                <th width="125px" style="width: 13%;" class="responsive">Book tour</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="responsive">
+
+                                            <tr class="responsive" th:each="a: ${departureDates}">
+                                                <form method="POST" th:action="@{/confirm_booking}">
+                                                    <input type="hidden" name="idTour" th:value="${tour.getId()}">
+                                                    <input type="hidden" name="dateStart"
+                                                           th:value="${a.getDateStart()}">
+                                                    <td class="responsive sttt" style="width: 13%;">1</td>
+                                                    <td class="responsive" style="width: 20%;" align="left"
+                                                        th:text="${a.getDateStart()}">16/05/2023
+                                                    </td>
+                                                    <td class="responsive" style="width: 17%;" align="left">
+                                                    <span style="font-weight: bold;" class=""><span
+                                                            class="mda-money price-tour-format"
+                                                            th:text="${tour.getPriceSale()}">7,090,000</span>đ</span>
+                                                    </td>
+                                                    <td class="responsive" style="width: 17%;" align="left">
+                                                        <span th:text="'Còn '+${a.getQuantity()} + ' chỗ'">Còn 10 chỗ</span>
+                                                    </td>
+                                                    <td class="responsive" style="width: 13%;" align="right">
+                                                        <div class="whnw">
+                                                            <button class="btn-book"
+                                                                    type="submit"
+                                                                    data-scheduleid="5474w2333424d4d40374x2">Book
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </form>
+                                            </tr>
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                    <div id="mCSB_1_scrollbar_horizontal"
+                                         class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_horizontal"
+                                         style="display: none;">
+                                        <div class="mCSB_draggerContainer">
+                                            <div id="mCSB_1_dragger_horizontal" class="mCSB_dragger"
+                                                 style="position: absolute; min-width: 30px; width: 0px; left: 0px;">
+                                                <div class="mCSB_dragger_bar"></div>
+                                            </div>
+                                            <div class="mCSB_draggerRail"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--End Table Discount group -->
 
                 <div class="st-section-single" id="st-reviews">
@@ -716,7 +833,7 @@
 
                                             <div class="review-score-text">Tuyệt vời</div>
                                             <div class="review-score-base text-center">
-                                                <span>(25 đánh giá)</span>
+                                                <span th:text="'( '+ ${commentList.size()} +' đánh giá )'">(25 đánh giá)</span>
                                             </div>
                                         </div>
                                     </div>
@@ -778,33 +895,51 @@
                             </div>
                         </div>
                         <div class="review-pagination">
-                            <div class="summary text-center">
-                                25 đánh giá về chuyến dụ lịch này - Xem 1 tới 4
-                            </div>
-                            <div id="reviews" class="review-list">
-                                <div class="comment-item">
+
+                            <div id="review" class="review-list">
+                                <div class="comment-item" th:each="comment : ${commentList}">
                                     <div class="comment-item-head d-flex justify-content-between align-items-center">
                                         <div class="media d-flex align-items-center">
                                             <div class="media-left">
                                                 <img alt='TravelerWP'
-                                                     src='https://secure.gravatar.com/avatar/?s=50&#038;d=mm&#038;r=g'
+                                                     th:src='@{/images/avatar/{img}(img=${@userController.getImgAvatar(comment.idUser)})}'
                                                      srcset='https://secure.gravatar.com/avatar/?s=100&#038;d=mm&#038;r=g 2x'
                                                      class='avatar avatar-50 photo avatar-default' height='50'
                                                      width='50' loading='lazy' decoding='async'/></div>
                                             <div class="media-body">
-                                                <div class="media-heading">Duy Bùi</div>
-                                                <div class="date">15/3/2023</div>
+                                                <div class="media-heading" style="font-weight: bold" th:text="${@userController.getUserById(comment.idUser).name}">Duy Bùi</div>
+                                                <div class="date" th:text="${comment.createAt}" style="float:left;">15/3/2023</div>
                                             </div>
                                         </div>
                                         <div class="like">
                                             <a data-id="950" href="#"
                                                class="btn-like st-like-review ">
-                                                <i class="stt-icon-like"></i>
+                                                <i class="stt-icon-like" style="font-size: 25px;position: absolute;margin: -2px 0px 0 -30px;"></i>
                                             </a>
-                                            <span>0</span></div>
+                                            <span th:text="${comment.likes}">0</span></div>
                                     </div>
+
                                     <div class="comment-item-body">
-                                        <ul class="review-star">
+                                        <ul class="review-star" th:if="${comment.star==1}">
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+
+                                        </ul>
+                                        <ul class="review-star" th:if="${comment.star==2}">
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                        </ul>
+                                        <ul class="review-star" th:if="${comment.star==3}">
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                        </ul>
+                                        <ul class="review-star" th:if="${comment.star==4}">
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                        </ul>
+                                        <ul class="review-star" th:if="${comment.star==5}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
@@ -813,7 +948,7 @@
                                         </ul>
                                         <div class="detail">
                                             <div class="st-description"
-                                                 data-show-all="st-description-950">
+                                                 data-show-all="st-description-950" th:text="${comment.content}">
                                                 Mình rất thích cách thuyết minh của bạn hướng dẫn nghe rất thu hút và bổ
                                                 ích. Một điểm cộng là các bữa ăn khá ngon, ăn no.
                                             </div>
@@ -821,86 +956,7 @@
 
                                     </div>
                                 </div>
-                                <div class="comment-item">
-                                    <div class="comment-item-head d-flex justify-content-between align-items-center">
-                                        <div class="media d-flex align-items-center">
-                                            <div class="media-left">
-                                                <img alt='TravelerWP'
-                                                     src='https://secure.gravatar.com/avatar/?s=50&#038;d=mm&#038;r=g'
-                                                     srcset='https://secure.gravatar.com/avatar/?s=100&#038;d=mm&#038;r=g 2x'
-                                                     class='avatar avatar-50 photo avatar-default' height='50'
-                                                     width='50' loading='lazy' decoding='async'/></div>
-                                            <div class="media-body">
-                                                <div class="media-heading">Long Phẩn</div>
-                                                <div class="date">10/2/2023</div>
-                                            </div>
-                                        </div>
-                                        <div class="like">
-                                            <a data-id="910" href="#"
-                                               class="btn-like st-like-review ">
-                                                <i class="stt-icon-like"></i>
-                                            </a>
-                                            <span>0</span></div>
-                                    </div>
-                                    <div class="comment-item-body">
-                                        <ul class="review-star">
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <div class="detail">
-                                            <div class="st-description"
-                                                 data-show-all="st-description-910">
-                                                Cân nhắc khá nhiều nhưng cuối cùng tôi cũng chọn bestprice. Mọi thứ đều
-                                                ổn từ khâu tư vấn tới khi đi du lịch. Vì đi một mình nên đi ghép đoàn,
-                                                tôi đã làm quen và kết bạn thêm với mọi người. Lịch trình khá thú vị,
-                                                nhiều điểm tham quan đẹp
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-item">
-                                    <div class="comment-item-head d-flex justify-content-between align-items-center">
-                                        <div class="media d-flex align-items-center">
-                                            <div class="media-left">
-                                                <img alt='TravelerWP'
-                                                     src='https://secure.gravatar.com/avatar/?s=50&#038;d=mm&#038;r=g'
-                                                     srcset='https://secure.gravatar.com/avatar/?s=100&#038;d=mm&#038;r=g 2x'
-                                                     class='avatar avatar-50 photo avatar-default' height='50'
-                                                     width='50' loading='lazy' decoding='async'/></div>
-                                            <div class="media-body">
-                                                <div class="media-heading">Duy Thẩm</div>
-                                                <div class="date">04/1/2023</div>
-                                            </div>
-                                        </div>
-                                        <div class="like">
-                                            <a data-id="904" href="#"
-                                               class="btn-like st-like-review ">
-                                                <i class="stt-icon-like"></i>
-                                            </a>
-                                            <span>0</span></div>
-                                    </div>
-                                    <div class="comment-item-body">
-                                        <ul class="review-star">
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                            <li class="list-unstyled"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <div class="detail">
-                                            <div class="st-description"
-                                                 data-show-all="st-description-904">
-                                                Các điểm tham quan đều rất đẹp, kiến trúc đặc biệt, rất ấn tượng với
-                                                Vịnh Hạ Long có hệ thực vật và thiết kế vô cùng mới lạ. Thời gian di
-                                                chuyển giữa các điểm k quá dài nên không bị mệt
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="pagination">
@@ -924,120 +980,50 @@
                             </ul>
                         </div>
                         <div id="write-review">
-                            <h4 class="heading">
+                            <h4 class="heading" style="float:right;">
                                 <a href="javascript: void(0)" class="toggle-section c-main f16"
                                    data-target="st-review-form">Viết đánh giá <i class="stt-icon-arrow-down"></i></a>
                             </h4>
                             <div id="respond" class="comment-respond st-border-radius comment-respond"
                                  data-toggle-section="st-review-form"
                                  style="display: none">
-                                <h3 id="reply-title" class="comment-reply-title">Để lại phản hồi <small><a
+                                <h3 id="reply-title" class="comment-reply-title" style="margin-bottom: 20px">Để lại phản hồi <small><a
                                         rel="nofollow" id="cancel-comment-reply-link"
                                         href="/st_tour/two-hour-walking-tour-of-manhattan/#respond"
                                         style="display:none;">Cancel reply</a></small></h3>
-                                <form action="https://modmixmap.travelerwp.com/wp-comments-post.php?wpe-comment-post=modmixmap"
-                                      method="post" id="commentform" class="comment-form review-form" novalidate>
-                                    <p class="comment-notes"><span id="email-notes">Địa chỉ email của bạn sẽ không được công bố. </span>
-                                        Các trường bắt buộc được đánh dấu <span class="required">*</span></p>
+                                <form th:action="@{/comment/upload}" method="POST" id="commentform" class="comment-form review-form" novalidate>
+
                                     <div class="form-wrapper">
+
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                           name="author"
-                                                           placeholder="Tên *">
+                                            <div class="col-xs-12 col-md-6 col-md-push-6" style="width: 100%;">
+                                                <div class="form-group review-items " style="width: 50%;    background: #eeeeee;">
+                                                    <div class="item">
+                                                        <label>Đánh giá</label>
+                                                        <input class="st_review_stats" type="hidden"
+                                                              id="star" name="star">
+                                                        <input type="hidden" name="idTour" th:value="${tour.id}">
+                                                        <div class="rates">
+                                                            <i class="fa fa-star grey"></i><i
+                                                                class="fa fa-star grey"></i><i
+                                                                class="fa fa-star grey"></i><i
+                                                                class="fa fa-star grey"></i><i
+                                                                class="fa fa-star grey"></i></div>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control"
-                                                           name="email"
-                                                           placeholder="Email *">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                           name="comment_title"
-                                                           placeholder="Tiêu đề">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12 col-md-6 col-md-push-6">
-                                                <div class="form-group review-items has-matchHeight">
-                                                    <div class="item">
-                                                        <label>Chỗ ngủ</label>
-                                                        <input class="st_review_stats" type="hidden"
-                                                               name="st_review_stats[Sleep]">
-                                                        <div class="rates">
-                                                            <i class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <label>Địa điểm</label>
-                                                        <input class="st_review_stats" type="hidden"
-                                                               name="st_review_stats[Location]">
-                                                        <div class="rates">
-                                                            <i class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <label>Dịch vụ</label>
-                                                        <input class="st_review_stats" type="hidden"
-                                                               name="st_review_stats[Service]">
-                                                        <div class="rates">
-                                                            <i class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <label>Sạch sẽ</label>
-                                                        <input class="st_review_stats" type="hidden"
-                                                               name="st_review_stats[Cleanliness]">
-                                                        <div class="rates">
-                                                            <i class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <label>Phòng</label>
-                                                        <input class="st_review_stats" type="hidden"
-                                                               name="st_review_stats[Room(s)]">
-                                                        <div class="rates">
-                                                            <i class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i><i
-                                                                class="fa fa-star grey"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-md-6 col-md-pull-6">
-                                                <div class="form-group">
-                <textarea name="comment"
-                          class="form-control has-matchHeight"
-                          placeholder="Nội dung"></textarea>
+                                            <div class="col-xs-12 col-md-6 col-md-pull-6" style="width: 100%;">
+                                                <div class="form-group" >
+                                                <textarea id="content" name="content" style="background: #eeeeee; color: black"
+                                                          class="form-control has-matchHeight"
+                                                          placeholder="Nội dung"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
-                                                                  value="Đăng bài"/> <input type='hidden'
-                                                                                            name='comment_post_ID'
-                                                                                            value='862'
-                                                                                            id='comment_post_ID'/>
-                                        <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
+                                    <p style="float: right; color: red; font-style: italic;" class="form-submit" >*đăng nhập để đánh giá  <input name="submit" type="submit" id="submit" class="submit" style="padding: 10px 20px; font-weight: bold; background: #2cbe2c;margin-left: 10px;"
+                                                                  value="Đăng bài"/>
                                     </p></form>
                             </div><!-- #respond -->
                         </div>
@@ -1093,7 +1079,7 @@
                                 <div class="st-loader"></div>
                             </div>
                             <div class="st-form-booking-action">
-                                <form  method="POST" th:action="@{/confirm_booking}">
+                                <form method="POST" th:action="@{/confirm_booking}">
                                     <div class="st-group-form">
                                         <input type="hidden" name="action" value="tours_add_to_cart">
                                         <input type="hidden" name="item_id" value="862">
@@ -1112,8 +1098,9 @@
                                                     </div>
                                                     <div class="select-wrapper" style="width: 69%; float: left">
                                                         <div class="st-number-wrapper d-flex align-items-center justify-content-between">
-                                                            <span  th:text="${tour.id}"> 12345</span>
-                                                            <input type="hidden" id="idTour" name="idTour" th:value="${tour.getId()}">
+                                                            <span th:text="${tour.id}"> 12345</span>
+                                                            <input type="hidden" id="idTour" name="idTour"
+                                                                   th:value="${tour.getId()}">
                                                         </div>
                                                     </div>
 
@@ -1137,8 +1124,9 @@
                                                     </div>
                                                     <div class="select-wrapper" style="width: 69%; float: left">
                                                         <div class="st-number-wrapper d-flex align-items-center justify-content-between">
-                                                            <span  th:text="${dates.get(0)}"> 12345</span>
-                                                            <input type="hidden" id="dateStart" name="dateStart" th:value="${dates.get(0)}">
+                                                            <span th:text="${dates.get(0)}"> 12345</span>
+                                                            <input type="hidden" id="dateStart" name="dateStart"
+                                                                   th:value="${dates.get(0)}">
                                                         </div>
                                                     </div>
 
@@ -1175,7 +1163,8 @@
                                         <input type="hidden" name="child_price" id="child_price">
                                         <input type="hidden" name="infant_price" id="infant_price"></div>
 
-                                    <div class="total-price-book d-flex justify-content-between align-items-center" style="margin-top: 20px">
+                                    <div class="total-price-book d-flex justify-content-between align-items-center"
+                                         style="margin-top: 20px">
                                         <div id="total-text">
                                             <h5 style="margin-top: 32px;">Giá từ</h5>
                                         </div>
@@ -1185,7 +1174,8 @@
                                                     <span class="price d-flex align-content-end flex-column"><span
                                                             class="text-small lh1em item onsale price-tour-format"
                                                             th:text="${tour.getPrice()}">8,599,999 đ</span>
-                                                        <span class="text-lg lh1em item price-tour-format" style="font-size: 27px;" th:text="${tour.getPriceSale()}"> 7,599,999</span></span>
+                                                        <span class="text-lg lh1em item price-tour-format"
+                                                              style="font-size: 27px;" th:text="${tour.getPriceSale()}"> 7,599,999</span></span>
                                                 </h5>
                                             </div>
                                         </div>

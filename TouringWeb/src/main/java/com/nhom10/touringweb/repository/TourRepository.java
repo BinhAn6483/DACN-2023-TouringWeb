@@ -1,6 +1,7 @@
 package com.nhom10.touringweb.repository;
 
 
+import com.nhom10.touringweb.model.user.DepartureDates;
 import com.nhom10.touringweb.model.user.Tour;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -40,9 +41,13 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
     @Query("SELECT d.dateStart FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.id=?1")
     List<Date> getAllDateStart(Long idTour);
 
+    @Query("SELECT d FROM  DepartureDates d  WHERE d.idTour=?1")
+    List<DepartureDates> getAllDateStartByIdTour(Long idTour);
+
+
     @Query("SELECT DISTINCT  t.location FROM Tour t ORDER BY t.viewCount DESC ")
     List<String> getTopDestinations();
 
-    @Query("SELECT DISTINCT  t.location FROM Tour t ")
+    @Query("SELECT DISTINCT  t.location FROM Tour t ORDER BY t.location ASC ")
     List<String> getAllLocation();
 }

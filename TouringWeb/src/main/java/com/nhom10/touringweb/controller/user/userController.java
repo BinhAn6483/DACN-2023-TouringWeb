@@ -151,6 +151,10 @@ public class userController {
             idUser = user.getId();
         }
         ImgAvatar imgAvatar = imgAvatarRepository.getImgAvatarByIdUser(idUser);
+        if (imgAvatar.getImg() ==null){
+            imgAvatar.setImg("default.jpg");
+            imgAvatarRepository.save(imgAvatar);
+        }
         return imgAvatar.getImg();
     }
 
@@ -172,4 +176,16 @@ public class userController {
 //
 //        return "redirect:/user/profile";
 //    }
+
+    public User getUserById (int idUser) {
+        return userRepository.getUserById(idUser);
+    }
+    public String getImgAvatar(int idUser) {
+        ImgAvatar imgAvatar = imgAvatarRepository.getImgAvatarByIdUser(idUser);
+        if (imgAvatar.getImg() ==null){
+            imgAvatar.setImg("default.jpg");
+            imgAvatarRepository.save(imgAvatar);
+        }
+        return imgAvatar.getImg();
+    }
 }
