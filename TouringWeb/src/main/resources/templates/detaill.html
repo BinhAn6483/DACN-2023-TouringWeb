@@ -295,6 +295,19 @@
         .whnw {
             text-align: left;
         }
+        .fa-heart {
+            margin-top: 10px;
+            color: #0a58ca;
+            font-size: 25px;
+            opacity: 70%;
+        }
+
+        .fa-heart:hover {
+            font-size: 28px;
+            margin-top: 8px;
+            color: #e30101;
+            opacity: 100%;
+        }
 
     </style>
 
@@ -444,10 +457,7 @@
                 </div>
             </div>
             <div class="right d-flex align-items-center">
-                <div class="st-video">
-                    <a href="https://www.youtube.com/watch?v=AmZ0WrEaf34"
-                       class="btn has-icon st-video-popup"><span class="stt-icon stt-icon-play"></span></a>
-                </div>
+
                 <div class="shares dropdown">
                     <a href="#" class="share-item social-share">
                         <i class="stt-icon stt-icon-share"></i>
@@ -457,30 +467,31 @@
                                href="https://www.facebook.com/sharer/sharer.php?u=https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/&amp;title=Two Hour Walking Tour of Manhattan"
                                target="_blank" rel="noopener" original-title="Facebook"><i
                                 class="fab fa-facebook-f"></i></a></li>
-                        <li><a class="twitter"
-                               href="https://twitter.com/share?url=https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/&amp;title=Two Hour Walking Tour of Manhattan"
-                               target="_blank" rel="noopener" original-title="Twitter"><i
-                                class="fab fa-twitter"></i></a></li>
+
                         <li><a class="no-open pinterest"
                                href="http://pinterest.com/pin/create/bookmarklet/?url=https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/&is_video=false&description=Two Hour Walking Tour of Manhattan&media=https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/51480_bdc6c80b.jpg"
                                target="_blank" rel="noopener" original-title="Pinterest"><i
                                 class="fab fa-pinterest-p"></i></a></li>
-                        <li><a class="linkedin"
-                               href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://modmixmap.travelerwp.com/st_tour/two-hour-walking-tour-of-manhattan/&amp;title=Two Hour Walking Tour of Manhattan"
-                               target="_blank" rel="noopener" original-title="LinkedIn"><i
-                                class="fab fa-linkedin-in"></i></a></li>
+
                     </ul>
 
 
                 </div>
-                <div class="wistlist-single">
-                    <a href="#" class="login" data-bs-toggle="modal" data-bs-target="#st-login-form">
+
+                <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                    <div class="wistlist-single">
                         <div class="service-add-wishlist" title="Add to wishlist">
-                            <span class="stt-icon stt-icon-heart1"></span>
+
                             <div class="lds-dual-ring"></div>
+                            <button style="background: none; border: none"
+                                    class="btn-add" type="submit">
+                                <i class="fas fa-heart"
+                                   title="Thêm vào danh sách yêu thích"></i>
+                            </button>
                         </div>
-                    </a>
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -826,12 +837,19 @@
                                         <div class="infor-avg-wrapper d-flex text-center align-items-center align-self-center flex-column">
                                             <div class="review-avg d-flex text-center align-items-center">
                                                 <i class="stt-icon-star1"></i>
-                                                <div class="review-score">
-                                                    4,5<span class="per-total">/5</span>
+                                                <div class="review-score" >
+                                                    <span class="per-total" th:text="${averageStar} +'/5'">/5</span>
                                                 </div>
                                             </div>
 
-                                            <div class="review-score-text">Tuyệt vời</div>
+                                            <div class="review-score-text" th:if="${averageStar > 4}">Tuyệt vời</div>
+                                            <div class="review-score-text" th:if="${averageStar > 3 && averageStar <=4}">Rất tốt</div>
+                                            <div class="review-score-text" th:if="${averageStar > 2 && averageStar <=3}">Tốt</div>
+                                            <div class="review-score-text" th:if="${averageStar > 1 && averageStar <=2}">Tệ</div>
+                                            <div class="review-score-text" th:if="${averageStar == 1}">Rất tệ</div>
+
+
+
                                             <div class="review-score-base text-center">
                                                 <span th:text="'( '+ ${commentList.size()} +' đánh giá )'">(25 đánh giá)</span>
                                             </div>
@@ -844,50 +862,61 @@
                                                 Tuyệt vời
                                             </div>
                                             <div class="progress">
-                                                <div class="percent green"
+                                                <div class="percent green " th:if="@{${@scheduleController.getCountStar(5,tour.id) >0 }}"
                                                      style="width: 100%;"></div>
+                                                <div class="percent darkgreen " th:if="@{${@scheduleController.getCountStar(5,tour.id) ==0 }}"
+                                                     style="width: 100%; background: #dddddd"></div>
+
                                             </div>
-                                            <div class="number text-end">20</div>
+                                            <div class="number text-end" th:text="${@scheduleController.getCountStar(5,tour.id)}">20</div>
                                         </div>
                                         <div class="item d-flex align-items-center justify-content-between">
                                             <div class="label">
                                                 Rất tốt
                                             </div>
                                             <div class="progress">
-                                                <div class="percent darkgreen"
-                                                     style="width: 0%;"></div>
+                                                <div class="percent green " th:if="@{${@scheduleController.getCountStar(4,tour.id) >0 }}"
+                                                     style="width: 100%;"></div>
+                                                <div class="percent darkgreen " th:if="@{${@scheduleController.getCountStar(4,tour.id) ==0 }}"
+                                                     style="width: 100%; background: #dddddd"></div>
                                             </div>
-                                            <div class="number text-end">5</div>
+                                            <div class="number text-end" th:text="${@scheduleController.getCountStar(4,tour.id)}">5</div>
                                         </div>
                                         <div class="item d-flex align-items-center justify-content-between">
                                             <div class="label">
                                                 Tốt
                                             </div>
                                             <div class="progress">
-                                                <div class="percent yellow"
-                                                     style="width: 0%;"></div>
+                                                <div class="percent green " th:if="@{${@scheduleController.getCountStar(3,tour.id) >0 }}"
+                                                     style="width: 100%;"></div>
+                                                <div class="percent darkgreen " th:if="@{${@scheduleController.getCountStar(3,tour.id) ==0 }}"
+                                                     style="width: 100%; background: #dddddd"></div>
                                             </div>
-                                            <div class="number text-end">0</div>
+                                            <div class="number text-end" th:text="${@scheduleController.getCountStar(3,tour.id)}">0</div>
                                         </div>
                                         <div class="item d-flex align-items-center justify-content-between">
                                             <div class="label">
                                                 Tệ
                                             </div>
                                             <div class="progress">
-                                                <div class="percent orange"
-                                                     style="width: 0%;"></div>
+                                                <div class="percent green " th:if="@{${@scheduleController.getCountStar(2,tour.id) >0 }}"
+                                                     style="width: 100%;"></div>
+                                                <div class="percent darkgreen " th:if="@{${@scheduleController.getCountStar(2,tour.id) ==0 }}"
+                                                     style="width: 100%; background: #dddddd"></div>
                                             </div>
-                                            <div class="number text-end">0</div>
+                                            <div class="number text-end" th:text="${@scheduleController.getCountStar(2,tour.id)}">0</div>
                                         </div>
                                         <div class="item d-flex align-items-center justify-content-between">
                                             <div class="label">
                                                 Rất tệ
                                             </div>
                                             <div class="progress">
-                                                <div class="percent red"
-                                                     style="width: 0%;"></div>
+                                                <div class="percent green " th:if="@{${@scheduleController.getCountStar(1,tour.id) >0 }}"
+                                                     style="width: 100%;"></div>
+                                                <div class="percent darkgreen " th:if="@{${@scheduleController.getCountStar(1,tour.id) ==0 }}"
+                                                     style="width: 100%; background: #dddddd"></div>
                                             </div>
-                                            <div class="number text-end">0</div>
+                                            <div class="number text-end" th:text="${@scheduleController.getCountStar(1,tour.id)}">0</div>
                                         </div>
                                     </div>
                                 </div>
@@ -922,22 +951,36 @@
                                     <div class="comment-item-body">
                                         <ul class="review-star" th:if="${comment.star==1}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+
 
                                         </ul>
                                         <ul class="review-star" th:if="${comment.star==2}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+
                                         </ul>
                                         <ul class="review-star" th:if="${comment.star==3}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+
                                         </ul>
                                         <ul class="review-star" th:if="${comment.star==4}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
+                                            <li class="list-unstyled"><i class="fa fa-star grey" style="color:#cacaca;"></i></li>
+
                                         </ul>
                                         <ul class="review-star" th:if="${comment.star==5}">
                                             <li class="list-unstyled"><i class="fa fa-star"></i></li>
@@ -2594,7 +2637,27 @@
         }
     };
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    $(function() {
+        $("form.add-to-wish-list").submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var idTour = form.data("tour-id");
+            console.log("idTour: "+idTour );
+            $.ajax({
+                type: "GET",
+                url: "/user/addToWishlist/" + idTour,
+                success: function(response) {
+                    alert(response);
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 <script>
     var priceElements = document.querySelectorAll('.price-tour-format');
     priceElements.forEach(function (element) {

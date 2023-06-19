@@ -227,6 +227,8 @@ public class TourController {
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
+            model.put("location", "Tour nỗi bật");
+
             List<Tour> featuredTours = tourService.getListTourFeatured();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);
@@ -247,6 +249,8 @@ public class TourController {
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
+            model.put("location", "Tour mới nhất");
+
             List<Tour> featuredTours = tourService.getListTourNew();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);
@@ -267,6 +271,7 @@ public class TourController {
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
+            model.put("location", "Tour giảm giá");
             List<Tour> featuredTours = tourService.getListTourDiscount();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);

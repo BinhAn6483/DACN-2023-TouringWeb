@@ -131,7 +131,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h2 th:text="${orderRevenue}">$653,200</h2>
+            <h2 class="price-tour-format" th:text="${orderRevenue}">$653,200</h2>
             <span class="las la-archive"></span>
           </div>
           <div class="card-progress">
@@ -196,8 +196,8 @@
                 <div class="client">
                   <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
                   <div class="client-info">
-                    <h4 class="st-heading" th:text="${tour.name}">Vịnh Hạ Long</h4>
-                    <small class="st-address" th:text="${tour.location}">Quảng Ninh</small>
+                    <h4 class="st-heading" >Vịnh Hạ Long</h4>
+                    <small class="st-address" >Quảng Ninh</small>
                   </div>
                 </div>
               </td>
@@ -983,4 +983,16 @@
     }
   }
 </style>
+
+
+<script>
+  var priceElements = document.querySelectorAll('.price-tour-format');
+  priceElements.forEach(function (element) {
+    var priceValue = parseFloat(element.textContent);
+    if (!isNaN(priceValue)) {
+      var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+      element.textContent = formattedPrice;
+    }
+  });
+</script>
 </html>

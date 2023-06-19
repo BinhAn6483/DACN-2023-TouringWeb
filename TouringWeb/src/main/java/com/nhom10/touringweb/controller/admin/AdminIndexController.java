@@ -8,12 +8,15 @@
  */
 package com.nhom10.touringweb.controller.admin;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 import com.nhom10.touringweb.model.user.Tour;
 import com.nhom10.touringweb.model.user.Booking;
 
+import com.nhom10.touringweb.repository.BookingRepository;
+import com.nhom10.touringweb.repository.UserRepository;
+import com.nhom10.touringweb.service.TourService;
+import com.nhom10.touringweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,31 +57,12 @@ public class AdminIndexController {
             countRevenue += booking.getTotalPrice();
         };
 
-        List<Booking> toursWaiting = bookingRepository.findAllByStatusTour("chờ khởi hành"); // tour đang dợi
+        List<Booking> toursWaiting = bookingRepository.findAllByStatusTour("Chờ khởi hành"); // tour đang dợi
 
-
-
-
-
-
-
-        long order = orderService.getStatisticalTotalOrderOnMonth(Integer.parseInt(today[1]), Integer.parseInt(today[0])).getOrderSuccess();
-        double revenue = 0;
-        List<StatisticalRevenue> listRevenue = orderService.listStatisticalRevenue(Integer.parseInt(today[1]), Integer.parseInt(today[0]));
-
-        for(StatisticalRevenue item: listRevenue) {
-            revenue = revenue + item.getPrice();
-        }
-
-        long customer = userService.findAllUserNotRoleAdmin().size();
-
-        long tour = TourService.findAll().size();
-
-        model.addAttribute("tour", tour);
         model.addAttribute("sumTour", sumTour.size());
         model.addAttribute("countUser", countUser);//"gọi html", truyền vào ở ngoài
-        model.addAttribute("{orderRevenue}",countRevenue); // doanh thu
+        model.addAttribute("orderRevenue",countRevenue); // doanh thu
         model.addAttribute("toursWaiting",toursWaiting.size()); // tour đang đọi
-         return "dashaboard-home";{
+         return "dashaboard-home";
     }
 }
