@@ -15,10 +15,14 @@
   </div>
 
   <div class="side-content">
-    <div class="profile">
-      <div class="profile-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-      <h4>TRAN NGOC BAO TRAN</h4>
-      <small>chức vụ</small>
+      <div class="profile">
+      <div class="profile-img bg-img" >
+              <img alt='TravelerWP'
+                   th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}" src="static/images/avatar/23.jpg"
+                   class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
+            </div>
+      <h4 class="user-name" th:text="${@userController.nameByEmail()}">TRAN NGOC BAO TRAN</h4>
+        <span class="user-role" sec:authentication="principal.username" ></span>
     </div>
 
     <div class="side-menu">
@@ -30,20 +34,15 @@
           </a>
         </li>
         <li>
-          <a href="">
-            <span class="las la-user-alt"></span>
+          <a th:href="@{/user/profile}" >
+            <span  class="las la-user-alt"></span>
             <small>Hồ sơ của bạn</small>
           </a>
         </li>
+
         <li>
-          <a href="">
-            <span class="las la-envelope"></span>
-            <small>Mailbox</small>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="las la-clipboard-list"></span>
+          <a th:href="@{/user/history}">
+            <span  class="las la-clipboard-list"></span>
             <small>Lịch sử</small>
           </a>
         </li>
@@ -51,12 +50,6 @@
           <a href="">
             <span class="las la-shopping-cart"></span>
             <small>Giỏ hàng</small>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <span class="las la-tasks"></span>
-            <small>Tasks</small>
           </a>
         </li>
 
@@ -91,7 +84,7 @@
         <div class="user">
           <div class="bg-img" style="background-image: url(img/1.jpeg)"></div>
 
-          <span class="las la-power-off"></span>
+          <span th:href="@{/logout}" class="las la-power-off"></span>
           <span>Đăng xuất</span>
         </div>
       </div>
@@ -112,7 +105,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h2>107,200</h2>
+            <h2 th:text="${sumTour}">107,200</h2>
             <span class="las la-shopping-basket"></span>
           </div>
           <div class="card-progress">
@@ -125,7 +118,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h2>340,230</h2>
+            <h2 th:text="${countUser}">340,230</h2>
             <span class="las la-users"></span>
           </div>
           <div class="card-progress">
@@ -138,11 +131,11 @@
 
         <div class="card">
           <div class="card-head">
-            <h2>$653,200</h2>
+            <h2 th:text="${orderRevenue}">$653,200</h2>
             <span class="las la-archive"></span>
           </div>
           <div class="card-progress">
-            <small>Tổng doanh thu tháng</small>
+            <small>Tổng doanh thu </small>
             <div class="card-indicator">
               <div class="indicator three" style="width: 65%"></div>
             </div>
@@ -151,7 +144,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h2>47,500</h2>
+            <h2 th:text="${toursWaiting}">47,500</h2>
             <span class="las la-spinner"></span>
           </div>
           <div class="card-progress">
@@ -203,8 +196,8 @@
                 <div class="client">
                   <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
                   <div class="client-info">
-                    <h4>Côn đảo</h4>
-                    <small>bruno@crossover.org</small>
+                    <h4 class="st-heading" th:text="${tour.name}">Vịnh Hạ Long</h4>
+                    <small class="st-address" th:text="${tour.location}">Quảng Ninh</small>
                   </div>
                 </div>
               </td>
@@ -595,6 +588,10 @@
   .side-menu a span, .side-menu a small {
     color: #899DC1;
   }
+  .side-menu a:hover{
+    background: #2B384E;
+  }
+
 
   #menu-toggle:checked ~ .sidebar {
     width: 60px;
