@@ -45,14 +45,38 @@ public class ScheduleController {
         List<String> imgs= getAllLinkImgOfTour(idTour);
         List<DepartureDates> departureDates = getAllDateStartByIdTour(idTour);
         List<Comment> commentList = commentRepository.getAllByIdTour(idTour);
+
+        int  temp = 0;
+        for(Comment c : commentList) {
+            temp += c.getStar();
+        }
+        float averageStar= 0;
+        averageStar = (float) temp/commentList.size();
+        if(commentList.size() ==0) {
+            averageStar=5;
+        }
+        System.out.println("temp: " +temp + "\tAVG: " +averageStar + commentList.size());
+        model.put("averageStar",averageStar);
         model.put("commentList",commentList);
         model.put("departureDates",departureDates);
         model.put("imgs",imgs);
         model.put("dates",listDateStart);
+        System.out.println("-----------------------------"+departureDates.toString());
         model.put("tour", tour);
         model.put("scheduleList",scheduleList);
         mav.addAllObjects(model);
         return mav;
+    }
+
+    public int getCountStar(int star, Long idTour) {
+        int result=0;
+        List<Comment> commentList = commentRepository.getAllByIdTour(idTour);
+        for (Comment c : commentList) {
+            if (c.getStar() == star){
+                result++;
+            }
+        }
+        return result;
     }
 
     public List<Schedule> getAllScheduleByIdTour(Long idTour) {
