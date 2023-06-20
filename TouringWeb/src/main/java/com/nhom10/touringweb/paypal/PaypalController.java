@@ -1,8 +1,10 @@
 package com.nhom10.touringweb.paypal;
 
 import com.nhom10.touringweb.model.user.Booking;
+import com.nhom10.touringweb.model.user.DepartureDates;
 import com.nhom10.touringweb.model.user.User;
 import com.nhom10.touringweb.repository.BookingRepository;
+import com.nhom10.touringweb.repository.DepartureDatesRepository;
 import com.nhom10.touringweb.repository.UserRepository;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.PayPalRESTException;
@@ -31,6 +33,9 @@ public class PaypalController {
 
     @Autowired
     BookingRepository bookingRepository;
+
+    @Autowired
+    DepartureDatesRepository departureDatesRepository;
 
     @PostMapping("/pay")
     public RedirectView pay(Booking booking, HttpServletRequest request) {
@@ -83,6 +88,9 @@ public class PaypalController {
 
                 Booking booking1 = new Booking(idUser, booking.getIdTour(), booking.getNoAdults(), booking.getNoChildren(), booking.getTotalPrice(), booking.getDateStart(), booking.getPayment(), "Đã thanh toán", "Chờ khởi hành", createAt);
                 bookingRepository.save(booking1);
+                DepartureDates departureDates = departureDatesRepository.getDepartureDatesByDateStart(booking1.getDateStart());
+                departureDates.setQuantity(departureDates.getQuantity() - (booking1.getNoAdults() + booking1.getNoChildren()));
+                departureDatesRepository.save(departureDates);
                 String url = "/user/history/detail/" + Long.toString(booking1.getId());
                 redirectView.setUrl(url);
                 return redirectView;

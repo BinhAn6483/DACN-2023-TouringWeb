@@ -9,6 +9,11 @@ import com.nhom10.touringweb.service.LinkImgService;
 import com.nhom10.touringweb.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.sql.Date;
 
@@ -62,37 +68,55 @@ public class TourController {
         mav.addAllObjects(model);
         return mav;
     }
-
+    // Phương thức getTourSearch sẽ trả về 1 đối tượng ModelAndView với model name là "tourSearchSidebar"
     @GetMapping("/tours-search")
-    public ModelAndView getTourSearch(@RequestParam("location_name") String locationName, @RequestParam("start") String start, @RequestParam("end") String end) {
+    public ModelAndView getTourSearch(HttpServletRequest request,@RequestParam("location_name") String locationName, @RequestParam("start") String start, @RequestParam("end") String end,@RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("tour_search_sidebar");
         Map<String, Object> model = new HashMap<>();
         List<String> locations = getAllLocation();
         model.put("locations", locations);
-        List<Tour> list = null;
+
+        String queryString = request.getQueryString();
+        if (queryString == null) {
+            queryString = "";
+        }
+        String url = request.getRequestURL() + "?" + queryString;
+        int index = url.indexOf("&page=");
+        if (index >= 0) {
+            // &page= found, remove everything after it
+            url = url.substring(0, index);
+        }
+        Pageable pageable = PageRequest.of(page, 9);
+
+        Page<Tour> list = null;
         Date dateStart = null;
         Date dateEnd = null;
         if (!(start.equals("") && end.equals(""))) {
-
             dateStart = convertDate(start);
             dateEnd = convertDate(end);
         }
-
         if (!locationName.isEmpty() && !start.isEmpty() && !end.isEmpty()) {
-            list = tourService.getToursBySearch(locationName, dateStart, dateEnd);
+            list = tourService.getToursBySearch(locationName, dateStart, dateEnd, pageable); // paging
         } else if (!locationName.isEmpty() && start.equals("")) {
-            list = tourService.getToursBySearch(locationName);
+            list = tourService.getToursBySearch(locationName, pageable); // paging
         } else if (!start.isEmpty() && !end.isEmpty()) {
-            list = tourService.getToursBySearch(dateStart, dateEnd);
+            list = tourService.getToursBySearch(dateStart, dateEnd, pageable); // paging
         }
 
+        // Nếu danh sách kết quả tìm kiếm khác null và không trống, thì thêm danh sách vào model
         if (list != null && !list.isEmpty()) {
-            model.put("listTourSearch", list);
+            model.put("size",list.getTotalElements());
+            model.put("listTourSearch", list.getContent());
+            model.put("totalPages", list.getTotalPages());
+            model.put("currentPage", page);
+            model.put("url", url);
         }
 
         mav.addAllObjects(model);
         return mav;
     }
+
+
 
     public Date convertDate(String start) {
         Date date;
@@ -157,16 +181,27 @@ public class TourController {
     }
 
     @GetMapping("/location/{location}")
-    public ModelAndView getListTourByLocation(@PathVariable("location") String location) {
+    public ModelAndView getListTourByLocation(HttpServletRequest request,@PathVariable("location") String location,@RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
+            String url = request.getRequestURL()+"";
+            int index = url.indexOf("?page=");
+            if (index >= 0) {
+                // &page= found, remove everything after it
+                url = url.substring(0, index);
+            }
             List<String> locations = getAllLocation();
             model.put("locations", locations);
-            List list = tourService.getAllTourByLocation(location);
+            Pageable pageable = PageRequest.of(page, 8);
+            Page list = tourService.getAllTourByLocation(location,pageable);
             if (!list.isEmpty()) {
-                model.put("listTourSearchLocation", list);
-                model.put("location", location);
+                model.put("url",url);
+                model.put("size",list.getTotalElements());
+                model.put("category","location");
+                model.put("listTourSearchLocation", list.getContent());
+                model.put("totalPages", list.getTotalPages()); //Thêm thuộc tính totalPages vào model
+                model.put("currentPage", page); //
                 mav.addAllObjects(model);
                 return mav;
             }
@@ -180,12 +215,13 @@ public class TourController {
 
     public List<Tour> getListTourFeatured() {
         try {
-            List<Tour> featuredTours = tourService.getListTourFeatured();
+            Pageable pageable = PageRequest.of(0, 12, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourFeatured(pageable);
 
             if (featuredTours.isEmpty()) {
                 return null;
             }
-            return featuredTours;
+            return featuredTours.getContent();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -194,11 +230,12 @@ public class TourController {
 
     public List<Tour> getListTourNew() {
         try {
-            List<Tour> featuredTours = tourService.getListTourNew();
+            Pageable pageable = PageRequest.of(0, 12, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourNew(pageable);
             if (featuredTours.isEmpty()) {
                 return null;
             }
-            return featuredTours;
+            return featuredTours.getContent();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -207,12 +244,12 @@ public class TourController {
 
     public List<Tour> getListTourDiscount() {
         try {
-
-            List<Tour> featuredTours = tourService.getListTourDiscount();
+            Pageable pageable = PageRequest.of(0, 12, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourDiscount(pageable);
             if (featuredTours.isEmpty()) {
                 return null;
             }
-            return featuredTours;
+            return featuredTours.getContent();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -221,17 +258,24 @@ public class TourController {
 
 
     @GetMapping("/featuredTour")
-    public ModelAndView getListTourFeaturedNew() {
+    public ModelAndView getListTourFeaturedNew(@RequestParam(name = "page",defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
+        int pageSize = 8;
+
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
-            model.put("location", "Tour nỗi bật");
+            model.put("location", "Tour nổi bật");
 
-            List<Tour> featuredTours = tourService.getListTourFeatured();
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourFeatured(pageable);
             if (!featuredTours.isEmpty()) {
-                model.put("listTourSearchLocation", featuredTours);
+                model.put("size",featuredTours.getTotalElements());
+                model.put("category","featured");
+                model.put("listTourSearchLocation", featuredTours.getContent());
+                model.put("totalPages", featuredTours.getTotalPages()); //Thêm thuộc tính totalPages vào model
+                model.put("currentPage", page); //Thêm thuộc tính currentPage vào model
                 mav.addAllObjects(model);
                 return mav;
             }
@@ -239,21 +283,28 @@ public class TourController {
             e.printStackTrace();
         }
         return mav;
-
     }
 
+
     @GetMapping("/tours-new")
-    public ModelAndView getListTourNew2() {
+    public ModelAndView getListTourNew2(@RequestParam(name = "page",defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
+        int pageSize = 8;
+
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
-            model.put("location", "Tour mới nhất");
+            model.put("location", "Tour nổi bật");
 
-            List<Tour> featuredTours = tourService.getListTourNew();
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourNew(pageable);
             if (!featuredTours.isEmpty()) {
-                model.put("listTourSearchLocation", featuredTours);
+                model.put("size",featuredTours.getTotalElements());
+                model.put("category","new");
+                model.put("listTourSearchLocation", featuredTours.getContent());
+                model.put("totalPages", featuredTours.getTotalPages()); //Thêm thuộc tính totalPages vào model
+                model.put("currentPage", page); //Thêm thuộc tính currentPage vào model
                 mav.addAllObjects(model);
                 return mav;
             }
@@ -261,20 +312,27 @@ public class TourController {
             e.printStackTrace();
         }
         return mav;
-
     }
 
     @GetMapping("/tours-discount")
-    public ModelAndView getListTourDiscount2() {
+    public ModelAndView getListTourDiscount2(@RequestParam(name = "page",defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
+        int pageSize = 8;
+
         try {
             List<String> locations = getAllLocation();
             model.put("locations", locations);
-            model.put("location", "Tour giảm giá");
-            List<Tour> featuredTours = tourService.getListTourDiscount();
+            model.put("location", "Tour nổi bật");
+
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("id").descending());
+            Page<Tour> featuredTours = tourService.getListTourDiscount(pageable);
             if (!featuredTours.isEmpty()) {
-                model.put("listTourSearchLocation", featuredTours);
+                model.put("size",featuredTours.getTotalElements());
+                model.put("category","discount");
+                model.put("listTourSearchLocation", featuredTours.getContent());
+                model.put("totalPages", featuredTours.getTotalPages()); //Thêm thuộc tính totalPages vào model
+                model.put("currentPage", page); //Thêm thuộc tính currentPage vào model
                 mav.addAllObjects(model);
                 return mav;
             }
@@ -282,7 +340,6 @@ public class TourController {
             e.printStackTrace();
         }
         return mav;
-
     }
 
 

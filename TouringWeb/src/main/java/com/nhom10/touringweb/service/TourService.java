@@ -4,6 +4,7 @@ import com.nhom10.touringweb.model.user.DepartureDates;
 import com.nhom10.touringweb.model.user.Tour;
 import com.nhom10.touringweb.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -24,33 +25,33 @@ public class TourService {
         return tourRepository.getAllByStartingPoint(startingPoint);
     }
 
-    public List<Tour> getAllTourByLocation(String location) {
-        return tourRepository.getAllByLocation(location);
+    public Page<Tour> getAllTourByLocation(String location,Pageable pageable) {
+        return tourRepository.getAllByLocation(location,pageable);
     }
-    public List<Tour> getListTourFeatured(){
-        return tourRepository.getListTourFeatured();
-    }
-
-    public List<Tour> getListTourNew(){
-        return tourRepository.getListTourNew();
+    public Page<Tour> getListTourFeatured(Pageable pageable){
+        return tourRepository.getListTourFeatured(pageable);
     }
 
-    public List<Tour> getListTourDiscount(){
-        return tourRepository.getListTourDiscount();
+    public Page<Tour> getListTourNew(Pageable pageable){
+        return tourRepository.getListTourNew(pageable);
+    }
+
+    public Page<Tour> getListTourDiscount(Pageable pageable){
+        return tourRepository.getListTourDiscount(pageable);
     }
 
     public List<Tour> getAll() {
         return tourRepository.findAll();
     }
 
-    public List<Tour> getToursBySearch(String location, Date start, Date end) {
-        return tourRepository.getToursBySearch(location,start,end);
+    public Page<Tour> getToursBySearch(String location, Date start, Date end, Pageable pageable) {
+        return tourRepository.getToursBySearch(location,start,end ,pageable);
     }
-    public List<Tour> getToursBySearch( Date start, Date end) {
-        return tourRepository.getToursBySearch(start,end);
+    public Page<Tour> getToursBySearch( Date start, Date end, Pageable pageable) {
+        return tourRepository.getToursBySearch(start,end,pageable);
     }
-    public List<Tour> getToursBySearch(String location) {
-        return tourRepository.getToursBySearch(location);
+    public Page<Tour> getToursBySearch(String location, Pageable pageable) {
+        return tourRepository.getToursBySearch(location,pageable);
     }
 
     public List<Date> getAllDateStart(Long idTour) {
@@ -67,7 +68,7 @@ public class TourService {
         if(!list.isEmpty()){
             for(int i =0; i<6 ; i++){
                 List<Tour> tourList = new ArrayList<>();
-                tourList = getAllTourByLocation(list.get(i));
+                tourList = tourRepository.getAllByLocation(list.get(i));
                 result.put(list.get(i), tourList.size() );
                 System.out.println("Map list: " +list.get(i)+ "\t|" + tourList.size());
             }
