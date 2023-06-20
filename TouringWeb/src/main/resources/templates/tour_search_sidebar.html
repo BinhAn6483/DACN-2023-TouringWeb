@@ -577,6 +577,11 @@
             color: #e30101;
             opacity: 100%;
         }
+        #st-content-wrapper .st-link,
+        .service-list-wrapper.service-tour .services-item.item-elementor .reviews .rate,
+        .service-list-wrapper.service-tour .services-item.item-elementor .price-wrapper .price .sale-top .item{
+            color: black !important;
+        }
     </style>
     <!-- End Custom CSS -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -1081,7 +1086,7 @@
 
                         </div>
                         <h2 th:if="${listTourSearch != null }" class="search-string modern-result-string" style="padding: 2px 10px;color: white;background: #1c5cd7;border-radius: 5px"
-                            id="modern-result-string"><span th:text="${listTourSearch.size()}" style="margin-right: 5px;color: white;"></span> kết quả</h2>
+                            id="modern-result-string"><span th:text="${size}" style="margin-right: 5px;color: white;"></span> kết quả</h2>
                         <h2 th:if="${listTourSearch == null }" class="search-string modern-result-string" style="padding: 2px 10px;color: white;background: #1c5cd7;border-radius: 5px"
                             id="modern-result">0 kết quả</h2>
                     </div>
@@ -1225,13 +1230,21 @@
                     </div>
 
                     <div class="pagination moderm-pagination" id="moderm-pagination" th:if="${listTourSearch != null}">
-                        <ul class='page-numbers'>
-                            <li><a href="#" aria-current="page" class="page-numbers current">1</a></li>
-                            <li><a class="page-numbers"
-                                   href="https://modmixmap.travelerwp.com/tour-search-sidebar/page/2/">2</a></li>
-                            <li><a class="next page-numbers"
-                                   href="https://modmixmap.travelerwp.com/tour-search-sidebar/page/2/"><i
-                                    class='fa fa-angle-right'></i></a></li>
+                        <ul class="page-numbers" >
+                            <li th:if="${currentPage > 0}">
+                                <a th:href="@{${url + '&page=' + (currentPage - 1)}}"><i
+                                        class="fas fa-angle-left"></i></a>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(0, totalPages - 1 )}">
+                                <a th:href="@{${url + '&page=' + i}}"
+                                   th:class="${currentPage == i ? 'page-numbers-current' : ''}"
+                                   style="box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05); width: 35px;height: 40px;border-radius: 7px;border: 1px solid #ddd; padding: 4px 3px 0 0"><span
+                                        th:text="${i + 1}" th:class="${currentPage == i ? 'page-numbers-current-sub' : ''}">1</span></a>
+                            </li>
+                            <li th:if="${currentPage < totalPages - 1}">
+                                <a th:href="@{${url + '&page=' + (currentPage + 1)}}"><i
+                                        class="fas fa-angle-right"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>

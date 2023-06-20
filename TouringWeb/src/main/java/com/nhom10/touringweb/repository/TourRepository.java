@@ -3,6 +3,7 @@ package com.nhom10.touringweb.repository;
 
 import com.nhom10.touringweb.model.user.DepartureDates;
 import com.nhom10.touringweb.model.user.Tour;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,23 +21,25 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     List<Tour> getAllByLocation(String location);
 
+    Page<Tour> getAllByLocation(String location,Pageable pageable);
+
     @Query("SELECT t FROM Tour t WHERE t.viewCount > 100 ORDER BY t.viewCount DESC")
-    List<Tour> getListTourFeatured();
+    Page<Tour> getListTourFeatured(Pageable pageable);
 
     @Query("SELECT t FROM Tour t WHERE t.sale = 0 AND t.viewCount<50")
-    List<Tour> getListTourNew();
+    Page<Tour> getListTourNew(Pageable pageable);
 
     @Query("SELECT t FROM Tour t WHERE t.sale >= 20")
-    List<Tour> getListTourDiscount();
+    Page<Tour> getListTourDiscount(Pageable pageable);
 
     @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.location=?1 AND d.dateStart BETWEEN ?2 AND ?3 AND d.dateEnd BETWEEN ?2 AND ?3")
-    List<Tour> getToursBySearch(String location, Date start,Date end);
+    Page<Tour> getToursBySearch(String location, Date start,Date end, Pageable pageable);
 
     @Query("SELECT t FROM Tour t  WHERE t.location=?1 ")
-    List<Tour> getToursBySearch(String location);
+    Page<Tour> getToursBySearch(String location, Pageable pageable);
 
     @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE  d.dateStart BETWEEN ?1 AND ?2 AND d.dateEnd BETWEEN ?1 AND ?2")
-    List<Tour> getToursBySearch(Date start,Date end);
+    Page<Tour> getToursBySearch(Date start,Date end, Pageable pageable);
 
     @Query("SELECT d.dateStart FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.id=?1")
     List<Date> getAllDateStart(Long idTour);
