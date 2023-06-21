@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.view.RedirectView;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,26 +40,34 @@ public class BookingController {
     LinkImgService linkImgService;
 
     @PostMapping("/confirm_booking")
-    public String bookingPage(@RequestParam("idTour") Long idTour, @RequestParam("dateStart") String dateStart, Model model) {
+    public ModelAndView bookingPage(@RequestParam("idTour") Long idTour, @RequestParam("dateStart") String dateStart) {
+        ModelAndView mav = new ModelAndView("confirm_booking");
+        Map<String, Object> model = new HashMap<>();
         Tour tour = tourService.getTourById(idTour);
         List<Date> listDateStart= tourService.getAllDateStart(idTour);
-        model.addAttribute("tour", tour);
-        model.addAttribute("date",dateStart);
+        model.put("tour", tour);
+        model.put("date",dateStart);
         Booking booking =new Booking();
-        model.addAttribute("booking",booking);
+        model.put("booking",booking);
 
-        int idUser = 0;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             User user = userRepository.findByEmail(username);
-            idUser = user.getId();
-        }
-        User user =  userRepository.getUserById(idUser);
-        model.addAttribute("user",user);
-        System.out.println(user.toString());
+            if (user != null) {
+                model.put("user", user);
+                System.out.println(user.toString());
+                mav.addAllObjects(model);
+                return mav;
+            } else {
+                RedirectView redirectView = new RedirectView("/login");
+                return new ModelAndView(redirectView);
+            }
 
-        return "confirm_booking";
+        }else {
+            RedirectView redirectView = new RedirectView("/login");
+            return new ModelAndView(redirectView);
+        }
     }
 
     @GetMapping("/user/history/detail/{idBooking}")
@@ -86,11 +94,10 @@ public class BookingController {
 
     @GetMapping("/user/history")
     public ModelAndView pageHistory(){
-        System.out.println("quần què gì dậy");
         ModelAndView mav = new ModelAndView("user_history");
         List<Booking> listAll = bookingRepository.findAll();
-        List<Booking> listDone = bookingRepository.findAllByStatusTour("Da di");
-        List<Booking> listWait = bookingRepository.findAllByStatusTour("Chua khoi hanh");
+        List<Booking> listDone = bookingRepository.findAllByStatusTour("Đã Đi");
+        List<Booking> listWait = bookingRepository.findAllByStatusTour("Chưa khỏi hành");
 
         Map<String, Object> model = new HashMap<>();
         model.put("listAll",listAll);

@@ -67,6 +67,8 @@ public class TourController {
     public ModelAndView getTourSearch(@RequestParam("location_name") String locationName, @RequestParam("start") String start, @RequestParam("end") String end) {
         ModelAndView mav = new ModelAndView("tour_search_sidebar");
         Map<String, Object> model = new HashMap<>();
+        List<String> locations = getAllLocation();
+        model.put("locations", locations);
         List<Tour> list = null;
         Date dateStart = null;
         Date dateEnd = null;
@@ -79,7 +81,6 @@ public class TourController {
         if (!locationName.isEmpty() && !start.isEmpty() && !end.isEmpty()) {
             list = tourService.getToursBySearch(locationName, dateStart, dateEnd);
         } else if (!locationName.isEmpty() && start.equals("")) {
-            System.out.println("kajfiae");
             list = tourService.getToursBySearch(locationName);
         } else if (!start.isEmpty() && !end.isEmpty()) {
             list = tourService.getToursBySearch(dateStart, dateEnd);
@@ -114,7 +115,6 @@ public class TourController {
         List<Tour> listTourDiscount = (List<Tour>) getListTourDiscount();
         List<String> locations = getAllLocation();
         Map<String, Integer> topList = tourService.getTopDestinations();
-        System.out.println(topList);
         ModelAndView mav = new ModelAndView("home");
         Map<String, Object> model = new HashMap<>();
         model.put("tours", list);
@@ -122,8 +122,8 @@ public class TourController {
         model.put("listTourNew", listTourNew);
         model.put("listTourDiscount", listTourDiscount);
         model.put("listTopDestinations", topList);
-        mav.addAllObjects(model);
         model.put("locations", locations);
+        mav.addAllObjects(model);
 
         return mav;
     }
@@ -161,10 +161,12 @@ public class TourController {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
-
+            List<String> locations = getAllLocation();
+            model.put("locations", locations);
             List list = tourService.getAllTourByLocation(location);
             if (!list.isEmpty()) {
                 model.put("listTourSearchLocation", list);
+                model.put("location", location);
                 mav.addAllObjects(model);
                 return mav;
             }
@@ -205,6 +207,7 @@ public class TourController {
 
     public List<Tour> getListTourDiscount() {
         try {
+
             List<Tour> featuredTours = tourService.getListTourDiscount();
             if (featuredTours.isEmpty()) {
                 return null;
@@ -222,6 +225,10 @@ public class TourController {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
+            List<String> locations = getAllLocation();
+            model.put("locations", locations);
+            model.put("location", "Tour nỗi bật");
+
             List<Tour> featuredTours = tourService.getListTourFeatured();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);
@@ -240,6 +247,10 @@ public class TourController {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
+            List<String> locations = getAllLocation();
+            model.put("locations", locations);
+            model.put("location", "Tour mới nhất");
+
             List<Tour> featuredTours = tourService.getListTourNew();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);
@@ -258,6 +269,9 @@ public class TourController {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
+            List<String> locations = getAllLocation();
+            model.put("locations", locations);
+            model.put("location", "Tour giảm giá");
             List<Tour> featuredTours = tourService.getListTourDiscount();
             if (!featuredTours.isEmpty()) {
                 model.put("listTourSearchLocation", featuredTours);
@@ -278,65 +292,67 @@ public class TourController {
         return topList;
     }
 
-    @PostMapping("/addToWishlist/{idTour}")
-    public String addToWishlist(@PathVariable Long idTour, Principal principal) {
-        System.out.println("úm ba la si bùa");
-        try {
-            if (principal == null) {
-                return "redirect:/login"; // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            } else {
-                String userEmail = principal.getName();
-                User user = userRepository.findByEmail(userEmail);
-                int idUser = user.getId();
-                WishList wishList = wishListRepository.findByIdTourAndIdUser(idTour, idUser);
-                if (wishList == null) {
-                    wishListRepository.save(new WishList(idTour, idUser));
-                }
-                return "successfully";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
-    }
-//    @GetMapping("/addToWishlist/{idTour}")
-//    public String addToWishlist2(@PathVariable Long idTour, Principal principal) {
-//        System.out.println("ủm ba la xi bùa");
-//        try {
-//            if (principal == null) {
-//                return "redirect:/login"; // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-//            } else {
-//                String userEmail = principal.getName();
-//                User user = userRepository.findByEmail(userEmail);
-//                int idUser = user.getId();
-//                WishList wishList = wishListRepository.findByIdTourAndIdUser(idTour, idUser);
-//                if (wishList == null) {
-//                    wishListRepository.save(new WishList(idTour, idUser));
-//                }
-//                return "successfully";
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return "error";
-//        }
-//    }
-
-//    @GetMapping("/user/name/")
-//    public String nameByEmail() {
-//        System.out.println("quần què");
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null && authentication.isAuthenticated()) {
-//            String username = authentication.getName();
-//            User user = userRepository.findByEmail(username);
-//            return user.getName();
-//        }else {
-//            return "";
-//        }
-//    }
-
 
     public List<String> getAllLocation() {
         return tourService.getAllLocation();
+    }
+
+
+    @GetMapping("/addToWishlist/{idTour}")
+    public ResponseEntity<String> addToWishlist(@PathVariable Long idTour) {
+        System.out.println("dã vào okeeeee.....");
+        try {
+            int idUser = 0;
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null || !authentication.isAuthenticated()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bạn cần phải đăng nhập để thêm vào danh sách yêu thích.");
+            } else {
+                String username = authentication.getName();
+                User user = userRepository.findByEmail(username);
+                idUser = user.getId();
+                WishList wishList = wishListRepository.findByIdTourAndIdUser(idTour, idUser);
+                if (wishList == null) {
+                    wishListRepository.save(new WishList(idTour, idUser));
+                    return ResponseEntity.ok("Sản phẩm đã được thêm vào danh sách yêu thích.");
+                } else {
+                    return ResponseEntity.badRequest().body("Sản phẩm đã tồn tại trong danh sách yêu thích.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Bạn cần đăng nhập trước khi thêm vào danh sách yêu thích.");
+        }
+    }
+
+    public String getImgTopList(String location) {
+        String result = "";
+        switch (location) {
+            case "Hà Nội":
+                result = "hanoi.jpg";
+                break;
+            case "Hồ Chí Minh":
+                result = "hochiminh.jpg";
+                break;
+            case "Miền Tây":
+                result = "mientay.jpg";
+                break;
+            case "Quảng Bình":
+                result = "quangbinh2.jpg";
+                break;
+            case "Đà Nẵng":
+                result = "danang.jpg";
+                break;
+            case "Cà Mau":
+                result = "camau.jpg";
+                break;
+            case "Phú Quốc":
+                result = "phuquoc.jpg";
+                break;
+            default:
+                result = "default.jpg";
+
+        }
+        return result;
     }
 
 }

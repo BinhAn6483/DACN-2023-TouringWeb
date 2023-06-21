@@ -88,12 +88,6 @@ public class userController {
         String extension = StringUtils.getFilenameExtension(file.getOriginalFilename());
         System.out.println("file format: " + extension);
         String[] fileFormats = {"jpg", "png", "svg", "jpeg", "gif"};
-//        for (String format : fileFormats) {
-//            if (!extension.equals(format)) {
-//                return "file invalid format";
-//            }
-//        }
-
         try {
             //lấy id user hiện tại
             int idUser = 0;
@@ -114,12 +108,6 @@ public class userController {
             // Lấy danh sách các tệp tin trong thư mục lưu trữ avatar
             File[] files = dir.listFiles();
 
-            //kiểm tra các file trong thư mục nếu tồn tại file có tên file là idUser hiện tại thì sẽ delete
-//            for (File f : files) {
-//                if (f.getName().startsWith(String.valueOf(idUser + "."))) {
-//                    f.delete();
-//                }
-//            }
             Path uploadPath = Paths.get(uploadDir).toAbsolutePath().normalize();
 
             // Tạo tên file mới
@@ -151,6 +139,10 @@ public class userController {
             idUser = user.getId();
         }
         ImgAvatar imgAvatar = imgAvatarRepository.getImgAvatarByIdUser(idUser);
+        if (imgAvatar.getImg() ==null){
+            imgAvatar.setImg("default.jpg");
+            imgAvatarRepository.save(imgAvatar);
+        }
         return imgAvatar.getImg();
     }
 
@@ -172,4 +164,16 @@ public class userController {
 //
 //        return "redirect:/user/profile";
 //    }
+
+    public User getUserById (int idUser) {
+        return userRepository.getUserById(idUser);
+    }
+    public String getImgAvatar(int idUser) {
+        ImgAvatar imgAvatar = imgAvatarRepository.getImgAvatarByIdUser(idUser);
+        if (imgAvatar.getImg() ==null){
+            imgAvatar.setImg("default.jpg");
+            imgAvatarRepository.save(imgAvatar);
+        }
+        return imgAvatar.getImg();
+    }
 }
