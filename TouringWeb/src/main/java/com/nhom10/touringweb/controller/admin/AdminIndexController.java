@@ -13,6 +13,7 @@ import java.util.List;
 import com.nhom10.touringweb.model.user.Tour;
 import com.nhom10.touringweb.model.user.Booking;
 
+import com.nhom10.touringweb.model.user.User;
 import com.nhom10.touringweb.repository.BookingRepository;
 import com.nhom10.touringweb.repository.UserRepository;
 import com.nhom10.touringweb.service.TourService;
@@ -65,4 +66,15 @@ public class AdminIndexController {
         model.addAttribute("toursWaiting",toursWaiting.size()); // tour đang đọi
          return "dashaboard-home";
     }
+
+    @GetMapping("/admin/listUser")
+    public String list(Model model){
+        List< User> customer = userRepository.getAllUserByRoleUser(); //danh sách khách hàng
+
+        model.addAttribute("customer", customer);
+
+        return "dashboard-listUser";
+    }
+
+
 }

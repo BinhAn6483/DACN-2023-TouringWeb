@@ -34,16 +34,16 @@
           </a>
         </li>
         <li>
-          <a th:href="@{/user/profile}" >
+          <a th:href="@{/admin/listUser}" >
             <span  class="las la-user-alt"></span>
-            <small>Hồ sơ của bạn</small>
+            <small>Khách hàng</small>
           </a>
         </li>
 
         <li>
-          <a th:href="@{/user/history}">
+          <a th:href="@{}">
             <span  class="las la-clipboard-list"></span>
-            <small>Lịch sử</small>
+            <small>Danh sách Tour</small>
           </a>
         </li>
         <li>
@@ -144,7 +144,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h2 th:text="${toursWaiting}">47,500</h2>
+            <h2 th:text="${toursWaiting">47,500</h2>
             <span class="las la-spinner"></span>
           </div>
           <div class="card-progress">
