@@ -53,4 +53,7 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     @Query("SELECT DISTINCT  t.location FROM Tour t ORDER BY t.location ASC ")
     List<String> getAllLocation();
+
+    @Query("SELECT t FROM Tour t")
+    Page<Tour> getAll(Pageable pageable);
 }
