@@ -8,6 +8,7 @@ import com.nhom10.touringweb.repository.UserRepository;
 import com.nhom10.touringweb.service.LinkImgService;
 import com.nhom10.touringweb.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -95,9 +96,9 @@ public class BookingController {
     @GetMapping("/user/history")
     public ModelAndView pageHistory(){
         ModelAndView mav = new ModelAndView("user_history");
-        List<Booking> listAll = bookingRepository.findAll();
+        List<Booking> listAll = bookingRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         List<Booking> listDone = bookingRepository.findAllByStatusTour("Đã Đi");
-        List<Booking> listWait = bookingRepository.findAllByStatusTour("Chưa khỏi hành");
+        List<Booking> listWait = bookingRepository.findAllByStatusTour("Chờ khỏi hành");
 
         Map<String, Object> model = new HashMap<>();
         model.put("listAll",listAll);
