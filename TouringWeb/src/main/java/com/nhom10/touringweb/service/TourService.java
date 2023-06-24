@@ -80,4 +80,8 @@ public class TourService {
         return tourRepository.getAllLocation();
 
     }
+
+    public Page<Tour> getAll(Pageable pageable) {
+        return tourRepository.getAll(pageable);
+    }
 }
