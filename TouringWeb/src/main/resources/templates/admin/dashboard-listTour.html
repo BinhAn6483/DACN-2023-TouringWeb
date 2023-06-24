@@ -16,10 +16,10 @@
 
     <div class="side-content">
         <div class="profile">
-            <div class="profile-img bg-img" >
+            <div class="" >
                 <img alt='TravelerWP'
                      th:src="@{/images/avatar/{img}(img=${@userController.getImgAvatar()},timestamp=${#httpServletRequest.getSession().getCreationTime()})}" src="static/images/avatar/23.jpg"
-                     class='avatar avatar-50 photo' height='50' width='50' loading='lazy' decoding='async'/>
+                     class='avatar avatar-50 photo profile-img bg-img' height='50' width='50' loading='lazy' decoding='async'/>
             </div>
             <h4 class="user-name" th:text="${@userController.nameByEmail()}">TRAN NGOC BAO TRAN</h4>
             <span class="user-role" sec:authentication="principal.username" ></span>

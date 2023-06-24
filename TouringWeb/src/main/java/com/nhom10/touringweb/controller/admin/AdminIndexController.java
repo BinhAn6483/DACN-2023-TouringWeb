@@ -1,15 +1,16 @@
 /**
  * @(#)AdminIndexController.java 2021/09/10.
- *
+ * <p>
  * Copyright(C) 2021 by PHOENIX TEAM.
- *
+ * <p>
  * Last_Update 2021/09/10.
  * Version 1.00.
  */
 package com.nhom10.touringweb.controller.admin;
 
 
-import java.util.List;
+import java.util.*;
+
 import com.nhom10.touringweb.model.user.Tour;
 import com.nhom10.touringweb.model.user.Booking;
 
@@ -26,7 +27,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Class de hien thi trang chu quan tri
- *
  */
 @Controller
 public class AdminIndexController {
@@ -54,26 +54,100 @@ public class AdminIndexController {
         int countUser = userRepository.countUserWithRoleUser(); // danh sach khach hang dăng ki
         List<Booking> oderRevenue = bookingRepository.findAllByStatusTour("Đã đi"); // doanh thu
         double countRevenue = 0.0;
-        for(Booking booking : oderRevenue){
+        for (Booking booking : oderRevenue) {
             countRevenue += booking.getTotalPrice();
-        };
+        }
 
         List<Booking> toursWaiting = bookingRepository.findAllByStatusTour("Chờ khởi hành"); // tour đang dợi
+        List<Tour> popularTours = getAllTourPopular();
 
         model.addAttribute("sumTour", sumTour.size());
+        model.addAttribute("popularTours", popularTours);
         model.addAttribute("countUser", countUser);//"gọi html", truyền vào ở ngoài
-        model.addAttribute("orderRevenue",countRevenue); // doanh thu
-        model.addAttribute("toursWaiting",toursWaiting.size()); // tour đang đọi
-         return "dashaboard-home";
+        model.addAttribute("orderRevenue", countRevenue); // doanh thu
+        model.addAttribute("toursWaiting", toursWaiting.size()); // tour đang đọi
+        return "dashaboard-home";
     }
 
     @GetMapping("/admin/listUser")
-    public String list(Model model){
-        List< User> customer = userRepository.getAllUserByRoleUser(); //danh sách khách hàng
+    public String list(Model model) {
+        List<User> customer = userRepository.getAllUserByRoleUser(); //danh sách khách hàng
 
         model.addAttribute("customer", customer);
 
-        return "dashboard-listUser";
+        return "admin/dashboard-listUser";
+    }
+
+
+    public List<Tour> getAllTourPopular() {
+        Map<Tour, Double> map = new HashMap<>();
+        List<Booking> bookingList = bookingRepository.getAllBookingPopular();
+        for (Booking booking : bookingList) {
+            Tour tour = tourService.getTourById(booking.getIdTour());
+            List<Booking> listBookingByIdTour = bookingRepository.getAllByIdTour(booking.getIdTour());
+            double totalPrice=0;
+            for (Booking booking1 : listBookingByIdTour){
+                 totalPrice += booking1.getTotalPrice();
+            }
+            map.put(tour,totalPrice);
+        }
+        Map<Tour, Double> sortedMap = sortMapDescendingByValue(map);
+        List<Tour> tourList = new ArrayList<>();
+        for (Tour tour : sortedMap.keySet()) {
+            tourList.add(tour);
+        }
+        return tourList;
+    }
+
+    public Map<Integer, Integer> getQuantityByIdTour(Long idTour) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Booking> bookingList = bookingRepository.getAllBookingPopular();
+        for (Booking booking : bookingList) {
+            int noAdults = 0, noChildren = 0;
+            if (booking.getIdTour().equals(idTour)) {
+                List<Booking> listBookingByIdTour = bookingRepository.getAllByIdTour(booking.getIdTour());
+                for (Booking b : listBookingByIdTour) {
+                    noAdults += b.getNoAdults();
+                    noChildren += b.getNoChildren();
+                }
+                map.put(noAdults, noChildren);
+            }
+
+        }
+        return map;
+    }
+
+    public double getTotalPrice(Long idTour) {
+        double total = 0.0;
+        List<Booking> bookingList = bookingRepository.getAllBookingPopular();
+        for (Booking booking : bookingList) {
+            if (booking.getIdTour().equals(idTour)) {
+                List<Booking> listBookingByIdTour = bookingRepository.getAllByIdTour(booking.getIdTour());
+                for (Booking b : listBookingByIdTour) {
+                    total += b.getTotalPrice();
+                }
+            }
+        }
+        return total;
+    }
+
+    public Map<Tour, Double> sortMapDescendingByValue(Map<Tour, Double> map) {
+        List<Map.Entry<Tour, Double>> entryList = new ArrayList<>(map.entrySet());
+
+        Collections.sort(entryList, new Comparator<Map.Entry<Tour, Double>>() {
+            @Override
+            public int compare(Map.Entry<Tour, Double> entry1, Map.Entry<Tour, Double> entry2) {
+                // Sắp xếp giảm dần dựa trên value
+                return Double.compare(entry2.getValue(), entry1.getValue());
+            }
+        });
+
+        Map<Tour, Double> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<Tour, Double> entry : entryList) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedMap;
     }
 
 
