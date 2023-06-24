@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Modern Admin Dashboard</title>
     <!--  <link rel="stylesheet" href="/assets/css/dashboard.css">-->
-    <link rel='stylesheet' id='google-font-Poppins-css'
-    href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&#038;ver=6.1.1'
-    type='text/css' media='all'/>
-    <link rel='stylesheet' id='fontawesome-css'
-          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/css/font-awesome.css' type='text/css'
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel='stylesheet' id='main-css'
+          href='https://modmixmap.travelerwp.com/wp-content/themes/traveler/v3/css/main.css' type='text/css'
           media='all'/>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <style>
@@ -43,11 +41,11 @@
                 <li>
                     <a href="" >
                         <span class="las la-home"></span>
-                        <small>Dashboard</small>
+                        <small>Danh sách Tour</small>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{}">
+                    <a href="#">
                         <span  class="las la-user-alt"></span>
                         <small>Khách hàng </small>
                     </a>
@@ -108,8 +106,8 @@
     <main>
 
         <div class="page-header">
-            <h1>Dashboard</h1>
-            <small>Home / Dashboard</small>
+            <h1>Danh sách Tour</h1>
+            <small>Trang chủ / Danh sách tour</small>
         </div>
 
         <div class="page-content">
@@ -120,9 +118,8 @@
                     <div class="row align-items-center">
                         <div class="border-0 mb-4">
                             <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                                <h3 class="fw-bold mb-0">Danh sách Tour</h3>
                                 <div th:if="${message}" class="alert alert-success">
-                                    <p th:text="${customer}"></p>
+                                    <p ></p>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +128,7 @@
                     <div class="row clearfix g-3">
                         <div class="col-sm-12">
 
-                            <form th:action="@{/users-manage}" style="margin: 20px 0;display: flex; border-bottom: 3px solid #bdd4ff;width: 44%; "  method="POST">
+                            <form action="" style="margin: 20px 0;display: flex; border-bottom: 3px solid #bdd4ff;width: 44%; "  method="POST">
                                 <select name="type" id="type" style="padding: 0px 5px;height: 30px; border-radius: 7px;font-weight: bold;">
                                     <option value="id">ID Tour</option>
                                 </select>
@@ -155,9 +152,9 @@
                                     <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
                                         <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>ID</th>
                                             <th>Tên</th>
-                                            <th>Khởi hành</th>
+                                            <th>Địa điểm</th>
 <!--                                            <th>Trạng thái</th>-->
                                             <th>Giá Tour</th>
                                             <th>Giá Sale</th>
@@ -168,23 +165,20 @@
                                         <tbody>
                                         <tr th:each="tour : ${listTour}">
                                             <td><a><strong th:text="'#'+${tour.id}">#CS-00002</strong></a></td>
-                                            <td>
-                                                <a href="customer-detail.html">
-                                                    <img class="avatar rounded" th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}">
-                                                    <span class="fw-bold ms-1" th:text="${tour.name}">Vịnh Hạ Long</span>
-                                                </a>
+                                            <td th:text="${tour.name}" style="padding-right: 20px;width: 50%;">
+
                                             </td>
-                                            <td th:text="${tour.startingPoint}">
+                                            <td th:text="${tour.location}">
                                                 12/03/2022
                                             </td>
 <!--                                            <td>Chưa đi</td>-->
-                                            <td th:text="${tour.getPrice()}">20.000</td>
-                                            <td th:text="${tour.getPriceSale()}">18.000</td>
+                                            <td th:text="${tour.getPrice()}" class="price-tour-format">20.000</td>
+                                            <td th:text="${tour.getPriceSale()}" class="price-tour-format">18.000</td>
                                             <td th:text="${tour.getViewCount()}">15</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tour này không?')" th:href="@{/users-manage/remove/{idUser} (idUser=${user.id})}" class="edit-remove-admin"><i class="fas fa-trash-alt"></i></a>
-                                                    <a th:href="@{/users-manage/user/detail/{idUser}(idUser=${user.id})}" class="edit-remove-admin"><i class="fas fa-edit"></i></a>
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tour này không?')" th:href="@{/admin/delete/{idTour}(idTour=${tour.id})}"  class="edit-remove-admin"><i class="fas fa-trash-alt"></i></a>
+                                                    <a  class="edit-remove-admin"><i class="fas fa-edit"></i></a>
 
                                                 </div>
                                             </td>
@@ -194,7 +188,7 @@
                                         </tbody>
 
                                     </table>
-                                    <div class="pagination moderm-pagination" id="moderm-pagination" th:if="${listTourSearch != null}">
+                                    <div class="pagination moderm-pagination" id="moderm-pagination" th:if="${listTour != null}">
                                         <ul class="page-numbers" >
                                             <li th:if="${currentPage > 0}">
                                                 <a th:href="@{${url + '&page=' + (currentPage - 1)}}"><i
@@ -203,7 +197,7 @@
                                             <li th:each="i : ${#numbers.sequence(0, totalPages - 1 )}">
                                                 <a th:href="@{${url + '&page=' + i}}"
                                                    th:class="${currentPage == i ? 'page-numbers-current' : ''}"
-                                                   style="box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05); width: 35px;height: 40px;border-radius: 7px;border: 1px solid #ddd; padding: 4px 3px 0 0"><span
+                                                   style="box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05); width: 35px;height: 40px;border-radius: 7px;border: 1px solid #ddd; padding: 4px 3px 0 0"><span style="display: block;height: 32px;width: 32px;line-height: 32px;text-decoration: none;color: var(--grey-color,#5E6D77);"
                                                         th:text="${i + 1}" th:class="${currentPage == i ? 'page-numbers-current-sub' : ''}">1</span></a>
                                             </li>
                                             <li th:if="${currentPage < totalPages - 1}">
@@ -754,4 +748,14 @@
         }
     }
 </style>
+<script>
+    var priceElements = document.querySelectorAll('.price-tour-format');
+    priceElements.forEach(function (element) {
+        var priceValue = parseFloat(element.textContent);
+        if (!isNaN(priceValue)) {
+            var formattedPrice = priceValue.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+            element.textContent = formattedPrice;
+        }
+    });
+</script>
 </html>
