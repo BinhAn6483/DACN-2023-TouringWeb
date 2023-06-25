@@ -1287,7 +1287,6 @@
                                             </div>
                                         </div>
 
-
                                         <a
                                                 th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
                                             <img decoding="async" itemprop="image"
@@ -1328,6 +1327,7 @@
                                         </div>
                                         <div class="section-footer" style="margin: 10px 0 0 0;padding: 10px 0 0px 0;">
                                             <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
+
                                                                             <span class="price-tour">
                                                                                 <span
                                                                                         class="price d-flex justify-content-around flex-column">
@@ -1353,6 +1353,7 @@
 
                                                                                 </span>
                                                                             </span>
+
                                                 <span class="unit">
                                                                              <i class="stt-icon-star1" style="color: #ffde14"></i>
                                                                              <span class="rate" itemprop="ratingValue" th:text="${@scheduleController.getAverageStarByIdTour(tour.id)}">
@@ -1360,6 +1361,7 @@
                                                                     <span class="summary" th:text="'('+${@scheduleController.getSizeCommentByIdTour(tour.id)}+' đánh giá)'">
                                                                             (5 Reviews)
                                                                         </span>
+
                                             </div>
                                         </div>
                                     </div>
