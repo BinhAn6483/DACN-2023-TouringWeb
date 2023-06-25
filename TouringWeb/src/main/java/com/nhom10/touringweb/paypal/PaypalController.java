@@ -88,7 +88,8 @@ public class PaypalController {
 
                 Booking booking1 = new Booking(idUser, booking.getIdTour(), booking.getNoAdults(), booking.getNoChildren(), booking.getTotalPrice(), booking.getDateStart(), booking.getPayment(), "Đã thanh toán", "Chờ khởi hành", createAt);
                 bookingRepository.save(booking1);
-                DepartureDates departureDates = departureDatesRepository.getDepartureDatesByDateStart(booking1.getDateStart());
+                DepartureDates departureDates = departureDatesRepository.getDepartureDatesByDateStartAndIdTour(booking1.getDateStart(),booking1.getIdTour());
+                System.out.println("date starts: " +departureDates.toString());
                 departureDates.setQuantity(departureDates.getQuantity() - (booking1.getNoAdults() + booking1.getNoChildren()));
                 departureDatesRepository.save(departureDates);
                 String url = "/user/history/detail/" + Long.toString(booking1.getId());

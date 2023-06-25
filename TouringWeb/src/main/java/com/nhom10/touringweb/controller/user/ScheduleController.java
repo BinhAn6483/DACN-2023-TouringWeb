@@ -140,4 +140,35 @@ public class ScheduleController {
         Collections.shuffle(result);
         return (result.size() > 8) ? result.subList(0, 8) : result;
     }
+
+    public Date getDateStartByIdTour(Long idTour) {
+        List<Date> listDateStart = tourService.getAllDateStart(idTour);
+        return listDateStart.get(0);
+    }
+
+    public int getQuantityOfTour(Long idTour) {
+        List<DepartureDates> departureDates = getAllDateStartByIdTour(idTour);
+        return departureDates.get(0).getQuantity();
+    }
+
+    public int getSizeCommentByIdTour(Long idTour) {
+        List<Comment> commentList = commentRepository.getAllByIdTour(idTour);
+        return commentList.size();
+    }
+
+    public float getAverageStarByIdTour(Long idTour) {
+        List<Comment> commentList = commentRepository.getAllByIdTour(idTour);
+        int temp = 0;
+        for (Comment c : commentList) {
+            temp += c.getStar();
+        }
+        float averageStar = 0;
+        averageStar = (float) temp / commentList.size();
+        if (commentList.size() == 0) {
+            averageStar = 5;
+        }
+        return averageStar;
+    }
+
 }
+
