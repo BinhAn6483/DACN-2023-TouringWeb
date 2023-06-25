@@ -283,7 +283,7 @@
             background: linear-gradient(180deg, #ed0080 0, #be3b98 100%);
             color: #fff !important;
             display: inline-block;
-            padding: 6px 30px;
+            padding: 6px 20px;
             border-radius: 5px;
             border: none;
         }
@@ -307,6 +307,10 @@
             margin-top: 8px;
             color: #e30101;
             opacity: 100%;
+        }
+
+        #comment-sub-a {
+            background: #0a58ca!important;
         }
 
     </style>
@@ -438,9 +442,9 @@
                                 <div class="left">
                                     <div class="reviews" itemprop="starRating">
                                         <i class="stt-icon-star1"></i>
-                                        <span class="rate" itemprop="ratingValue">
+                                        <span class="rate" itemprop="ratingValue" th:text="${averageStar}">
                                     5                                </span>
-                                        <span class="summary">
+                                        <span class="summary" th:text="'( '+ ${commentList.size()} +' đánh giá )'">
                                     (15 Reviews)
                                 </span>
                                     </div>
@@ -776,19 +780,19 @@
                                             </thead>
                                             <tbody class="responsive">
 
-                                            <tr class="responsive" th:each="a: ${departureDates}">
+                                            <tr class="responsive" th:each="a , status: ${departureDates}">
                                                 <form method="POST" th:action="@{/confirm_booking}">
                                                     <input type="hidden" name="idTour" th:value="${tour.getId()}">
                                                     <input type="hidden" name="dateStart"
                                                            th:value="${a.getDateStart()}">
-                                                    <td class="responsive sttt" style="width: 13%;">1</td>
+                                                    <td class="responsive sttt" style="width: 13%;" th:text="${status.index + 1}">1</td>
                                                     <td class="responsive" style="width: 20%;" align="left"
                                                         th:text="${a.getDateStart()}">16/05/2023
                                                     </td>
                                                     <td class="responsive" style="width: 17%;" align="left">
                                                     <span style="font-weight: bold;" class=""><span
                                                             class="mda-money price-tour-format"
-                                                            th:text="${tour.getPriceSale()}">7,090,000</span>đ</span>
+                                                            th:text="${tour.getPriceSale()}">7,090,000</span></span>
                                                     </td>
                                                     <td class="responsive" style="width: 17%;" align="left">
                                                         <span th:text="'Còn '+${a.getQuantity()} + ' chỗ'">Còn 10 chỗ</span>
@@ -797,7 +801,7 @@
                                                         <div class="whnw">
                                                             <button class="btn-book"
                                                                     type="submit"
-                                                                    data-scheduleid="5474w2333424d4d40374x2">Book
+                                                                    data-scheduleid="5474w2333424d4d40374x2">Đặt Tour
                                                             </button>
                                                         </div>
                                                     </td>
@@ -1024,7 +1028,7 @@
                         </div>
                         <div id="write-review">
                             <h4 class="heading" style="float:right;">
-                                <a href="javascript: void(0)" class="toggle-section c-main f16"
+                                <a href="javascript: void(0)" class="toggle-section c-main f16" id="comment-sub-a"
                                    data-target="st-review-form">Viết đánh giá <i class="stt-icon-arrow-down"></i></a>
                             </h4>
                             <div id="respond" class="comment-respond st-border-radius comment-respond"
@@ -1034,7 +1038,7 @@
                                         rel="nofollow" id="cancel-comment-reply-link"
                                         href="/st_tour/two-hour-walking-tour-of-manhattan/#respond"
                                         style="display:none;">Cancel reply</a></small></h3>
-                                <form th:action="@{/comment/upload}" method="POST" id="commentform" class="comment-form review-form" novalidate>
+                                <form th:action="@{/comment/upload}" method="POST" id="formUploadComment" class="comment-form review-form" >
 
                                     <div class="form-wrapper">
 
@@ -1059,13 +1063,13 @@
                                             <div class="col-xs-12 col-md-6 col-md-pull-6" style="width: 100%;">
                                                 <div class="form-group" >
                                                 <textarea id="content" name="content" style="background: #eeeeee; color: black"
-                                                          class="form-control has-matchHeight"
+                                                          class="form-control has-matchHeight" required
                                                           placeholder="Nội dung"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <p style="float: right; color: red; font-style: italic;" class="form-submit" >*đăng nhập để đánh giá  <input name="submit" type="submit" id="submit" class="submit" style="padding: 10px 20px; font-weight: bold; background: #2cbe2c;margin-left: 10px;"
+                                    <p style="float: right; color: red; font-style: italic;" class="form-submit" >*đăng nhập để đánh giá  <input name="submit" type="submit" id="submit" onclick="checkSubmit()" class="submit" style="padding: 10px 20px; font-weight: bold; background: #2cbe2c;margin-left: 10px;"
                                                                   value="Đăng bài"/>
                                     </p></form>
                             </div><!-- #respond -->
@@ -1249,75 +1253,127 @@
                 <div class="inner service-list-wrapper rental-grid service-tour">
                     <div class="owl-carousel st-owl-slider" data-items="4" data-margin="24"
                          data-responsive="{&quot;992&quot;:{&quot;items&quot;:4},&quot;768&quot;:{&quot;items&quot;:2},&quot;0&quot;:{&quot;items&quot;:1}}">
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+                             th:each="tour : ${relatedTours}">
+                            <div class="services-item grid item-elementor">
+                                <div class="item service-border st-border-radius" style="    width: 300px;">
+                                    <div class="featured-image" style="height: 200px">
+                                        <form class="add-to-wish-list" th:data-tour-id="${tour.id}">
+                                            <div style="z-index: 1;position: absolute;width: 50px;height: 50px;padding: 10px;margin-left: 83%;">
+                                                <button style="background: none; border: none"
+                                                        class="btn-add" type="submit">
+                                                    <i class="fas fa-heart"
+                                                       title="Thêm vào danh sách yêu thích"></i>
+                                                </button>
                                             </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/american-parks-trail-end-rapid-city/">
-                                            <img itemprop="image"
-                                                 src="http://cafefcdn.com/thumb_w/640/2020/7/4/10484775634463592053963967478376829528243485o-1593830366221748693022.jpg"
-                                                 alt="American Parks Trail end Rapid City"
+                                            <div style="position: absolute;background-color: rgba(0,0,0,.5);padding: 5px 10px;font-family: Muli,sans-serif !important;z-index: 1;margin-top: 175px;color: white;">
+                                                    <span style=" font-weight: bold"
+                                                          th:text="'Từ '+${tour.getStartingPoint()}"> Từ Hồ Chí Minh</span>
+                                            </div>
+                                        </form>
+
+                                        <div th:if="${tour.sale > 0}">
+                                            <div class="st-tag-feature-sale "
+                                                 style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
+                                                <span class=""></span>-
+                                                <span th:text="${tour.getSale()}"> </span>%
+                                            </div>
+                                        </div>
+                                        <div th:if="${tour.sale == 0}">
+                                            <div class="st-tag-feature-sale "
+                                                 style="padding: 0px 6px;background: #cc0033;border-radius: 5px;color: white;font-family: cursive;">
+                                                <span class="">New</span>
+
+                                            </div>
+                                        </div>
+
+
+                                        <a
+                                                th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}">
+                                            <img decoding="async" itemprop="image"
+                                                 style="height: 212px;"
+                                                 th:src="@{/images/tours/{nameImg}(nameImg=${@tourController.getMainImgLink(tour.id)})}"
+                                                 alt="Two Hour Walking Tour of Manhattan"
                                                  class="image-feature st-hover-grow"/>
                                         </a>
+
                                     </div>
                                     <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
+                                        <div class="sub-title st-address d-flex align-items-center"
+                                             itemprop="itinerary" itemscope
+                                             itemtype="https://schema.org/ItemList">
 
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> Thành Phố Huế</span>
+                                                                        <span itemprop="streetAddress">
+                                                                            <span class="stt-icon stt-icon-location1"></span>
+                                                                            <span th:text="${tour.getLocation()}"></span>
+                                                                            </span>
+
                                         </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/american-parks-trail-end-rapid-city/"
-                                               class="st-link c-main">Cố Đô Huế</a>
+                                        <h3 class="title" itemprop="name" style="height: 95px">
+                                            <a th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
+                                               class="st-link c-main"
+                                               th:text="${tour.getName()}"></a>
                                         </h3>
                                         <div class="reviews">
                                             <i class="stt-icon-star1"></i>
                                             <span class="rate" itemprop="ratingValue">
-                    5                </span>
+                                                                            5 </span>
                                             <span class="summary">
-                    (11 Đánh giá)
-                </span>
+                                                                            (5 Reviews)
+                                                                        </span>
                                         </div>
                                         <div class="section-footer">
 
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span
-                                class="sale-top">Giá Từ  <span
-                                class="text-lg lh1em item "> 3.499.000 đ </span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                                            <div
+                                                    class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
+                                                                            <span class="price-tour">
+                                                                                <span
+                                                                                        class="price d-flex justify-content-around flex-column">
+                                                                                    <div th:if="${tour.sale > 0}">
+                                                                                              <span
+                                                                                                      class="text-small lh1em item onsale price-tour-format"
+                                                                                                      th:text="${tour.getPrice()}">€
+                                                                                    </span>
+                                                                                    <span
+                                                                                            class="sale-top">Từ <span
+                                                                                            class="text-lg lh1em item price-tour-format"
+                                                                                            th:text="${tour.getPriceSale()}">
+                                                                                            €</span></span>
+                                                                                    </div>
 
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
+                                                                                     <div th:if="${tour.sale == 0}">
+                                                                                        <span
+                                                                                                class="sale-top">Từ <span
+                                                                                                class="text-lg lh1em item price-tour-format"
+                                                                                                th:text="${tour.getPriceSale()}">
+                                                                                                €</span></span>
+                                                                                    </div>
+
+                                                                                </span>
+                                                                            </span>
+                                                <span class="unit"><i
+                                                        class="input-icon st-border-radius field-icon fa"><svg
+                                                                                        height="16px" width="16px"
+                                                                                        version="1.1"
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                        x="0px" y="0px"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        style="enable-background:new 0 0 24 24;"
+                                                                                        xml:space="preserve">
+
+                                                                                        <g fill="#5E6D77">
+                                                                                            <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
         C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
         S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
+                                                                                            <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
         c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
         c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
         c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>8 hour</span>
+                                                                                        </g>
+                                                                                    </svg></i>
+                                                                            <span th:text="${tour.getTime()}"></span>
+                                                                            </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1325,551 +1381,7 @@
                             </div>
 
                         </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
 
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/northern-california-summer-2019/">
-                                            <img itemprop="image"
-                                                 src="https://tackexinh.com/wp-content/uploads/2021/05/hinh-anh-Fansipan.jpg"
-                                                 alt="Northern California Summer 2019"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i>Thành Phố Lào Cai</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/northern-california-summer-2019/"
-                                               class="st-link c-main">Khu Du Lịch Sapa- Lào Cai</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (50 Đánh giá)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span
-                                class="sale-top">Giá Từ  <span
-                                class="text-lg lh1em item "> 5.999.999 đ</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>5 days</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/los-angeles-to-san-francisco-express/">
-                                            <img itemprop="image"
-                                                 src="https://sunnyvali.vn/wp-content/uploads/2022/11/Quang-truong-Lam-Vien-1.jpg"
-                                                 alt="Los Angeles to San Francisco Express"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                    </div>
-
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> Lâm Đồng</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/los-angeles-to-san-francisco-express/"
-                                               class="st-link c-main">Khu Du Lịch Đà Lạt</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (70 Đánh giá)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span
-                                class="sale-top">Giá Từ  <span
-                                class="text-lg lh1em item "> 2.999.999 đ</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>full day</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/new-york-museum-of-modern-art/">
-                                            <img itemprop="image"
-                                                 src="https://vtv1.mediacdn.vn/thumb_w/650/2021/12/28/2-1640649877671807901745-crop-1640649901758613046914.jpg"
-                                                 alt="New York: Museum of Modern Art"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> Thành Phố Bà Rịa - Vũng Tàu</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/new-york-museum-of-modern-art/"
-                                               class="st-link c-main">Khu Du Lịch Vũng Tàu</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (3 Đánh giá)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span
-                                class="sale-top">Giá Từ  <span
-                                class="text-lg lh1em item "> 1.499.000 đ</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>full day</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/rockies-yellowstone-mt-rushmore/">
-                                            <img itemprop="image"
-                                                 src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/brown-horse-with-black-leather-strap-450x300.jpg"
-                                                 alt="Rockies, Yellowstone &#038; Mt Rushmore"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/author/modmix/" target="_blank"
-                                           title="modmix" class="service-avatar"><img alt="avatar" width=70 height=70
-                                                                                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/32.jpg"
-                                                                                      class="avatar avatar-96 photo origin round"></a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> California</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/rockies-yellowstone-mt-rushmore/"
-                                               class="st-link c-main">Rockies, Yellowstone &#038; Mt Rushmore</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (9 Reviews)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span
-                                class="sale-top">Giá Từ  <span class="text-lg lh1em item "> </span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>10 hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/trip-of-new-york-discover-america/">
-                                            <img itemprop="image"
-                                                 src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Free-Woman-Wearing-White-Dress-Standing-Near-Building-Stock-Photo-450x300.jpg"
-                                                 alt="Trip of New York – Discover America"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/author/modmix/" target="_blank"
-                                           title="modmix" class="service-avatar"><img alt="avatar" width=70 height=70
-                                                                                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/32.jpg"
-                                                                                      class="avatar avatar-96 photo origin round"></a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> Philadelphia</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/trip-of-new-york-discover-america/"
-                                               class="st-link c-main">Trip of New York – Discover America</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (2 Reviews)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span class="sale-top">From  <span
-                                class="text-lg lh1em item "> €160.00</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>10 hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/segway-tour-of-washington-d-c-highlights/">
-                                            <img itemprop="image"
-                                                 src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/bridge-over-water-near-city-buildings-during-night-time-450x300.jpg"
-                                                 alt="Segway Tour of Washington, D.C. Highlights"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/author/modmix/" target="_blank"
-                                           title="modmix" class="service-avatar"><img alt="avatar" width=70 height=70
-                                                                                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/32.jpg"
-                                                                                      class="avatar avatar-96 photo origin round"></a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> New York City</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/segway-tour-of-washington-d-c-highlights/"
-                                               class="st-link c-main">Segway Tour of Washington, D.C. Highlights</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (3 Reviews)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span class="sale-top">From  <span
-                                class="text-lg lh1em item "> €200.00</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>5 hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item-slide">
-                            <div class="services-item grid item-elementor" itemscope itemtype="https://schema.org/Trip">
-                                <div class="item service-border st-border-radius">
-                                    <div class="featured-image">
-                                        <div class="st-tag-feature-sale">
-
-                                        </div>
-                                        <a href="#" class="login" data-bs-toggle="modal"
-                                           data-bs-target="#st-login-form">
-                                            <div class="service-add-wishlist" title="Add to wishlist">
-                                                <i class="st-border-radius field-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22"
-                                                         viewBox="0 0 23 22" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.75 7.68998C0.75 4.18927 3.57229 1.34998 7.06 1.34998C8.79674 1.34998 10.3646 2.05596 11.5003 3.19469C12.6385 2.05561 14.2122 1.34998 15.94 1.34998C19.4277 1.34998 22.25 4.18927 22.25 7.68998C22.25 11.4395 20.5107 14.4001 18.4342 16.5276C16.3683 18.6443 13.9235 19.9861 12.3657 20.5186C12.0914 20.6147 11.7773 20.65 11.5 20.65C11.2227 20.65 10.9086 20.6147 10.6343 20.5186C9.07655 19.9861 6.63169 18.6443 4.56577 16.5276C2.48932 14.4001 0.75 11.4395 0.75 7.68998Z"
-                                                              fill="#232323" fill-opacity="0.3" stroke="white"
-                                                              stroke-width="1.5" stroke-linecap="round"
-                                                              stroke-linejoin="round"/>
-                                                    </svg>
-                                                </i>
-                                                <div class="lds-dual-ring"></div>
-                                            </div>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/st_tour/americas-national-parks-with-denver/">
-                                            <img itemprop="image"
-                                                 src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/HD-photo-by-Bailey-Alexander-450x300.jpg"
-                                                 alt="America’s National Parks with Denver"
-                                                 class="image-feature st-hover-grow"/>
-                                        </a>
-                                        <a href="https://modmixmap.travelerwp.com/author/modmix/" target="_blank"
-                                           title="modmix" class="service-avatar"><img alt="avatar" width=70 height=70
-                                                                                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/32.jpg"
-                                                                                      class="avatar avatar-96 photo origin round"></a>
-                                    </div>
-                                    <div class="content-item">
-                                        <div class="sub-title st-address d-flex align-items-center" itemprop="itinerary"
-                                             itemscope itemtype="https://schema.org/ItemList">
-
-                                            <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> California</span>
-                                        </div>
-                                        <h3 class="title" itemprop="name">
-                                            <a href="https://modmixmap.travelerwp.com/st_tour/americas-national-parks-with-denver/"
-                                               class="st-link c-main">America’s National Parks with Denver</a>
-                                        </h3>
-                                        <div class="reviews">
-                                            <i class="stt-icon-star1"></i>
-                                            <span class="rate" itemprop="ratingValue">
-                    5                </span>
-                                            <span class="summary">
-                    (3 Reviews)
-                </span>
-                                        </div>
-                                        <div class="section-footer">
-
-                                            <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
-                    <span class="price-tour">
-                        <span class="price d-flex justify-content-around flex-column"><span class="sale-top">From  <span
-                                class="text-lg lh1em item "> €260.00</span></span></span>
-                    </span>
-                                                <span class="unit"><i class="input-icon st-border-radius field-icon fa"><svg height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-
-<g fill="#5E6D77">
-    <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-    <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-</g>
-</svg></i>3 days</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2667,6 +2179,29 @@
             element.textContent = formattedPrice;
         }
     });
+</script>
+
+<script>
+    function checkSubmit(event) {
+        var starRating = document.getElementById("star").value;
+        var inputContent = document.getElementById("content").value;
+        // Kiểm tra starRating có giá trị là số từ 1 đến 5 hay không
+        var ratingRegex = /^[1-5]$/;
+        if (!ratingRegex.test(starRating)) {
+            alert("Vui lòng chọn sao đánh giá!");
+            event.preventDefault(); // Chặn quá trình submit form
+            return false;
+        }
+        if (inputContent.trim() === "") {
+            alert("Nội dung không được để trống!");
+            event.preventDefault(); // Chặn quá trình submit form
+            return false;
+        }
+
+        // Nếu không có lỗi, cho phép submit form
+        return true;
+        document.getElementById("formUploadComment").addEventListener("submit", checkSubmit);
+    }
 </script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'

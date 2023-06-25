@@ -56,4 +56,6 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     @Query("SELECT t FROM Tour t")
     Page<Tour> getAll(Pageable pageable);
+
+    List<Tour> getAllByTime(String time);
 }

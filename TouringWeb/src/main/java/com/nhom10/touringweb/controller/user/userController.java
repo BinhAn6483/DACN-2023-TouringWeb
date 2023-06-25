@@ -55,10 +55,14 @@ public class userController {
             user1.setPhone(user.getPhone());
             user1.setDateOfBirth(user.getDateOfBirth());
             user1.setGender(user.getGender());
+            model.addAttribute("isProfileUpdatePage", true);
+            userRepository.save(user1);
+            model.addAttribute("successful", "Cập nhật thông tin thành công!");
+
+            return "user_setting";
         }
-        model.addAttribute("isProfileUpdatePage", true);
-        userRepository.save(user1);
-        model.addAttribute("successful", "Update thành công!");
+        model.addAttribute("isProfileUpdatePage", false);
+        model.addAttribute("error", "Cập nhật thông tin không thành công!");
 
         return "user_setting";
     }
