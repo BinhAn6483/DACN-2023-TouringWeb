@@ -1115,28 +1115,30 @@
                                                  itemtype="https://schema.org/ItemList">
 
                                                                         <span itemprop="streetAddress">
-                                                                            <span class="stt-icon stt-icon-location1"></span>
+                                                                           <span class="stt-icon stt-icon-location1"></span>
                                                                             <span th:text="${tour.getLocation()}"></span>
                                                                             </span>
 
                                             </div>
-                                            <h3 class="title" itemprop="name" style="height: 95px">
-                                                <a th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
-                                                   class="st-link c-main"
-                                                   th:text="${tour.getName()}"></a>
+                                            <h3 class="title" itemprop="name" style="height: 76px; overflow: hidden">
+                                                <a  th:href="@{/tour/detail/{idTour}(idTour= ${tour.id})}"
+                                                    class="st-link c-main"
+                                                    th:text="${tour.getName()}"></a>
                                             </h3>
-                                            <div class="reviews">
-                                                <i class="stt-icon-star1"></i>
-                                                <span class="rate" itemprop="ratingValue">
-                                                                            5 </span>
-                                                <span class="summary">
-                                                                            (5 Reviews)
-                                                                        </span>
+                                            <div class="dateStart">
+                                                <i class="far fa-calendar-alt"></i>
+                                                <span th:text="'Khởi hành: '+${@scheduleController.getDateStartByIdTour(tour.id)}"></span>
                                             </div>
-                                            <div class="section-footer">
-
-                                                <div
-                                                        class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
+                                            <div class="dateStart">
+                                                <i class="fas fa-user"></i>
+                                                <span th:text="'Số chỗ còn nhận: '+${@scheduleController.getQuantityOfTour(tour.id)}"></span>
+                                            </div>
+                                            <div class="dateStart">
+                                                <i class="fas fa-user"></i>
+                                                <span th:text="'Lịch trình: '+${tour.getTime()}"></span>
+                                            </div>
+                                            <div class="section-footer" style="margin: 10px 0 0 0;padding: 10px 0 0px 0;">
+                                                <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
                                                                             <span class="price-tour">
                                                                                 <span
                                                                                         class="price d-flex justify-content-around flex-column">
@@ -1162,29 +1164,13 @@
 
                                                                                 </span>
                                                                             </span>
-                                                    <span class="unit"><i
-                                                            class="input-icon st-border-radius field-icon fa"><svg
-                                                                                        height="16px" width="16px"
-                                                                                        version="1.1"
-                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                        x="0px" y="0px"
-                                                                                        viewBox="0 0 24 24"
-                                                                                        style="enable-background:new 0 0 24 24;"
-                                                                                        xml:space="preserve">
-
-                                                                                        <g fill="#5E6D77">
-                                                                                            <path d="M12,23.25C5.797,23.25,0.75,18.203,0.75,12C0.75,5.797,5.797,0.75,12,0.75c6.203,0,11.25,5.047,11.25,11.25
-        C23.25,18.203,18.203,23.25,12,23.25z M12,2.25c-5.376,0-9.75,4.374-9.75,9.75s4.374,9.75,9.75,9.75s9.75-4.374,9.75-9.75
-        S17.376,2.25,12,2.25z"/>
-                                                                                            <path d="M15.75,16.5c-0.2,0-0.389-0.078-0.53-0.22l-2.25-2.25c-0.302,0.145-0.632,0.22-0.969,0.22c-1.241,0-2.25-1.009-2.25-2.25
-        c0-0.96,0.615-1.808,1.5-2.121V5.25c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75v4.629c0.885,0.314,1.5,1.162,1.5,2.121
-        c0,0.338-0.075,0.668-0.22,0.969l2.25,2.25c0.292,0.292,0.292,0.768,0,1.061C16.139,16.422,15.95,16.5,15.75,16.5z M12,11.25
-        c-0.414,0-0.75,0.336-0.75,0.75s0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75S12.414,11.25,12,11.25z"/>
-                                                                                        </g>
-                                                                                    </svg></i>
-                                                                            <span th:text="${tour.getTime()}"></span>
-                                                                            </span>
+                                                    <span class="unit">
+                                                                             <i class="stt-icon-star1" style="color: #ffde14"></i>
+                                                                             <span class="rate" itemprop="ratingValue" th:text="${@scheduleController.getAverageStarByIdTour(tour.id)}">
+                                                                            5 </span>
+                                                                    <span class="summary" th:text="'('+${@scheduleController.getSizeCommentByIdTour(tour.id)}+' đánh giá)'">
+                                                                            (5 Reviews)
+                                                                        </span>
                                                 </div>
                                             </div>
                                         </div>

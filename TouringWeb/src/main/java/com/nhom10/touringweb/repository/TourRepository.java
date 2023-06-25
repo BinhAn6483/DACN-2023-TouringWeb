@@ -23,22 +23,22 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
 
     Page<Tour> getAllByLocation(String location,Pageable pageable);
 
-    @Query("SELECT t FROM Tour t WHERE t.viewCount > 100 ORDER BY t.viewCount DESC")
+    @Query("SELECT DISTINCT t FROM Tour t WHERE t.viewCount > 100 ORDER BY t.viewCount DESC")
     Page<Tour> getListTourFeatured(Pageable pageable);
 
-    @Query("SELECT t FROM Tour t WHERE t.sale = 0 AND t.viewCount<50")
+    @Query("SELECT DISTINCT t FROM Tour t WHERE t.sale = 0 AND t.viewCount<50")
     Page<Tour> getListTourNew(Pageable pageable);
 
-    @Query("SELECT t FROM Tour t WHERE t.sale >= 20")
+    @Query("SELECT DISTINCT t FROM Tour t WHERE t.sale >= 20")
     Page<Tour> getListTourDiscount(Pageable pageable);
 
-    @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.location=?1 AND d.dateStart BETWEEN ?2 AND ?3 AND d.dateEnd BETWEEN ?2 AND ?3")
+    @Query("SELECT DISTINCT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.location=?1 AND d.dateStart BETWEEN ?2 AND ?3 AND d.dateEnd BETWEEN ?2 AND ?3")
     Page<Tour> getToursBySearch(String location, Date start,Date end, Pageable pageable);
 
-    @Query("SELECT t FROM Tour t  WHERE t.location=?1 ")
+    @Query("SELECT DISTINCT t FROM Tour t  WHERE t.location=?1 ")
     Page<Tour> getToursBySearch(String location, Pageable pageable);
 
-    @Query("SELECT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE  d.dateStart BETWEEN ?1 AND ?2 AND d.dateEnd BETWEEN ?1 AND ?2")
+    @Query("SELECT DISTINCT t FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE  d.dateStart BETWEEN ?1 AND ?2 AND d.dateEnd BETWEEN ?1 AND ?2")
     Page<Tour> getToursBySearch(Date start,Date end, Pageable pageable);
 
     @Query("SELECT d.dateStart FROM Tour t JOIN DepartureDates d ON t.id = d.idTour WHERE t.id=?1")

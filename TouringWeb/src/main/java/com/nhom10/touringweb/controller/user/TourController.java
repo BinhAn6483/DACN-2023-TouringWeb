@@ -26,9 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.sql.Date;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/")
@@ -181,11 +179,12 @@ public class TourController {
     }
 
     @GetMapping("/location/{location}")
-    public ModelAndView getListTourByLocation(HttpServletRequest request,@PathVariable("location") String location,@RequestParam(name = "page", defaultValue = "0") int page) {
+    public ModelAndView getListTourByLocation(HttpServletRequest request, @PathVariable("location") String location,
+                                              @RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mav = new ModelAndView("activity_search_topbar");
         Map<String, Object> model = new HashMap<>();
         try {
-            String url = request.getRequestURL()+"";
+            String url = request.getRequestURL() + "";
             int index = url.indexOf("?page=");
             if (index >= 0) {
                 // &page= found, remove everything after it
@@ -193,24 +192,41 @@ public class TourController {
             }
             List<String> locations = getAllLocation();
             model.put("locations", locations);
+
+            // sử dụng kiểu đối tượng Tour trong ví dụ này
+            // thay vì biến toàn cục Page list, tạo một biến pageTour để xử lý dữ liệu phân trang
             Pageable pageable = PageRequest.of(page, 8);
-            Page list = tourService.getAllTourByLocation(location,pageable);
-            if (!list.isEmpty()) {
-                model.put("url",url);
-                model.put("size",list.getTotalElements());
-                model.put("category","location");
-                model.put("listTourSearchLocation", list.getContent());
-                model.put("totalPages", list.getTotalPages()); //Thêm thuộc tính totalPages vào model
-                model.put("currentPage", page); //
+            Page<Tour> pageTour = tourService.getAllTourByLocation(location, pageable);
+
+            // sử dụng HashSet để lưu trữ các tour có id duy nhất
+            Set<Long> uniqueTourIds = new HashSet<>();
+            List<Tour> uniqueTours = new ArrayList<>();
+
+            for (Tour tour : pageTour) {
+                // kiểm tra xem id đã được thêm vào set chưa
+                if (uniqueTourIds.add(tour.getId())) {
+                    uniqueTours.add(tour);
+                }
+            }
+
+            if (!uniqueTours.isEmpty()) {
+                model.put("url", url);
+                model.put("size", uniqueTours.size());
+                model.put("category", "location");
+                model.put("listTourSearchLocation", uniqueTours);
+                model.put("totalPages", pageTour.getTotalPages());
+                model.put("currentPage", page);
+
                 mav.addAllObjects(model);
                 return mav;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return mav;
         }
-        return mav;
+        // không nên trả về mav ở đây khi gặp lỗi, mà trả về thông báo lỗi hoặc trang 404
+        return new ModelAndView("error");
     }
+
 
 
     public List<Tour> getListTourFeatured() {

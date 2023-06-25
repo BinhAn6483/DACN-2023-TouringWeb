@@ -8,5 +8,5 @@ import java.sql.Date;
 
 @Repository
 public interface DepartureDatesRepository extends JpaRepository<DepartureDates,Long> {
-    DepartureDates getDepartureDatesByDateStart(Date date);
+    DepartureDates getDepartureDatesByDateStartAndIdTour(Date date,Long idTour);
 }

@@ -48,7 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		//.csrf().disable() ngăn chặn tấn công  CSRF (cross-site request forgery)
+		http.csrf().disable().authorizeRequests()
 				.antMatchers(
 						"/registration**",
 						"/home/**",
