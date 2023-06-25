@@ -1,12 +1,14 @@
 package com.nhom10.touringweb.model.user;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Collection;
 
 @Entity
-@Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
@@ -14,10 +16,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     @Column(name = "email")
     private String email;
+    @NotNull
     @Column(name = "password")
     private String password;
+    @NotNull
     @Column(name = "name")
     private String name;
     @Column(name = "phone")
@@ -28,8 +33,6 @@ public class User {
     private String gender;
     @Column(name = "address")
     private String address;
-    @Column(name = "id_cart")
-    private String idCart;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -41,10 +44,12 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
 
     private Collection<Role> roles;
-public User(){
 
-}
-    public User(String name,  String email, String password, Collection<Role> roles) {
+    public User() {
+
+    }
+
+    public User(String name, String email, String password, Collection<Role> roles) {
         super();
         this.name = name;
         this.email = email;
@@ -116,17 +121,10 @@ public User(){
         this.address = address;
     }
 
-    public String getIdCart() {
-        return idCart;
-    }
-
-    public void setIdCart(String idCart) {
-        this.idCart = idCart;
-    }
-
     public Collection<Role> getRoles() {
         return roles;
     }
+
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
@@ -142,7 +140,6 @@ public User(){
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
-                ", idCart='" + idCart + '\'' +
                 ", roles=" + roles +
                 '}';
     }

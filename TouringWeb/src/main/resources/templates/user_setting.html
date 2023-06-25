@@ -174,11 +174,14 @@
                 <h2>Hồ sơ</h2>
             </div>
             <div>
-                <input class="form-control" type="text" readonly th:if="${isProfileUpdatePage}" th:value="${successful}">
+                <input class="form-control" type="text" readonly th:if="${isProfileUpdatePage}" th:value="${successful}" style="background-color: #99ffb08f;border: 1px solid #0ebf00;color: blue;">
+            </div>
+            <div>
+                <input class="form-control" type="text" readonly th:if="${isProfileUpdatePage} == false" th:value="${error}" style="background-color: #ff32323d;border: 1px solid #ff1010b3;color: blue;">
             </div>
             <div class="infor-st-setting st-wishlist-wrap" style="height: 735px">
                 <div style="width: 60%;float: left; border-right: 1px solid #ddd;  ">
-                    <form th:action="@{/user/profile/update}" method="post" th:object="${user}">
+                    <form th:action="@{/user/profile/update}" method="post" th:object="${user}" id="formUpdate">
 
 
                         <div class="container">
@@ -186,7 +189,7 @@
                             <div class="form-group">
                                 <label for="name">Họ tên</label>
                                 <input type="hidden" id="id" name="id" th:value="${user.getId()}">
-                                <input type="text" class="form-control" id="name" name="name"
+                                <input type="text" class="form-control" id="name" name="name" required
                                        th:value="${user.getName()}"
                                        placeholder="Vui lòng nhập họ tên đầy đủ" autofocus="autofocus">
                             </div>
@@ -194,7 +197,7 @@
                             <div class="form-group" style="float: left; width: 50%;">
                                 <label for="dateOfBirth">Ngày sinh</label> <span
                                     style="    position: absolute; margin: -25px 0 0 83px;font-size: 14px;">dd/mm/yyyy</span>
-                                <input type="text" class="form-contol" id="dateOfBirth" name="dateOfBirth"
+                                <input type="text" class="form-contol" id="dateOfBirth" name="dateOfBirth"  onblur="validateDate()"
                                 th:value="${user.getDateOfBirth()}">
                             </div>
 
@@ -212,7 +215,7 @@
                             <div class="form-group" style="width: 100%;display: inline-table;">
                                 <label for="address">Địa chỉ</label>
                                 <input type="text" class="form-control" id="address" name="address"
-                                       th:value="${user.getAddress()}"
+                                       th:value="${user.getAddress()}" required
                                        placeholder="Địa chỉ của bạn">
                             </div>
 
@@ -225,18 +228,18 @@
                             <div class="form-group">
                                 <label for="phone">Số Điện thoại</label>
                                 <input type="tel" class="form-control" id="phone" name="phone"
-                                       th:value="${user.getPhone()}"
+                                       th:value="${user.getPhone()}" onblur="validatePhoneNumber()"
                                        placeholder="Nhập số điện thoại của bạn">
                             </div>
 
                             <div class="form-group">
-                                <span><a href="">Hủy</a></span>
+                                <span><a th:href="@{/user/profile}">Hủy</a></span>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6 col-sm-offset-3">
                                         <button type="submit" name="save" id="save" style=""
-                                                class="form-control btn btn-primary">CẬP NHẬT
+                                                class="form-control btn btn-primary" onclick="checkSubmit()">CẬP NHẬT
                                         </button>
                                     </div>
                                 </div>
@@ -286,6 +289,68 @@
             }
 
         </script>
+        <script>
+            //kiểm tra ngày sinh có đúng định dang DD/mm/yyhay không?
+            function validateDate() {
+                var input = document.getElementById("dateOfBirth").value;
+                var dateFormat = /^\d{2}\/\d{2}\/\d{4}$/;
+                if (!dateFormat.test(input)) {
+                    alert("Định dạng ngày sinh không hợp lệ!");
+                    // hoặc thêm code vào đây để hiển thị thông báo lỗi ở một vị trí khác
+                }
+            }
+            //kiểm tra định dạng số điện thoại có phải là 10 số và bắt đầu từ số 0 hay không?
+            function validatePhoneNumber() {
+                var input = document.getElementById("phone").value;
+                var phoneRegex = /^0\d{9}$/;
+                if (!phoneRegex.test(input)) {
+                    alert("Số điện thoại không hợp lệ! Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 chữ số.");
+                    //Hoặc thêm code vào đây để hiển thị thông báo lỗi ở một vị trí khác
+                }
+            }
+
+        </script>
+
+        <script>
+            function checkSubmit(event) {
+                var inputFullName = document.getElementById("name").value;
+                var inputPhoneNumber = document.getElementById("phone").value;
+                var inputAddress = document.getElementById("address").value;
+                var input = document.getElementById("dateOfBirth").value;
+
+                // Kiểm tra thông tin
+                var dateFormat = /^\d{2}\/\d{2}\/\d{4}$/;
+                if (!dateFormat.test(input)) {
+                    alert("Định dạng ngày sinh không hợp lệ!");
+                    event.preventDefault(); // Chặn quá trình submit form
+                    return false;
+                }
+                if (inputFullName.trim() === "") {
+                    alert("Họ tên không được để trống!");
+                    event.preventDefault(); // Chặn quá trình submit form
+                    return false;
+                }
+                if (inputAddress.trim() === "") {
+                    alert("Địa chỉ không được để trống!");
+                    event.preventDefault(); // Chặn quá trình submit form
+                    return false;
+                }
+
+                var phoneRegex = /^0\d{9}$/;
+                if (!phoneRegex.test(inputPhoneNumber)) {
+                    alert("Số điện thoại không hợp lệ!");
+                    event.preventDefault(); // Chặn quá trình submit form
+                    return false;
+                }
+
+                // Nếu không có lỗi, cho phép submit form
+                return true;
+            }
+
+            // Thêm sự kiện onsubmit cho đối tượng form
+            document.getElementById("formUpdate").addEventListener("submit", checkSubmit);
+        </script>
+
 
     </main>
 
