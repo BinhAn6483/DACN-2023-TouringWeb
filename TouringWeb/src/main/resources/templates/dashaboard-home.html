@@ -12,7 +12,7 @@
 <input type="checkbox" id="menu-toggle">
 <div class="sidebar">
     <div class="side-header">
-        <h3>M<span>odern</span></h3>
+        <h3><span>Traveler</span></h3>
     </div>
 
     <div class="side-content">
@@ -31,28 +31,28 @@
         <div class="side-menu">
             <ul>
                 <li>
-                    <a href="" class="active">
+                    <a  class="active"  th:href="@{/admin/dashboard}">
                         <span class="las la-home"></span>
                         <small>Dashboard</small>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/listUser}">
+                    <a th:href="@{/admin/managerCustom}">
                         <span class="las la-user-alt"></span>
                         <small>Khách hàng</small>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a th:href="@{/admin/tours-manage}">
                         <span class="las la-clipboard-list"></span>
                         <small>Danh sách Tour</small>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <span class="las la-shopping-cart"></span>
-                        <small>Giỏ hàng</small>
+                        <span class="las la-comments"></span>
+                        <small>Đánh giá</small>
                     </a>
                 </li>
 
@@ -87,8 +87,8 @@
                 <div class="user">
                     <div class="bg-img" style="background-image: url(img/1.jpeg)"></div>
 
-                    <span th:href="@{/logout}" class="las la-power-off"></span>
-                    <span>Đăng xuất</span>
+                    <a th:href="@{/logout}" class="las la-power-off"><span>Đăng xuất</span></a>
+
                 </div>
             </div>
         </div>
