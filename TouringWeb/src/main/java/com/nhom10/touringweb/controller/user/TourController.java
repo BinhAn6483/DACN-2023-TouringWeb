@@ -27,6 +27,7 @@ import java.security.Principal;
 import java.sql.Date;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
@@ -427,5 +428,59 @@ public class TourController {
         }
         return result;
     }
+
+//    @GetMapping("/tours/filter")
+//    public String filterProduct(@RequestParam("stars") String star,
+//                                @RequestParam("times") String time,
+//                                @RequestParam("prices") String price, Model model) {
+//
+//        String[] starStrings = star.split("/");
+//        List<Integer> stars = Arrays.stream(starStrings)
+//                .filter(s -> !s.isEmpty())
+//                .map(Integer::parseInt)
+//                .collect(Collectors.toList());
+//
+//        String[] timeStrings = time.split("/");
+//        List<Integer> times = Arrays.stream(timeStrings)
+//                .filter(s -> !s.isEmpty())
+//                .map(Integer::parseInt)
+//                .collect(Collectors.toList());
+//
+//        String[] priceStrings = price.split("/");
+//        List<Integer> prices = Arrays.stream(priceStrings)
+//                .filter(s -> !s.isEmpty())
+//                .map(Integer::parseInt)
+//                .collect(Collectors.toList());
+//
+//        System.out.println("brand[] " +times + "\tsizes[] " +stars);
+//        List<Tour> list = null;
+////        if (!time.isEmpty() && !brands.isEmpty()) {
+////            if (priceSort == 1) {
+////                list = productService.filterProductsDesc(sizes, brands);
+////            } else {
+////                list = productService.filterProductsAsc(sizes, brands);
+////            }
+////        } else if (!brands.isEmpty()) {
+////            list = productService.filterProductsByBrandAndPrice(brands);
+////            if (priceSort == 0) {
+////                Collections.reverse(list);
+////            }
+////        } else if (!sizes.isEmpty()) {
+////            list = productService.filterProductsExceptBrand(sizes);
+////            if (priceSort == 0) {
+////                Collections.reverse(list);
+////            }
+////        } else {
+////            list = productService.filterProductsBYPrice();
+////            if (priceSort == 0) {
+////                Collections.reverse(list);
+////            }
+////        }
+////
+////        model.addAttribute("totalPrice", totalPrice);
+////        model.addAttribute("carts",cartList);
+//        model.addAttribute("products", list);
+//        return "tour_search_sidebar";
+//    }
 
 }

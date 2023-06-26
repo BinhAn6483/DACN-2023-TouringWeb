@@ -813,250 +813,257 @@
     </div>
     <div class="container">
         <div class="st-results st-hotel-result st-search-tour">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 sidebar-filter">
-                    <div class="close-sidebar"><span class="stt-icon stt-icon-close"></span></div>
 
-                    <div class="sidebar-item top-filter pag st-icheck st-border-radius">
-                        <div class="item-title d-flex justify-content-between align-items-center">
-                            <div>Đánh giá</div>
-                            <i class="fa fa-angle-up" aria-hidden="true"></i>
+            <div class="row">
+<!--                <form th:action="@{/tours/filter}" method="GET">-->
+                    <div class="col-lg-3 col-md-3 sidebar-filter">
+                        <div class="close-sidebar"><span class="stt-icon stt-icon-close"></span></div>
+
+                        <div class="sidebar-item top-filter pag st-icheck st-border-radius">
+                            <div class="item-title d-flex justify-content-between align-items-center">
+                                <div>Đánh giá</div>
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="item-content filter-review-score">
+                                <ul>
+                                    <li class="st-icheck-item">
+                                        <label>
+                                            <span class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span> <input
+                                                type="checkbox" name="star" value="5" class="filter-item"
+                                                data-type="star_rate"/>
+                                            <span class="checkmark fcheckbox"></span>
+                                        </label>5 sao
+                                    </li>
+                                    <li class="st-icheck-item">
+                                        <label>
+                                            <span class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span> <input
+                                                type="checkbox" name="star" value="4" class="filter-item"
+                                                data-type="star_rate"/>
+                                            <span class="checkmark fcheckbox"></span>
+                                        </label>4 sao
+                                    </li>
+                                    <li class="st-icheck-item">
+                                        <label>
+                                            <span class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span> <input
+                                                type="checkbox" name="star" value="3" class="filter-item"
+                                                data-type="star_rate"/>
+                                            <span class="checkmark fcheckbox"></span>
+                                        </label>3 sao
+                                    </li>
+                                    <li class="st-icheck-item">
+                                        <label>
+                                            <span class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span> <input
+                                                type="checkbox" name="star" value="2" class="filter-item"
+                                                data-type="star_rate"/>
+                                            <span class="checkmark fcheckbox"></span>
+                                        </label>2 sao
+                                    </li>
+                                    <li class="st-icheck-item">
+                                        <label>
+                                            <span class="real-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span><span
+                                                class="fake-star"><i class="stt-icon-star1"></i></span> <input
+                                                type="checkbox" name="star" value="1" class="filter-item"
+                                                data-type="star_rate"/>
+                                            <span class="checkmark fcheckbox"></span>
+                                        </label>1 sao
+                                    </li>
+<!--                                    <input type="text" name="stars">-->
+                                </ul>
+                            </div>
                         </div>
-                        <div class="item-content filter-review-score">
-                            <ul>
-                                <li class="st-icheck-item">
-                                    <label>
-                                        <span class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span> <input
-                                            type="checkbox" name="review_score" value="5" class="filter-item"
-                                            data-type="star_rate"/>
-                                        <span class="checkmark fcheckbox"></span>
-                                    </label>5 sao
-                                </li>
-                                <li class="st-icheck-item">
-                                    <label>
-                                        <span class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span> <input
-                                            type="checkbox" name="review_score" value="4" class="filter-item"
-                                            data-type="star_rate"/>
-                                        <span class="checkmark fcheckbox"></span>
-                                    </label>4 sao
-                                </li>
-                                <li class="st-icheck-item">
-                                    <label>
-                                        <span class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span> <input
-                                            type="checkbox" name="review_score" value="3" class="filter-item"
-                                            data-type="star_rate"/>
-                                        <span class="checkmark fcheckbox"></span>
-                                    </label>3 sao
-                                </li>
-                                <li class="st-icheck-item">
-                                    <label>
-                                        <span class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span> <input
-                                            type="checkbox" name="review_score" value="2" class="filter-item"
-                                            data-type="star_rate"/>
-                                        <span class="checkmark fcheckbox"></span>
-                                    </label>2 sao
-                                </li>
-                                <li class="st-icheck-item">
-                                    <label>
-                                        <span class="real-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span><span
-                                            class="fake-star"><i class="stt-icon-star1"></i></span> <input
-                                            type="checkbox" name="review_score" value="1" class="filter-item"
-                                            data-type="star_rate"/>
-                                        <span class="checkmark fcheckbox"></span>
-                                    </label>1 sao
-                                </li>
-                            </ul>
+                        <div class="sidebar-item pag st-icheck st-border-radius">
+                            <div class="item-title d-flex justify-content-between align-items-center">
+                                <div>Thể loại</div>
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="item-content">
+                                <ul>
+                                    <ul>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Tour gia đình <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="78" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Tour khách đoàn <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="79" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Tour hè <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="80" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Tour từ Hà Nội <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="81" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Tour từ Hồ Chí Minh <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="82" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                        <li class=" st-icheck-item"
+                                            style=""><label>Combo du lịch <input
+                                                data-tax="taxonomy" data-type="st_tour_type"
+                                                value="83" type="checkbox"
+                                                name="taxonomy" class="filter-tax"/><span
+                                                class="checkmark fcheckbox"></span>
+                                        </label>
+                                        </li>
+                                    </ul>
+                                </ul>
+                                <button class="btn btn-link btn-more-item">Xem thêm <span
+                                        class="stt-icon stt-icon-arrow-down"></span></button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="sidebar-item pag st-icheck st-border-radius">
-                        <div class="item-title d-flex justify-content-between align-items-center">
-                            <div>Thể loại</div>
-                            <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        </div>
-                        <div class="item-content">
-                            <ul>
+                        <div class="sidebar-item pag st-icheck st-border-radius">
+                            <div class="item-title d-flex justify-content-between align-items-center">
+                                <div>Thời gian</div>
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="item-content">
                                 <ul>
                                     <li class=" st-icheck-item"
-                                        style=""><label>Tour gia đình <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="78" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                        style=""><label>2 ngày 1 đêm <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="1" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
                                     <li class=" st-icheck-item"
-                                        style=""><label>Tour khách đoàn <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="79" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                        style=""><label>3 ngày 2 đêm <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="2" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
                                     <li class=" st-icheck-item"
-                                        style=""><label>Tour hè <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="80" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                        style=""><label>4 ngày  đêm<input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="3" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
                                     <li class=" st-icheck-item"
-                                        style=""><label>Tour từ Hà Nội <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="81" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                        style=""><label>5 ngày 4 đêm <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="4" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
-                                    <li class=" st-icheck-item"
-                                        style=""><label>Tour từ Hồ Chí Minh <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="82" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                    <li class="hidden st-icheck-item"
+                                        style=""><label>6 ngày 5 đêm <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="5" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
-                                    <li class=" st-icheck-item"
-                                        style=""><label>Combo du lịch <input
-                                            data-tax="taxonomy" data-type="st_tour_type"
-                                            value="83" type="checkbox"
-                                            name="taxonomy" class="filter-tax"/><span
+                                    <li class="hidden st-icheck-item"
+                                        style=""><label>Trên 7 ngày <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="6" type="checkbox"
+                                            name="time" class="filter-tax"/><span
                                             class="checkmark fcheckbox"></span>
                                     </label>
                                     </li>
                                 </ul>
-                            </ul>
-                            <button class="btn btn-link btn-more-item">Xem thêm <span
-                                    class="stt-icon stt-icon-arrow-down"></span></button>
+<!--                                <input type="text" name="times">-->
+                                <button class="btn btn-link btn-more-item">Xem thêm<span
+                                        class="stt-icon stt-icon-arrow-down"></span></button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="sidebar-item pag st-icheck st-border-radius">
-                        <div class="item-title d-flex justify-content-between align-items-center">
-                            <div>Thời gian</div>
-                            <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        </div>
-                        <div class="item-content">
-                            <ul>
-                                <li class=" st-icheck-item"
-                                    style=""><label>2 ngày 1 đêm <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="89" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>3 ngày 2 đêm <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="90" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>4 ngày  đêm<input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="91" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>5 ngày 4 đêm <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="92" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class="hidden st-icheck-item"
-                                    style=""><label>6 ngày 5 đêm <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="93" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class="hidden st-icheck-item"
-                                    style=""><label>Trên 7 ngày <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="93" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                            </ul>
-                            <button class="btn btn-link btn-more-item">Xem thêm<span
-                                    class="stt-icon stt-icon-arrow-down"></span></button>
-                        </div>
-                    </div>
-                    <div class="sidebar-item range-slider st-border-radius">
-                        <div class="item-title d-flex justify-content-between align-items-center">
-                            <div>Lọc theo chi phí</div>
-                            <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        </div>
-                        <div class="item-content range-slider">
-                            <ul>
-                                <li class=" st-icheck-item"
-                                    style=""><label> Dưới 2.000.00đ <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="89" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>2.000.000đ - 4.000.000đ <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="90" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>4.000.000đ - 7.000.000đ<input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="91" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
-                                <li class=" st-icheck-item"
-                                    style=""><label>Trên 7.000.00đ <input
-                                        data-tax="taxonomy" data-type="durations"
-                                        value="92" type="checkbox"
-                                        name="taxonomy" class="filter-tax"/><span
-                                        class="checkmark fcheckbox"></span>
-                                </label>
-                                </li>
+                        <div class="sidebar-item range-slider st-border-radius">
+                            <div class="item-title d-flex justify-content-between align-items-center">
+                                <div>Lọc theo chi phí</div>
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="item-content range-slider">
+                                <ul>
+                                    <li class=" st-icheck-item"
+                                        style=""><label> Dưới 2.000.00đ <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="1" type="checkbox"
+                                            name="price" class="filter-tax"/><span
+                                            class="checkmark fcheckbox"></span>
+                                    </label>
+                                    </li>
+                                    <li class=" st-icheck-item"
+                                        style=""><label>2.000.000đ - 4.000.000đ <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="2" type="checkbox"
+                                            name="price" class="filter-tax"/><span
+                                            class="checkmark fcheckbox"></span>
+                                    </label>
+                                    </li>
+                                    <li class=" st-icheck-item"
+                                        style=""><label>4.000.000đ - 7.000.000đ<input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="3" type="checkbox"
+                                            name="price" class="filter-tax"/><span
+                                            class="checkmark fcheckbox"></span>
+                                    </label>
+                                    </li>
+                                    <li class=" st-icheck-item"
+                                        style=""><label>Trên 7.000.00đ <input
+                                            data-tax="taxonomy" data-type="durations"
+                                            value="4" type="checkbox"
+                                            name="price" class="filter-tax"/><span
+                                            class="checkmark fcheckbox"></span>
+                                    </label>
+                                    </li>
 
-                            </ul>
-                            <div class="price-action">
-                                <a href="javascript:void(0);" class="clear-price">Xóa</a>
-                                <button class="btn btn-link btn-apply-price-range">Áp dụng</button>
+                                </ul>
+<!--                                <input type="text" name="prices">-->
+                                <div class="price-action">
+                                    <a href="javascript:void(0);" class="clear-price">Xóa</a>
+                                    <button type="submit" class="btn btn-link btn-apply-price-range">Áp dụng</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+<!--                </form>-->
+
                 <div class="col-sm-12 col-md-9 col-lg-9">
                     <div class="toolbar d-flex align-items-center justify-content-between flex-row-reverse">
                         <div class="show-filter-mobile">
@@ -2410,6 +2417,47 @@
         dropdownMenu.style.display = 'none';
 
     }
+</script>
+
+<script>
+    const checkboxes = document.querySelectorAll('input[name="star"]');
+    const hiddenInput = document.querySelector('input[name="stars"]');
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('click', (event) => {
+            const selectedValues = Array.from(checkboxes)
+                .filter((checkbox) => checkbox.checked)
+                .map((checkbox) => checkbox.value);
+
+            hiddenInput.value = selectedValues.join('/');
+        });
+    });
+
+    const checkboxesSize = document.querySelectorAll('input[name="time"]');
+    const hiddenInputSize = document.querySelector('input[name="times"]');
+
+    checkboxesSize.forEach((checkbox) => {
+        checkbox.addEventListener('click', (event) => {
+            const selectedValues = Array.from(checkboxesSize)
+                .filter((checkbox) => checkbox.checked)
+                .map((checkbox) => checkbox.value);
+
+            hiddenInputSize.value = selectedValues.join('/');
+        });
+    });
+
+    const checkboxesPrice = document.querySelectorAll('input[name="price"]');
+    const hiddenInputPrice = document.querySelector('input[name="prices"]');
+
+    checkboxesPrice.forEach((checkbox) => {
+        checkbox.addEventListener('click', (event) => {
+            const selectedValues = Array.from(checkboxesPrice)
+                .filter((checkbox) => checkbox.checked)
+                .map((checkbox) => checkbox.value);
+
+            hiddenInputPrice.value = selectedValues.join('/');
+        });
+    });
 </script>
 <script type='text/javascript'
         src='https://modmixmap.travelerwp.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.11.5'
